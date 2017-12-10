@@ -1,2 +1,4 @@
 # tax-flow
-An ethereum blockchain application that allows a taxpayer to visualize the flow of his transactions through the tax system in real time.
+This project is presented as a capstone project for the Certified Ethereum Developer program at Blockchain Hub.
+
+This demonstration ethereum blockchain application taxpayer in a hypothetical municipality that runs on a blockchain. We provide a visualization the flow of his transactions through the tax system in real time.
