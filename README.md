@@ -7,8 +7,3 @@ This demonstration ethereum blockchain application taxpayer in a hypothetical mu
 ## Workflow
 
 ![Worklfow](Workflow.png)
-
-Shaan 
-Mohammed
-
-Ben
