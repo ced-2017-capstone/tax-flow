@@ -11,6 +11,7 @@ contract MetaCoin {
 	mapping (address => uint) balances;
 
 	event Transfer(address indexed _from, address indexed _to, uint256 _value);
+	event GetBalance(address indexed _sender, uint _tx);
 
 	function MetaCoin() {
 		balances[tx.origin] = 10000;
@@ -25,6 +26,7 @@ contract MetaCoin {
 	}
 
 	function getBalanceInEth(address addr) returns(uint){
+		GetBalance(msg.sender, tx.origin)
 		return ConvertLib.convert(getBalance(addr),2);
 	}
 
