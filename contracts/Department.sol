@@ -1,71 +1,47 @@
 pragma solidity ^0.4.11;
-// ---Department Overview / Notes---
-// Accepts funding payments from distributor
-// Registers addresses as authorized suppliers
-// Manages outstanding invoice queue
-// Sends payment to outstanding invoices
-// Public can access balance
-// Public can access vendor list
-// Event tracking for all actions
 
 contract Department { 
     
-    //****** PARAMETERS ******/
-    struct Supplier {
-        uint approved; // 1 or 0 - see Ballot example
-        bool paidInFull;
-        address supplier;
-        uint payment; 
+      function Department () { 
+        owner = msg.sender; 
+        balance = 0;
     }
     
-
     address public owner;
     uint public balance;
-
-    mapping(address => Supplier) public approvedSuppliers;
-    mapping(address => uint) public outstandingInvoices;
-
-    //****** CONSTRUCTOR ******/
-
-    function Department (){
-        owner = msg.sender; //whoever creates the contract is the owner
-    }
-
-    //****** EVENTS ******/
-
-    event FundsDistributed(uint amount);
-    event FundingReceived();
-    event DistributionsMade()
-    event ApprovalRequested();
-    event ApprovalGranted();
-    event PaidSupplierInFull();
-    event PaidSupplierPartially();
-
-    //****** FUNCTIONS ******/
-
-    // allows contract owner to add a supplier to whitelist
-    // only approved suppliers can send invoices
-
-    function approveSupplier(address supplier){
-        require(msg.sender == owner && !approvedSuppliers[supplier].approved);
-    }
-
-    // Takes a distrubution and pays invoices
-
-    function distribute() payable {
-        //TODO: 
-    }
-
-    //****** FUNCTIONS ******/
-    function getOutstandingInvoices() constant returns () {
-
+    
+    mapping(address => uint) approvedSuppliers;
+    
+    //Modifier to check for owner approval
+    modifier onlyBy(address _account) {
+        require(msg.sender == _account);
+        _;
     }
     
-    function getApprovedSuppliers() constant returns() {
-        //TODO:
-    }   
+    //Allows changing of ownership
+    function changeOwner(address _newOwner) onlyBy(owner){
+        owner = _newOwner;
+    }
+ 
+    function addSupplier(address supplier) onlyBy(owner) {
+       if(approvedSuppliers[supplier]==0){
+          approvedSuppliers[supplier] = 1; 
+       }
+    }
+    
+    
+    function receivePayment (uint payment) public payable {
+        balance += payment;
+    }
 
-    function getDepartmentBalance() constant returns(){
-        //TODO: 
+    //****** FUNCTIONS ******/
+
+    function getBalance() public constant returns(uint _balance){
+        return balance;
     } 
+    
+      function getSuppliers() public constant returns(address[] approvedSuppliers){
+        return approvedSuppliers;
+    } 
+
 }
