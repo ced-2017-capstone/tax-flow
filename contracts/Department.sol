@@ -34,14 +34,12 @@ contract Department {
     //****** EVENTS ******/
 
     event FundsDistributed(uint amount);
-    /*
-        FundingReceived
-        Distributions Made
-        ApprovalRequested
-        ApprovalGranted
-        PaidSupplierInFull
-        PaidSupplierPartially
-    */
+    event FundingReceived();
+    event DistributionsMade()
+    event ApprovalRequested();
+    event ApprovalGranted();
+    event PaidSupplierInFull();
+    event PaidSupplierPartially();
 
     //****** FUNCTIONS ******/
 
@@ -62,6 +60,7 @@ contract Department {
     function getOutstandingInvoices() constant returns () {
 
     }
+    
     function getApprovedSuppliers() constant returns() {
         //TODO:
     }   

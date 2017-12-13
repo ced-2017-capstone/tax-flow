@@ -1,5 +1,6 @@
 // Import the page's CSS. Webpack will know what to do with it.
 import '../stylesheets/app.css'
+import '../stylesheets/force-graph.css'
 
 // Import libraries we need.
 import { default as Web3 } from 'web3'
@@ -35,7 +36,7 @@ window.App = {
         alert("Couldn't get any accounts! Make sure your Ethereum client is configured correctly.")
         return
       }
-      console.log('got accounts:', accs);
+      console.log('got accounts:', accs)
       accounts = accs
       account = accounts[0]
 
@@ -53,7 +54,7 @@ window.App = {
 
     var meta
     MetaCoin.deployed().then(function (instance) {
-      console.log("instance deployed", instanct);
+      console.log('instance deployed', instanct)
       meta = instance
       return meta.getBalance.call(account, { from: account })
     }).then(function (value) {

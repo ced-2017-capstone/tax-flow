@@ -1,521 +1,521 @@
-require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-module.exports=[
-  {
-    "constant": true,
-    "inputs": [
+require = (function e (t, n, r) { function s (o, u) { if (!n[o]) { if (!t[o]) { var a = typeof require === 'function' && require; if (!u && a) return a(o, !0); if (i) return i(o, !0); var f = new Error("Cannot find module '" + o + "'"); throw f.code = 'MODULE_NOT_FOUND', f } var l = n[o] = { exports:{} }; t[o][0].call(l.exports, function (e) { var n = t[o][1][e]; return s(n || e) }, l, l.exports, e, t, n, r) } return n[o].exports } var i = typeof require === 'function' && require; for (var o = 0; o < r.length; o++)s(r[o]); return s })({ 1:[function (require, module, exports) {
+  module.exports = [
+    {
+      'constant': true,
+      'inputs': [
+        {
+          'name': '_owner',
+          'type': 'address'
+        }
+      ],
+      'name': 'name',
+      'outputs': [
+        {
+          'name': 'o_name',
+          'type': 'bytes32'
+        }
+      ],
+      'type': 'function'
+    },
+    {
+      'constant': true,
+      'inputs': [
+        {
+          'name': '_name',
+          'type': 'bytes32'
+        }
+      ],
+      'name': 'owner',
+      'outputs': [
+        {
+          'name': '',
+          'type': 'address'
+        }
+      ],
+      'type': 'function'
+    },
+    {
+      'constant': true,
+      'inputs': [
+        {
+          'name': '_name',
+          'type': 'bytes32'
+        }
+      ],
+      'name': 'content',
+      'outputs': [
+        {
+          'name': '',
+          'type': 'bytes32'
+        }
+      ],
+      'type': 'function'
+    },
+    {
+      'constant': true,
+      'inputs': [
+        {
+          'name': '_name',
+          'type': 'bytes32'
+        }
+      ],
+      'name': 'addr',
+      'outputs': [
+        {
+          'name': '',
+          'type': 'address'
+        }
+      ],
+      'type': 'function'
+    },
+    {
+      'constant': false,
+      'inputs': [
+        {
+          'name': '_name',
+          'type': 'bytes32'
+        }
+      ],
+      'name': 'reserve',
+      'outputs': [],
+      'type': 'function'
+    },
+    {
+      'constant': true,
+      'inputs': [
+        {
+          'name': '_name',
+          'type': 'bytes32'
+        }
+      ],
+      'name': 'subRegistrar',
+      'outputs': [
+        {
+          'name': '',
+          'type': 'address'
+        }
+      ],
+      'type': 'function'
+    },
+    {
+      'constant': false,
+      'inputs': [
+        {
+          'name': '_name',
+          'type': 'bytes32'
+        },
+        {
+          'name': '_newOwner',
+          'type': 'address'
+        }
+      ],
+      'name': 'transfer',
+      'outputs': [],
+      'type': 'function'
+    },
+    {
+      'constant': false,
+      'inputs': [
+        {
+          'name': '_name',
+          'type': 'bytes32'
+        },
+        {
+          'name': '_registrar',
+          'type': 'address'
+        }
+      ],
+      'name': 'setSubRegistrar',
+      'outputs': [],
+      'type': 'function'
+    },
+    {
+      'constant': false,
+      'inputs': [],
+      'name': 'Registrar',
+      'outputs': [],
+      'type': 'function'
+    },
+    {
+      'constant': false,
+      'inputs': [
+        {
+          'name': '_name',
+          'type': 'bytes32'
+        },
+        {
+          'name': '_a',
+          'type': 'address'
+        },
+        {
+          'name': '_primary',
+          'type': 'bool'
+        }
+      ],
+      'name': 'setAddress',
+      'outputs': [],
+      'type': 'function'
+    },
+    {
+      'constant': false,
+      'inputs': [
+        {
+          'name': '_name',
+          'type': 'bytes32'
+        },
+        {
+          'name': '_content',
+          'type': 'bytes32'
+        }
+      ],
+      'name': 'setContent',
+      'outputs': [],
+      'type': 'function'
+    },
+    {
+      'constant': false,
+      'inputs': [
+        {
+          'name': '_name',
+          'type': 'bytes32'
+        }
+      ],
+      'name': 'disown',
+      'outputs': [],
+      'type': 'function'
+    },
+    {
+      'anonymous': false,
+      'inputs': [
+        {
+          'indexed': true,
+          'name': '_name',
+          'type': 'bytes32'
+        },
+        {
+          'indexed': false,
+          'name': '_winner',
+          'type': 'address'
+        }
+      ],
+      'name': 'AuctionEnded',
+      'type': 'event'
+    },
+    {
+      'anonymous': false,
+      'inputs': [
+        {
+          'indexed': true,
+          'name': '_name',
+          'type': 'bytes32'
+        },
+        {
+          'indexed': false,
+          'name': '_bidder',
+          'type': 'address'
+        },
+        {
+          'indexed': false,
+          'name': '_value',
+          'type': 'uint256'
+        }
+      ],
+      'name': 'NewBid',
+      'type': 'event'
+    },
+    {
+      'anonymous': false,
+      'inputs': [
+        {
+          'indexed': true,
+          'name': 'name',
+          'type': 'bytes32'
+        }
+      ],
+      'name': 'Changed',
+      'type': 'event'
+    },
+    {
+      'anonymous': false,
+      'inputs': [
+        {
+          'indexed': true,
+          'name': 'name',
+          'type': 'bytes32'
+        },
+        {
+          'indexed': true,
+          'name': 'addr',
+          'type': 'address'
+        }
+      ],
+      'name': 'PrimaryChanged',
+      'type': 'event'
+    }
+  ]
+}, {}],
+  2:[function (require, module, exports) {
+    module.exports = [
       {
-        "name": "_owner",
-        "type": "address"
-      }
-    ],
-    "name": "name",
-    "outputs": [
-      {
-        "name": "o_name",
-        "type": "bytes32"
-      }
-    ],
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [
-      {
-        "name": "_name",
-        "type": "bytes32"
-      }
-    ],
-    "name": "owner",
-    "outputs": [
-      {
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [
-      {
-        "name": "_name",
-        "type": "bytes32"
-      }
-    ],
-    "name": "content",
-    "outputs": [
-      {
-        "name": "",
-        "type": "bytes32"
-      }
-    ],
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [
-      {
-        "name": "_name",
-        "type": "bytes32"
-      }
-    ],
-    "name": "addr",
-    "outputs": [
-      {
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_name",
-        "type": "bytes32"
-      }
-    ],
-    "name": "reserve",
-    "outputs": [],
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [
-      {
-        "name": "_name",
-        "type": "bytes32"
-      }
-    ],
-    "name": "subRegistrar",
-    "outputs": [
-      {
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_name",
-        "type": "bytes32"
+        'constant': true,
+        'inputs': [
+          {
+            'name': '_name',
+            'type': 'bytes32'
+          }
+        ],
+        'name': 'owner',
+        'outputs': [
+          {
+            'name': '',
+            'type': 'address'
+          }
+        ],
+        'type': 'function'
       },
       {
-        "name": "_newOwner",
-        "type": "address"
-      }
-    ],
-    "name": "transfer",
-    "outputs": [],
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_name",
-        "type": "bytes32"
+        'constant': false,
+        'inputs': [
+          {
+            'name': '_name',
+            'type': 'bytes32'
+          },
+          {
+            'name': '_refund',
+            'type': 'address'
+          }
+        ],
+        'name': 'disown',
+        'outputs': [],
+        'type': 'function'
       },
       {
-        "name": "_registrar",
-        "type": "address"
-      }
-    ],
-    "name": "setSubRegistrar",
-    "outputs": [],
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [],
-    "name": "Registrar",
-    "outputs": [],
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_name",
-        "type": "bytes32"
+        'constant': true,
+        'inputs': [
+          {
+            'name': '_name',
+            'type': 'bytes32'
+          }
+        ],
+        'name': 'addr',
+        'outputs': [
+          {
+            'name': '',
+            'type': 'address'
+          }
+        ],
+        'type': 'function'
       },
       {
-        "name": "_a",
-        "type": "address"
+        'constant': false,
+        'inputs': [
+          {
+            'name': '_name',
+            'type': 'bytes32'
+          }
+        ],
+        'name': 'reserve',
+        'outputs': [],
+        'type': 'function'
       },
       {
-        "name": "_primary",
-        "type": "bool"
-      }
-    ],
-    "name": "setAddress",
-    "outputs": [],
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_name",
-        "type": "bytes32"
+        'constant': false,
+        'inputs': [
+          {
+            'name': '_name',
+            'type': 'bytes32'
+          },
+          {
+            'name': '_newOwner',
+            'type': 'address'
+          }
+        ],
+        'name': 'transfer',
+        'outputs': [],
+        'type': 'function'
       },
       {
-        "name": "_content",
-        "type": "bytes32"
-      }
-    ],
-    "name": "setContent",
-    "outputs": [],
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_name",
-        "type": "bytes32"
-      }
-    ],
-    "name": "disown",
-    "outputs": [],
-    "type": "function"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "name": "_name",
-        "type": "bytes32"
+        'constant': false,
+        'inputs': [
+          {
+            'name': '_name',
+            'type': 'bytes32'
+          },
+          {
+            'name': '_a',
+            'type': 'address'
+          }
+        ],
+        'name': 'setAddr',
+        'outputs': [],
+        'type': 'function'
       },
       {
-        "indexed": false,
-        "name": "_winner",
-        "type": "address"
+        'anonymous': false,
+        'inputs': [
+          {
+            'indexed': true,
+            'name': 'name',
+            'type': 'bytes32'
+          }
+        ],
+        'name': 'Changed',
+        'type': 'event'
       }
-    ],
-    "name": "AuctionEnded",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
+    ]
+  }, {}],
+  3:[function (require, module, exports) {
+    module.exports = [
       {
-        "indexed": true,
-        "name": "_name",
-        "type": "bytes32"
+        'constant': false,
+        'inputs': [
+          {
+            'name': 'from',
+            'type': 'bytes32'
+          },
+          {
+            'name': 'to',
+            'type': 'address'
+          },
+          {
+            'name': 'value',
+            'type': 'uint256'
+          }
+        ],
+        'name': 'transfer',
+        'outputs': [],
+        'type': 'function'
       },
       {
-        "indexed": false,
-        "name": "_bidder",
-        "type": "address"
+        'constant': false,
+        'inputs': [
+          {
+            'name': 'from',
+            'type': 'bytes32'
+          },
+          {
+            'name': 'to',
+            'type': 'address'
+          },
+          {
+            'name': 'indirectId',
+            'type': 'bytes32'
+          },
+          {
+            'name': 'value',
+            'type': 'uint256'
+          }
+        ],
+        'name': 'icapTransfer',
+        'outputs': [],
+        'type': 'function'
       },
       {
-        "indexed": false,
-        "name": "_value",
-        "type": "uint256"
-      }
-    ],
-    "name": "NewBid",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "name": "name",
-        "type": "bytes32"
-      }
-    ],
-    "name": "Changed",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "name": "name",
-        "type": "bytes32"
+        'constant': false,
+        'inputs': [
+          {
+            'name': 'to',
+            'type': 'bytes32'
+          }
+        ],
+        'name': 'deposit',
+        'outputs': [],
+        'payable': true,
+        'type': 'function'
       },
       {
-        "indexed": true,
-        "name": "addr",
-        "type": "address"
-      }
-    ],
-    "name": "PrimaryChanged",
-    "type": "event"
-  }
-]
-
-},{}],2:[function(require,module,exports){
-module.exports=[
-  {
-    "constant": true,
-    "inputs": [
-      {
-        "name": "_name",
-        "type": "bytes32"
-      }
-    ],
-    "name": "owner",
-    "outputs": [
-      {
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_name",
-        "type": "bytes32"
+        'anonymous': false,
+        'inputs': [
+          {
+            'indexed': true,
+            'name': 'from',
+            'type': 'address'
+          },
+          {
+            'indexed': false,
+            'name': 'value',
+            'type': 'uint256'
+          }
+        ],
+        'name': 'AnonymousDeposit',
+        'type': 'event'
       },
       {
-        "name": "_refund",
-        "type": "address"
+        'anonymous': false,
+        'inputs': [
+          {
+            'indexed': true,
+            'name': 'from',
+            'type': 'address'
+          },
+          {
+            'indexed': true,
+            'name': 'to',
+            'type': 'bytes32'
+          },
+          {
+            'indexed': false,
+            'name': 'value',
+            'type': 'uint256'
+          }
+        ],
+        'name': 'Deposit',
+        'type': 'event'
+      },
+      {
+        'anonymous': false,
+        'inputs': [
+          {
+            'indexed': true,
+            'name': 'from',
+            'type': 'bytes32'
+          },
+          {
+            'indexed': true,
+            'name': 'to',
+            'type': 'address'
+          },
+          {
+            'indexed': false,
+            'name': 'value',
+            'type': 'uint256'
+          }
+        ],
+        'name': 'Transfer',
+        'type': 'event'
+      },
+      {
+        'anonymous': false,
+        'inputs': [
+          {
+            'indexed': true,
+            'name': 'from',
+            'type': 'bytes32'
+          },
+          {
+            'indexed': true,
+            'name': 'to',
+            'type': 'address'
+          },
+          {
+            'indexed': false,
+            'name': 'indirectId',
+            'type': 'bytes32'
+          },
+          {
+            'indexed': false,
+            'name': 'value',
+            'type': 'uint256'
+          }
+        ],
+        'name': 'IcapTransfer',
+        'type': 'event'
       }
-    ],
-    "name": "disown",
-    "outputs": [],
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [
-      {
-        "name": "_name",
-        "type": "bytes32"
-      }
-    ],
-    "name": "addr",
-    "outputs": [
-      {
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_name",
-        "type": "bytes32"
-      }
-    ],
-    "name": "reserve",
-    "outputs": [],
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_name",
-        "type": "bytes32"
-      },
-      {
-        "name": "_newOwner",
-        "type": "address"
-      }
-    ],
-    "name": "transfer",
-    "outputs": [],
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_name",
-        "type": "bytes32"
-      },
-      {
-        "name": "_a",
-        "type": "address"
-      }
-    ],
-    "name": "setAddr",
-    "outputs": [],
-    "type": "function"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "name": "name",
-        "type": "bytes32"
-      }
-    ],
-    "name": "Changed",
-    "type": "event"
-  }
-]
-
-},{}],3:[function(require,module,exports){
-module.exports=[
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "from",
-        "type": "bytes32"
-      },
-      {
-        "name": "to",
-        "type": "address"
-      },
-      {
-        "name": "value",
-        "type": "uint256"
-      }
-    ],
-    "name": "transfer",
-    "outputs": [],
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "from",
-        "type": "bytes32"
-      },
-      {
-        "name": "to",
-        "type": "address"
-      },
-      {
-        "name": "indirectId",
-        "type": "bytes32"
-      },
-      {
-        "name": "value",
-        "type": "uint256"
-      }
-    ],
-    "name": "icapTransfer",
-    "outputs": [],
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "to",
-        "type": "bytes32"
-      }
-    ],
-    "name": "deposit",
-    "outputs": [],
-    "payable": true,
-    "type": "function"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "name": "from",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "name": "value",
-        "type": "uint256"
-      }
-    ],
-    "name": "AnonymousDeposit",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "name": "from",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "name": "to",
-        "type": "bytes32"
-      },
-      {
-        "indexed": false,
-        "name": "value",
-        "type": "uint256"
-      }
-    ],
-    "name": "Deposit",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "name": "from",
-        "type": "bytes32"
-      },
-      {
-        "indexed": true,
-        "name": "to",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "name": "value",
-        "type": "uint256"
-      }
-    ],
-    "name": "Transfer",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "name": "from",
-        "type": "bytes32"
-      },
-      {
-        "indexed": true,
-        "name": "to",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "name": "indirectId",
-        "type": "bytes32"
-      },
-      {
-        "indexed": false,
-        "name": "value",
-        "type": "uint256"
-      }
-    ],
-    "name": "IcapTransfer",
-    "type": "event"
-  }
-]
-
-},{}],4:[function(require,module,exports){
-var f = require('./formatters');
-var SolidityType = require('./type');
+    ]
+  }, {}],
+  4:[function (require, module, exports) {
+    var f = require('./formatters')
+    var SolidityType = require('./type')
 
 /**
  * SolidityTypeAddress is a prootype that represents address type
@@ -527,23 +527,23 @@ var SolidityType = require('./type');
  * address[3][]
  * address[][6][], ...
  */
-var SolidityTypeAddress = function () {
-    this._inputFormatter = f.formatInputInt;
-    this._outputFormatter = f.formatOutputAddress;
-};
+    var SolidityTypeAddress = function () {
+      this._inputFormatter = f.formatInputInt
+      this._outputFormatter = f.formatOutputAddress
+    }
 
-SolidityTypeAddress.prototype = new SolidityType({});
-SolidityTypeAddress.prototype.constructor = SolidityTypeAddress;
+    SolidityTypeAddress.prototype = new SolidityType({})
+    SolidityTypeAddress.prototype.constructor = SolidityTypeAddress
 
-SolidityTypeAddress.prototype.isType = function (name) {
-    return !!name.match(/address(\[([0-9]*)\])?/);
-};
+    SolidityTypeAddress.prototype.isType = function (name) {
+      return !!name.match(/address(\[([0-9]*)\])?/)
+    }
 
-module.exports = SolidityTypeAddress;
-
-},{"./formatters":9,"./type":14}],5:[function(require,module,exports){
-var f = require('./formatters');
-var SolidityType = require('./type');
+    module.exports = SolidityTypeAddress
+  }, { './formatters':9, './type':14 }],
+  5:[function (require, module, exports) {
+    var f = require('./formatters')
+    var SolidityType = require('./type')
 
 /**
  * SolidityTypeBool is a prootype that represents bool type
@@ -555,23 +555,23 @@ var SolidityType = require('./type');
  * bool[3][]
  * bool[][6][], ...
  */
-var SolidityTypeBool = function () {
-    this._inputFormatter = f.formatInputBool;
-    this._outputFormatter = f.formatOutputBool;
-};
+    var SolidityTypeBool = function () {
+      this._inputFormatter = f.formatInputBool
+      this._outputFormatter = f.formatOutputBool
+    }
 
-SolidityTypeBool.prototype = new SolidityType({});
-SolidityTypeBool.prototype.constructor = SolidityTypeBool;
+    SolidityTypeBool.prototype = new SolidityType({})
+    SolidityTypeBool.prototype.constructor = SolidityTypeBool
 
-SolidityTypeBool.prototype.isType = function (name) {
-    return !!name.match(/^bool(\[([0-9]*)\])*$/);
-};
+    SolidityTypeBool.prototype.isType = function (name) {
+      return !!name.match(/^bool(\[([0-9]*)\])*$/)
+    }
 
-module.exports = SolidityTypeBool;
-
-},{"./formatters":9,"./type":14}],6:[function(require,module,exports){
-var f = require('./formatters');
-var SolidityType = require('./type');
+    module.exports = SolidityTypeBool
+  }, { './formatters':9, './type':14 }],
+  6:[function (require, module, exports) {
+    var f = require('./formatters')
+    var SolidityType = require('./type')
 
 /**
  * SolidityTypeBytes is a prototype that represents the bytes type.
@@ -586,21 +586,21 @@ var SolidityType = require('./type');
  * bytes8[4]
  * bytes[3][]
  */
-var SolidityTypeBytes = function () {
-    this._inputFormatter = f.formatInputBytes;
-    this._outputFormatter = f.formatOutputBytes;
-};
+    var SolidityTypeBytes = function () {
+      this._inputFormatter = f.formatInputBytes
+      this._outputFormatter = f.formatOutputBytes
+    }
 
-SolidityTypeBytes.prototype = new SolidityType({});
-SolidityTypeBytes.prototype.constructor = SolidityTypeBytes;
+    SolidityTypeBytes.prototype = new SolidityType({})
+    SolidityTypeBytes.prototype.constructor = SolidityTypeBytes
 
-SolidityTypeBytes.prototype.isType = function (name) {
-    return !!name.match(/^bytes([0-9]{1,})(\[([0-9]*)\])*$/);
-};
+    SolidityTypeBytes.prototype.isType = function (name) {
+      return !!name.match(/^bytes([0-9]{1,})(\[([0-9]*)\])*$/)
+    }
 
-module.exports = SolidityTypeBytes;
-
-},{"./formatters":9,"./type":14}],7:[function(require,module,exports){
+    module.exports = SolidityTypeBytes
+  }, { './formatters':9, './type':14 }],
+  7:[function (require, module, exports) {
 /*
     This file is part of web3.js.
 
@@ -623,29 +623,29 @@ module.exports = SolidityTypeBytes;
  * @date 2015
  */
 
-var f = require('./formatters');
+    var f = require('./formatters')
 
-var SolidityTypeAddress = require('./address');
-var SolidityTypeBool = require('./bool');
-var SolidityTypeInt = require('./int');
-var SolidityTypeUInt = require('./uint');
-var SolidityTypeDynamicBytes = require('./dynamicbytes');
-var SolidityTypeString = require('./string');
-var SolidityTypeReal = require('./real');
-var SolidityTypeUReal = require('./ureal');
-var SolidityTypeBytes = require('./bytes');
+    var SolidityTypeAddress = require('./address')
+    var SolidityTypeBool = require('./bool')
+    var SolidityTypeInt = require('./int')
+    var SolidityTypeUInt = require('./uint')
+    var SolidityTypeDynamicBytes = require('./dynamicbytes')
+    var SolidityTypeString = require('./string')
+    var SolidityTypeReal = require('./real')
+    var SolidityTypeUReal = require('./ureal')
+    var SolidityTypeBytes = require('./bytes')
 
-var isDynamic = function (solidityType, type) {
-   return solidityType.isDynamicType(type) ||
-          solidityType.isDynamicArray(type);
-};
+    var isDynamic = function (solidityType, type) {
+      return solidityType.isDynamicType(type) ||
+          solidityType.isDynamicArray(type)
+    }
 
 /**
  * SolidityCoder prototype should be used to encode/decode solidity params of any type
  */
-var SolidityCoder = function (types) {
-    this._types = types;
-};
+    var SolidityCoder = function (types) {
+      this._types = types
+    }
 
 /**
  * This method should be used to transform type to SolidityType
@@ -655,17 +655,17 @@ var SolidityCoder = function (types) {
  * @returns {SolidityType}
  * @throws {Error} throws if no matching type is found
  */
-SolidityCoder.prototype._requireType = function (type) {
-    var solidityType = this._types.filter(function (t) {
-        return t.isType(type);
-    })[0];
+    SolidityCoder.prototype._requireType = function (type) {
+      var solidityType = this._types.filter(function (t) {
+        return t.isType(type)
+      })[0]
 
-    if (!solidityType) {
-        throw Error('invalid solidity type!: ' + type);
+      if (!solidityType) {
+        throw Error('invalid solidity type!: ' + type)
+      }
+
+      return solidityType
     }
-
-    return solidityType;
-};
 
 /**
  * Should be used to encode plain param
@@ -675,9 +675,9 @@ SolidityCoder.prototype._requireType = function (type) {
  * @param {Object} plain param
  * @return {String} encoded plain param
  */
-SolidityCoder.prototype.encodeParam = function (type, param) {
-    return this.encodeParams([type], [param]);
-};
+    SolidityCoder.prototype.encodeParam = function (type, param) {
+      return this.encodeParams([type], [param])
+    }
 
 /**
  * Should be used to encode list of params
@@ -687,100 +687,97 @@ SolidityCoder.prototype.encodeParam = function (type, param) {
  * @param {Array} params
  * @return {String} encoded list of params
  */
-SolidityCoder.prototype.encodeParams = function (types, params) {
-    var solidityTypes = this.getSolidityTypes(types);
+    SolidityCoder.prototype.encodeParams = function (types, params) {
+      var solidityTypes = this.getSolidityTypes(types)
 
-    var encodeds = solidityTypes.map(function (solidityType, index) {
-        return solidityType.encode(params[index], types[index]);
-    });
+      var encodeds = solidityTypes.map(function (solidityType, index) {
+        return solidityType.encode(params[index], types[index])
+      })
 
-    var dynamicOffset = solidityTypes.reduce(function (acc, solidityType, index) {
-        var staticPartLength = solidityType.staticPartLength(types[index]);
-        var roundedStaticPartLength = Math.floor((staticPartLength + 31) / 32) * 32;
+      var dynamicOffset = solidityTypes.reduce(function (acc, solidityType, index) {
+        var staticPartLength = solidityType.staticPartLength(types[index])
+        var roundedStaticPartLength = Math.floor((staticPartLength + 31) / 32) * 32
 
-        return acc + (isDynamic(solidityTypes[index], types[index]) ?
-            32 :
-            roundedStaticPartLength);
-    }, 0);
+        return acc + (isDynamic(solidityTypes[index], types[index])
+            ? 32
+            : roundedStaticPartLength)
+      }, 0)
 
-    var result = this.encodeMultiWithOffset(types, solidityTypes, encodeds, dynamicOffset);
+      var result = this.encodeMultiWithOffset(types, solidityTypes, encodeds, dynamicOffset)
 
-    return result;
-};
+      return result
+    }
 
-SolidityCoder.prototype.encodeMultiWithOffset = function (types, solidityTypes, encodeds, dynamicOffset) {
-    var result = "";
-    var self = this;
+    SolidityCoder.prototype.encodeMultiWithOffset = function (types, solidityTypes, encodeds, dynamicOffset) {
+      var result = ''
+      var self = this
 
-    types.forEach(function (type, i) {
+      types.forEach(function (type, i) {
         if (isDynamic(solidityTypes[i], types[i])) {
-            result += f.formatInputInt(dynamicOffset).encode();
-            var e = self.encodeWithOffset(types[i], solidityTypes[i], encodeds[i], dynamicOffset);
-            dynamicOffset += e.length / 2;
+          result += f.formatInputInt(dynamicOffset).encode()
+          var e = self.encodeWithOffset(types[i], solidityTypes[i], encodeds[i], dynamicOffset)
+          dynamicOffset += e.length / 2
         } else {
             // don't add length to dynamicOffset. it's already counted
-            result += self.encodeWithOffset(types[i], solidityTypes[i], encodeds[i], dynamicOffset);
+          result += self.encodeWithOffset(types[i], solidityTypes[i], encodeds[i], dynamicOffset)
         }
 
         // TODO: figure out nested arrays
-    });
+      })
 
-    types.forEach(function (type, i) {
+      types.forEach(function (type, i) {
         if (isDynamic(solidityTypes[i], types[i])) {
-            var e = self.encodeWithOffset(types[i], solidityTypes[i], encodeds[i], dynamicOffset);
-            dynamicOffset += e.length / 2;
-            result += e;
+          var e = self.encodeWithOffset(types[i], solidityTypes[i], encodeds[i], dynamicOffset)
+          dynamicOffset += e.length / 2
+          result += e
         }
-    });
-    return result;
-};
+      })
+      return result
+    }
 
-SolidityCoder.prototype.encodeWithOffset = function (type, solidityType, encoded, offset) {
+    SolidityCoder.prototype.encodeWithOffset = function (type, solidityType, encoded, offset) {
     /* jshint maxcomplexity: 17 */
     /* jshint maxdepth: 5 */
 
-    var self = this;
-    var encodingMode={dynamic:1,static:2,other:3};
+      var self = this
+      var encodingMode = { dynamic:1, static:2, other:3 }
 
-    var mode=(solidityType.isDynamicArray(type)?encodingMode.dynamic:(solidityType.isStaticArray(type)?encodingMode.static:encodingMode.other));
+      var mode = (solidityType.isDynamicArray(type) ? encodingMode.dynamic : (solidityType.isStaticArray(type) ? encodingMode.static : encodingMode.other))
 
-    if(mode !== encodingMode.other){
-        var nestedName = solidityType.nestedName(type);
-        var nestedStaticPartLength = solidityType.staticPartLength(nestedName);
-        var result = (mode === encodingMode.dynamic ? encoded[0] : '');
+      if (mode !== encodingMode.other) {
+        var nestedName = solidityType.nestedName(type)
+        var nestedStaticPartLength = solidityType.staticPartLength(nestedName)
+        var result = (mode === encodingMode.dynamic ? encoded[0] : '')
 
         if (solidityType.isDynamicArray(nestedName)) {
-            var previousLength = (mode === encodingMode.dynamic ? 2 : 0);
+          var previousLength = (mode === encodingMode.dynamic ? 2 : 0)
 
-            for (var i = 0; i < encoded.length; i++) {
+          for (var i = 0; i < encoded.length; i++) {
                 // calculate length of previous item
-                if(mode === encodingMode.dynamic){
-                    previousLength += +(encoded[i - 1])[0] || 0;
-                }
-                else if(mode === encodingMode.static){
-                    previousLength += +(encoded[i - 1] || [])[0] || 0;
-                }
-                result += f.formatInputInt(offset + i * nestedStaticPartLength + previousLength * 32).encode();
+            if (mode === encodingMode.dynamic) {
+              previousLength += +(encoded[i - 1])[0] || 0
+            } else if (mode === encodingMode.static) {
+              previousLength += +(encoded[i - 1] || [])[0] || 0
             }
+            result += f.formatInputInt(offset + i * nestedStaticPartLength + previousLength * 32).encode()
+          }
         }
 
-        var len= (mode === encodingMode.dynamic ? encoded.length-1 : encoded.length);
+        var len = (mode === encodingMode.dynamic ? encoded.length - 1 : encoded.length)
         for (var c = 0; c < len; c++) {
-            var additionalOffset = result / 2;
-            if(mode === encodingMode.dynamic){
-                result += self.encodeWithOffset(nestedName, solidityType, encoded[c + 1], offset +  additionalOffset);
-            }
-            else if(mode === encodingMode.static){
-                result += self.encodeWithOffset(nestedName, solidityType, encoded[c], offset + additionalOffset);
-            }
+          var additionalOffset = result / 2
+          if (mode === encodingMode.dynamic) {
+            result += self.encodeWithOffset(nestedName, solidityType, encoded[c + 1], offset + additionalOffset)
+          } else if (mode === encodingMode.static) {
+            result += self.encodeWithOffset(nestedName, solidityType, encoded[c], offset + additionalOffset)
+          }
         }
 
-        return result;
+        return result
+      }
+
+      return encoded
     }
-
-    return encoded;
-};
-
 
 /**
  * Should be used to decode bytes to plain param
@@ -790,9 +787,9 @@ SolidityCoder.prototype.encodeWithOffset = function (type, solidityType, encoded
  * @param {String} bytes
  * @return {Object} plain param
  */
-SolidityCoder.prototype.decodeParam = function (type, bytes) {
-    return this.decodeParams([type], bytes)[0];
-};
+    SolidityCoder.prototype.decodeParam = function (type, bytes) {
+      return this.decodeParams([type], bytes)[0]
+    }
 
 /**
  * Should be used to decode list of params
@@ -802,76 +799,76 @@ SolidityCoder.prototype.decodeParam = function (type, bytes) {
  * @param {String} bytes
  * @return {Array} array of plain params
  */
-SolidityCoder.prototype.decodeParams = function (types, bytes) {
-    var solidityTypes = this.getSolidityTypes(types);
-    var offsets = this.getOffsets(types, solidityTypes);
+    SolidityCoder.prototype.decodeParams = function (types, bytes) {
+      var solidityTypes = this.getSolidityTypes(types)
+      var offsets = this.getOffsets(types, solidityTypes)
 
-    return solidityTypes.map(function (solidityType, index) {
-        return solidityType.decode(bytes, offsets[index],  types[index], index);
-    });
-};
-
-SolidityCoder.prototype.getOffsets = function (types, solidityTypes) {
-    var lengths =  solidityTypes.map(function (solidityType, index) {
-        return solidityType.staticPartLength(types[index]);
-    });
-
-    for (var i = 1; i < lengths.length; i++) {
-         // sum with length of previous element
-        lengths[i] += lengths[i - 1];
+      return solidityTypes.map(function (solidityType, index) {
+        return solidityType.decode(bytes, offsets[index], types[index], index)
+      })
     }
 
-    return lengths.map(function (length, index) {
+    SolidityCoder.prototype.getOffsets = function (types, solidityTypes) {
+      var lengths = solidityTypes.map(function (solidityType, index) {
+        return solidityType.staticPartLength(types[index])
+      })
+
+      for (var i = 1; i < lengths.length; i++) {
+         // sum with length of previous element
+        lengths[i] += lengths[i - 1]
+      }
+
+      return lengths.map(function (length, index) {
         // remove the current length, so the length is sum of previous elements
-        var staticPartLength = solidityTypes[index].staticPartLength(types[index]);
-        return length - staticPartLength;
-    });
-};
+        var staticPartLength = solidityTypes[index].staticPartLength(types[index])
+        return length - staticPartLength
+      })
+    }
 
-SolidityCoder.prototype.getSolidityTypes = function (types) {
-    var self = this;
-    return types.map(function (type) {
-        return self._requireType(type);
-    });
-};
+    SolidityCoder.prototype.getSolidityTypes = function (types) {
+      var self = this
+      return types.map(function (type) {
+        return self._requireType(type)
+      })
+    }
 
-var coder = new SolidityCoder([
-    new SolidityTypeAddress(),
-    new SolidityTypeBool(),
-    new SolidityTypeInt(),
-    new SolidityTypeUInt(),
-    new SolidityTypeDynamicBytes(),
-    new SolidityTypeBytes(),
-    new SolidityTypeString(),
-    new SolidityTypeReal(),
-    new SolidityTypeUReal()
-]);
+    var coder = new SolidityCoder([
+      new SolidityTypeAddress(),
+      new SolidityTypeBool(),
+      new SolidityTypeInt(),
+      new SolidityTypeUInt(),
+      new SolidityTypeDynamicBytes(),
+      new SolidityTypeBytes(),
+      new SolidityTypeString(),
+      new SolidityTypeReal(),
+      new SolidityTypeUReal()
+    ])
 
-module.exports = coder;
+    module.exports = coder
+  }, { './address':4, './bool':5, './bytes':6, './dynamicbytes':8, './formatters':9, './int':10, './real':12, './string':13, './uint':15, './ureal':16 }],
+  8:[function (require, module, exports) {
+    var f = require('./formatters')
+    var SolidityType = require('./type')
 
-},{"./address":4,"./bool":5,"./bytes":6,"./dynamicbytes":8,"./formatters":9,"./int":10,"./real":12,"./string":13,"./uint":15,"./ureal":16}],8:[function(require,module,exports){
-var f = require('./formatters');
-var SolidityType = require('./type');
+    var SolidityTypeDynamicBytes = function () {
+      this._inputFormatter = f.formatInputDynamicBytes
+      this._outputFormatter = f.formatOutputDynamicBytes
+    }
 
-var SolidityTypeDynamicBytes = function () {
-    this._inputFormatter = f.formatInputDynamicBytes;
-    this._outputFormatter = f.formatOutputDynamicBytes;
-};
+    SolidityTypeDynamicBytes.prototype = new SolidityType({})
+    SolidityTypeDynamicBytes.prototype.constructor = SolidityTypeDynamicBytes
 
-SolidityTypeDynamicBytes.prototype = new SolidityType({});
-SolidityTypeDynamicBytes.prototype.constructor = SolidityTypeDynamicBytes;
+    SolidityTypeDynamicBytes.prototype.isType = function (name) {
+      return !!name.match(/^bytes(\[([0-9]*)\])*$/)
+    }
 
-SolidityTypeDynamicBytes.prototype.isType = function (name) {
-    return !!name.match(/^bytes(\[([0-9]*)\])*$/);
-};
+    SolidityTypeDynamicBytes.prototype.isDynamicType = function () {
+      return true
+    }
 
-SolidityTypeDynamicBytes.prototype.isDynamicType = function () {
-    return true;
-};
-
-module.exports = SolidityTypeDynamicBytes;
-
-},{"./formatters":9,"./type":14}],9:[function(require,module,exports){
+    module.exports = SolidityTypeDynamicBytes
+  }, { './formatters':9, './type':14 }],
+  9:[function (require, module, exports) {
 /*
     This file is part of web3.js.
 
@@ -894,11 +891,10 @@ module.exports = SolidityTypeDynamicBytes;
  * @date 2015
  */
 
-var BigNumber = require('bignumber.js');
-var utils = require('../utils/utils');
-var c = require('../utils/config');
-var SolidityParam = require('./param');
-
+    var BigNumber = require('bignumber.js')
+    var utils = require('../utils/utils')
+    var c = require('../utils/config')
+    var SolidityParam = require('./param')
 
 /**
  * Formats input value to byte representation of int
@@ -909,11 +905,11 @@ var SolidityParam = require('./param');
  * @param {String|Number|BigNumber} value that needs to be formatted
  * @returns {SolidityParam}
  */
-var formatInputInt = function (value) {
-    BigNumber.config(c.ETH_BIGNUMBER_ROUNDING_MODE);
-    var result = utils.padLeft(utils.toTwosComplement(value).toString(16), 64);
-    return new SolidityParam(result);
-};
+    var formatInputInt = function (value) {
+      BigNumber.config(c.ETH_BIGNUMBER_ROUNDING_MODE)
+      var result = utils.padLeft(utils.toTwosComplement(value).toString(16), 64)
+      return new SolidityParam(result)
+    }
 
 /**
  * Formats input bytes
@@ -922,12 +918,12 @@ var formatInputInt = function (value) {
  * @param {String}
  * @returns {SolidityParam}
  */
-var formatInputBytes = function (value) {
-    var result = utils.toHex(value).substr(2);
-    var l = Math.floor((result.length + 63) / 64);
-    result = utils.padRight(result, l * 64);
-    return new SolidityParam(result);
-};
+    var formatInputBytes = function (value) {
+      var result = utils.toHex(value).substr(2)
+      var l = Math.floor((result.length + 63) / 64)
+      result = utils.padRight(result, l * 64)
+      return new SolidityParam(result)
+    }
 
 /**
  * Formats input bytes
@@ -936,13 +932,13 @@ var formatInputBytes = function (value) {
  * @param {String}
  * @returns {SolidityParam}
  */
-var formatInputDynamicBytes = function (value) {
-    var result = utils.toHex(value).substr(2);
-    var length = result.length / 2;
-    var l = Math.floor((result.length + 63) / 64);
-    result = utils.padRight(result, l * 64);
-    return new SolidityParam(formatInputInt(length).value + result);
-};
+    var formatInputDynamicBytes = function (value) {
+      var result = utils.toHex(value).substr(2)
+      var length = result.length / 2
+      var l = Math.floor((result.length + 63) / 64)
+      result = utils.padRight(result, l * 64)
+      return new SolidityParam(formatInputInt(length).value + result)
+    }
 
 /**
  * Formats input value to byte representation of string
@@ -951,13 +947,13 @@ var formatInputDynamicBytes = function (value) {
  * @param {String}
  * @returns {SolidityParam}
  */
-var formatInputString = function (value) {
-    var result = utils.fromUtf8(value).substr(2);
-    var length = result.length / 2;
-    var l = Math.floor((result.length + 63) / 64);
-    result = utils.padRight(result, l * 64);
-    return new SolidityParam(formatInputInt(length).value + result);
-};
+    var formatInputString = function (value) {
+      var result = utils.fromUtf8(value).substr(2)
+      var length = result.length / 2
+      var l = Math.floor((result.length + 63) / 64)
+      result = utils.padRight(result, l * 64)
+      return new SolidityParam(formatInputInt(length).value + result)
+    }
 
 /**
  * Formats input value to byte representation of bool
@@ -966,10 +962,10 @@ var formatInputString = function (value) {
  * @param {Boolean}
  * @returns {SolidityParam}
  */
-var formatInputBool = function (value) {
-    var result = '000000000000000000000000000000000000000000000000000000000000000' + (value ?  '1' : '0');
-    return new SolidityParam(result);
-};
+    var formatInputBool = function (value) {
+      var result = '000000000000000000000000000000000000000000000000000000000000000' + (value ? '1' : '0')
+      return new SolidityParam(result)
+    }
 
 /**
  * Formats input value to byte representation of real
@@ -979,9 +975,9 @@ var formatInputBool = function (value) {
  * @param {String|Number|BigNumber}
  * @returns {SolidityParam}
  */
-var formatInputReal = function (value) {
-    return formatInputInt(new BigNumber(value).times(new BigNumber(2).pow(128)));
-};
+    var formatInputReal = function (value) {
+      return formatInputInt(new BigNumber(value).times(new BigNumber(2).pow(128)))
+    }
 
 /**
  * Check if input value is negative
@@ -990,9 +986,9 @@ var formatInputReal = function (value) {
  * @param {String} value is hex format
  * @returns {Boolean} true if it is negative, otherwise false
  */
-var signedIsNegative = function (value) {
-    return (new BigNumber(value.substr(0, 1), 16).toString(2).substr(0, 1)) === '1';
-};
+    var signedIsNegative = function (value) {
+      return (new BigNumber(value.substr(0, 1), 16).toString(2).substr(0, 1)) === '1'
+    }
 
 /**
  * Formats right-aligned output bytes to int
@@ -1001,16 +997,16 @@ var signedIsNegative = function (value) {
  * @param {SolidityParam} param
  * @returns {BigNumber} right-aligned output bytes formatted to big number
  */
-var formatOutputInt = function (param) {
-    var value = param.staticPart() || "0";
+    var formatOutputInt = function (param) {
+      var value = param.staticPart() || '0'
 
     // check if it's negative number
     // it it is, return two's complement
-    if (signedIsNegative(value)) {
-        return new BigNumber(value, 16).minus(new BigNumber('ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff', 16)).minus(1);
+      if (signedIsNegative(value)) {
+        return new BigNumber(value, 16).minus(new BigNumber('ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff', 16)).minus(1)
+      }
+      return new BigNumber(value, 16)
     }
-    return new BigNumber(value, 16);
-};
 
 /**
  * Formats right-aligned output bytes to uint
@@ -1019,10 +1015,10 @@ var formatOutputInt = function (param) {
  * @param {SolidityParam}
  * @returns {BigNumeber} right-aligned output bytes formatted to uint
  */
-var formatOutputUInt = function (param) {
-    var value = param.staticPart() || "0";
-    return new BigNumber(value, 16);
-};
+    var formatOutputUInt = function (param) {
+      var value = param.staticPart() || '0'
+      return new BigNumber(value, 16)
+    }
 
 /**
  * Formats right-aligned output bytes to real
@@ -1031,9 +1027,9 @@ var formatOutputUInt = function (param) {
  * @param {SolidityParam}
  * @returns {BigNumber} input bytes formatted to real
  */
-var formatOutputReal = function (param) {
-    return formatOutputInt(param).dividedBy(new BigNumber(2).pow(128));
-};
+    var formatOutputReal = function (param) {
+      return formatOutputInt(param).dividedBy(new BigNumber(2).pow(128))
+    }
 
 /**
  * Formats right-aligned output bytes to ureal
@@ -1042,9 +1038,9 @@ var formatOutputReal = function (param) {
  * @param {SolidityParam}
  * @returns {BigNumber} input bytes formatted to ureal
  */
-var formatOutputUReal = function (param) {
-    return formatOutputUInt(param).dividedBy(new BigNumber(2).pow(128));
-};
+    var formatOutputUReal = function (param) {
+      return formatOutputUInt(param).dividedBy(new BigNumber(2).pow(128))
+    }
 
 /**
  * Should be used to format output bool
@@ -1053,9 +1049,9 @@ var formatOutputUReal = function (param) {
  * @param {SolidityParam}
  * @returns {Boolean} right-aligned input bytes formatted to bool
  */
-var formatOutputBool = function (param) {
-    return param.staticPart() === '0000000000000000000000000000000000000000000000000000000000000001' ? true : false;
-};
+    var formatOutputBool = function (param) {
+      return param.staticPart() === '0000000000000000000000000000000000000000000000000000000000000001'
+    }
 
 /**
  * Should be used to format output bytes
@@ -1065,11 +1061,11 @@ var formatOutputBool = function (param) {
  * @param {String} name type name
  * @returns {String} hex string
  */
-var formatOutputBytes = function (param, name) {
-    var matches = name.match(/^bytes([0-9]*)/);
-    var size = parseInt(matches[1]);
-    return '0x' + param.staticPart().slice(0, 2 * size);
-};
+    var formatOutputBytes = function (param, name) {
+      var matches = name.match(/^bytes([0-9]*)/)
+      var size = parseInt(matches[1])
+      return '0x' + param.staticPart().slice(0, 2 * size)
+    }
 
 /**
  * Should be used to format output bytes
@@ -1078,10 +1074,10 @@ var formatOutputBytes = function (param, name) {
  * @param {SolidityParam} left-aligned hex representation of string
  * @returns {String} hex string
  */
-var formatOutputDynamicBytes = function (param) {
-    var length = (new BigNumber(param.dynamicPart().slice(0, 64), 16)).toNumber() * 2;
-    return '0x' + param.dynamicPart().substr(64, length);
-};
+    var formatOutputDynamicBytes = function (param) {
+      var length = (new BigNumber(param.dynamicPart().slice(0, 64), 16)).toNumber() * 2
+      return '0x' + param.dynamicPart().substr(64, length)
+    }
 
 /**
  * Should be used to format output string
@@ -1090,10 +1086,10 @@ var formatOutputDynamicBytes = function (param) {
  * @param {SolidityParam} left-aligned hex representation of string
  * @returns {String} ascii string
  */
-var formatOutputString = function (param) {
-    var length = (new BigNumber(param.dynamicPart().slice(0, 64), 16)).toNumber() * 2;
-    return utils.toUtf8(param.dynamicPart().substr(64, length));
-};
+    var formatOutputString = function (param) {
+      var length = (new BigNumber(param.dynamicPart().slice(0, 64), 16)).toNumber() * 2
+      return utils.toUtf8(param.dynamicPart().substr(64, length))
+    }
 
 /**
  * Should be used to format output address
@@ -1102,32 +1098,32 @@ var formatOutputString = function (param) {
  * @param {SolidityParam} right-aligned input bytes
  * @returns {String} address
  */
-var formatOutputAddress = function (param) {
-    var value = param.staticPart();
-    return "0x" + value.slice(value.length - 40, value.length);
-};
+    var formatOutputAddress = function (param) {
+      var value = param.staticPart()
+      return '0x' + value.slice(value.length - 40, value.length)
+    }
 
-module.exports = {
-    formatInputInt: formatInputInt,
-    formatInputBytes: formatInputBytes,
-    formatInputDynamicBytes: formatInputDynamicBytes,
-    formatInputString: formatInputString,
-    formatInputBool: formatInputBool,
-    formatInputReal: formatInputReal,
-    formatOutputInt: formatOutputInt,
-    formatOutputUInt: formatOutputUInt,
-    formatOutputReal: formatOutputReal,
-    formatOutputUReal: formatOutputUReal,
-    formatOutputBool: formatOutputBool,
-    formatOutputBytes: formatOutputBytes,
-    formatOutputDynamicBytes: formatOutputDynamicBytes,
-    formatOutputString: formatOutputString,
-    formatOutputAddress: formatOutputAddress
-};
-
-},{"../utils/config":18,"../utils/utils":20,"./param":11,"bignumber.js":"bignumber.js"}],10:[function(require,module,exports){
-var f = require('./formatters');
-var SolidityType = require('./type');
+    module.exports = {
+      formatInputInt: formatInputInt,
+      formatInputBytes: formatInputBytes,
+      formatInputDynamicBytes: formatInputDynamicBytes,
+      formatInputString: formatInputString,
+      formatInputBool: formatInputBool,
+      formatInputReal: formatInputReal,
+      formatOutputInt: formatOutputInt,
+      formatOutputUInt: formatOutputUInt,
+      formatOutputReal: formatOutputReal,
+      formatOutputUReal: formatOutputUReal,
+      formatOutputBool: formatOutputBool,
+      formatOutputBytes: formatOutputBytes,
+      formatOutputDynamicBytes: formatOutputDynamicBytes,
+      formatOutputString: formatOutputString,
+      formatOutputAddress: formatOutputAddress
+    }
+  }, { '../utils/config':18, '../utils/utils':20, './param':11, 'bignumber.js':'bignumber.js' }],
+  10:[function (require, module, exports) {
+    var f = require('./formatters')
+    var SolidityType = require('./type')
 
 /**
  * SolidityTypeInt is a prootype that represents int type
@@ -1145,21 +1141,21 @@ var SolidityType = require('./type');
  * int[3][]
  * int64[][6][], ...
  */
-var SolidityTypeInt = function () {
-    this._inputFormatter = f.formatInputInt;
-    this._outputFormatter = f.formatOutputInt;
-};
+    var SolidityTypeInt = function () {
+      this._inputFormatter = f.formatInputInt
+      this._outputFormatter = f.formatOutputInt
+    }
 
-SolidityTypeInt.prototype = new SolidityType({});
-SolidityTypeInt.prototype.constructor = SolidityTypeInt;
+    SolidityTypeInt.prototype = new SolidityType({})
+    SolidityTypeInt.prototype.constructor = SolidityTypeInt
 
-SolidityTypeInt.prototype.isType = function (name) {
-    return !!name.match(/^int([0-9]*)?(\[([0-9]*)\])*$/);
-};
+    SolidityTypeInt.prototype.isType = function (name) {
+      return !!name.match(/^int([0-9]*)?(\[([0-9]*)\])*$/)
+    }
 
-module.exports = SolidityTypeInt;
-
-},{"./formatters":9,"./type":14}],11:[function(require,module,exports){
+    module.exports = SolidityTypeInt
+  }, { './formatters':9, './type':14 }],
+  11:[function (require, module, exports) {
 /*
     This file is part of web3.js.
 
@@ -1176,32 +1172,32 @@ module.exports = SolidityTypeInt;
     You should have received a copy of the GNU Lesser General Public License
     along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
 */
-/** 
+/**
  * @file param.js
  * @author Marek Kotewicz <marek@ethdev.com>
  * @date 2015
  */
 
-var utils = require('../utils/utils');
+    var utils = require('../utils/utils')
 
 /**
  * SolidityParam object prototype.
  * Should be used when encoding, decoding solidity bytes
  */
-var SolidityParam = function (value, offset) {
-    this.value = value || '';
-    this.offset = offset; // offset in bytes
-};
+    var SolidityParam = function (value, offset) {
+      this.value = value || ''
+      this.offset = offset // offset in bytes
+    }
 
 /**
  * This method should be used to get length of params's dynamic part
- * 
+ *
  * @method dynamicPartLength
  * @returns {Number} length of dynamic part (in bytes)
  */
-SolidityParam.prototype.dynamicPartLength = function () {
-    return this.dynamicPart().length / 2;
-};
+    SolidityParam.prototype.dynamicPartLength = function () {
+      return this.dynamicPart().length / 2
+    }
 
 /**
  * This method should be used to create copy of solidity param with different offset
@@ -1210,9 +1206,9 @@ SolidityParam.prototype.dynamicPartLength = function () {
  * @param {Number} offset length in bytes
  * @returns {SolidityParam} new solidity param with applied offset
  */
-SolidityParam.prototype.withOffset = function (offset) {
-    return new SolidityParam(this.value, offset);
-};
+    SolidityParam.prototype.withOffset = function (offset) {
+      return new SolidityParam(this.value, offset)
+    }
 
 /**
  * This method should be used to combine solidity params together
@@ -1222,9 +1218,9 @@ SolidityParam.prototype.withOffset = function (offset) {
  * @param {SolidityParam} param with which we should combine
  * @param {SolidityParam} result of combination
  */
-SolidityParam.prototype.combine = function (param) {
-    return new SolidityParam(this.value + param.value); 
-};
+    SolidityParam.prototype.combine = function (param) {
+      return new SolidityParam(this.value + param.value)
+    }
 
 /**
  * This method should be called to check if param has dynamic size.
@@ -1233,9 +1229,9 @@ SolidityParam.prototype.combine = function (param) {
  * @method isDynamic
  * @returns {Boolean}
  */
-SolidityParam.prototype.isDynamic = function () {
-    return this.offset !== undefined;
-};
+    SolidityParam.prototype.isDynamic = function () {
+      return this.offset !== undefined
+    }
 
 /**
  * This method should be called to transform offset to bytes
@@ -1243,9 +1239,9 @@ SolidityParam.prototype.isDynamic = function () {
  * @method offsetAsBytes
  * @returns {String} bytes representation of offset
  */
-SolidityParam.prototype.offsetAsBytes = function () {
-    return !this.isDynamic() ? '' : utils.padLeft(utils.toTwosComplement(this.offset).toString(16), 64);
-};
+    SolidityParam.prototype.offsetAsBytes = function () {
+      return !this.isDynamic() ? '' : utils.padLeft(utils.toTwosComplement(this.offset).toString(16), 64)
+    }
 
 /**
  * This method should be called to get static part of param
@@ -1253,12 +1249,12 @@ SolidityParam.prototype.offsetAsBytes = function () {
  * @method staticPart
  * @returns {String} offset if it is a dynamic param, otherwise value
  */
-SolidityParam.prototype.staticPart = function () {
-    if (!this.isDynamic()) {
-        return this.value; 
-    } 
-    return this.offsetAsBytes();
-};
+    SolidityParam.prototype.staticPart = function () {
+      if (!this.isDynamic()) {
+        return this.value
+      }
+      return this.offsetAsBytes()
+    }
 
 /**
  * This method should be called to get dynamic part of param
@@ -1266,9 +1262,9 @@ SolidityParam.prototype.staticPart = function () {
  * @method dynamicPart
  * @returns {String} returns a value if it is a dynamic param, otherwise empty string
  */
-SolidityParam.prototype.dynamicPart = function () {
-    return this.isDynamic() ? this.value : '';
-};
+    SolidityParam.prototype.dynamicPart = function () {
+      return this.isDynamic() ? this.value : ''
+    }
 
 /**
  * This method should be called to encode param
@@ -1276,9 +1272,9 @@ SolidityParam.prototype.dynamicPart = function () {
  * @method encode
  * @returns {String}
  */
-SolidityParam.prototype.encode = function () {
-    return this.staticPart() + this.dynamicPart();
-};
+    SolidityParam.prototype.encode = function () {
+      return this.staticPart() + this.dynamicPart()
+    }
 
 /**
  * This method should be called to encode array of params
@@ -1287,35 +1283,31 @@ SolidityParam.prototype.encode = function () {
  * @param {Array[SolidityParam]} params
  * @returns {String}
  */
-SolidityParam.encodeList = function (params) {
-    
+    SolidityParam.encodeList = function (params) {
     // updating offsets
-    var totalOffset = params.length * 32;
-    var offsetParams = params.map(function (param) {
+      var totalOffset = params.length * 32
+      var offsetParams = params.map(function (param) {
         if (!param.isDynamic()) {
-            return param;
+          return param
         }
-        var offset = totalOffset;
-        totalOffset += param.dynamicPartLength();
-        return param.withOffset(offset);
-    });
+        var offset = totalOffset
+        totalOffset += param.dynamicPartLength()
+        return param.withOffset(offset)
+      })
 
     // encode everything!
-    return offsetParams.reduce(function (result, param) {
-        return result + param.dynamicPart();
-    }, offsetParams.reduce(function (result, param) {
-        return result + param.staticPart();
-    }, ''));
-};
+      return offsetParams.reduce(function (result, param) {
+        return result + param.dynamicPart()
+      }, offsetParams.reduce(function (result, param) {
+        return result + param.staticPart()
+      }, ''))
+    }
 
-
-
-module.exports = SolidityParam;
-
-
-},{"../utils/utils":20}],12:[function(require,module,exports){
-var f = require('./formatters');
-var SolidityType = require('./type');
+    module.exports = SolidityParam
+  }, { '../utils/utils':20 }],
+  12:[function (require, module, exports) {
+    var f = require('./formatters')
+    var SolidityType = require('./type')
 
 /**
  * SolidityTypeReal is a prootype that represents real type
@@ -1333,53 +1325,53 @@ var SolidityType = require('./type');
  * real[3][]
  * real64[][6][], ...
  */
-var SolidityTypeReal = function () {
-    this._inputFormatter = f.formatInputReal;
-    this._outputFormatter = f.formatOutputReal;
-};
+    var SolidityTypeReal = function () {
+      this._inputFormatter = f.formatInputReal
+      this._outputFormatter = f.formatOutputReal
+    }
 
-SolidityTypeReal.prototype = new SolidityType({});
-SolidityTypeReal.prototype.constructor = SolidityTypeReal;
+    SolidityTypeReal.prototype = new SolidityType({})
+    SolidityTypeReal.prototype.constructor = SolidityTypeReal
 
-SolidityTypeReal.prototype.isType = function (name) {
-    return !!name.match(/real([0-9]*)?(\[([0-9]*)\])?/);
-};
+    SolidityTypeReal.prototype.isType = function (name) {
+      return !!name.match(/real([0-9]*)?(\[([0-9]*)\])?/)
+    }
 
-module.exports = SolidityTypeReal;
+    module.exports = SolidityTypeReal
+  }, { './formatters':9, './type':14 }],
+  13:[function (require, module, exports) {
+    var f = require('./formatters')
+    var SolidityType = require('./type')
 
-},{"./formatters":9,"./type":14}],13:[function(require,module,exports){
-var f = require('./formatters');
-var SolidityType = require('./type');
+    var SolidityTypeString = function () {
+      this._inputFormatter = f.formatInputString
+      this._outputFormatter = f.formatOutputString
+    }
 
-var SolidityTypeString = function () {
-    this._inputFormatter = f.formatInputString;
-    this._outputFormatter = f.formatOutputString;
-};
+    SolidityTypeString.prototype = new SolidityType({})
+    SolidityTypeString.prototype.constructor = SolidityTypeString
 
-SolidityTypeString.prototype = new SolidityType({});
-SolidityTypeString.prototype.constructor = SolidityTypeString;
+    SolidityTypeString.prototype.isType = function (name) {
+      return !!name.match(/^string(\[([0-9]*)\])*$/)
+    }
 
-SolidityTypeString.prototype.isType = function (name) {
-    return !!name.match(/^string(\[([0-9]*)\])*$/);
-};
+    SolidityTypeString.prototype.isDynamicType = function () {
+      return true
+    }
 
-SolidityTypeString.prototype.isDynamicType = function () {
-    return true;
-};
-
-module.exports = SolidityTypeString;
-
-},{"./formatters":9,"./type":14}],14:[function(require,module,exports){
-var f = require('./formatters');
-var SolidityParam = require('./param');
+    module.exports = SolidityTypeString
+  }, { './formatters':9, './type':14 }],
+  14:[function (require, module, exports) {
+    var f = require('./formatters')
+    var SolidityParam = require('./param')
 
 /**
  * SolidityType prototype is used to encode/decode solidity params of certain type
  */
-var SolidityType = function (config) {
-    this._inputFormatter = config.inputFormatter;
-    this._outputFormatter = config.outputFormatter;
-};
+    var SolidityType = function (config) {
+      this._inputFormatter = config.inputFormatter
+      this._outputFormatter = config.outputFormatter
+    }
 
 /**
  * Should be used to determine if this SolidityType do match given name
@@ -1388,9 +1380,9 @@ var SolidityType = function (config) {
  * @param {String} name
  * @return {Bool} true if type match this SolidityType, otherwise false
  */
-SolidityType.prototype.isType = function (name) {
-    throw "this method should be overrwritten for type " + name;
-};
+    SolidityType.prototype.isType = function (name) {
+      throw 'this method should be overrwritten for type ' + name
+    }
 
 /**
  * Should be used to determine what is the length of static part in given type
@@ -1399,18 +1391,18 @@ SolidityType.prototype.isType = function (name) {
  * @param {String} name
  * @return {Number} length of static part in bytes
  */
-SolidityType.prototype.staticPartLength = function (name) {
+    SolidityType.prototype.staticPartLength = function (name) {
     // If name isn't an array then treat it like a single element array.
-    return (this.nestedTypes(name) || ['[1]'])
+      return (this.nestedTypes(name) || ['[1]'])
         .map(function (type) {
             // the length of the nested array
-            return parseInt(type.slice(1, -1), 10) || 1;
+          return parseInt(type.slice(1, -1), 10) || 1
         })
         .reduce(function (previous, current) {
-            return previous * current;
+          return previous * current
         // all basic types are 32 bytes long
-        }, 32);
-};
+        }, 32)
+    }
 
 /**
  * Should be used to determine if type is dynamic array
@@ -1422,10 +1414,10 @@ SolidityType.prototype.staticPartLength = function (name) {
  * @param {String} name
  * @return {Bool} true if the type is dynamic array
  */
-SolidityType.prototype.isDynamicArray = function (name) {
-    var nestedTypes = this.nestedTypes(name);
-    return !!nestedTypes && !nestedTypes[nestedTypes.length - 1].match(/[0-9]{1,}/g);
-};
+    SolidityType.prototype.isDynamicArray = function (name) {
+      var nestedTypes = this.nestedTypes(name)
+      return !!nestedTypes && !nestedTypes[nestedTypes.length - 1].match(/[0-9]{1,}/g)
+    }
 
 /**
  * Should be used to determine if type is static array
@@ -1437,10 +1429,10 @@ SolidityType.prototype.isDynamicArray = function (name) {
  * @param {String} name
  * @return {Bool} true if the type is static array
  */
-SolidityType.prototype.isStaticArray = function (name) {
-    var nestedTypes = this.nestedTypes(name);
-    return !!nestedTypes && !!nestedTypes[nestedTypes.length - 1].match(/[0-9]{1,}/g);
-};
+    SolidityType.prototype.isStaticArray = function (name) {
+      var nestedTypes = this.nestedTypes(name)
+      return !!nestedTypes && !!nestedTypes[nestedTypes.length - 1].match(/[0-9]{1,}/g)
+    }
 
 /**
  * Should return length of static array
@@ -1456,13 +1448,13 @@ SolidityType.prototype.isStaticArray = function (name) {
  * @param {String} name
  * @return {Number} static array length
  */
-SolidityType.prototype.staticArrayLength = function (name) {
-    var nestedTypes = this.nestedTypes(name);
-    if (nestedTypes) {
-       return parseInt(nestedTypes[nestedTypes.length - 1].match(/[0-9]{1,}/g) || 1);
+    SolidityType.prototype.staticArrayLength = function (name) {
+      var nestedTypes = this.nestedTypes(name)
+      if (nestedTypes) {
+        return parseInt(nestedTypes[nestedTypes.length - 1].match(/[0-9]{1,}/g) || 1)
+      }
+      return 1
     }
-    return 1;
-};
 
 /**
  * Should return nested type
@@ -1477,15 +1469,15 @@ SolidityType.prototype.staticArrayLength = function (name) {
  * @param {String} name
  * @return {String} nested name
  */
-SolidityType.prototype.nestedName = function (name) {
+    SolidityType.prototype.nestedName = function (name) {
     // remove last [] in name
-    var nestedTypes = this.nestedTypes(name);
-    if (!nestedTypes) {
-        return name;
-    }
+      var nestedTypes = this.nestedTypes(name)
+      if (!nestedTypes) {
+        return name
+      }
 
-    return name.substr(0, name.length - nestedTypes[nestedTypes.length - 1].length);
-};
+      return name.substr(0, name.length - nestedTypes[nestedTypes.length - 1].length)
+    }
 
 /**
  * Should return true if type has dynamic size by default
@@ -1495,9 +1487,9 @@ SolidityType.prototype.nestedName = function (name) {
  * @param {String} name
  * @return {Bool} true if is dynamic, otherwise false
  */
-SolidityType.prototype.isDynamicType = function () {
-    return false;
-};
+    SolidityType.prototype.isDynamicType = function () {
+      return false
+    }
 
 /**
  * Should return array of nested types
@@ -1510,10 +1502,10 @@ SolidityType.prototype.isDynamicType = function () {
  * @param {String} name
  * @return {Array} array of nested types
  */
-SolidityType.prototype.nestedTypes = function (name) {
+    SolidityType.prototype.nestedTypes = function (name) {
     // return list of strings eg. "[]", "[3]", "[]", "[2]"
-    return name.match(/(\[[0-9]*\])/g);
-};
+      return name.match(/(\[[0-9]*\])/g)
+    }
 
 /**
  * Should be used to encode the value
@@ -1523,42 +1515,38 @@ SolidityType.prototype.nestedTypes = function (name) {
  * @param {String} name
  * @return {String} encoded value
  */
-SolidityType.prototype.encode = function (value, name) {
-    var self = this;
-    if (this.isDynamicArray(name)) {
-
+    SolidityType.prototype.encode = function (value, name) {
+      var self = this
+      if (this.isDynamicArray(name)) {
         return (function () {
-            var length = value.length;                          // in int
-            var nestedName = self.nestedName(name);
+          var length = value.length                          // in int
+          var nestedName = self.nestedName(name)
 
-            var result = [];
-            result.push(f.formatInputInt(length).encode());
+          var result = []
+          result.push(f.formatInputInt(length).encode())
 
-            value.forEach(function (v) {
-                result.push(self.encode(v, nestedName));
-            });
+          value.forEach(function (v) {
+            result.push(self.encode(v, nestedName))
+          })
 
-            return result;
-        })();
-
-    } else if (this.isStaticArray(name)) {
-
+          return result
+        })()
+      } else if (this.isStaticArray(name)) {
         return (function () {
-            var length = self.staticArrayLength(name);          // in int
-            var nestedName = self.nestedName(name);
+          var length = self.staticArrayLength(name)          // in int
+          var nestedName = self.nestedName(name)
 
-            var result = [];
-            for (var i = 0; i < length; i++) {
-                result.push(self.encode(value[i], nestedName));
-            }
+          var result = []
+          for (var i = 0; i < length; i++) {
+            result.push(self.encode(value[i], nestedName))
+          }
 
-            return result;
-        })();
+          return result
+        })()
+      }
 
+      return this._inputFormatter(value, name).encode()
     }
-
-    return this._inputFormatter(value, name).encode();
-};
 
 /**
  * Should be used to decode value from bytes
@@ -1569,66 +1557,62 @@ SolidityType.prototype.encode = function (value, name) {
  * @param {String} name type name
  * @returns {Object} decoded value
  */
-SolidityType.prototype.decode = function (bytes, offset, name) {
-    var self = this;
+    SolidityType.prototype.decode = function (bytes, offset, name) {
+      var self = this
 
-    if (this.isDynamicArray(name)) {
-
+      if (this.isDynamicArray(name)) {
         return (function () {
-            var arrayOffset = parseInt('0x' + bytes.substr(offset * 2, 64)); // in bytes
-            var length = parseInt('0x' + bytes.substr(arrayOffset * 2, 64)); // in int
-            var arrayStart = arrayOffset + 32; // array starts after length; // in bytes
+          var arrayOffset = parseInt('0x' + bytes.substr(offset * 2, 64)) // in bytes
+          var length = parseInt('0x' + bytes.substr(arrayOffset * 2, 64)) // in int
+          var arrayStart = arrayOffset + 32 // array starts after length; // in bytes
 
-            var nestedName = self.nestedName(name);
-            var nestedStaticPartLength = self.staticPartLength(nestedName);  // in bytes
-            var roundedNestedStaticPartLength = Math.floor((nestedStaticPartLength + 31) / 32) * 32;
-            var result = [];
+          var nestedName = self.nestedName(name)
+          var nestedStaticPartLength = self.staticPartLength(nestedName)  // in bytes
+          var roundedNestedStaticPartLength = Math.floor((nestedStaticPartLength + 31) / 32) * 32
+          var result = []
 
-            for (var i = 0; i < length * roundedNestedStaticPartLength; i += roundedNestedStaticPartLength) {
-                result.push(self.decode(bytes, arrayStart + i, nestedName));
-            }
+          for (var i = 0; i < length * roundedNestedStaticPartLength; i += roundedNestedStaticPartLength) {
+            result.push(self.decode(bytes, arrayStart + i, nestedName))
+          }
 
-            return result;
-        })();
-
-    } else if (this.isStaticArray(name)) {
-
+          return result
+        })()
+      } else if (this.isStaticArray(name)) {
         return (function () {
-            var length = self.staticArrayLength(name);                      // in int
-            var arrayStart = offset;                                        // in bytes
+          var length = self.staticArrayLength(name)                      // in int
+          var arrayStart = offset                                        // in bytes
 
-            var nestedName = self.nestedName(name);
-            var nestedStaticPartLength = self.staticPartLength(nestedName); // in bytes
-            var roundedNestedStaticPartLength = Math.floor((nestedStaticPartLength + 31) / 32) * 32;
-            var result = [];
+          var nestedName = self.nestedName(name)
+          var nestedStaticPartLength = self.staticPartLength(nestedName) // in bytes
+          var roundedNestedStaticPartLength = Math.floor((nestedStaticPartLength + 31) / 32) * 32
+          var result = []
 
-            for (var i = 0; i < length * roundedNestedStaticPartLength; i += roundedNestedStaticPartLength) {
-                result.push(self.decode(bytes, arrayStart + i, nestedName));
-            }
+          for (var i = 0; i < length * roundedNestedStaticPartLength; i += roundedNestedStaticPartLength) {
+            result.push(self.decode(bytes, arrayStart + i, nestedName))
+          }
 
-            return result;
-        })();
-    } else if (this.isDynamicType(name)) {
-
+          return result
+        })()
+      } else if (this.isDynamicType(name)) {
         return (function () {
-            var dynamicOffset = parseInt('0x' + bytes.substr(offset * 2, 64));      // in bytes
-            var length = parseInt('0x' + bytes.substr(dynamicOffset * 2, 64));      // in bytes
-            var roundedLength = Math.floor((length + 31) / 32);                     // in int
-            var param = new SolidityParam(bytes.substr(dynamicOffset * 2, ( 1 + roundedLength) * 64), 0);
-            return self._outputFormatter(param, name);
-        })();
+          var dynamicOffset = parseInt('0x' + bytes.substr(offset * 2, 64))      // in bytes
+          var length = parseInt('0x' + bytes.substr(dynamicOffset * 2, 64))      // in bytes
+          var roundedLength = Math.floor((length + 31) / 32)                     // in int
+          var param = new SolidityParam(bytes.substr(dynamicOffset * 2, (1 + roundedLength) * 64), 0)
+          return self._outputFormatter(param, name)
+        })()
+      }
+
+      var length = this.staticPartLength(name)
+      var param = new SolidityParam(bytes.substr(offset * 2, length * 2))
+      return this._outputFormatter(param, name)
     }
 
-    var length = this.staticPartLength(name);
-    var param = new SolidityParam(bytes.substr(offset * 2, length * 2));
-    return this._outputFormatter(param, name);
-};
-
-module.exports = SolidityType;
-
-},{"./formatters":9,"./param":11}],15:[function(require,module,exports){
-var f = require('./formatters');
-var SolidityType = require('./type');
+    module.exports = SolidityType
+  }, { './formatters':9, './param':11 }],
+  15:[function (require, module, exports) {
+    var f = require('./formatters')
+    var SolidityType = require('./type')
 
 /**
  * SolidityTypeUInt is a prootype that represents uint type
@@ -1646,23 +1630,23 @@ var SolidityType = require('./type');
  * uint[3][]
  * uint64[][6][], ...
  */
-var SolidityTypeUInt = function () {
-    this._inputFormatter = f.formatInputInt;
-    this._outputFormatter = f.formatOutputUInt;
-};
+    var SolidityTypeUInt = function () {
+      this._inputFormatter = f.formatInputInt
+      this._outputFormatter = f.formatOutputUInt
+    }
 
-SolidityTypeUInt.prototype = new SolidityType({});
-SolidityTypeUInt.prototype.constructor = SolidityTypeUInt;
+    SolidityTypeUInt.prototype = new SolidityType({})
+    SolidityTypeUInt.prototype.constructor = SolidityTypeUInt
 
-SolidityTypeUInt.prototype.isType = function (name) {
-    return !!name.match(/^uint([0-9]*)?(\[([0-9]*)\])*$/);
-};
+    SolidityTypeUInt.prototype.isType = function (name) {
+      return !!name.match(/^uint([0-9]*)?(\[([0-9]*)\])*$/)
+    }
 
-module.exports = SolidityTypeUInt;
-
-},{"./formatters":9,"./type":14}],16:[function(require,module,exports){
-var f = require('./formatters');
-var SolidityType = require('./type');
+    module.exports = SolidityTypeUInt
+  }, { './formatters':9, './type':14 }],
+  16:[function (require, module, exports) {
+    var f = require('./formatters')
+    var SolidityType = require('./type')
 
 /**
  * SolidityTypeUReal is a prootype that represents ureal type
@@ -1680,32 +1664,31 @@ var SolidityType = require('./type');
  * ureal[3][]
  * ureal64[][6][], ...
  */
-var SolidityTypeUReal = function () {
-    this._inputFormatter = f.formatInputReal;
-    this._outputFormatter = f.formatOutputUReal;
-};
+    var SolidityTypeUReal = function () {
+      this._inputFormatter = f.formatInputReal
+      this._outputFormatter = f.formatOutputUReal
+    }
 
-SolidityTypeUReal.prototype = new SolidityType({});
-SolidityTypeUReal.prototype.constructor = SolidityTypeUReal;
+    SolidityTypeUReal.prototype = new SolidityType({})
+    SolidityTypeUReal.prototype.constructor = SolidityTypeUReal
 
-SolidityTypeUReal.prototype.isType = function (name) {
-    return !!name.match(/^ureal([0-9]*)?(\[([0-9]*)\])*$/);
-};
+    SolidityTypeUReal.prototype.isType = function (name) {
+      return !!name.match(/^ureal([0-9]*)?(\[([0-9]*)\])*$/)
+    }
 
-module.exports = SolidityTypeUReal;
-
-},{"./formatters":9,"./type":14}],17:[function(require,module,exports){
-'use strict';
+    module.exports = SolidityTypeUReal
+  }, { './formatters':9, './type':14 }],
+  17:[function (require, module, exports) {
+    'use strict'
 
 // go env doesn't have and need XMLHttpRequest
-if (typeof XMLHttpRequest === 'undefined') {
-    exports.XMLHttpRequest = {};
-} else {
-    exports.XMLHttpRequest = XMLHttpRequest; // jshint ignore:line
-}
-
-
-},{}],18:[function(require,module,exports){
+    if (typeof XMLHttpRequest === 'undefined') {
+      exports.XMLHttpRequest = {}
+    } else {
+      exports.XMLHttpRequest = XMLHttpRequest // jshint ignore:line
+    }
+  }, {}],
+  18:[function (require, module, exports) {
 /*
     This file is part of web3.js.
 
@@ -1730,63 +1713,61 @@ if (typeof XMLHttpRequest === 'undefined') {
 
 /**
  * Utils
- * 
+ *
  * @module utils
  */
 
 /**
  * Utility functions
- * 
+ *
  * @class [utils] config
  * @constructor
  */
 
+// / required to define ETH_BIGNUMBER_ROUNDING_MODE
+    var BigNumber = require('bignumber.js')
 
-/// required to define ETH_BIGNUMBER_ROUNDING_MODE
-var BigNumber = require('bignumber.js');
+    var ETH_UNITS = [
+      'wei',
+      'kwei',
+      'Mwei',
+      'Gwei',
+      'szabo',
+      'finney',
+      'femtoether',
+      'picoether',
+      'nanoether',
+      'microether',
+      'milliether',
+      'nano',
+      'micro',
+      'milli',
+      'ether',
+      'grand',
+      'Mether',
+      'Gether',
+      'Tether',
+      'Pether',
+      'Eether',
+      'Zether',
+      'Yether',
+      'Nether',
+      'Dether',
+      'Vether',
+      'Uether'
+    ]
 
-var ETH_UNITS = [
-    'wei',
-    'kwei',
-    'Mwei',
-    'Gwei',
-    'szabo',
-    'finney',
-    'femtoether',
-    'picoether',
-    'nanoether',
-    'microether',
-    'milliether',
-    'nano',
-    'micro',
-    'milli',
-    'ether',
-    'grand',
-    'Mether',
-    'Gether',
-    'Tether',
-    'Pether',
-    'Eether',
-    'Zether',
-    'Yether',
-    'Nether',
-    'Dether',
-    'Vether',
-    'Uether'
-];
-
-module.exports = {
-    ETH_PADDING: 32,
-    ETH_SIGNATURE_LENGTH: 4,
-    ETH_UNITS: ETH_UNITS,
-    ETH_BIGNUMBER_ROUNDING_MODE: { ROUNDING_MODE: BigNumber.ROUND_DOWN },
-    ETH_POLLING_TIMEOUT: 1000/2,
-    defaultBlock: 'latest',
-    defaultAccount: undefined
-};
-
-
-},{"bignumber.js":"bignumber.js"}],19:[function(require,module,exports){
+    module.exports = {
+      ETH_PADDING: 32,
+      ETH_SIGNATURE_LENGTH: 4,
+      ETH_UNITS: ETH_UNITS,
+      ETH_BIGNUMBER_ROUNDING_MODE: { ROUNDING_MODE: BigNumber.ROUND_DOWN },
+      ETH_POLLING_TIMEOUT: 1000 / 2,
+      defaultBlock: 'latest',
+      defaultAccount: undefined
+    }
+  }, { 'bignumber.js':'bignumber.js' }],
+  19:[function (require, module, exports) {
 /*
     This file is part of web3.js.
 
@@ -1803,30 +1784,29 @@ module.exports = {
     You should have received a copy of the GNU Lesser General Public License
     along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
 */
-/** 
+/**
  * @file sha3.js
  * @author Marek Kotewicz <marek@ethdev.com>
  * @date 2015
  */
 
-var CryptoJS = require('crypto-js');
-var sha3 = require('crypto-js/sha3');
+    var CryptoJS = require('crypto-js')
+    var sha3 = require('crypto-js/sha3')
 
-module.exports = function (value, options) {
-    if (options && options.encoding === 'hex') {
+    module.exports = function (value, options) {
+      if (options && options.encoding === 'hex') {
         if (value.length > 2 && value.substr(0, 2) === '0x') {
-            value = value.substr(2);
+          value = value.substr(2)
         }
-        value = CryptoJS.enc.Hex.parse(value);
-    }
+        value = CryptoJS.enc.Hex.parse(value)
+      }
 
-    return sha3(value, {
+      return sha3(value, {
         outputLength: 256
-    }).toString();
-};
-
-
-},{"crypto-js":58,"crypto-js/sha3":79}],20:[function(require,module,exports){
+      }).toString()
+    }
+  }, { 'crypto-js':58, 'crypto-js/sha3':79 }],
+  20:[function (require, module, exports) {
 /*
     This file is part of web3.js.
 
@@ -1862,40 +1842,39 @@ module.exports = function (value, options) {
  * @constructor
  */
 
+    var BigNumber = require('bignumber.js')
+    var sha3 = require('./sha3.js')
+    var utf8 = require('utf8')
 
-var BigNumber = require('bignumber.js');
-var sha3 = require('./sha3.js');
-var utf8 = require('utf8');
-
-var unitMap = {
-    'noether':      '0',
-    'wei':          '1',
-    'kwei':         '1000',
-    'Kwei':         '1000',
-    'babbage':      '1000',
-    'femtoether':   '1000',
-    'mwei':         '1000000',
-    'Mwei':         '1000000',
-    'lovelace':     '1000000',
-    'picoether':    '1000000',
-    'gwei':         '1000000000',
-    'Gwei':         '1000000000',
-    'shannon':      '1000000000',
-    'nanoether':    '1000000000',
-    'nano':         '1000000000',
-    'szabo':        '1000000000000',
-    'microether':   '1000000000000',
-    'micro':        '1000000000000',
-    'finney':       '1000000000000000',
-    'milliether':    '1000000000000000',
-    'milli':         '1000000000000000',
-    'ether':        '1000000000000000000',
-    'kether':       '1000000000000000000000',
-    'grand':        '1000000000000000000000',
-    'mether':       '1000000000000000000000000',
-    'gether':       '1000000000000000000000000000',
-    'tether':       '1000000000000000000000000000000'
-};
+    var unitMap = {
+      'noether':      '0',
+      'wei':          '1',
+      'kwei':         '1000',
+      'Kwei':         '1000',
+      'babbage':      '1000',
+      'femtoether':   '1000',
+      'mwei':         '1000000',
+      'Mwei':         '1000000',
+      'lovelace':     '1000000',
+      'picoether':    '1000000',
+      'gwei':         '1000000000',
+      'Gwei':         '1000000000',
+      'shannon':      '1000000000',
+      'nanoether':    '1000000000',
+      'nano':         '1000000000',
+      'szabo':        '1000000000000',
+      'microether':   '1000000000000',
+      'micro':        '1000000000000',
+      'finney':       '1000000000000000',
+      'milliether':    '1000000000000000',
+      'milli':         '1000000000000000',
+      'ether':        '1000000000000000000',
+      'kether':       '1000000000000000000000',
+      'grand':        '1000000000000000000000',
+      'mether':       '1000000000000000000000000',
+      'gether':       '1000000000000000000000000000',
+      'tether':       '1000000000000000000000000000000'
+    }
 
 /**
  * Should be called to pad string to expected length
@@ -1906,9 +1885,9 @@ var unitMap = {
  * @param {String} sign, by default 0
  * @returns {String} right aligned string
  */
-var padLeft = function (string, chars, sign) {
-    return new Array(chars - string.length + 1).join(sign ? sign : "0") + string;
-};
+    var padLeft = function (string, chars, sign) {
+      return new Array(chars - string.length + 1).join(sign || '0') + string
+    }
 
 /**
  * Should be called to pad string to expected length
@@ -1919,9 +1898,9 @@ var padLeft = function (string, chars, sign) {
  * @param {String} sign, by default 0
  * @returns {String} right aligned string
  */
-var padRight = function (string, chars, sign) {
-    return string + (new Array(chars - string.length + 1).join(sign ? sign : "0"));
-};
+    var padRight = function (string, chars, sign) {
+      return string + (new Array(chars - string.length + 1).join(sign || '0'))
+    }
 
 /**
  * Should be called to get utf8 from it's hex representation
@@ -1930,22 +1909,21 @@ var padRight = function (string, chars, sign) {
  * @param {String} string in hex
  * @returns {String} ascii string representation of hex value
  */
-var toUtf8 = function(hex) {
+    var toUtf8 = function (hex) {
 // Find termination
-    var str = "";
-    var i = 0, l = hex.length;
-    if (hex.substring(0, 2) === '0x') {
-        i = 2;
-    }
-    for (; i < l; i+=2) {
-        var code = parseInt(hex.substr(i, 2), 16);
-        if (code === 0)
-            break;
-        str += String.fromCharCode(code);
-    }
+      var str = ''
+      var i = 0, l = hex.length
+      if (hex.substring(0, 2) === '0x') {
+        i = 2
+      }
+      for (; i < l; i += 2) {
+        var code = parseInt(hex.substr(i, 2), 16)
+        if (code === 0) { break }
+        str += String.fromCharCode(code)
+      }
 
-    return utf8.decode(str);
-};
+      return utf8.decode(str)
+    }
 
 /**
  * Should be called to get ascii from it's hex representation
@@ -1954,20 +1932,20 @@ var toUtf8 = function(hex) {
  * @param {String} string in hex
  * @returns {String} ascii string representation of hex value
  */
-var toAscii = function(hex) {
+    var toAscii = function (hex) {
 // Find termination
-    var str = "";
-    var i = 0, l = hex.length;
-    if (hex.substring(0, 2) === '0x') {
-        i = 2;
-    }
-    for (; i < l; i+=2) {
-        var code = parseInt(hex.substr(i, 2), 16);
-        str += String.fromCharCode(code);
-    }
+      var str = ''
+      var i = 0, l = hex.length
+      if (hex.substring(0, 2) === '0x') {
+        i = 2
+      }
+      for (; i < l; i += 2) {
+        var code = parseInt(hex.substr(i, 2), 16)
+        str += String.fromCharCode(code)
+      }
 
-    return str;
-};
+      return str
+    }
 
 /**
  * Should be called to get hex representation (prefixed by 0x) of utf8 string
@@ -1977,19 +1955,18 @@ var toAscii = function(hex) {
  * @param {Number} optional padding
  * @returns {String} hex representation of input string
  */
-var fromUtf8 = function(str) {
-    str = utf8.encode(str);
-    var hex = "";
-    for(var i = 0; i < str.length; i++) {
-        var code = str.charCodeAt(i);
-        if (code === 0)
-            break;
-        var n = code.toString(16);
-        hex += n.length < 2 ? '0' + n : n;
-    }
+    var fromUtf8 = function (str) {
+      str = utf8.encode(str)
+      var hex = ''
+      for (var i = 0; i < str.length; i++) {
+        var code = str.charCodeAt(i)
+        if (code === 0) { break }
+        var n = code.toString(16)
+        hex += n.length < 2 ? '0' + n : n
+      }
 
-    return "0x" + hex;
-};
+      return '0x' + hex
+    }
 
 /**
  * Should be called to get hex representation (prefixed by 0x) of ascii string
@@ -1999,16 +1976,16 @@ var fromUtf8 = function(str) {
  * @param {Number} optional padding
  * @returns {String} hex representation of input string
  */
-var fromAscii = function(str) {
-    var hex = "";
-    for(var i = 0; i < str.length; i++) {
-        var code = str.charCodeAt(i);
-        var n = code.toString(16);
-        hex += n.length < 2 ? '0' + n : n;
-    }
+    var fromAscii = function (str) {
+      var hex = ''
+      for (var i = 0; i < str.length; i++) {
+        var code = str.charCodeAt(i)
+        var n = code.toString(16)
+        hex += n.length < 2 ? '0' + n : n
+      }
 
-    return "0x" + hex;
-};
+      return '0x' + hex
+    }
 
 /**
  * Should be used to create full function/event name from json abi
@@ -2017,14 +1994,14 @@ var fromAscii = function(str) {
  * @param {Object} json-abi
  * @return {String} full fnction/event name
  */
-var transformToFullName = function (json) {
-    if (json.name.indexOf('(') !== -1) {
-        return json.name;
-    }
+    var transformToFullName = function (json) {
+      if (json.name.indexOf('(') !== -1) {
+        return json.name
+      }
 
-    var typeName = json.inputs.map(function(i){return i.type; }).join();
-    return json.name + '(' + typeName + ')';
-};
+      var typeName = json.inputs.map(function (i) { return i.type }).join()
+      return json.name + '(' + typeName + ')'
+    }
 
 /**
  * Should be called to get display name of contract function
@@ -2033,17 +2010,17 @@ var transformToFullName = function (json) {
  * @param {String} name of function/event
  * @returns {String} display name for function/event eg. multiply(uint256) -> multiply
  */
-var extractDisplayName = function (name) {
-    var length = name.indexOf('(');
-    return length !== -1 ? name.substr(0, length) : name;
-};
+    var extractDisplayName = function (name) {
+      var length = name.indexOf('(')
+      return length !== -1 ? name.substr(0, length) : name
+    }
 
-/// @returns overloaded part of function/event name
-var extractTypeName = function (name) {
-    /// TODO: make it invulnerable
-    var length = name.indexOf('(');
-    return length !== -1 ? name.substr(length + 1, name.length - 1 - (length + 1)).replace(' ', '') : "";
-};
+// / @returns overloaded part of function/event name
+    var extractTypeName = function (name) {
+    // / TODO: make it invulnerable
+      var length = name.indexOf('(')
+      return length !== -1 ? name.substr(length + 1, name.length - 1 - (length + 1)).replace(' ', '') : ''
+    }
 
 /**
  * Converts value to it's decimal representation in string
@@ -2052,9 +2029,9 @@ var extractTypeName = function (name) {
  * @param {String|Number|BigNumber}
  * @return {String}
  */
-var toDecimal = function (value) {
-    return toBigNumber(value).toNumber();
-};
+    var toDecimal = function (value) {
+      return toBigNumber(value).toNumber()
+    }
 
 /**
  * Converts value to it's hex representation
@@ -2063,12 +2040,12 @@ var toDecimal = function (value) {
  * @param {String|Number|BigNumber}
  * @return {String}
  */
-var fromDecimal = function (value) {
-    var number = toBigNumber(value);
-    var result = number.toString(16);
+    var fromDecimal = function (value) {
+      var number = toBigNumber(value)
+      var result = number.toString(16)
 
-    return number.lessThan(0) ? '-0x' + result.substr(1) : '0x' + result;
-};
+      return number.lessThan(0) ? '-0x' + result.substr(1) : '0x' + result
+    }
 
 /**
  * Auto converts any given value into it's hex representation.
@@ -2079,30 +2056,22 @@ var fromDecimal = function (value) {
  * @param {String|Number|BigNumber|Object}
  * @return {String}
  */
-var toHex = function (val) {
-    /*jshint maxcomplexity: 8 */
+    var toHex = function (val) {
+    /* jshint maxcomplexity: 8 */
 
-    if (isBoolean(val))
-        return fromDecimal(+val);
+      if (isBoolean(val)) { return fromDecimal(+val) }
 
-    if (isBigNumber(val))
-        return fromDecimal(val);
+      if (isBigNumber(val)) { return fromDecimal(val) }
 
-    if (typeof val === 'object')
-        return fromUtf8(JSON.stringify(val));
+      if (typeof val === 'object') { return fromUtf8(JSON.stringify(val)) }
 
     // if its a negative number, pass it through fromDecimal
-    if (isString(val)) {
-        if (val.indexOf('-0x') === 0)
-            return fromDecimal(val);
-        else if(val.indexOf('0x') === 0)
-            return val;
-        else if (!isFinite(val))
-            return fromAscii(val);
-    }
+      if (isString(val)) {
+        if (val.indexOf('-0x') === 0) { return fromDecimal(val) } else if (val.indexOf('0x') === 0) { return val } else if (!isFinite(val)) { return fromAscii(val) }
+      }
 
-    return fromDecimal(val);
-};
+      return fromDecimal(val)
+    }
 
 /**
  * Returns value of unit in Wei
@@ -2112,14 +2081,14 @@ var toHex = function (val) {
  * @returns {BigNumber} value of the unit (in Wei)
  * @throws error if the unit is not correct:w
  */
-var getValueOfUnit = function (unit) {
-    unit = unit ? unit.toLowerCase() : 'ether';
-    var unitValue = unitMap[unit];
-    if (unitValue === undefined) {
-        throw new Error('This unit doesn\'t exists, please use the one of the following units' + JSON.stringify(unitMap, null, 2));
+    var getValueOfUnit = function (unit) {
+      unit = unit ? unit.toLowerCase() : 'ether'
+      var unitValue = unitMap[unit]
+      if (unitValue === undefined) {
+        throw new Error('This unit doesn\'t exists, please use the one of the following units' + JSON.stringify(unitMap, null, 2))
+      }
+      return new BigNumber(unitValue, 10)
     }
-    return new BigNumber(unitValue, 10);
-};
 
 /**
  * Takes a number of wei and converts it to any other ether unit.
@@ -2142,11 +2111,11 @@ var getValueOfUnit = function (unit) {
  * @param {String} unit the unit to convert to, default ether
  * @return {String|Object} When given a BigNumber object it returns one as well, otherwise a number
 */
-var fromWei = function(number, unit) {
-    var returnValue = toBigNumber(number).dividedBy(getValueOfUnit(unit));
+    var fromWei = function (number, unit) {
+      var returnValue = toBigNumber(number).dividedBy(getValueOfUnit(unit))
 
-    return isBigNumber(number) ? returnValue : returnValue.toString(10);
-};
+      return isBigNumber(number) ? returnValue : returnValue.toString(10)
+    }
 
 /**
  * Takes a number of a unit and converts it to wei.
@@ -2170,11 +2139,11 @@ var fromWei = function(number, unit) {
  * @param {String} unit the unit to convert from, default ether
  * @return {String|Object} When given a BigNumber object it returns one as well, otherwise a number
 */
-var toWei = function(number, unit) {
-    var returnValue = toBigNumber(number).times(getValueOfUnit(unit));
+    var toWei = function (number, unit) {
+      var returnValue = toBigNumber(number).times(getValueOfUnit(unit))
 
-    return isBigNumber(number) ? returnValue : returnValue.toString(10);
-};
+      return isBigNumber(number) ? returnValue : returnValue.toString(10)
+    }
 
 /**
  * Takes an input and transforms it into an bignumber
@@ -2183,18 +2152,17 @@ var toWei = function(number, unit) {
  * @param {Number|String|BigNumber} a number, string, HEX string or BigNumber
  * @return {BigNumber} BigNumber
 */
-var toBigNumber = function(number) {
-    /*jshint maxcomplexity:5 */
-    number = number || 0;
-    if (isBigNumber(number))
-        return number;
+    var toBigNumber = function (number) {
+    /* jshint maxcomplexity:5 */
+      number = number || 0
+      if (isBigNumber(number)) { return number }
 
-    if (isString(number) && (number.indexOf('0x') === 0 || number.indexOf('-0x') === 0)) {
-        return new BigNumber(number.replace('0x',''), 16);
+      if (isString(number) && (number.indexOf('0x') === 0 || number.indexOf('-0x') === 0)) {
+        return new BigNumber(number.replace('0x', ''), 16)
+      }
+
+      return new BigNumber(number.toString(10), 10)
     }
-
-    return new BigNumber(number.toString(10), 10);
-};
 
 /**
  * Takes and input transforms it into bignumber and if it is negative value, into two's complement
@@ -2203,13 +2171,13 @@ var toBigNumber = function(number) {
  * @param {Number|String|BigNumber}
  * @return {BigNumber}
  */
-var toTwosComplement = function (number) {
-    var bigNumber = toBigNumber(number).round();
-    if (bigNumber.lessThan(0)) {
-        return new BigNumber("ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff", 16).plus(bigNumber).plus(1);
+    var toTwosComplement = function (number) {
+      var bigNumber = toBigNumber(number).round()
+      if (bigNumber.lessThan(0)) {
+        return new BigNumber('ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff', 16).plus(bigNumber).plus(1)
+      }
+      return bigNumber
     }
-    return bigNumber;
-};
 
 /**
  * Checks if the given string is strictly an address
@@ -2218,9 +2186,9 @@ var toTwosComplement = function (number) {
  * @param {String} address the given HEX adress
  * @return {Boolean}
 */
-var isStrictAddress = function (address) {
-    return /^0x[0-9a-f]{40}$/i.test(address);
-};
+    var isStrictAddress = function (address) {
+      return /^0x[0-9a-f]{40}$/i.test(address)
+    }
 
 /**
  * Checks if the given string is an address
@@ -2229,18 +2197,18 @@ var isStrictAddress = function (address) {
  * @param {String} address the given HEX adress
  * @return {Boolean}
 */
-var isAddress = function (address) {
-    if (!/^(0x)?[0-9a-f]{40}$/i.test(address)) {
+    var isAddress = function (address) {
+      if (!/^(0x)?[0-9a-f]{40}$/i.test(address)) {
         // check if it has the basic requirements of an address
-        return false;
-    } else if (/^(0x)?[0-9a-f]{40}$/.test(address) || /^(0x)?[0-9A-F]{40}$/.test(address)) {
+        return false
+      } else if (/^(0x)?[0-9a-f]{40}$/.test(address) || /^(0x)?[0-9A-F]{40}$/.test(address)) {
         // If it's all small caps or all all caps, return true
-        return true;
-    } else {
+        return true
+      } else {
         // Otherwise check each case
-        return isChecksumAddress(address);
+        return isChecksumAddress(address)
+      }
     }
-};
 
 /**
  * Checks if the given string is a checksummed address
@@ -2249,21 +2217,19 @@ var isAddress = function (address) {
  * @param {String} address the given HEX adress
  * @return {Boolean}
 */
-var isChecksumAddress = function (address) {
+    var isChecksumAddress = function (address) {
     // Check each case
-    address = address.replace('0x','');
-    var addressHash = sha3(address.toLowerCase());
+      address = address.replace('0x', '')
+      var addressHash = sha3(address.toLowerCase())
 
-    for (var i = 0; i < 40; i++ ) {
+      for (var i = 0; i < 40; i++) {
         // the nth letter should be uppercase if the nth digit of casemap is 1
         if ((parseInt(addressHash[i], 16) > 7 && address[i].toUpperCase() !== address[i]) || (parseInt(addressHash[i], 16) <= 7 && address[i].toLowerCase() !== address[i])) {
-            return false;
+          return false
         }
+      }
+      return true
     }
-    return true;
-};
-
-
 
 /**
  * Makes a checksum address
@@ -2272,23 +2238,23 @@ var isChecksumAddress = function (address) {
  * @param {String} address the given HEX adress
  * @return {String}
 */
-var toChecksumAddress = function (address) {
-    if (typeof address === 'undefined') return '';
+    var toChecksumAddress = function (address) {
+      if (typeof address === 'undefined') return ''
 
-    address = address.toLowerCase().replace('0x','');
-    var addressHash = sha3(address);
-    var checksumAddress = '0x';
+      address = address.toLowerCase().replace('0x', '')
+      var addressHash = sha3(address)
+      var checksumAddress = '0x'
 
-    for (var i = 0; i < address.length; i++ ) {
+      for (var i = 0; i < address.length; i++) {
         // If ith character is 9 to f then make it uppercase
         if (parseInt(addressHash[i], 16) > 7) {
-          checksumAddress += address[i].toUpperCase();
+          checksumAddress += address[i].toUpperCase()
         } else {
-            checksumAddress += address[i];
+          checksumAddress += address[i]
         }
+      }
+      return checksumAddress
     }
-    return checksumAddress;
-};
 
 /**
  * Transforms given string to valid 20 bytes-length addres with 0x prefix
@@ -2297,17 +2263,17 @@ var toChecksumAddress = function (address) {
  * @param {String} address
  * @return {String} formatted address
  */
-var toAddress = function (address) {
-    if (isStrictAddress(address)) {
-        return address;
-    }
+    var toAddress = function (address) {
+      if (isStrictAddress(address)) {
+        return address
+      }
 
-    if (/^[0-9a-f]{40}$/.test(address)) {
-        return '0x' + address;
-    }
+      if (/^[0-9a-f]{40}$/.test(address)) {
+        return '0x' + address
+      }
 
-    return '0x' + padLeft(toHex(address).substr(2), 40);
-};
+      return '0x' + padLeft(toHex(address).substr(2), 40)
+    }
 
 /**
  * Returns true if object is BigNumber, otherwise false
@@ -2316,10 +2282,10 @@ var toAddress = function (address) {
  * @param {Object}
  * @return {Boolean}
  */
-var isBigNumber = function (object) {
-    return object instanceof BigNumber ||
-        (object && object.constructor && object.constructor.name === 'BigNumber');
-};
+    var isBigNumber = function (object) {
+      return object instanceof BigNumber ||
+        (object && object.constructor && object.constructor.name === 'BigNumber')
+    }
 
 /**
  * Returns true if object is string, otherwise false
@@ -2328,10 +2294,10 @@ var isBigNumber = function (object) {
  * @param {Object}
  * @return {Boolean}
  */
-var isString = function (object) {
-    return typeof object === 'string' ||
-        (object && object.constructor && object.constructor.name === 'String');
-};
+    var isString = function (object) {
+      return typeof object === 'string' ||
+        (object && object.constructor && object.constructor.name === 'String')
+    }
 
 /**
  * Returns true if object is function, otherwise false
@@ -2340,9 +2306,9 @@ var isString = function (object) {
  * @param {Object}
  * @return {Boolean}
  */
-var isFunction = function (object) {
-    return typeof object === 'function';
-};
+    var isFunction = function (object) {
+      return typeof object === 'function'
+    }
 
 /**
  * Returns true if object is Objet, otherwise false
@@ -2351,9 +2317,9 @@ var isFunction = function (object) {
  * @param {Object}
  * @return {Boolean}
  */
-var isObject = function (object) {
-    return object !== null && !(Array.isArray(object)) && typeof object === 'object';
-};
+    var isObject = function (object) {
+      return object !== null && !(Array.isArray(object)) && typeof object === 'object'
+    }
 
 /**
  * Returns true if object is boolean, otherwise false
@@ -2362,9 +2328,9 @@ var isObject = function (object) {
  * @param {Object}
  * @return {Boolean}
  */
-var isBoolean = function (object) {
-    return typeof object === 'boolean';
-};
+    var isBoolean = function (object) {
+      return typeof object === 'boolean'
+    }
 
 /**
  * Returns true if object is array, otherwise false
@@ -2373,9 +2339,9 @@ var isBoolean = function (object) {
  * @param {Object}
  * @return {Boolean}
  */
-var isArray = function (object) {
-    return Array.isArray(object);
-};
+    var isArray = function (object) {
+      return Array.isArray(object)
+    }
 
 /**
  * Returns true if given string is valid json object
@@ -2384,13 +2350,13 @@ var isArray = function (object) {
  * @param {String}
  * @return {Boolean}
  */
-var isJson = function (str) {
-    try {
-        return !!JSON.parse(str);
-    } catch (e) {
-        return false;
+    var isJson = function (str) {
+      try {
+        return !!JSON.parse(str)
+      } catch (e) {
+        return false
+      }
     }
-};
 
 /**
  * Returns true if given string is a valid Ethereum block header bloom.
@@ -2399,14 +2365,14 @@ var isJson = function (str) {
  * @param {String} hex encoded bloom filter
  * @return {Boolean}
  */
-var isBloom = function (bloom) {
-    if (!/^(0x)?[0-9a-f]{512}$/i.test(bloom)) {
-        return false;
-    } else if (/^(0x)?[0-9a-f]{512}$/.test(bloom) || /^(0x)?[0-9A-F]{512}$/.test(bloom)) {
-        return true;
+    var isBloom = function (bloom) {
+      if (!/^(0x)?[0-9a-f]{512}$/i.test(bloom)) {
+        return false
+      } else if (/^(0x)?[0-9a-f]{512}$/.test(bloom) || /^(0x)?[0-9A-F]{512}$/.test(bloom)) {
+        return true
+      }
+      return false
     }
-    return false;
-};
 
 /**
  * Returns true if given string is a valid log topic.
@@ -2415,54 +2381,54 @@ var isBloom = function (bloom) {
  * @param {String} hex encoded topic
  * @return {Boolean}
  */
-var isTopic = function (topic) {
-    if (!/^(0x)?[0-9a-f]{64}$/i.test(topic)) {
-        return false;
-    } else if (/^(0x)?[0-9a-f]{64}$/.test(topic) || /^(0x)?[0-9A-F]{64}$/.test(topic)) {
-        return true;
+    var isTopic = function (topic) {
+      if (!/^(0x)?[0-9a-f]{64}$/i.test(topic)) {
+        return false
+      } else if (/^(0x)?[0-9a-f]{64}$/.test(topic) || /^(0x)?[0-9A-F]{64}$/.test(topic)) {
+        return true
+      }
+      return false
     }
-    return false;
-};
 
-module.exports = {
-    padLeft: padLeft,
-    padRight: padRight,
-    toHex: toHex,
-    toDecimal: toDecimal,
-    fromDecimal: fromDecimal,
-    toUtf8: toUtf8,
-    toAscii: toAscii,
-    fromUtf8: fromUtf8,
-    fromAscii: fromAscii,
-    transformToFullName: transformToFullName,
-    extractDisplayName: extractDisplayName,
-    extractTypeName: extractTypeName,
-    toWei: toWei,
-    fromWei: fromWei,
-    toBigNumber: toBigNumber,
-    toTwosComplement: toTwosComplement,
-    toAddress: toAddress,
-    isBigNumber: isBigNumber,
-    isStrictAddress: isStrictAddress,
-    isAddress: isAddress,
-    isChecksumAddress: isChecksumAddress,
-    toChecksumAddress: toChecksumAddress,
-    isFunction: isFunction,
-    isString: isString,
-    isObject: isObject,
-    isBoolean: isBoolean,
-    isArray: isArray,
-    isJson: isJson,
-    isBloom: isBloom,
-    isTopic: isTopic,
-};
-
-},{"./sha3.js":19,"bignumber.js":"bignumber.js","utf8":84}],21:[function(require,module,exports){
-module.exports={
-    "version": "0.20.2"
-}
-
-},{}],22:[function(require,module,exports){
+    module.exports = {
+      padLeft: padLeft,
+      padRight: padRight,
+      toHex: toHex,
+      toDecimal: toDecimal,
+      fromDecimal: fromDecimal,
+      toUtf8: toUtf8,
+      toAscii: toAscii,
+      fromUtf8: fromUtf8,
+      fromAscii: fromAscii,
+      transformToFullName: transformToFullName,
+      extractDisplayName: extractDisplayName,
+      extractTypeName: extractTypeName,
+      toWei: toWei,
+      fromWei: fromWei,
+      toBigNumber: toBigNumber,
+      toTwosComplement: toTwosComplement,
+      toAddress: toAddress,
+      isBigNumber: isBigNumber,
+      isStrictAddress: isStrictAddress,
+      isAddress: isAddress,
+      isChecksumAddress: isChecksumAddress,
+      toChecksumAddress: toChecksumAddress,
+      isFunction: isFunction,
+      isString: isString,
+      isObject: isObject,
+      isBoolean: isBoolean,
+      isArray: isArray,
+      isJson: isJson,
+      isBloom: isBloom,
+      isTopic: isTopic
+    }
+  }, { './sha3.js':19, 'bignumber.js':'bignumber.js', 'utf8':84 }],
+  21:[function (require, module, exports) {
+    module.exports = {
+      'version': '0.20.2'
+    }
+  }, {}],
+  22:[function (require, module, exports) {
 /*
     This file is part of web3.js.
 
@@ -2490,133 +2456,129 @@ module.exports={
  * @date 2014
  */
 
-var RequestManager = require('./web3/requestmanager');
-var Iban = require('./web3/iban');
-var Eth = require('./web3/methods/eth');
-var DB = require('./web3/methods/db');
-var Shh = require('./web3/methods/shh');
-var Net = require('./web3/methods/net');
-var Personal = require('./web3/methods/personal');
-var Swarm = require('./web3/methods/swarm');
-var Settings = require('./web3/settings');
-var version = require('./version.json');
-var utils = require('./utils/utils');
-var sha3 = require('./utils/sha3');
-var extend = require('./web3/extend');
-var Batch = require('./web3/batch');
-var Property = require('./web3/property');
-var HttpProvider = require('./web3/httpprovider');
-var IpcProvider = require('./web3/ipcprovider');
-var BigNumber = require('bignumber.js');
+    var RequestManager = require('./web3/requestmanager')
+    var Iban = require('./web3/iban')
+    var Eth = require('./web3/methods/eth')
+    var DB = require('./web3/methods/db')
+    var Shh = require('./web3/methods/shh')
+    var Net = require('./web3/methods/net')
+    var Personal = require('./web3/methods/personal')
+    var Swarm = require('./web3/methods/swarm')
+    var Settings = require('./web3/settings')
+    var version = require('./version.json')
+    var utils = require('./utils/utils')
+    var sha3 = require('./utils/sha3')
+    var extend = require('./web3/extend')
+    var Batch = require('./web3/batch')
+    var Property = require('./web3/property')
+    var HttpProvider = require('./web3/httpprovider')
+    var IpcProvider = require('./web3/ipcprovider')
+    var BigNumber = require('bignumber.js')
 
-
-
-function Web3 (provider) {
-    this._requestManager = new RequestManager(provider);
-    this.currentProvider = provider;
-    this.eth = new Eth(this);
-    this.db = new DB(this);
-    this.shh = new Shh(this);
-    this.net = new Net(this);
-    this.personal = new Personal(this);
-    this.bzz = new Swarm(this);
-    this.settings = new Settings();
-    this.version = {
+    function Web3 (provider) {
+      this._requestManager = new RequestManager(provider)
+      this.currentProvider = provider
+      this.eth = new Eth(this)
+      this.db = new DB(this)
+      this.shh = new Shh(this)
+      this.net = new Net(this)
+      this.personal = new Personal(this)
+      this.bzz = new Swarm(this)
+      this.settings = new Settings()
+      this.version = {
         api: version.version
-    };
-    this.providers = {
+      }
+      this.providers = {
         HttpProvider: HttpProvider,
         IpcProvider: IpcProvider
-    };
-    this._extend = extend(this);
-    this._extend({
+      }
+      this._extend = extend(this)
+      this._extend({
         properties: properties()
-    });
-}
+      })
+    }
 
 // expose providers on the class
-Web3.providers = {
-    HttpProvider: HttpProvider,
-    IpcProvider: IpcProvider
-};
+    Web3.providers = {
+      HttpProvider: HttpProvider,
+      IpcProvider: IpcProvider
+    }
 
-Web3.prototype.setProvider = function (provider) {
-    this._requestManager.setProvider(provider);
-    this.currentProvider = provider;
-};
+    Web3.prototype.setProvider = function (provider) {
+      this._requestManager.setProvider(provider)
+      this.currentProvider = provider
+    }
 
-Web3.prototype.reset = function (keepIsSyncing) {
-    this._requestManager.reset(keepIsSyncing);
-    this.settings = new Settings();
-};
+    Web3.prototype.reset = function (keepIsSyncing) {
+      this._requestManager.reset(keepIsSyncing)
+      this.settings = new Settings()
+    }
 
-Web3.prototype.BigNumber = BigNumber;
-Web3.prototype.toHex = utils.toHex;
-Web3.prototype.toAscii = utils.toAscii;
-Web3.prototype.toUtf8 = utils.toUtf8;
-Web3.prototype.fromAscii = utils.fromAscii;
-Web3.prototype.fromUtf8 = utils.fromUtf8;
-Web3.prototype.toDecimal = utils.toDecimal;
-Web3.prototype.fromDecimal = utils.fromDecimal;
-Web3.prototype.toBigNumber = utils.toBigNumber;
-Web3.prototype.toWei = utils.toWei;
-Web3.prototype.fromWei = utils.fromWei;
-Web3.prototype.isAddress = utils.isAddress;
-Web3.prototype.isChecksumAddress = utils.isChecksumAddress;
-Web3.prototype.toChecksumAddress = utils.toChecksumAddress;
-Web3.prototype.isIBAN = utils.isIBAN;
-Web3.prototype.padLeft = utils.padLeft;
-Web3.prototype.padRight = utils.padRight;
+    Web3.prototype.BigNumber = BigNumber
+    Web3.prototype.toHex = utils.toHex
+    Web3.prototype.toAscii = utils.toAscii
+    Web3.prototype.toUtf8 = utils.toUtf8
+    Web3.prototype.fromAscii = utils.fromAscii
+    Web3.prototype.fromUtf8 = utils.fromUtf8
+    Web3.prototype.toDecimal = utils.toDecimal
+    Web3.prototype.fromDecimal = utils.fromDecimal
+    Web3.prototype.toBigNumber = utils.toBigNumber
+    Web3.prototype.toWei = utils.toWei
+    Web3.prototype.fromWei = utils.fromWei
+    Web3.prototype.isAddress = utils.isAddress
+    Web3.prototype.isChecksumAddress = utils.isChecksumAddress
+    Web3.prototype.toChecksumAddress = utils.toChecksumAddress
+    Web3.prototype.isIBAN = utils.isIBAN
+    Web3.prototype.padLeft = utils.padLeft
+    Web3.prototype.padRight = utils.padRight
 
-
-Web3.prototype.sha3 = function(string, options) {
-    return '0x' + sha3(string, options);
-};
+    Web3.prototype.sha3 = function (string, options) {
+      return '0x' + sha3(string, options)
+    }
 
 /**
  * Transforms direct icap to address
  */
-Web3.prototype.fromICAP = function (icap) {
-    var iban = new Iban(icap);
-    return iban.address();
-};
+    Web3.prototype.fromICAP = function (icap) {
+      var iban = new Iban(icap)
+      return iban.address()
+    }
 
-var properties = function () {
-    return [
+    var properties = function () {
+      return [
         new Property({
-            name: 'version.node',
-            getter: 'web3_clientVersion'
+          name: 'version.node',
+          getter: 'web3_clientVersion'
         }),
         new Property({
-            name: 'version.network',
-            getter: 'net_version',
-            inputFormatter: utils.toDecimal
+          name: 'version.network',
+          getter: 'net_version',
+          inputFormatter: utils.toDecimal
         }),
         new Property({
-            name: 'version.ethereum',
-            getter: 'eth_protocolVersion',
-            inputFormatter: utils.toDecimal
+          name: 'version.ethereum',
+          getter: 'eth_protocolVersion',
+          inputFormatter: utils.toDecimal
         }),
         new Property({
-            name: 'version.whisper',
-            getter: 'shh_version',
-            inputFormatter: utils.toDecimal
+          name: 'version.whisper',
+          getter: 'shh_version',
+          inputFormatter: utils.toDecimal
         })
-    ];
-};
+      ]
+    }
 
-Web3.prototype.isConnected = function(){
-    return (this.currentProvider && this.currentProvider.isConnected());
-};
+    Web3.prototype.isConnected = function () {
+      return (this.currentProvider && this.currentProvider.isConnected())
+    }
 
-Web3.prototype.createBatch = function () {
-    return new Batch(this);
-};
+    Web3.prototype.createBatch = function () {
+      return new Batch(this)
+    }
 
-module.exports = Web3;
-
-
-},{"./utils/sha3":19,"./utils/utils":20,"./version.json":21,"./web3/batch":24,"./web3/extend":28,"./web3/httpprovider":32,"./web3/iban":33,"./web3/ipcprovider":34,"./web3/methods/db":37,"./web3/methods/eth":38,"./web3/methods/net":39,"./web3/methods/personal":40,"./web3/methods/shh":41,"./web3/methods/swarm":42,"./web3/property":45,"./web3/requestmanager":46,"./web3/settings":47,"bignumber.js":"bignumber.js"}],23:[function(require,module,exports){
+    module.exports = Web3
+  }, { './utils/sha3':19, './utils/utils':20, './version.json':21, './web3/batch':24, './web3/extend':28, './web3/httpprovider':32, './web3/iban':33, './web3/ipcprovider':34, './web3/methods/db':37, './web3/methods/eth':38, './web3/methods/net':39, './web3/methods/personal':40, './web3/methods/shh':41, './web3/methods/swarm':42, './web3/property':45, './web3/requestmanager':46, './web3/settings':47, 'bignumber.js':'bignumber.js' }],
+  23:[function (require, module, exports) {
 /*
     This file is part of web3.js.
 
@@ -2639,74 +2601,71 @@ module.exports = Web3;
  * @date 2014
  */
 
-var sha3 = require('../utils/sha3');
-var SolidityEvent = require('./event');
-var formatters = require('./formatters');
-var utils = require('../utils/utils');
-var Filter = require('./filter');
-var watches = require('./methods/watches');
+    var sha3 = require('../utils/sha3')
+    var SolidityEvent = require('./event')
+    var formatters = require('./formatters')
+    var utils = require('../utils/utils')
+    var Filter = require('./filter')
+    var watches = require('./methods/watches')
 
-var AllSolidityEvents = function (requestManager, json, address) {
-    this._requestManager = requestManager;
-    this._json = json;
-    this._address = address;
-};
-
-AllSolidityEvents.prototype.encode = function (options) {
-    options = options || {};
-    var result = {};
-
-    ['fromBlock', 'toBlock'].filter(function (f) {
-        return options[f] !== undefined;
-    }).forEach(function (f) {
-        result[f] = formatters.inputBlockNumberFormatter(options[f]);
-    });
-
-    result.address = this._address;
-
-    return result;
-};
-
-AllSolidityEvents.prototype.decode = function (data) {
-    data.data = data.data || '';
-    data.topics = data.topics || [];
-
-    var eventTopic = data.topics[0].slice(2);
-    var match = this._json.filter(function (j) {
-        return eventTopic === sha3(utils.transformToFullName(j));
-    })[0];
-
-    if (!match) { // cannot find matching event?
-        console.warn('cannot find event for log');
-        return data;
+    var AllSolidityEvents = function (requestManager, json, address) {
+      this._requestManager = requestManager
+      this._json = json
+      this._address = address
     }
 
-    var event = new SolidityEvent(this._requestManager, match, this._address);
-    return event.decode(data);
-};
+    AllSolidityEvents.prototype.encode = function (options) {
+      options = options || {}
+      var result = {};
 
-AllSolidityEvents.prototype.execute = function (options, callback) {
+      ['fromBlock', 'toBlock'].filter(function (f) {
+        return options[f] !== undefined
+      }).forEach(function (f) {
+        result[f] = formatters.inputBlockNumberFormatter(options[f])
+      })
 
-    if (utils.isFunction(arguments[arguments.length - 1])) {
-        callback = arguments[arguments.length - 1];
-        if(arguments.length === 1)
-            options = null;
+      result.address = this._address
+
+      return result
     }
 
-    var o = this.encode(options);
-    var formatter = this.decode.bind(this);
-    return new Filter(o, 'eth', this._requestManager, watches.eth(), formatter, callback);
-};
+    AllSolidityEvents.prototype.decode = function (data) {
+      data.data = data.data || ''
+      data.topics = data.topics || []
 
-AllSolidityEvents.prototype.attachToContract = function (contract) {
-    var execute = this.execute.bind(this);
-    contract.allEvents = execute;
-};
+      var eventTopic = data.topics[0].slice(2)
+      var match = this._json.filter(function (j) {
+        return eventTopic === sha3(utils.transformToFullName(j))
+      })[0]
 
-module.exports = AllSolidityEvents;
+      if (!match) { // cannot find matching event?
+        console.warn('cannot find event for log')
+        return data
+      }
 
+      var event = new SolidityEvent(this._requestManager, match, this._address)
+      return event.decode(data)
+    }
 
-},{"../utils/sha3":19,"../utils/utils":20,"./event":27,"./filter":29,"./formatters":30,"./methods/watches":43}],24:[function(require,module,exports){
+    AllSolidityEvents.prototype.execute = function (options, callback) {
+      if (utils.isFunction(arguments[arguments.length - 1])) {
+        callback = arguments[arguments.length - 1]
+        if (arguments.length === 1) { options = null }
+      }
+
+      var o = this.encode(options)
+      var formatter = this.decode.bind(this)
+      return new Filter(o, 'eth', this._requestManager, watches.eth(), formatter, callback)
+    }
+
+    AllSolidityEvents.prototype.attachToContract = function (contract) {
+      var execute = this.execute.bind(this)
+      contract.allEvents = execute
+    }
+
+    module.exports = AllSolidityEvents
+  }, { '../utils/sha3':19, '../utils/utils':20, './event':27, './filter':29, './formatters':30, './methods/watches':43 }],
+  24:[function (require, module, exports) {
 /*
     This file is part of web3.js.
 
@@ -2723,19 +2682,19 @@ module.exports = AllSolidityEvents;
     You should have received a copy of the GNU Lesser General Public License
     along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
 */
-/** 
+/**
  * @file batch.js
  * @author Marek Kotewicz <marek@ethdev.com>
  * @date 2015
  */
 
-var Jsonrpc = require('./jsonrpc');
-var errors = require('./errors');
+    var Jsonrpc = require('./jsonrpc')
+    var errors = require('./errors')
 
-var Batch = function (web3) {
-    this.requestManager = web3._requestManager;
-    this.requests = [];
-};
+    var Batch = function (web3) {
+      this.requestManager = web3._requestManager
+      this.requests = []
+    }
 
 /**
  * Should be called to add create new request to batch request
@@ -2743,38 +2702,36 @@ var Batch = function (web3) {
  * @method add
  * @param {Object} jsonrpc requet object
  */
-Batch.prototype.add = function (request) {
-    this.requests.push(request);
-};
+    Batch.prototype.add = function (request) {
+      this.requests.push(request)
+    }
 
 /**
  * Should be called to execute batch request
  *
  * @method execute
  */
-Batch.prototype.execute = function () {
-    var requests = this.requests;
-    this.requestManager.sendBatch(requests, function (err, results) {
-        results = results || [];
+    Batch.prototype.execute = function () {
+      var requests = this.requests
+      this.requestManager.sendBatch(requests, function (err, results) {
+        results = results || []
         requests.map(function (request, index) {
-            return results[index] || {};
+          return results[index] || {}
         }).forEach(function (result, index) {
-            if (requests[index].callback) {
-
-                if (!Jsonrpc.isValidResponse(result)) {
-                    return requests[index].callback(errors.InvalidResponse(result));
-                }
-
-                requests[index].callback(null, (requests[index].format ? requests[index].format(result.result) : result.result));
+          if (requests[index].callback) {
+            if (!Jsonrpc.isValidResponse(result)) {
+              return requests[index].callback(errors.InvalidResponse(result))
             }
-        });
-    }); 
-};
 
-module.exports = Batch;
+            requests[index].callback(null, (requests[index].format ? requests[index].format(result.result) : result.result))
+          }
+        })
+      })
+    }
 
-
-},{"./errors":26,"./jsonrpc":35}],25:[function(require,module,exports){
+    module.exports = Batch
+  }, { './errors':26, './jsonrpc':35 }],
+  25:[function (require, module, exports) {
 /*
     This file is part of web3.js.
 
@@ -2797,11 +2754,11 @@ module.exports = Batch;
  * @date 2014
  */
 
-var utils = require('../utils/utils');
-var coder = require('../solidity/coder');
-var SolidityEvent = require('./event');
-var SolidityFunction = require('./function');
-var AllEvents = require('./allevents');
+    var utils = require('../utils/utils')
+    var coder = require('../solidity/coder')
+    var SolidityEvent = require('./event')
+    var SolidityFunction = require('./function')
+    var AllEvents = require('./allevents')
 
 /**
  * Should be called to encode constructor params
@@ -2810,17 +2767,17 @@ var AllEvents = require('./allevents');
  * @param {Array} abi
  * @param {Array} constructor params
  */
-var encodeConstructorParams = function (abi, params) {
-    return abi.filter(function (json) {
-        return json.type === 'constructor' && json.inputs.length === params.length;
-    }).map(function (json) {
+    var encodeConstructorParams = function (abi, params) {
+      return abi.filter(function (json) {
+        return json.type === 'constructor' && json.inputs.length === params.length
+      }).map(function (json) {
         return json.inputs.map(function (input) {
-            return input.type;
-        });
-    }).map(function (types) {
-        return coder.encodeParams(types, params);
-    })[0] || '';
-};
+          return input.type
+        })
+      }).map(function (types) {
+        return coder.encodeParams(types, params)
+      })[0] || ''
+    }
 
 /**
  * Should be called to add functions to contract object
@@ -2829,15 +2786,15 @@ var encodeConstructorParams = function (abi, params) {
  * @param {Contract} contract
  * @param {Array} abi
  */
-var addFunctionsToContract = function (contract) {
-    contract.abi.filter(function (json) {
-        return json.type === 'function';
-    }).map(function (json) {
-        return new SolidityFunction(contract._eth, json, contract.address);
-    }).forEach(function (f) {
-        f.attachToContract(contract);
-    });
-};
+    var addFunctionsToContract = function (contract) {
+      contract.abi.filter(function (json) {
+        return json.type === 'function'
+      }).map(function (json) {
+        return new SolidityFunction(contract._eth, json, contract.address)
+      }).forEach(function (f) {
+        f.attachToContract(contract)
+      })
+    }
 
 /**
  * Should be called to add events to contract object
@@ -2846,21 +2803,20 @@ var addFunctionsToContract = function (contract) {
  * @param {Contract} contract
  * @param {Array} abi
  */
-var addEventsToContract = function (contract) {
-    var events = contract.abi.filter(function (json) {
-        return json.type === 'event';
-    });
+    var addEventsToContract = function (contract) {
+      var events = contract.abi.filter(function (json) {
+        return json.type === 'event'
+      })
 
-    var All = new AllEvents(contract._eth._requestManager, events, contract.address);
-    All.attachToContract(contract);
+      var All = new AllEvents(contract._eth._requestManager, events, contract.address)
+      All.attachToContract(contract)
 
-    events.map(function (json) {
-        return new SolidityEvent(contract._eth._requestManager, json, contract.address);
-    }).forEach(function (e) {
-        e.attachToContract(contract);
-    });
-};
-
+      events.map(function (json) {
+        return new SolidityEvent(contract._eth._requestManager, json, contract.address)
+      }).forEach(function (e) {
+        e.attachToContract(contract)
+      })
+    }
 
 /**
  * Should be called to check if the contract gets properly deployed on the blockchain.
@@ -2870,68 +2826,53 @@ var addEventsToContract = function (contract) {
  * @param {Function} callback
  * @returns {Undefined}
  */
-var checkForContractAddress = function(contract, callback){
-    var count = 0,
-        callbackFired = false;
+    var checkForContractAddress = function (contract, callback) {
+      var count = 0,
+        callbackFired = false
 
     // wait for receipt
-    var filter = contract._eth.filter('latest', function(e){
+      var filter = contract._eth.filter('latest', function (e) {
         if (!e && !callbackFired) {
-            count++;
+          count++
 
             // stop watching after 50 blocks (timeout)
-            if (count > 50) {
+          if (count > 50) {
+            filter.stopWatching(function () {})
+            callbackFired = true
 
-                filter.stopWatching(function() {});
-                callbackFired = true;
+            if (callback) { callback(new Error('Contract transaction couldn\'t be found after 50 blocks')) } else { throw new Error('Contract transaction couldn\'t be found after 50 blocks') }
+          } else {
+            contract._eth.getTransactionReceipt(contract.transactionHash, function (e, receipt) {
+              if (receipt && !callbackFired) {
+                contract._eth.getCode(receipt.contractAddress, function (e, code) {
+                            /* jshint maxcomplexity: 6 */
 
-                if (callback)
-                    callback(new Error('Contract transaction couldn\'t be found after 50 blocks'));
-                else
-                    throw new Error('Contract transaction couldn\'t be found after 50 blocks');
+                if (callbackFired || !code) { return }
 
+                filter.stopWatching(function () {})
+                callbackFired = true
 
-            } else {
-
-                contract._eth.getTransactionReceipt(contract.transactionHash, function(e, receipt){
-                    if(receipt && !callbackFired) {
-
-                        contract._eth.getCode(receipt.contractAddress, function(e, code){
-                            /*jshint maxcomplexity: 6 */
-
-                            if(callbackFired || !code)
-                                return;
-
-                            filter.stopWatching(function() {});
-                            callbackFired = true;
-
-                            if(code.length > 3) {
-
+                if (code.length > 3) {
                                 // console.log('Contract code deployed!');
 
-                                contract.address = receipt.contractAddress;
+                  contract.address = receipt.contractAddress
 
                                 // attach events and methods again after we have
-                                addFunctionsToContract(contract);
-                                addEventsToContract(contract);
+                  addFunctionsToContract(contract)
+                  addEventsToContract(contract)
 
                                 // call callback for the second time
-                                if(callback)
-                                    callback(null, contract);
-
-                            } else {
-                                if(callback)
-                                    callback(new Error('The contract code couldn\'t be stored, please check your gas amount.'));
-                                else
-                                    throw new Error('The contract code couldn\'t be stored, please check your gas amount.');
-                            }
-                        });
-                    }
-                });
-            }
+                  if (callback) { callback(null, contract) }
+                } else {
+                  if (callback) { callback(new Error('The contract code couldn\'t be stored, please check your gas amount.')) } else { throw new Error('The contract code couldn\'t be stored, please check your gas amount.') }
+                }
+              })
+              }
+            })
+          }
         }
-    });
-};
+      })
+    }
 
 /**
  * Should be called to create new ContractFactory instance
@@ -2939,9 +2880,9 @@ var checkForContractAddress = function(contract, callback){
  * @method ContractFactory
  * @param {Array} abi
  */
-var ContractFactory = function (eth, abi) {
-    this.eth = eth;
-    this.abi = abi;
+    var ContractFactory = function (eth, abi) {
+      this.eth = eth
+      this.abi = abi
 
     /**
      * Should be called to create new contract on a blockchain
@@ -2953,66 +2894,65 @@ var ContractFactory = function (eth, abi) {
      * @param {Function} callback
      * @returns {Contract} returns contract instance
      */
-    this.new = function () {
-        /*jshint maxcomplexity: 7 */
-        
-        var contract = new Contract(this.eth, this.abi);
+      this.new = function () {
+        /* jshint maxcomplexity: 7 */
+
+        var contract = new Contract(this.eth, this.abi)
 
         // parse arguments
-        var options = {}; // required!
-        var callback;
+        var options = {} // required!
+        var callback
 
-        var args = Array.prototype.slice.call(arguments);
+        var args = Array.prototype.slice.call(arguments)
         if (utils.isFunction(args[args.length - 1])) {
-            callback = args.pop();
+          callback = args.pop()
         }
 
-        var last = args[args.length - 1];
+        var last = args[args.length - 1]
         if (utils.isObject(last) && !utils.isArray(last)) {
-            options = args.pop();
+          options = args.pop()
         }
 
         if (options.value > 0) {
-            var constructorAbi = abi.filter(function (json) {
-                return json.type === 'constructor' && json.inputs.length === args.length;
-            })[0] || {};
+          var constructorAbi = abi.filter(function (json) {
+            return json.type === 'constructor' && json.inputs.length === args.length
+          })[0] || {}
 
-            if (!constructorAbi.payable) {
-                throw new Error('Cannot send value to non-payable constructor');
-            }
+          if (!constructorAbi.payable) {
+            throw new Error('Cannot send value to non-payable constructor')
+          }
         }
 
-        var bytes = encodeConstructorParams(this.abi, args);
-        options.data += bytes;
+        var bytes = encodeConstructorParams(this.abi, args)
+        options.data += bytes
 
         if (callback) {
-
             // wait for the contract address adn check if the code was deployed
-            this.eth.sendTransaction(options, function (err, hash) {
-                if (err) {
-                    callback(err);
-                } else {
+          this.eth.sendTransaction(options, function (err, hash) {
+            if (err) {
+              callback(err)
+            } else {
                     // add the transaction hash
-                    contract.transactionHash = hash;
+              contract.transactionHash = hash
 
                     // call callback for the first time
-                    callback(null, contract);
+              callback(null, contract)
 
-                    checkForContractAddress(contract, callback);
-                }
-            });
+              checkForContractAddress(contract, callback)
+            }
+          })
         } else {
-            var hash = this.eth.sendTransaction(options);
+          var hash = this.eth.sendTransaction(options)
             // add the transaction hash
-            contract.transactionHash = hash;
-            checkForContractAddress(contract);
+          contract.transactionHash = hash
+          checkForContractAddress(contract)
         }
 
-        return contract;
-    };
+        return contract
+      }
 
-    this.new.getData = this.getData.bind(this);
-};
+      this.new.getData = this.getData.bind(this)
+    }
 
 /**
  * Should be called to create new ContractFactory
@@ -3021,11 +2961,9 @@ var ContractFactory = function (eth, abi) {
  * @param {Array} abi
  * @returns {ContractFactory} new contract factory
  */
-//var contract = function (abi) {
-    //return new ContractFactory(abi);
-//};
-
-
+// var contract = function (abi) {
+    // return new ContractFactory(abi);
+// };
 
 /**
  * Should be called to get access to existing contract on a blockchain
@@ -3036,39 +2974,39 @@ var ContractFactory = function (eth, abi) {
  * @returns {Contract} returns contract if no callback was passed,
  * otherwise calls callback function (err, contract)
  */
-ContractFactory.prototype.at = function (address, callback) {
-    var contract = new Contract(this.eth, this.abi, address);
+    ContractFactory.prototype.at = function (address, callback) {
+      var contract = new Contract(this.eth, this.abi, address)
 
     // this functions are not part of prototype,
     // because we dont want to spoil the interface
-    addFunctionsToContract(contract);
-    addEventsToContract(contract);
+      addFunctionsToContract(contract)
+      addEventsToContract(contract)
 
-    if (callback) {
-        callback(null, contract);
+      if (callback) {
+        callback(null, contract)
+      }
+      return contract
     }
-    return contract;
-};
 
 /**
  * Gets the data, which is data to deploy plus constructor params
  *
  * @method getData
  */
-ContractFactory.prototype.getData = function () {
-    var options = {}; // required!
-    var args = Array.prototype.slice.call(arguments);
+    ContractFactory.prototype.getData = function () {
+      var options = {} // required!
+      var args = Array.prototype.slice.call(arguments)
 
-    var last = args[args.length - 1];
-    if (utils.isObject(last) && !utils.isArray(last)) {
-        options = args.pop();
+      var last = args[args.length - 1]
+      if (utils.isObject(last) && !utils.isArray(last)) {
+        options = args.pop()
+      }
+
+      var bytes = encodeConstructorParams(this.abi, args)
+      options.data += bytes
+
+      return options.data
     }
-
-    var bytes = encodeConstructorParams(this.abi, args);
-    options.data += bytes;
-
-    return options.data;
-};
 
 /**
  * Should be called to create new contract instance
@@ -3077,16 +3015,16 @@ ContractFactory.prototype.getData = function () {
  * @param {Array} abi
  * @param {Address} contract address
  */
-var Contract = function (eth, abi, address) {
-    this._eth = eth;
-    this.transactionHash = null;
-    this.address = address;
-    this.abi = abi;
-};
+    var Contract = function (eth, abi, address) {
+      this._eth = eth
+      this.transactionHash = null
+      this.address = address
+      this.abi = abi
+    }
 
-module.exports = ContractFactory;
-
-},{"../solidity/coder":7,"../utils/utils":20,"./allevents":23,"./event":27,"./function":31}],26:[function(require,module,exports){
+    module.exports = ContractFactory
+  }, { '../solidity/coder':7, '../utils/utils':20, './allevents':23, './event':27, './function':31 }],
+  26:[function (require, module, exports) {
 /*
     This file is part of web3.js.
 
@@ -3103,35 +3041,35 @@ module.exports = ContractFactory;
     You should have received a copy of the GNU Lesser General Public License
     along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
 */
-/** 
+/**
  * @file errors.js
  * @author Marek Kotewicz <marek@ethdev.com>
  * @date 2015
  */
 
-module.exports = {
-    InvalidNumberOfSolidityArgs: function () {
-        return new Error('Invalid number of arguments to Solidity function');
-    },
-    InvalidNumberOfRPCParams: function () {
-        return new Error('Invalid number of input parameters to RPC method');
-    },
-    InvalidConnection: function (host){
-        return new Error('CONNECTION ERROR: Couldn\'t connect to node '+ host +'.');
-    },
-    InvalidProvider: function () {
-        return new Error('Provider not set or invalid');
-    },
-    InvalidResponse: function (result){
-        var message = !!result && !!result.error && !!result.error.message ? result.error.message : 'Invalid JSON RPC response: ' + JSON.stringify(result);
-        return new Error(message);
-    },
-    ConnectionTimeout: function (ms){
-        return new Error('CONNECTION TIMEOUT: timeout of ' + ms + ' ms achived');
+    module.exports = {
+      InvalidNumberOfSolidityArgs: function () {
+        return new Error('Invalid number of arguments to Solidity function')
+      },
+      InvalidNumberOfRPCParams: function () {
+        return new Error('Invalid number of input parameters to RPC method')
+      },
+      InvalidConnection: function (host) {
+        return new Error('CONNECTION ERROR: Couldn\'t connect to node ' + host + '.')
+      },
+      InvalidProvider: function () {
+        return new Error('Provider not set or invalid')
+      },
+      InvalidResponse: function (result) {
+        var message = !!result && !!result.error && !!result.error.message ? result.error.message : 'Invalid JSON RPC response: ' + JSON.stringify(result)
+        return new Error(message)
+      },
+      ConnectionTimeout: function (ms) {
+        return new Error('CONNECTION TIMEOUT: timeout of ' + ms + ' ms achived')
+      }
     }
-};
-
-},{}],27:[function(require,module,exports){
+  }, {}],
+  27:[function (require, module, exports) {
 /*
     This file is part of web3.js.
 
@@ -3154,23 +3092,23 @@ module.exports = {
  * @date 2014
  */
 
-var utils = require('../utils/utils');
-var coder = require('../solidity/coder');
-var formatters = require('./formatters');
-var sha3 = require('../utils/sha3');
-var Filter = require('./filter');
-var watches = require('./methods/watches');
+    var utils = require('../utils/utils')
+    var coder = require('../solidity/coder')
+    var formatters = require('./formatters')
+    var sha3 = require('../utils/sha3')
+    var Filter = require('./filter')
+    var watches = require('./methods/watches')
 
 /**
  * This prototype should be used to create event filters
  */
-var SolidityEvent = function (requestManager, json, address) {
-    this._requestManager = requestManager;
-    this._params = json.inputs;
-    this._name = utils.transformToFullName(json);
-    this._address = address;
-    this._anonymous = json.anonymous;
-};
+    var SolidityEvent = function (requestManager, json, address) {
+      this._requestManager = requestManager
+      this._params = json.inputs
+      this._name = utils.transformToFullName(json)
+      this._address = address
+      this._anonymous = json.anonymous
+    }
 
 /**
  * Should be used to get filtered param types
@@ -3179,13 +3117,13 @@ var SolidityEvent = function (requestManager, json, address) {
  * @param {Bool} decide if returned typed should be indexed
  * @return {Array} array of types
  */
-SolidityEvent.prototype.types = function (indexed) {
-    return this._params.filter(function (i) {
-        return i.indexed === indexed;
-    }).map(function (i) {
-        return i.type;
-    });
-};
+    SolidityEvent.prototype.types = function (indexed) {
+      return this._params.filter(function (i) {
+        return i.indexed === indexed
+      }).map(function (i) {
+        return i.type
+      })
+    }
 
 /**
  * Should be used to get event display name
@@ -3193,9 +3131,9 @@ SolidityEvent.prototype.types = function (indexed) {
  * @method displayName
  * @return {String} event display name
  */
-SolidityEvent.prototype.displayName = function () {
-    return utils.extractDisplayName(this._name);
-};
+    SolidityEvent.prototype.displayName = function () {
+      return utils.extractDisplayName(this._name)
+    }
 
 /**
  * Should be used to get event type name
@@ -3203,9 +3141,9 @@ SolidityEvent.prototype.displayName = function () {
  * @method typeName
  * @return {String} event type name
  */
-SolidityEvent.prototype.typeName = function () {
-    return utils.extractTypeName(this._name);
-};
+    SolidityEvent.prototype.typeName = function () {
+      return utils.extractTypeName(this._name)
+    }
 
 /**
  * Should be used to get event signature
@@ -3213,9 +3151,9 @@ SolidityEvent.prototype.typeName = function () {
  * @method signature
  * @return {String} event signature
  */
-SolidityEvent.prototype.signature = function () {
-    return sha3(this._name);
-};
+    SolidityEvent.prototype.signature = function () {
+      return sha3(this._name)
+    }
 
 /**
  * Should be used to encode indexed params and options to one final object
@@ -3225,44 +3163,44 @@ SolidityEvent.prototype.signature = function () {
  * @param {Object} options
  * @return {Object} everything combined together and encoded
  */
-SolidityEvent.prototype.encode = function (indexed, options) {
-    indexed = indexed || {};
-    options = options || {};
-    var result = {};
+    SolidityEvent.prototype.encode = function (indexed, options) {
+      indexed = indexed || {}
+      options = options || {}
+      var result = {};
 
-    ['fromBlock', 'toBlock'].filter(function (f) {
-        return options[f] !== undefined;
-    }).forEach(function (f) {
-        result[f] = formatters.inputBlockNumberFormatter(options[f]);
-    });
+      ['fromBlock', 'toBlock'].filter(function (f) {
+        return options[f] !== undefined
+      }).forEach(function (f) {
+        result[f] = formatters.inputBlockNumberFormatter(options[f])
+      })
 
-    result.topics = [];
+      result.topics = []
 
-    result.address = this._address;
-    if (!this._anonymous) {
-        result.topics.push('0x' + this.signature());
-    }
+      result.address = this._address
+      if (!this._anonymous) {
+        result.topics.push('0x' + this.signature())
+      }
 
-    var indexedTopics = this._params.filter(function (i) {
-        return i.indexed === true;
-    }).map(function (i) {
-        var value = indexed[i.name];
+      var indexedTopics = this._params.filter(function (i) {
+        return i.indexed === true
+      }).map(function (i) {
+        var value = indexed[i.name]
         if (value === undefined || value === null) {
-            return null;
+          return null
         }
 
         if (utils.isArray(value)) {
-            return value.map(function (v) {
-                return '0x' + coder.encodeParam(i.type, v);
-            });
+          return value.map(function (v) {
+            return '0x' + coder.encodeParam(i.type, v)
+          })
         }
-        return '0x' + coder.encodeParam(i.type, value);
-    });
+        return '0x' + coder.encodeParam(i.type, value)
+      })
 
-    result.topics = result.topics.concat(indexedTopics);
+      result.topics = result.topics.concat(indexedTopics)
 
-    return result;
-};
+      return result
+    }
 
 /**
  * Should be used to decode indexed params and options
@@ -3271,32 +3209,31 @@ SolidityEvent.prototype.encode = function (indexed, options) {
  * @param {Object} data
  * @return {Object} result object with decoded indexed && not indexed params
  */
-SolidityEvent.prototype.decode = function (data) {
+    SolidityEvent.prototype.decode = function (data) {
+      data.data = data.data || ''
+      data.topics = data.topics || []
 
-    data.data = data.data || '';
-    data.topics = data.topics || [];
+      var argTopics = this._anonymous ? data.topics : data.topics.slice(1)
+      var indexedData = argTopics.map(function (topics) { return topics.slice(2) }).join('')
+      var indexedParams = coder.decodeParams(this.types(true), indexedData)
 
-    var argTopics = this._anonymous ? data.topics : data.topics.slice(1);
-    var indexedData = argTopics.map(function (topics) { return topics.slice(2); }).join("");
-    var indexedParams = coder.decodeParams(this.types(true), indexedData);
+      var notIndexedData = data.data.slice(2)
+      var notIndexedParams = coder.decodeParams(this.types(false), notIndexedData)
 
-    var notIndexedData = data.data.slice(2);
-    var notIndexedParams = coder.decodeParams(this.types(false), notIndexedData);
+      var result = formatters.outputLogFormatter(data)
+      result.event = this.displayName()
+      result.address = data.address
 
-    var result = formatters.outputLogFormatter(data);
-    result.event = this.displayName();
-    result.address = data.address;
+      result.args = this._params.reduce(function (acc, current) {
+        acc[current.name] = current.indexed ? indexedParams.shift() : notIndexedParams.shift()
+        return acc
+      }, {})
 
-    result.args = this._params.reduce(function (acc, current) {
-        acc[current.name] = current.indexed ? indexedParams.shift() : notIndexedParams.shift();
-        return acc;
-    }, {});
+      delete result.data
+      delete result.topics
 
-    delete result.data;
-    delete result.topics;
-
-    return result;
-};
+      return result
+    }
 
 /**
  * Should be used to create new filter object from event
@@ -3306,22 +3243,20 @@ SolidityEvent.prototype.decode = function (data) {
  * @param {Object} options
  * @return {Object} filter object
  */
-SolidityEvent.prototype.execute = function (indexed, options, callback) {
-
-    if (utils.isFunction(arguments[arguments.length - 1])) {
-        callback = arguments[arguments.length - 1];
-        if(arguments.length === 2)
-            options = null;
-        if(arguments.length === 1) {
-            options = null;
-            indexed = {};
+    SolidityEvent.prototype.execute = function (indexed, options, callback) {
+      if (utils.isFunction(arguments[arguments.length - 1])) {
+        callback = arguments[arguments.length - 1]
+        if (arguments.length === 2) { options = null }
+        if (arguments.length === 1) {
+          options = null
+          indexed = {}
         }
-    }
+      }
 
-    var o = this.encode(indexed, options);
-    var formatter = this.decode.bind(this);
-    return new Filter(o, 'eth', this._requestManager, watches.eth(), formatter, callback);
-};
+      var o = this.encode(indexed, options)
+      var formatter = this.decode.bind(this)
+      return new Filter(o, 'eth', this._requestManager, watches.eth(), formatter, callback)
+    }
 
 /**
  * Should be used to attach event to contract object
@@ -3329,69 +3264,64 @@ SolidityEvent.prototype.execute = function (indexed, options, callback) {
  * @method attachToContract
  * @param {Contract}
  */
-SolidityEvent.prototype.attachToContract = function (contract) {
-    var execute = this.execute.bind(this);
-    var displayName = this.displayName();
-    if (!contract[displayName]) {
-        contract[displayName] = execute;
+    SolidityEvent.prototype.attachToContract = function (contract) {
+      var execute = this.execute.bind(this)
+      var displayName = this.displayName()
+      if (!contract[displayName]) {
+        contract[displayName] = execute
+      }
+      contract[displayName][this.typeName()] = this.execute.bind(this, contract)
     }
-    contract[displayName][this.typeName()] = this.execute.bind(this, contract);
-};
 
-module.exports = SolidityEvent;
-
-
-},{"../solidity/coder":7,"../utils/sha3":19,"../utils/utils":20,"./filter":29,"./formatters":30,"./methods/watches":43}],28:[function(require,module,exports){
-var formatters = require('./formatters');
-var utils = require('./../utils/utils');
-var Method = require('./method');
-var Property = require('./property');
+    module.exports = SolidityEvent
+  }, { '../solidity/coder':7, '../utils/sha3':19, '../utils/utils':20, './filter':29, './formatters':30, './methods/watches':43 }],
+  28:[function (require, module, exports) {
+    var formatters = require('./formatters')
+    var utils = require('./../utils/utils')
+    var Method = require('./method')
+    var Property = require('./property')
 
 // TODO: refactor, so the input params are not altered.
 // it's necessary to make same 'extension' work with multiple providers
-var extend = function (web3) {
+    var extend = function (web3) {
     /* jshint maxcomplexity:5 */
-    var ex = function (extension) {
-
-        var extendedObject;
+      var ex = function (extension) {
+        var extendedObject
         if (extension.property) {
-            if (!web3[extension.property]) {
-                web3[extension.property] = {};
-            }
-            extendedObject = web3[extension.property];
+          if (!web3[extension.property]) {
+            web3[extension.property] = {}
+          }
+          extendedObject = web3[extension.property]
         } else {
-            extendedObject = web3;
+          extendedObject = web3
         }
 
         if (extension.methods) {
-            extension.methods.forEach(function (method) {
-                method.attachToObject(extendedObject);
-                method.setRequestManager(web3._requestManager);
-            });
+          extension.methods.forEach(function (method) {
+            method.attachToObject(extendedObject)
+            method.setRequestManager(web3._requestManager)
+          })
         }
 
         if (extension.properties) {
-            extension.properties.forEach(function (property) {
-                property.attachToObject(extendedObject);
-                property.setRequestManager(web3._requestManager);
-            });
+          extension.properties.forEach(function (property) {
+            property.attachToObject(extendedObject)
+            property.setRequestManager(web3._requestManager)
+          })
         }
-    };
+      }
 
-    ex.formatters = formatters; 
-    ex.utils = utils;
-    ex.Method = Method;
-    ex.Property = Property;
+      ex.formatters = formatters
+      ex.utils = utils
+      ex.Method = Method
+      ex.Property = Property
 
-    return ex;
-};
+      return ex
+    }
 
-
-
-module.exports = extend;
-
-
-},{"./../utils/utils":20,"./formatters":30,"./method":36,"./property":45}],29:[function(require,module,exports){
+    module.exports = extend
+  }, { './../utils/utils':20, './formatters':30, './method':36, './property':45 }],
+  29:[function (require, module, exports) {
 /*
     This file is part of web3.js.
 
@@ -3418,8 +3348,8 @@ module.exports = extend;
  * @date 2014
  */
 
-var formatters = require('./formatters');
-var utils = require('../utils/utils');
+    var formatters = require('./formatters')
+    var utils = require('../utils/utils')
 
 /**
 * Converts a given topic to a hex string, but also allows null values.
@@ -3427,53 +3357,47 @@ var utils = require('../utils/utils');
 * @param {Mixed} value
 * @return {String}
 */
-var toTopic = function(value){
+    var toTopic = function (value) {
+      if (value === null || typeof value === 'undefined') { return null }
 
-    if(value === null || typeof value === 'undefined')
-        return null;
+      value = String(value)
 
-    value = String(value);
-
-    if(value.indexOf('0x') === 0)
-        return value;
-    else
-        return utils.fromUtf8(value);
-};
-
-/// This method should be called on options object, to verify deprecated properties && lazy load dynamic ones
-/// @param should be string or object
-/// @returns options string or object
-var getOptions = function (options, type) {
-    /*jshint maxcomplexity: 6 */
-
-    if (utils.isString(options)) {
-        return options;
+      if (value.indexOf('0x') === 0) { return value } else { return utils.fromUtf8(value) }
     }
 
-    options = options || {};
+// / This method should be called on options object, to verify deprecated properties && lazy load dynamic ones
+// / @param should be string or object
+// / @returns options string or object
+    var getOptions = function (options, type) {
+    /* jshint maxcomplexity: 6 */
 
+      if (utils.isString(options)) {
+        return options
+      }
 
-    switch(type) {
+      options = options || {}
+
+      switch (type) {
         case 'eth':
 
             // make sure topics, get converted to hex
-            options.topics = options.topics || [];
-            options.topics = options.topics.map(function(topic){
-                return (utils.isArray(topic)) ? topic.map(toTopic) : toTopic(topic);
-            });
+          options.topics = options.topics || []
+          options.topics = options.topics.map(function (topic) {
+            return (utils.isArray(topic)) ? topic.map(toTopic) : toTopic(topic)
+          })
 
-            return {
-                topics: options.topics,
-                from: options.from,
-                to: options.to,
-                address: options.address,
-                fromBlock: formatters.inputBlockNumberFormatter(options.fromBlock),
-                toBlock: formatters.inputBlockNumberFormatter(options.toBlock)
-            };
+          return {
+            topics: options.topics,
+            from: options.from,
+            to: options.to,
+            address: options.address,
+            fromBlock: formatters.inputBlockNumberFormatter(options.fromBlock),
+            toBlock: formatters.inputBlockNumberFormatter(options.toBlock)
+          }
         case 'shh':
-            return options;
+          return options
+      }
     }
-};
 
 /**
 Adds the callback and sets up the methods, to iterate over the results.
@@ -3482,23 +3406,23 @@ Adds the callback and sets up the methods, to iterate over the results.
 @param {Object} self
 @param {function} callback
 */
-var getLogsAtStart = function(self, callback){
+    var getLogsAtStart = function (self, callback) {
     // call getFilterLogs for the first watch callback start
-    if (!utils.isString(self.options)) {
+      if (!utils.isString(self.options)) {
         self.get(function (err, messages) {
             // don't send all the responses to all the watches again... just to self one
-            if (err) {
-                callback(err);
-            }
+          if (err) {
+            callback(err)
+          }
 
-            if(utils.isArray(messages)) {
-                messages.forEach(function (message) {
-                    callback(null, message);
-                });
-            }
-        });
+          if (utils.isArray(messages)) {
+            messages.forEach(function (message) {
+              callback(null, message)
+            })
+          }
+        })
+      }
     }
-};
 
 /**
 Adds the callback and sets up the methods, to iterate over the results.
@@ -3506,139 +3430,135 @@ Adds the callback and sets up the methods, to iterate over the results.
 @method pollFilter
 @param {Object} self
 */
-var pollFilter = function(self) {
-
-    var onMessage = function (error, messages) {
+    var pollFilter = function (self) {
+      var onMessage = function (error, messages) {
         if (error) {
-            return self.callbacks.forEach(function (callback) {
-                callback(error);
-            });
+          return self.callbacks.forEach(function (callback) {
+            callback(error)
+          })
         }
 
-        if(utils.isArray(messages)) {
-            messages.forEach(function (message) {
-                message = self.formatter ? self.formatter(message) : message;
-                self.callbacks.forEach(function (callback) {
-                    callback(null, message);
-                });
-            });
+        if (utils.isArray(messages)) {
+          messages.forEach(function (message) {
+            message = self.formatter ? self.formatter(message) : message
+            self.callbacks.forEach(function (callback) {
+              callback(null, message)
+            })
+          })
         }
-    };
+      }
 
-    self.requestManager.startPolling({
+      self.requestManager.startPolling({
         method: self.implementation.poll.call,
-        params: [self.filterId],
-    }, self.filterId, onMessage, self.stopWatching.bind(self));
+        params: [self.filterId]
+      }, self.filterId, onMessage, self.stopWatching.bind(self))
+    }
 
-};
-
-var Filter = function (options, type, requestManager, methods, formatter, callback, filterCreationErrorCallback) {
-    var self = this;
-    var implementation = {};
-    methods.forEach(function (method) {
-        method.setRequestManager(requestManager);
-        method.attachToObject(implementation);
-    });
-    this.requestManager = requestManager;
-    this.options = getOptions(options, type);
-    this.implementation = implementation;
-    this.filterId = null;
-    this.callbacks = [];
-    this.getLogsCallbacks = [];
-    this.pollFilters = [];
-    this.formatter = formatter;
-    this.implementation.newFilter(this.options, function(error, id){
-        if(error) {
-            self.callbacks.forEach(function(cb){
-                cb(error);
-            });
-            if (typeof filterCreationErrorCallback === 'function') {
-              filterCreationErrorCallback(error);
-            }
+    var Filter = function (options, type, requestManager, methods, formatter, callback, filterCreationErrorCallback) {
+      var self = this
+      var implementation = {}
+      methods.forEach(function (method) {
+        method.setRequestManager(requestManager)
+        method.attachToObject(implementation)
+      })
+      this.requestManager = requestManager
+      this.options = getOptions(options, type)
+      this.implementation = implementation
+      this.filterId = null
+      this.callbacks = []
+      this.getLogsCallbacks = []
+      this.pollFilters = []
+      this.formatter = formatter
+      this.implementation.newFilter(this.options, function (error, id) {
+        if (error) {
+          self.callbacks.forEach(function (cb) {
+            cb(error)
+          })
+          if (typeof filterCreationErrorCallback === 'function') {
+            filterCreationErrorCallback(error)
+          }
         } else {
-            self.filterId = id;
+          self.filterId = id
 
             // check if there are get pending callbacks as a consequence
             // of calling get() with filterId unassigned.
-            self.getLogsCallbacks.forEach(function (cb){
-                self.get(cb);
-            });
-            self.getLogsCallbacks = [];
+          self.getLogsCallbacks.forEach(function (cb) {
+            self.get(cb)
+          })
+          self.getLogsCallbacks = []
 
             // get filter logs for the already existing watch calls
-            self.callbacks.forEach(function(cb){
-                getLogsAtStart(self, cb);
-            });
-            if(self.callbacks.length > 0)
-                pollFilter(self);
+          self.callbacks.forEach(function (cb) {
+            getLogsAtStart(self, cb)
+          })
+          if (self.callbacks.length > 0) { pollFilter(self) }
 
             // start to watch immediately
-            if(typeof callback === 'function') {
-                return self.watch(callback);
-            }
+          if (typeof callback === 'function') {
+            return self.watch(callback)
+          }
         }
-    });
+      })
 
-    return this;
-};
-
-Filter.prototype.watch = function (callback) {
-    this.callbacks.push(callback);
-
-    if(this.filterId) {
-        getLogsAtStart(this, callback);
-        pollFilter(this);
+      return this
     }
 
-    return this;
-};
+    Filter.prototype.watch = function (callback) {
+      this.callbacks.push(callback)
 
-Filter.prototype.stopWatching = function (callback) {
-    this.requestManager.stopPolling(this.filterId);
-    this.callbacks = [];
+      if (this.filterId) {
+        getLogsAtStart(this, callback)
+        pollFilter(this)
+      }
+
+      return this
+    }
+
+    Filter.prototype.stopWatching = function (callback) {
+      this.requestManager.stopPolling(this.filterId)
+      this.callbacks = []
     // remove filter async
-    if (callback) {
-        this.implementation.uninstallFilter(this.filterId, callback);
-    } else {
-        return this.implementation.uninstallFilter(this.filterId);
+      if (callback) {
+        this.implementation.uninstallFilter(this.filterId, callback)
+      } else {
+        return this.implementation.uninstallFilter(this.filterId)
+      }
     }
-};
 
-Filter.prototype.get = function (callback) {
-    var self = this;
-    if (utils.isFunction(callback)) {
+    Filter.prototype.get = function (callback) {
+      var self = this
+      if (utils.isFunction(callback)) {
         if (this.filterId === null) {
             // If filterId is not set yet, call it back
             // when newFilter() assigns it.
-            this.getLogsCallbacks.push(callback);
+          this.getLogsCallbacks.push(callback)
         } else {
-            this.implementation.getLogs(this.filterId, function(err, res){
-                if (err) {
-                    callback(err);
-                } else {
-                    callback(null, res.map(function (log) {
-                        return self.formatter ? self.formatter(log) : log;
-                    }));
-                }
-            });
+          this.implementation.getLogs(this.filterId, function (err, res) {
+            if (err) {
+              callback(err)
+            } else {
+              callback(null, res.map(function (log) {
+                return self.formatter ? self.formatter(log) : log
+              }))
+            }
+          })
         }
-    } else {
+      } else {
         if (this.filterId === null) {
-            throw new Error('Filter ID Error: filter().get() can\'t be chained synchronous, please provide a callback for the get() method.');
+          throw new Error('Filter ID Error: filter().get() can\'t be chained synchronous, please provide a callback for the get() method.')
         }
-        var logs = this.implementation.getLogs(this.filterId);
+        var logs = this.implementation.getLogs(this.filterId)
         return logs.map(function (log) {
-            return self.formatter ? self.formatter(log) : log;
-        });
+          return self.formatter ? self.formatter(log) : log
+        })
+      }
+
+      return this
     }
 
-    return this;
-};
-
-module.exports = Filter;
-
-
-},{"../utils/utils":20,"./formatters":30}],30:[function(require,module,exports){
+    module.exports = Filter
+  }, { '../utils/utils':20, './formatters':30 }],
+  30:[function (require, module, exports) {
 /*
     This file is part of web3.js.
 
@@ -3662,12 +3582,11 @@ module.exports = Filter;
  * @date 2015
  */
 
-'use strict';
+    'use strict'
 
-
-var utils = require('../utils/utils');
-var config = require('../utils/config');
-var Iban = require('./iban');
+    var utils = require('../utils/utils')
+    var config = require('../utils/config')
+    var Iban = require('./iban')
 
 /**
  * Should the format output to a big number
@@ -3676,29 +3595,29 @@ var Iban = require('./iban');
  * @param {String|Number|BigNumber}
  * @returns {BigNumber} object
  */
-var outputBigNumberFormatter = function (number) {
-    return utils.toBigNumber(number);
-};
-
-var isPredefinedBlockNumber = function (blockNumber) {
-    return blockNumber === 'latest' || blockNumber === 'pending' || blockNumber === 'earliest';
-};
-
-var inputDefaultBlockNumberFormatter = function (blockNumber) {
-    if (blockNumber === undefined) {
-        return config.defaultBlock;
+    var outputBigNumberFormatter = function (number) {
+      return utils.toBigNumber(number)
     }
-    return inputBlockNumberFormatter(blockNumber);
-};
 
-var inputBlockNumberFormatter = function (blockNumber) {
-    if (blockNumber === undefined) {
-        return undefined;
-    } else if (isPredefinedBlockNumber(blockNumber)) {
-        return blockNumber;
+    var isPredefinedBlockNumber = function (blockNumber) {
+      return blockNumber === 'latest' || blockNumber === 'pending' || blockNumber === 'earliest'
     }
-    return utils.toHex(blockNumber);
-};
+
+    var inputDefaultBlockNumberFormatter = function (blockNumber) {
+      if (blockNumber === undefined) {
+        return config.defaultBlock
+      }
+      return inputBlockNumberFormatter(blockNumber)
+    }
+
+    var inputBlockNumberFormatter = function (blockNumber) {
+      if (blockNumber === undefined) {
+        return undefined
+      } else if (isPredefinedBlockNumber(blockNumber)) {
+        return blockNumber
+      }
+      return utils.toHex(blockNumber)
+    }
 
 /**
  * Formats the input of a transaction and converts all values to HEX
@@ -3707,26 +3626,25 @@ var inputBlockNumberFormatter = function (blockNumber) {
  * @param {Object} transaction options
  * @returns object
 */
-var inputCallFormatter = function (options){
+    var inputCallFormatter = function (options) {
+      options.from = options.from || config.defaultAccount
 
-    options.from = options.from || config.defaultAccount;
+      if (options.from) {
+        options.from = inputAddressFormatter(options.from)
+      }
 
-    if (options.from) {
-        options.from = inputAddressFormatter(options.from);
+      if (options.to) { // it might be contract creation
+        options.to = inputAddressFormatter(options.to)
+      }
+
+      ['gasPrice', 'gas', 'value', 'nonce'].filter(function (key) {
+        return options[key] !== undefined
+      }).forEach(function (key) {
+        options[key] = utils.fromDecimal(options[key])
+      })
+
+      return options
     }
-
-    if (options.to) { // it might be contract creation
-        options.to = inputAddressFormatter(options.to);
-    }
-
-    ['gasPrice', 'gas', 'value', 'nonce'].filter(function (key) {
-        return options[key] !== undefined;
-    }).forEach(function(key){
-        options[key] = utils.fromDecimal(options[key]);
-    });
-
-    return options;
-};
 
 /**
  * Formats the input of a transaction and converts all values to HEX
@@ -3735,23 +3653,22 @@ var inputCallFormatter = function (options){
  * @param {Object} transaction options
  * @returns object
 */
-var inputTransactionFormatter = function (options){
+    var inputTransactionFormatter = function (options) {
+      options.from = options.from || config.defaultAccount
+      options.from = inputAddressFormatter(options.from)
 
-    options.from = options.from || config.defaultAccount;
-    options.from = inputAddressFormatter(options.from);
+      if (options.to) { // it might be contract creation
+        options.to = inputAddressFormatter(options.to)
+      }
 
-    if (options.to) { // it might be contract creation
-        options.to = inputAddressFormatter(options.to);
+      ['gasPrice', 'gas', 'value', 'nonce'].filter(function (key) {
+        return options[key] !== undefined
+      }).forEach(function (key) {
+        options[key] = utils.fromDecimal(options[key])
+      })
+
+      return options
     }
-
-    ['gasPrice', 'gas', 'value', 'nonce'].filter(function (key) {
-        return options[key] !== undefined;
-    }).forEach(function(key){
-        options[key] = utils.fromDecimal(options[key]);
-    });
-
-    return options;
-};
 
 /**
  * Formats the output of a transaction to its proper values
@@ -3760,17 +3677,15 @@ var inputTransactionFormatter = function (options){
  * @param {Object} tx
  * @returns {Object}
 */
-var outputTransactionFormatter = function (tx){
-    if(tx.blockNumber !== null)
-        tx.blockNumber = utils.toDecimal(tx.blockNumber);
-    if(tx.transactionIndex !== null)
-        tx.transactionIndex = utils.toDecimal(tx.transactionIndex);
-    tx.nonce = utils.toDecimal(tx.nonce);
-    tx.gas = utils.toDecimal(tx.gas);
-    tx.gasPrice = utils.toBigNumber(tx.gasPrice);
-    tx.value = utils.toBigNumber(tx.value);
-    return tx;
-};
+    var outputTransactionFormatter = function (tx) {
+      if (tx.blockNumber !== null) { tx.blockNumber = utils.toDecimal(tx.blockNumber) }
+      if (tx.transactionIndex !== null) { tx.transactionIndex = utils.toDecimal(tx.transactionIndex) }
+      tx.nonce = utils.toDecimal(tx.nonce)
+      tx.gas = utils.toDecimal(tx.gas)
+      tx.gasPrice = utils.toBigNumber(tx.gasPrice)
+      tx.value = utils.toBigNumber(tx.value)
+      return tx
+    }
 
 /**
  * Formats the output of a transaction receipt to its proper values
@@ -3779,22 +3694,20 @@ var outputTransactionFormatter = function (tx){
  * @param {Object} receipt
  * @returns {Object}
 */
-var outputTransactionReceiptFormatter = function (receipt){
-    if(receipt.blockNumber !== null)
-        receipt.blockNumber = utils.toDecimal(receipt.blockNumber);
-    if(receipt.transactionIndex !== null)
-        receipt.transactionIndex = utils.toDecimal(receipt.transactionIndex);
-    receipt.cumulativeGasUsed = utils.toDecimal(receipt.cumulativeGasUsed);
-    receipt.gasUsed = utils.toDecimal(receipt.gasUsed);
+    var outputTransactionReceiptFormatter = function (receipt) {
+      if (receipt.blockNumber !== null) { receipt.blockNumber = utils.toDecimal(receipt.blockNumber) }
+      if (receipt.transactionIndex !== null) { receipt.transactionIndex = utils.toDecimal(receipt.transactionIndex) }
+      receipt.cumulativeGasUsed = utils.toDecimal(receipt.cumulativeGasUsed)
+      receipt.gasUsed = utils.toDecimal(receipt.gasUsed)
 
-    if(utils.isArray(receipt.logs)) {
-        receipt.logs = receipt.logs.map(function(log){
-            return outputLogFormatter(log);
-        });
+      if (utils.isArray(receipt.logs)) {
+        receipt.logs = receipt.logs.map(function (log) {
+          return outputLogFormatter(log)
+        })
+      }
+
+      return receipt
     }
-
-    return receipt;
-};
 
 /**
  * Formats the output of a block to its proper values
@@ -3803,28 +3716,25 @@ var outputTransactionReceiptFormatter = function (receipt){
  * @param {Object} block
  * @returns {Object}
 */
-var outputBlockFormatter = function(block) {
-
+    var outputBlockFormatter = function (block) {
     // transform to number
-    block.gasLimit = utils.toDecimal(block.gasLimit);
-    block.gasUsed = utils.toDecimal(block.gasUsed);
-    block.size = utils.toDecimal(block.size);
-    block.timestamp = utils.toDecimal(block.timestamp);
-    if(block.number !== null)
-        block.number = utils.toDecimal(block.number);
+      block.gasLimit = utils.toDecimal(block.gasLimit)
+      block.gasUsed = utils.toDecimal(block.gasUsed)
+      block.size = utils.toDecimal(block.size)
+      block.timestamp = utils.toDecimal(block.timestamp)
+      if (block.number !== null) { block.number = utils.toDecimal(block.number) }
 
-    block.difficulty = utils.toBigNumber(block.difficulty);
-    block.totalDifficulty = utils.toBigNumber(block.totalDifficulty);
+      block.difficulty = utils.toBigNumber(block.difficulty)
+      block.totalDifficulty = utils.toBigNumber(block.totalDifficulty)
 
-    if (utils.isArray(block.transactions)) {
-        block.transactions.forEach(function(item){
-            if(!utils.isString(item))
-                return outputTransactionFormatter(item);
-        });
+      if (utils.isArray(block.transactions)) {
+        block.transactions.forEach(function (item) {
+          if (!utils.isString(item)) { return outputTransactionFormatter(item) }
+        })
+      }
+
+      return block
     }
-
-    return block;
-};
 
 /**
  * Formats the output of a log
@@ -3833,16 +3743,13 @@ var outputBlockFormatter = function(block) {
  * @param {Object} log object
  * @returns {Object} log
 */
-var outputLogFormatter = function(log) {
-    if(log.blockNumber)
-        log.blockNumber = utils.toDecimal(log.blockNumber);
-    if(log.transactionIndex)
-        log.transactionIndex = utils.toDecimal(log.transactionIndex);
-    if(log.logIndex)
-        log.logIndex = utils.toDecimal(log.logIndex);
+    var outputLogFormatter = function (log) {
+      if (log.blockNumber) { log.blockNumber = utils.toDecimal(log.blockNumber) }
+      if (log.transactionIndex) { log.transactionIndex = utils.toDecimal(log.transactionIndex) }
+      if (log.logIndex) { log.logIndex = utils.toDecimal(log.logIndex) }
 
-    return log;
-};
+      return log
+    }
 
 /**
  * Formats the input of a whisper post and converts all values to HEX
@@ -3851,26 +3758,25 @@ var outputLogFormatter = function(log) {
  * @param {Object} transaction object
  * @returns {Object}
 */
-var inputPostFormatter = function(post) {
-
+    var inputPostFormatter = function (post) {
     // post.payload = utils.toHex(post.payload);
-    post.ttl = utils.fromDecimal(post.ttl);
-    post.workToProve = utils.fromDecimal(post.workToProve);
-    post.priority = utils.fromDecimal(post.priority);
+      post.ttl = utils.fromDecimal(post.ttl)
+      post.workToProve = utils.fromDecimal(post.workToProve)
+      post.priority = utils.fromDecimal(post.priority)
 
     // fallback
-    if (!utils.isArray(post.topics)) {
-        post.topics = post.topics ? [post.topics] : [];
-    }
+      if (!utils.isArray(post.topics)) {
+        post.topics = post.topics ? [post.topics] : []
+      }
 
     // format the following options
-    post.topics = post.topics.map(function(topic){
+      post.topics = post.topics.map(function (topic) {
         // convert only if not hex
-        return (topic.indexOf('0x') === 0) ? topic : utils.fromUtf8(topic);
-    });
+        return (topic.indexOf('0x') === 0) ? topic : utils.fromUtf8(topic)
+      })
 
-    return post;
-};
+      return post
+    }
 
 /**
  * Formats the output of a received post message
@@ -3879,12 +3785,11 @@ var inputPostFormatter = function(post) {
  * @param {Object}
  * @returns {Object}
  */
-var outputPostFormatter = function(post){
-
-    post.expiry = utils.toDecimal(post.expiry);
-    post.sent = utils.toDecimal(post.sent);
-    post.ttl = utils.toDecimal(post.ttl);
-    post.workProved = utils.toDecimal(post.workProved);
+    var outputPostFormatter = function (post) {
+      post.expiry = utils.toDecimal(post.expiry)
+      post.sent = utils.toDecimal(post.sent)
+      post.ttl = utils.toDecimal(post.ttl)
+      post.workProved = utils.toDecimal(post.workProved)
     // post.payloadRaw = post.payload;
     // post.payload = utils.toAscii(post.payload);
 
@@ -3893,63 +3798,61 @@ var outputPostFormatter = function(post){
     // }
 
     // format the following options
-    if (!post.topics) {
-        post.topics = [];
-    }
-    post.topics = post.topics.map(function(topic){
-        return utils.toAscii(topic);
-    });
+      if (!post.topics) {
+        post.topics = []
+      }
+      post.topics = post.topics.map(function (topic) {
+        return utils.toAscii(topic)
+      })
 
-    return post;
-};
-
-var inputAddressFormatter = function (address) {
-    var iban = new Iban(address);
-    if (iban.isValid() && iban.isDirect()) {
-        return '0x' + iban.address();
-    } else if (utils.isStrictAddress(address)) {
-        return address;
-    } else if (utils.isAddress(address)) {
-        return '0x' + address;
-    }
-    throw new Error('invalid address');
-};
-
-
-var outputSyncingFormatter = function(result) {
-    if (!result) {
-        return result;
+      return post
     }
 
-    result.startingBlock = utils.toDecimal(result.startingBlock);
-    result.currentBlock = utils.toDecimal(result.currentBlock);
-    result.highestBlock = utils.toDecimal(result.highestBlock);
-    if (result.knownStates) {
-        result.knownStates = utils.toDecimal(result.knownStates);
-        result.pulledStates = utils.toDecimal(result.pulledStates);
+    var inputAddressFormatter = function (address) {
+      var iban = new Iban(address)
+      if (iban.isValid() && iban.isDirect()) {
+        return '0x' + iban.address()
+      } else if (utils.isStrictAddress(address)) {
+        return address
+      } else if (utils.isAddress(address)) {
+        return '0x' + address
+      }
+      throw new Error('invalid address')
     }
 
-    return result;
-};
+    var outputSyncingFormatter = function (result) {
+      if (!result) {
+        return result
+      }
 
-module.exports = {
-    inputDefaultBlockNumberFormatter: inputDefaultBlockNumberFormatter,
-    inputBlockNumberFormatter: inputBlockNumberFormatter,
-    inputCallFormatter: inputCallFormatter,
-    inputTransactionFormatter: inputTransactionFormatter,
-    inputAddressFormatter: inputAddressFormatter,
-    inputPostFormatter: inputPostFormatter,
-    outputBigNumberFormatter: outputBigNumberFormatter,
-    outputTransactionFormatter: outputTransactionFormatter,
-    outputTransactionReceiptFormatter: outputTransactionReceiptFormatter,
-    outputBlockFormatter: outputBlockFormatter,
-    outputLogFormatter: outputLogFormatter,
-    outputPostFormatter: outputPostFormatter,
-    outputSyncingFormatter: outputSyncingFormatter
-};
+      result.startingBlock = utils.toDecimal(result.startingBlock)
+      result.currentBlock = utils.toDecimal(result.currentBlock)
+      result.highestBlock = utils.toDecimal(result.highestBlock)
+      if (result.knownStates) {
+        result.knownStates = utils.toDecimal(result.knownStates)
+        result.pulledStates = utils.toDecimal(result.pulledStates)
+      }
 
+      return result
+    }
 
-},{"../utils/config":18,"../utils/utils":20,"./iban":33}],31:[function(require,module,exports){
+    module.exports = {
+      inputDefaultBlockNumberFormatter: inputDefaultBlockNumberFormatter,
+      inputBlockNumberFormatter: inputBlockNumberFormatter,
+      inputCallFormatter: inputCallFormatter,
+      inputTransactionFormatter: inputTransactionFormatter,
+      inputAddressFormatter: inputAddressFormatter,
+      inputPostFormatter: inputPostFormatter,
+      outputBigNumberFormatter: outputBigNumberFormatter,
+      outputTransactionFormatter: outputTransactionFormatter,
+      outputTransactionReceiptFormatter: outputTransactionReceiptFormatter,
+      outputBlockFormatter: outputBlockFormatter,
+      outputLogFormatter: outputLogFormatter,
+      outputPostFormatter: outputPostFormatter,
+      outputSyncingFormatter: outputSyncingFormatter
+    }
+  }, { '../utils/config':18, '../utils/utils':20, './iban':33 }],
+  31:[function (require, module, exports) {
 /*
     This file is part of web3.js.
 
@@ -3972,40 +3875,40 @@ module.exports = {
  * @date 2015
  */
 
-var coder = require('../solidity/coder');
-var utils = require('../utils/utils');
-var errors = require('./errors');
-var formatters = require('./formatters');
-var sha3 = require('../utils/sha3');
+    var coder = require('../solidity/coder')
+    var utils = require('../utils/utils')
+    var errors = require('./errors')
+    var formatters = require('./formatters')
+    var sha3 = require('../utils/sha3')
 
 /**
  * This prototype should be used to call/sendTransaction to solidity functions
  */
-var SolidityFunction = function (eth, json, address) {
-    this._eth = eth;
-    this._inputTypes = json.inputs.map(function (i) {
-        return i.type;
-    });
-    this._outputTypes = json.outputs.map(function (i) {
-        return i.type;
-    });
-    this._constant = json.constant;
-    this._payable = json.payable;
-    this._name = utils.transformToFullName(json);
-    this._address = address;
-};
-
-SolidityFunction.prototype.extractCallback = function (args) {
-    if (utils.isFunction(args[args.length - 1])) {
-        return args.pop(); // modify the args array!
+    var SolidityFunction = function (eth, json, address) {
+      this._eth = eth
+      this._inputTypes = json.inputs.map(function (i) {
+        return i.type
+      })
+      this._outputTypes = json.outputs.map(function (i) {
+        return i.type
+      })
+      this._constant = json.constant
+      this._payable = json.payable
+      this._name = utils.transformToFullName(json)
+      this._address = address
     }
-};
 
-SolidityFunction.prototype.extractDefaultBlock = function (args) {
-    if (args.length > this._inputTypes.length && !utils.isObject(args[args.length -1])) {
-        return formatters.inputDefaultBlockNumberFormatter(args.pop()); // modify the args array!
+    SolidityFunction.prototype.extractCallback = function (args) {
+      if (utils.isFunction(args[args.length - 1])) {
+        return args.pop() // modify the args array!
+      }
     }
-};
+
+    SolidityFunction.prototype.extractDefaultBlock = function (args) {
+      if (args.length > this._inputTypes.length && !utils.isObject(args[args.length - 1])) {
+        return formatters.inputDefaultBlockNumberFormatter(args.pop()) // modify the args array!
+      }
+    }
 
 /**
  * Should be called to check if the number of arguments is correct
@@ -4014,18 +3917,18 @@ SolidityFunction.prototype.extractDefaultBlock = function (args) {
  * @param {Array} arguments
  * @throws {Error} if it is not
  */
-SolidityFunction.prototype.validateArgs = function (args) {
-    var inputArgs = args.filter(function (a) {
+    SolidityFunction.prototype.validateArgs = function (args) {
+      var inputArgs = args.filter(function (a) {
       // filter the options object but not arguments that are arrays
-      return !( (utils.isObject(a) === true) &&
+        return !((utils.isObject(a) === true) &&
                 (utils.isArray(a) === false) &&
                 (utils.isBigNumber(a) === false)
-              );
-    });
-    if (inputArgs.length !== this._inputTypes.length) {
-        throw errors.InvalidNumberOfSolidityArgs();
+              )
+      })
+      if (inputArgs.length !== this._inputTypes.length) {
+        throw errors.InvalidNumberOfSolidityArgs()
+      }
     }
-};
 
 /**
  * Should be used to create payload from arguments
@@ -4034,16 +3937,16 @@ SolidityFunction.prototype.validateArgs = function (args) {
  * @param {Array} solidity function params
  * @param {Object} optional payload options
  */
-SolidityFunction.prototype.toPayload = function (args) {
-    var options = {};
-    if (args.length > this._inputTypes.length && utils.isObject(args[args.length -1])) {
-        options = args[args.length - 1];
+    SolidityFunction.prototype.toPayload = function (args) {
+      var options = {}
+      if (args.length > this._inputTypes.length && utils.isObject(args[args.length - 1])) {
+        options = args[args.length - 1]
+      }
+      this.validateArgs(args)
+      options.to = this._address
+      options.data = '0x' + this.signature() + coder.encodeParams(this._inputTypes, args)
+      return options
     }
-    this.validateArgs(args);
-    options.to = this._address;
-    options.data = '0x' + this.signature() + coder.encodeParams(this._inputTypes, args);
-    return options;
-};
 
 /**
  * Should be used to get function signature
@@ -4051,20 +3954,19 @@ SolidityFunction.prototype.toPayload = function (args) {
  * @method signature
  * @return {String} function signature
  */
-SolidityFunction.prototype.signature = function () {
-    return sha3(this._name).slice(0, 8);
-};
-
-
-SolidityFunction.prototype.unpackOutput = function (output) {
-    if (!output) {
-        return;
+    SolidityFunction.prototype.signature = function () {
+      return sha3(this._name).slice(0, 8)
     }
 
-    output = output.length >= 2 ? output.slice(2) : output;
-    var result = coder.decodeParams(this._outputTypes, output);
-    return result.length === 1 ? result[0] : result;
-};
+    SolidityFunction.prototype.unpackOutput = function (output) {
+      if (!output) {
+        return
+      }
+
+      output = output.length >= 2 ? output.slice(2) : output
+      var result = coder.decodeParams(this._outputTypes, output)
+      return result.length === 1 ? result[0] : result
+    }
 
 /**
  * Calls a contract function.
@@ -4076,71 +3978,69 @@ SolidityFunction.prototype.unpackOutput = function (output) {
  *   error and result.
  * @return {String} output bytes
  */
-SolidityFunction.prototype.call = function () {
-    var args = Array.prototype.slice.call(arguments).filter(function (a) {return a !== undefined; });
-    var callback = this.extractCallback(args);
-    var defaultBlock = this.extractDefaultBlock(args);
-    var payload = this.toPayload(args);
+    SolidityFunction.prototype.call = function () {
+      var args = Array.prototype.slice.call(arguments).filter(function (a) { return a !== undefined })
+      var callback = this.extractCallback(args)
+      var defaultBlock = this.extractDefaultBlock(args)
+      var payload = this.toPayload(args)
 
+      if (!callback) {
+        var output = this._eth.call(payload, defaultBlock)
+        return this.unpackOutput(output)
+      }
 
-    if (!callback) {
-        var output = this._eth.call(payload, defaultBlock);
-        return this.unpackOutput(output);
-    }
+      var self = this
+      this._eth.call(payload, defaultBlock, function (error, output) {
+        if (error) return callback(error, null)
 
-    var self = this;
-    this._eth.call(payload, defaultBlock, function (error, output) {
-        if (error) return callback(error, null);
-
-        var unpacked = null;
+        var unpacked = null
         try {
-            unpacked = self.unpackOutput(output);
-        }
-        catch (e) {
-            error = e;
+          unpacked = self.unpackOutput(output)
+        } catch (e) {
+          error = e
         }
 
-        callback(error, unpacked);
-    });
-};
+        callback(error, unpacked)
+      })
+    }
 
 /**
  * Should be used to sendTransaction to solidity function
  *
  * @method sendTransaction
  */
-SolidityFunction.prototype.sendTransaction = function () {
-    var args = Array.prototype.slice.call(arguments).filter(function (a) {return a !== undefined; });
-    var callback = this.extractCallback(args);
-    var payload = this.toPayload(args);
+    SolidityFunction.prototype.sendTransaction = function () {
+      var args = Array.prototype.slice.call(arguments).filter(function (a) { return a !== undefined })
+      var callback = this.extractCallback(args)
+      var payload = this.toPayload(args)
 
-    if (payload.value > 0 && !this._payable) {
-        throw new Error('Cannot send value to non-payable function');
+      if (payload.value > 0 && !this._payable) {
+        throw new Error('Cannot send value to non-payable function')
+      }
+
+      if (!callback) {
+        return this._eth.sendTransaction(payload)
+      }
+
+      this._eth.sendTransaction(payload, callback)
     }
-
-    if (!callback) {
-        return this._eth.sendTransaction(payload);
-    }
-
-    this._eth.sendTransaction(payload, callback);
-};
 
 /**
  * Should be used to estimateGas of solidity function
  *
  * @method estimateGas
  */
-SolidityFunction.prototype.estimateGas = function () {
-    var args = Array.prototype.slice.call(arguments);
-    var callback = this.extractCallback(args);
-    var payload = this.toPayload(args);
+    SolidityFunction.prototype.estimateGas = function () {
+      var args = Array.prototype.slice.call(arguments)
+      var callback = this.extractCallback(args)
+      var payload = this.toPayload(args)
 
-    if (!callback) {
-        return this._eth.estimateGas(payload);
+      if (!callback) {
+        return this._eth.estimateGas(payload)
+      }
+
+      this._eth.estimateGas(payload, callback)
     }
-
-    this._eth.estimateGas(payload, callback);
-};
 
 /**
  * Return the encoded data of the call
@@ -4148,12 +4048,12 @@ SolidityFunction.prototype.estimateGas = function () {
  * @method getData
  * @return {String} the encoded data
  */
-SolidityFunction.prototype.getData = function () {
-    var args = Array.prototype.slice.call(arguments);
-    var payload = this.toPayload(args);
+    SolidityFunction.prototype.getData = function () {
+      var args = Array.prototype.slice.call(arguments)
+      var payload = this.toPayload(args)
 
-    return payload.data;
-};
+      return payload.data
+    }
 
 /**
  * Should be used to get function display name
@@ -4161,9 +4061,9 @@ SolidityFunction.prototype.getData = function () {
  * @method displayName
  * @return {String} display name of the function
  */
-SolidityFunction.prototype.displayName = function () {
-    return utils.extractDisplayName(this._name);
-};
+    SolidityFunction.prototype.displayName = function () {
+      return utils.extractDisplayName(this._name)
+    }
 
 /**
  * Should be used to get function type name
@@ -4171,9 +4071,9 @@ SolidityFunction.prototype.displayName = function () {
  * @method typeName
  * @return {String} type name of the function
  */
-SolidityFunction.prototype.typeName = function () {
-    return utils.extractTypeName(this._name);
-};
+    SolidityFunction.prototype.typeName = function () {
+      return utils.extractTypeName(this._name)
+    }
 
 /**
  * Should be called to get rpc requests from solidity function
@@ -4181,36 +4081,36 @@ SolidityFunction.prototype.typeName = function () {
  * @method request
  * @returns {Object}
  */
-SolidityFunction.prototype.request = function () {
-    var args = Array.prototype.slice.call(arguments);
-    var callback = this.extractCallback(args);
-    var payload = this.toPayload(args);
-    var format = this.unpackOutput.bind(this);
+    SolidityFunction.prototype.request = function () {
+      var args = Array.prototype.slice.call(arguments)
+      var callback = this.extractCallback(args)
+      var payload = this.toPayload(args)
+      var format = this.unpackOutput.bind(this)
 
-    return {
+      return {
         method: this._constant ? 'eth_call' : 'eth_sendTransaction',
         callback: callback,
         params: [payload],
         format: format
-    };
-};
+      }
+    }
 
 /**
  * Should be called to execute function
  *
  * @method execute
  */
-SolidityFunction.prototype.execute = function () {
-    var transaction = !this._constant;
+    SolidityFunction.prototype.execute = function () {
+      var transaction = !this._constant
 
     // send transaction
-    if (transaction) {
-        return this.sendTransaction.apply(this, Array.prototype.slice.call(arguments));
-    }
+      if (transaction) {
+        return this.sendTransaction.apply(this, Array.prototype.slice.call(arguments))
+      }
 
     // call
-    return this.call.apply(this, Array.prototype.slice.call(arguments));
-};
+      return this.call.apply(this, Array.prototype.slice.call(arguments))
+    }
 
 /**
  * Should be called to attach function to contract
@@ -4218,23 +4118,23 @@ SolidityFunction.prototype.execute = function () {
  * @method attachToContract
  * @param {Contract}
  */
-SolidityFunction.prototype.attachToContract = function (contract) {
-    var execute = this.execute.bind(this);
-    execute.request = this.request.bind(this);
-    execute.call = this.call.bind(this);
-    execute.sendTransaction = this.sendTransaction.bind(this);
-    execute.estimateGas = this.estimateGas.bind(this);
-    execute.getData = this.getData.bind(this);
-    var displayName = this.displayName();
-    if (!contract[displayName]) {
-        contract[displayName] = execute;
+    SolidityFunction.prototype.attachToContract = function (contract) {
+      var execute = this.execute.bind(this)
+      execute.request = this.request.bind(this)
+      execute.call = this.call.bind(this)
+      execute.sendTransaction = this.sendTransaction.bind(this)
+      execute.estimateGas = this.estimateGas.bind(this)
+      execute.getData = this.getData.bind(this)
+      var displayName = this.displayName()
+      if (!contract[displayName]) {
+        contract[displayName] = execute
+      }
+      contract[displayName][this.typeName()] = execute // circular!!!!
     }
-    contract[displayName][this.typeName()] = execute; // circular!!!!
-};
 
-module.exports = SolidityFunction;
-
-},{"../solidity/coder":7,"../utils/sha3":19,"../utils/utils":20,"./errors":26,"./formatters":30}],32:[function(require,module,exports){
+    module.exports = SolidityFunction
+  }, { '../solidity/coder':7, '../utils/sha3':19, '../utils/utils':20, './errors':26, './formatters':30 }],
+  32:[function (require, module, exports) {
 /*
     This file is part of web3.js.
 
@@ -4259,29 +4159,29 @@ module.exports = SolidityFunction;
  * @date 2015
  */
 
-var errors = require('./errors');
+    var errors = require('./errors')
 
 // workaround to use httpprovider in different envs
 
 // browser
-if (typeof window !== 'undefined' && window.XMLHttpRequest) {
-  XMLHttpRequest = window.XMLHttpRequest; // jshint ignore: line
+    if (typeof window !== 'undefined' && window.XMLHttpRequest) {
+      XMLHttpRequest = window.XMLHttpRequest // jshint ignore: line
 // node
-} else {
-  XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest; // jshint ignore: line
-}
+    } else {
+      XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest // jshint ignore: line
+    }
 
-var XHR2 = require('xhr2'); // jshint ignore: line
+    var XHR2 = require('xhr2') // jshint ignore: line
 
 /**
  * HttpProvider should be used to send rpc calls over http
  */
-var HttpProvider = function (host, timeout, user, password) {
-  this.host = host || 'http://localhost:8545';
-  this.timeout = timeout || 0;
-  this.user = user;
-  this.password = password;
-};
+    var HttpProvider = function (host, timeout, user, password) {
+      this.host = host || 'http://localhost:8545'
+      this.timeout = timeout || 0
+      this.user = user
+      this.password = password
+    }
 
 /**
  * Should be called to prepare new XMLHttpRequest
@@ -4290,23 +4190,23 @@ var HttpProvider = function (host, timeout, user, password) {
  * @param {Boolean} true if request should be async
  * @return {XMLHttpRequest} object
  */
-HttpProvider.prototype.prepareRequest = function (async) {
-  var request;
+    HttpProvider.prototype.prepareRequest = function (async) {
+      var request
 
-  if (async) {
-    request = new XHR2();
-    request.timeout = this.timeout;
-  } else {
-    request = new XMLHttpRequest();
-  }
+      if (async) {
+        request = new XHR2()
+        request.timeout = this.timeout
+      } else {
+        request = new XMLHttpRequest()
+      }
 
-  request.open('POST', this.host, async);
-  if (this.user && this.password) {
-    var auth = 'Basic ' + new Buffer(this.user + ':' + this.password).toString('base64');
-    request.setRequestHeader('Authorization', auth);
-  } request.setRequestHeader('Content-Type', 'application/json');
-  return request;
-};
+      request.open('POST', this.host, async)
+      if (this.user && this.password) {
+        var auth = 'Basic ' + new Buffer(this.user + ':' + this.password).toString('base64')
+        request.setRequestHeader('Authorization', auth)
+      } request.setRequestHeader('Content-Type', 'application/json')
+      return request
+    }
 
 /**
  * Should be called to make sync request
@@ -4315,25 +4215,25 @@ HttpProvider.prototype.prepareRequest = function (async) {
  * @param {Object} payload
  * @return {Object} result
  */
-HttpProvider.prototype.send = function (payload) {
-  var request = this.prepareRequest(false);
+    HttpProvider.prototype.send = function (payload) {
+      var request = this.prepareRequest(false)
 
-  try {
-    request.send(JSON.stringify(payload));
-  } catch (error) {
-    throw errors.InvalidConnection(this.host);
-  }
+      try {
+        request.send(JSON.stringify(payload))
+      } catch (error) {
+        throw errors.InvalidConnection(this.host)
+      }
 
-  var result = request.responseText;
+      var result = request.responseText
 
-  try {
-    result = JSON.parse(result);
-  } catch (e) {
-    throw errors.InvalidResponse(request.responseText);
-  }
+      try {
+        result = JSON.parse(result)
+      } catch (e) {
+        throw errors.InvalidResponse(request.responseText)
+      }
 
-  return result;
-};
+      return result
+    }
 
 /**
  * Should be used to make async request
@@ -4342,34 +4242,34 @@ HttpProvider.prototype.send = function (payload) {
  * @param {Object} payload
  * @param {Function} callback triggered on end with (err, result)
  */
-HttpProvider.prototype.sendAsync = function (payload, callback) {
-  var request = this.prepareRequest(true);
+    HttpProvider.prototype.sendAsync = function (payload, callback) {
+      var request = this.prepareRequest(true)
 
-  request.onreadystatechange = function () {
-    if (request.readyState === 4 && request.timeout !== 1) {
-      var result = request.responseText;
-      var error = null;
+      request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.timeout !== 1) {
+          var result = request.responseText
+          var error = null
 
-      try {
-        result = JSON.parse(result);
-      } catch (e) {
-        error = errors.InvalidResponse(request.responseText);
+          try {
+            result = JSON.parse(result)
+          } catch (e) {
+            error = errors.InvalidResponse(request.responseText)
+          }
+
+          callback(error, result)
+        }
       }
 
-      callback(error, result);
+      request.ontimeout = function () {
+        callback(errors.ConnectionTimeout(this.timeout))
+      }
+
+      try {
+        request.send(JSON.stringify(payload))
+      } catch (error) {
+        callback(errors.InvalidConnection(this.host))
+      }
     }
-  };
-
-  request.ontimeout = function () {
-    callback(errors.ConnectionTimeout(this.timeout));
-  };
-
-  try {
-    request.send(JSON.stringify(payload));
-  } catch (error) {
-    callback(errors.InvalidConnection(this.host));
-  }
-};
 
 /**
  * Synchronously tries to make Http request
@@ -4377,23 +4277,23 @@ HttpProvider.prototype.sendAsync = function (payload, callback) {
  * @method isConnected
  * @return {Boolean} returns true if request haven't failed. Otherwise false
  */
-HttpProvider.prototype.isConnected = function () {
-  try {
-    this.send({
-      id: 9999999999,
-      jsonrpc: '2.0',
-      method: 'net_listening',
-      params: []
-    });
-    return true;
-  } catch (e) {
-    return false;
-  }
-};
+    HttpProvider.prototype.isConnected = function () {
+      try {
+        this.send({
+          id: 9999999999,
+          jsonrpc: '2.0',
+          method: 'net_listening',
+          params: []
+        })
+        return true
+      } catch (e) {
+        return false
+      }
+    }
 
-module.exports = HttpProvider;
-
-},{"./errors":26,"xhr2":85,"xmlhttprequest":17}],33:[function(require,module,exports){
+    module.exports = HttpProvider
+  }, { './errors':26, 'xhr2':85, 'xmlhttprequest':17 }],
+  33:[function (require, module, exports) {
 /*
     This file is part of web3.js.
 
@@ -4410,21 +4310,21 @@ module.exports = HttpProvider;
     You should have received a copy of the GNU Lesser General Public License
     along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
 */
-/** 
+/**
  * @file iban.js
  * @author Marek Kotewicz <marek@ethdev.com>
  * @date 2015
  */
 
-var BigNumber = require('bignumber.js');
+    var BigNumber = require('bignumber.js')
 
-var padLeft = function (string, bytes) {
-    var result = string;
-    while (result.length < bytes * 2) {
-        result = '0' + result;
+    var padLeft = function (string, bytes) {
+      var result = string
+      while (result.length < bytes * 2) {
+        result = '0' + result
+      }
+      return result
     }
-    return result;
-};
 
 /**
  * Prepare an IBAN for mod 97 computation by moving the first 4 chars to the end and transforming the letters to
@@ -4434,23 +4334,23 @@ var padLeft = function (string, bytes) {
  * @param {String} iban the IBAN
  * @returns {String} the prepared IBAN
  */
-var iso13616Prepare = function (iban) {
-    var A = 'A'.charCodeAt(0);
-    var Z = 'Z'.charCodeAt(0);
+    var iso13616Prepare = function (iban) {
+      var A = 'A'.charCodeAt(0)
+      var Z = 'Z'.charCodeAt(0)
 
-    iban = iban.toUpperCase();
-    iban = iban.substr(4) + iban.substr(0,4);
+      iban = iban.toUpperCase()
+      iban = iban.substr(4) + iban.substr(0, 4)
 
-    return iban.split('').map(function(n){
-        var code = n.charCodeAt(0);
-        if (code >= A && code <= Z){
+      return iban.split('').map(function (n) {
+        var code = n.charCodeAt(0)
+        if (code >= A && code <= Z) {
             // A = 10, B = 11, ... Z = 35
-            return code - A + 10;
+          return code - A + 10
         } else {
-            return n;
+          return n
         }
-    }).join('');
-};
+      }).join('')
+    }
 
 /**
  * Calculates the MOD 97 10 of the passed IBAN as specified in ISO7064.
@@ -4459,26 +4359,26 @@ var iso13616Prepare = function (iban) {
  * @param {String} iban
  * @returns {Number}
  */
-var mod9710 = function (iban) {
-    var remainder = iban,
-        block;
+    var mod9710 = function (iban) {
+      var remainder = iban,
+        block
 
-    while (remainder.length > 2){
-        block = remainder.slice(0, 9);
-        remainder = parseInt(block, 10) % 97 + remainder.slice(block.length);
+      while (remainder.length > 2) {
+        block = remainder.slice(0, 9)
+        remainder = parseInt(block, 10) % 97 + remainder.slice(block.length)
+      }
+
+      return parseInt(remainder, 10) % 97
     }
-
-    return parseInt(remainder, 10) % 97;
-};
 
 /**
  * This prototype should be used to create iban object from iban correct string
  *
  * @param {String} iban
  */
-var Iban = function (iban) {
-    this._iban = iban;
-};
+    var Iban = function (iban) {
+      this._iban = iban
+    }
 
 /**
  * This method should be used to create iban object from ethereum address
@@ -4487,12 +4387,12 @@ var Iban = function (iban) {
  * @param {String} address
  * @return {Iban} the IBAN object
  */
-Iban.fromAddress = function (address) {
-    var asBn = new BigNumber(address, 16);
-    var base36 = asBn.toString(36);
-    var padded = padLeft(base36, 15);
-    return Iban.fromBban(padded.toUpperCase());
-};
+    Iban.fromAddress = function (address) {
+      var asBn = new BigNumber(address, 16)
+      var base36 = asBn.toString(36)
+      var padded = padLeft(base36, 15)
+      return Iban.fromBban(padded.toUpperCase())
+    }
 
 /**
  * Convert the passed BBAN to an IBAN for this country specification.
@@ -4503,14 +4403,14 @@ Iban.fromAddress = function (address) {
  * @param {String} bban the BBAN to convert to IBAN
  * @returns {Iban} the IBAN object
  */
-Iban.fromBban = function (bban) {
-    var countryCode = 'XE';
+    Iban.fromBban = function (bban) {
+      var countryCode = 'XE'
 
-    var remainder = mod9710(iso13616Prepare(countryCode + '00' + bban));
-    var checkDigit = ('0' + (98 - remainder)).slice(-2);
+      var remainder = mod9710(iso13616Prepare(countryCode + '00' + bban))
+      var checkDigit = ('0' + (98 - remainder)).slice(-2)
 
-    return new Iban(countryCode + checkDigit + bban);
-};
+      return new Iban(countryCode + checkDigit + bban)
+    }
 
 /**
  * Should be used to create IBAN object for given institution and identifier
@@ -4519,9 +4419,9 @@ Iban.fromBban = function (bban) {
  * @param {Object} options, required options are "institution" and "identifier"
  * @return {Iban} the IBAN object
  */
-Iban.createIndirect = function (options) {
-    return Iban.fromBban('ETH' + options.institution + options.identifier);
-};
+    Iban.createIndirect = function (options) {
+      return Iban.fromBban('ETH' + options.institution + options.identifier)
+    }
 
 /**
  * Thos method should be used to check if given string is valid iban object
@@ -4530,10 +4430,10 @@ Iban.createIndirect = function (options) {
  * @param {String} iban string
  * @return {Boolean} true if it is valid IBAN
  */
-Iban.isValid = function (iban) {
-    var i = new Iban(iban);
-    return i.isValid();
-};
+    Iban.isValid = function (iban) {
+      var i = new Iban(iban)
+      return i.isValid()
+    }
 
 /**
  * Should be called to check if iban is correct
@@ -4541,10 +4441,10 @@ Iban.isValid = function (iban) {
  * @method isValid
  * @returns {Boolean} true if it is, otherwise false
  */
-Iban.prototype.isValid = function () {
-    return /^XE[0-9]{2}(ETH[0-9A-Z]{13}|[0-9A-Z]{30,31})$/.test(this._iban) &&
-        mod9710(iso13616Prepare(this._iban)) === 1;
-};
+    Iban.prototype.isValid = function () {
+      return /^XE[0-9]{2}(ETH[0-9A-Z]{13}|[0-9A-Z]{30,31})$/.test(this._iban) &&
+        mod9710(iso13616Prepare(this._iban)) === 1
+    }
 
 /**
  * Should be called to check if iban number is direct
@@ -4552,9 +4452,9 @@ Iban.prototype.isValid = function () {
  * @method isDirect
  * @returns {Boolean} true if it is, otherwise false
  */
-Iban.prototype.isDirect = function () {
-    return this._iban.length === 34 || this._iban.length === 35;
-};
+    Iban.prototype.isDirect = function () {
+      return this._iban.length === 34 || this._iban.length === 35
+    }
 
 /**
  * Should be called to check if iban number if indirect
@@ -4562,9 +4462,9 @@ Iban.prototype.isDirect = function () {
  * @method isIndirect
  * @returns {Boolean} true if it is, otherwise false
  */
-Iban.prototype.isIndirect = function () {
-    return this._iban.length === 20;
-};
+    Iban.prototype.isIndirect = function () {
+      return this._iban.length === 20
+    }
 
 /**
  * Should be called to get iban checksum
@@ -4573,9 +4473,9 @@ Iban.prototype.isIndirect = function () {
  * @method checksum
  * @returns {String} checksum
  */
-Iban.prototype.checksum = function () {
-    return this._iban.substr(2, 2);
-};
+    Iban.prototype.checksum = function () {
+      return this._iban.substr(2, 2)
+    }
 
 /**
  * Should be called to get institution identifier
@@ -4584,9 +4484,9 @@ Iban.prototype.checksum = function () {
  * @method institution
  * @returns {String} institution identifier
  */
-Iban.prototype.institution = function () {
-    return this.isIndirect() ? this._iban.substr(7, 4) : '';
-};
+    Iban.prototype.institution = function () {
+      return this.isIndirect() ? this._iban.substr(7, 4) : ''
+    }
 
 /**
  * Should be called to get client identifier within institution
@@ -4595,9 +4495,9 @@ Iban.prototype.institution = function () {
  * @method client
  * @returns {String} client identifier
  */
-Iban.prototype.client = function () {
-    return this.isIndirect() ? this._iban.substr(11) : '';
-};
+    Iban.prototype.client = function () {
+      return this.isIndirect() ? this._iban.substr(11) : ''
+    }
 
 /**
  * Should be called to get client direct address
@@ -4605,24 +4505,23 @@ Iban.prototype.client = function () {
  * @method address
  * @returns {String} client direct address
  */
-Iban.prototype.address = function () {
-    if (this.isDirect()) {
-        var base36 = this._iban.substr(4);
-        var asBn = new BigNumber(base36, 36);
-        return padLeft(asBn.toString(16), 20);
-    } 
+    Iban.prototype.address = function () {
+      if (this.isDirect()) {
+        var base36 = this._iban.substr(4)
+        var asBn = new BigNumber(base36, 36)
+        return padLeft(asBn.toString(16), 20)
+      }
 
-    return '';
-};
+      return ''
+    }
 
-Iban.prototype.toString = function () {
-    return this._iban;
-};
+    Iban.prototype.toString = function () {
+      return this._iban
+    }
 
-module.exports = Iban;
-
-
-},{"bignumber.js":"bignumber.js"}],34:[function(require,module,exports){
+    module.exports = Iban
+  }, { 'bignumber.js':'bignumber.js' }],
+  34:[function (require, module, exports) {
 /*
     This file is part of web3.js.
 
@@ -4645,55 +4544,51 @@ module.exports = Iban;
  * @date 2015
  */
 
-"use strict";
+    'use strict'
 
-var utils = require('../utils/utils');
-var errors = require('./errors');
+    var utils = require('../utils/utils')
+    var errors = require('./errors')
 
+    var IpcProvider = function (path, net) {
+      var _this = this
+      this.responseCallbacks = {}
+      this.path = path
 
-var IpcProvider = function (path, net) {
-    var _this = this;
-    this.responseCallbacks = {};
-    this.path = path;
-    
-    this.connection = net.connect({path: this.path});
+      this.connection = net.connect({ path: this.path })
 
-    this.connection.on('error', function(e){
-        console.error('IPC Connection Error', e);
-        _this._timeout();
-    });
+      this.connection.on('error', function (e) {
+        console.error('IPC Connection Error', e)
+        _this._timeout()
+      })
 
-    this.connection.on('end', function(){
-        _this._timeout();
-    }); 
-
+      this.connection.on('end', function () {
+        _this._timeout()
+      })
 
     // LISTEN FOR CONNECTION RESPONSES
-    this.connection.on('data', function(data) {
-        /*jshint maxcomplexity: 6 */
+      this.connection.on('data', function (data) {
+        /* jshint maxcomplexity: 6 */
 
-        _this._parseResponse(data.toString()).forEach(function(result){
-
-            var id = null;
+        _this._parseResponse(data.toString()).forEach(function (result) {
+          var id = null
 
             // get the id which matches the returned id
-            if(utils.isArray(result)) {
-                result.forEach(function(load){
-                    if(_this.responseCallbacks[load.id])
-                        id = load.id;
-                });
-            } else {
-                id = result.id;
-            }
+          if (utils.isArray(result)) {
+            result.forEach(function (load) {
+              if (_this.responseCallbacks[load.id]) { id = load.id }
+            })
+          } else {
+            id = result.id
+          }
 
             // fire the callback
-            if(_this.responseCallbacks[id]) {
-                _this.responseCallbacks[id](null, result);
-                delete _this.responseCallbacks[id];
-            }
-        });
-    });
-};
+          if (_this.responseCallbacks[id]) {
+            _this.responseCallbacks[id](null, result)
+            delete _this.responseCallbacks[id]
+          }
+        })
+      })
+    }
 
 /**
 Will parse the response and make an array out of it.
@@ -4701,54 +4596,48 @@ Will parse the response and make an array out of it.
 @method _parseResponse
 @param {String} data
 */
-IpcProvider.prototype._parseResponse = function(data) {
-    var _this = this,
-        returnValues = [];
-    
+    IpcProvider.prototype._parseResponse = function (data) {
+      var _this = this,
+        returnValues = []
+
     // DE-CHUNKER
-    var dechunkedData = data
-        .replace(/\}[\n\r]?\{/g,'}|--|{') // }{
-        .replace(/\}\][\n\r]?\[\{/g,'}]|--|[{') // }][{
-        .replace(/\}[\n\r]?\[\{/g,'}|--|[{') // }[{
-        .replace(/\}\][\n\r]?\{/g,'}]|--|{') // }]{
-        .split('|--|');
+      var dechunkedData = data
+        .replace(/\}[\n\r]?\{/g, '}|--|{') // }{
+        .replace(/\}\][\n\r]?\[\{/g, '}]|--|[{') // }][{
+        .replace(/\}[\n\r]?\[\{/g, '}|--|[{') // }[{
+        .replace(/\}\][\n\r]?\{/g, '}]|--|{') // }]{
+        .split('|--|')
 
-    dechunkedData.forEach(function(data){
-
+      dechunkedData.forEach(function (data) {
         // prepend the last chunk
-        if(_this.lastChunk)
-            data = _this.lastChunk + data;
+        if (_this.lastChunk) { data = _this.lastChunk + data }
 
-        var result = null;
+        var result = null
 
         try {
-            result = JSON.parse(data);
-
-        } catch(e) {
-
-            _this.lastChunk = data;
+          result = JSON.parse(data)
+        } catch (e) {
+          _this.lastChunk = data
 
             // start timeout to cancel all requests
-            clearTimeout(_this.lastChunkTimeout);
-            _this.lastChunkTimeout = setTimeout(function(){
-                _this._timeout();
-                throw errors.InvalidResponse(data);
-            }, 1000 * 15);
+          clearTimeout(_this.lastChunkTimeout)
+          _this.lastChunkTimeout = setTimeout(function () {
+            _this._timeout()
+            throw errors.InvalidResponse(data)
+          }, 1000 * 15)
 
-            return;
+          return
         }
 
         // cancel timeout and set chunk to null
-        clearTimeout(_this.lastChunkTimeout);
-        _this.lastChunk = null;
+        clearTimeout(_this.lastChunkTimeout)
+        _this.lastChunk = null
 
-        if(result)
-            returnValues.push(result);
-    });
+        if (result) { returnValues.push(result) }
+      })
 
-    return returnValues;
-};
-
+      return returnValues
+    }
 
 /**
 Get the adds a callback to the responseCallbacks object,
@@ -4756,82 +4645,74 @@ which will be called if a response matching the response Id will arrive.
 
 @method _addResponseCallback
 */
-IpcProvider.prototype._addResponseCallback = function(payload, callback) {
-    var id = payload.id || payload[0].id;
-    var method = payload.method || payload[0].method;
+    IpcProvider.prototype._addResponseCallback = function (payload, callback) {
+      var id = payload.id || payload[0].id
+      var method = payload.method || payload[0].method
 
-    this.responseCallbacks[id] = callback;
-    this.responseCallbacks[id].method = method;
-};
+      this.responseCallbacks[id] = callback
+      this.responseCallbacks[id].method = method
+    }
 
 /**
 Timeout all requests when the end/error event is fired
 
 @method _timeout
 */
-IpcProvider.prototype._timeout = function() {
-    for(var key in this.responseCallbacks) {
-        if(this.responseCallbacks.hasOwnProperty(key)){
-            this.responseCallbacks[key](errors.InvalidConnection('on IPC'));
-            delete this.responseCallbacks[key];
+    IpcProvider.prototype._timeout = function () {
+      for (var key in this.responseCallbacks) {
+        if (this.responseCallbacks.hasOwnProperty(key)) {
+          this.responseCallbacks[key](errors.InvalidConnection('on IPC'))
+          delete this.responseCallbacks[key]
         }
+      }
     }
-};
-
 
 /**
 Check if the current connection is still valid.
 
 @method isConnected
 */
-IpcProvider.prototype.isConnected = function() {
-    var _this = this;
+    IpcProvider.prototype.isConnected = function () {
+      var _this = this
 
     // try reconnect, when connection is gone
-    if(!_this.connection.writable)
-        _this.connection.connect({path: _this.path});
+      if (!_this.connection.writable) { _this.connection.connect({ path: _this.path }) }
 
-    return !!this.connection.writable;
-};
+      return !!this.connection.writable
+    }
 
-IpcProvider.prototype.send = function (payload) {
-
-    if(this.connection.writeSync) {
-        var result;
+    IpcProvider.prototype.send = function (payload) {
+      if (this.connection.writeSync) {
+        var result
 
         // try reconnect, when connection is gone
-        if(!this.connection.writable)
-            this.connection.connect({path: this.path});
+        if (!this.connection.writable) { this.connection.connect({ path: this.path }) }
 
-        var data = this.connection.writeSync(JSON.stringify(payload));
+        var data = this.connection.writeSync(JSON.stringify(payload))
 
         try {
-            result = JSON.parse(data);
-        } catch(e) {
-            throw errors.InvalidResponse(data);                
+          result = JSON.parse(data)
+        } catch (e) {
+          throw errors.InvalidResponse(data)
         }
 
-        return result;
-
-    } else {
-        throw new Error('You tried to send "'+ payload.method +'" synchronously. Synchronous requests are not supported by the IPC provider.');
+        return result
+      } else {
+        throw new Error('You tried to send "' + payload.method + '" synchronously. Synchronous requests are not supported by the IPC provider.')
+      }
     }
-};
 
-IpcProvider.prototype.sendAsync = function (payload, callback) {
+    IpcProvider.prototype.sendAsync = function (payload, callback) {
     // try reconnect, when connection is gone
-    if(!this.connection.writable)
-        this.connection.connect({path: this.path});
+      if (!this.connection.writable) { this.connection.connect({ path: this.path }) }
 
+      this.connection.write(JSON.stringify(payload))
+      this._addResponseCallback(payload, callback)
+    }
 
-    this.connection.write(JSON.stringify(payload));
-    this._addResponseCallback(payload, callback);
-};
-
-module.exports = IpcProvider;
-
-
-},{"../utils/utils":20,"./errors":26}],35:[function(require,module,exports){
+    module.exports = IpcProvider
+  }, { '../utils/utils':20, './errors':26 }],
+  35:[function (require, module, exports) {
 /*
     This file is part of web3.js.
 
@@ -4856,9 +4737,9 @@ module.exports = IpcProvider;
  */
 
 // Initialize Jsonrpc as a simple object with utility functions.
-var Jsonrpc = {
-    messageId: 0
-};
+    var Jsonrpc = {
+      messageId: 0
+    }
 
 /**
  * Should be called to valid json create payload object
@@ -4868,20 +4749,19 @@ var Jsonrpc = {
  * @param {Array} params, an array of method params, optional
  * @returns {Object} valid jsonrpc payload object
  */
-Jsonrpc.toPayload = function (method, params) {
-    if (!method)
-        console.error('jsonrpc method should be specified!');
+    Jsonrpc.toPayload = function (method, params) {
+      if (!method) { console.error('jsonrpc method should be specified!') }
 
     // advance message ID
-    Jsonrpc.messageId++;
+      Jsonrpc.messageId++
 
-    return {
+      return {
         jsonrpc: '2.0',
         id: Jsonrpc.messageId,
         method: method,
         params: params || []
-    };
-};
+      }
+    }
 
 /**
  * Should be called to check if jsonrpc response is valid
@@ -4890,17 +4770,17 @@ Jsonrpc.toPayload = function (method, params) {
  * @param {Object}
  * @returns {Boolean} true if response is valid, otherwise false
  */
-Jsonrpc.isValidResponse = function (response) {
-    return Array.isArray(response) ? response.every(validateSingleMessage) : validateSingleMessage(response);
+    Jsonrpc.isValidResponse = function (response) {
+      return Array.isArray(response) ? response.every(validateSingleMessage) : validateSingleMessage(response)
 
-    function validateSingleMessage(message){
-      return !!message &&
+      function validateSingleMessage (message) {
+        return !!message &&
         !message.error &&
         message.jsonrpc === '2.0' &&
         typeof message.id === 'number' &&
-        message.result !== undefined; // only undefined is not valid json object
+        message.result !== undefined // only undefined is not valid json object
+      }
     }
-};
 
 /**
  * Should be called to create batch payload object
@@ -4909,16 +4789,15 @@ Jsonrpc.isValidResponse = function (response) {
  * @param {Array} messages, an array of objects with method (required) and params (optional) fields
  * @returns {Array} batch payload
  */
-Jsonrpc.toBatchPayload = function (messages) {
-    return messages.map(function (message) {
-        return Jsonrpc.toPayload(message.method, message.params);
-    });
-};
+    Jsonrpc.toBatchPayload = function (messages) {
+      return messages.map(function (message) {
+        return Jsonrpc.toPayload(message.method, message.params)
+      })
+    }
 
-module.exports = Jsonrpc;
-
-
-},{}],36:[function(require,module,exports){
+    module.exports = Jsonrpc
+  }, {}],
+  36:[function (require, module, exports) {
 /*
     This file is part of web3.js.
 
@@ -4941,21 +4820,21 @@ module.exports = Jsonrpc;
  * @date 2015
  */
 
-var utils = require('../utils/utils');
-var errors = require('./errors');
+    var utils = require('../utils/utils')
+    var errors = require('./errors')
 
-var Method = function (options) {
-    this.name = options.name;
-    this.call = options.call;
-    this.params = options.params || 0;
-    this.inputFormatter = options.inputFormatter;
-    this.outputFormatter = options.outputFormatter;
-    this.requestManager = null;
-};
+    var Method = function (options) {
+      this.name = options.name
+      this.call = options.call
+      this.params = options.params || 0
+      this.inputFormatter = options.inputFormatter
+      this.outputFormatter = options.outputFormatter
+      this.requestManager = null
+    }
 
-Method.prototype.setRequestManager = function (rm) {
-    this.requestManager = rm;
-};
+    Method.prototype.setRequestManager = function (rm) {
+      this.requestManager = rm
+    }
 
 /**
  * Should be used to determine name of the jsonrpc method based on arguments
@@ -4964,9 +4843,9 @@ Method.prototype.setRequestManager = function (rm) {
  * @param {Array} arguments
  * @return {String} name of jsonrpc method
  */
-Method.prototype.getCall = function (args) {
-    return utils.isFunction(this.call) ? this.call(args) : this.call;
-};
+    Method.prototype.getCall = function (args) {
+      return utils.isFunction(this.call) ? this.call(args) : this.call
+    }
 
 /**
  * Should be used to extract callback from array of arguments. Modifies input param
@@ -4975,41 +4854,41 @@ Method.prototype.getCall = function (args) {
  * @param {Array} arguments
  * @return {Function|Null} callback, if exists
  */
-Method.prototype.extractCallback = function (args) {
-    if (utils.isFunction(args[args.length - 1])) {
-        return args.pop(); // modify the args array!
+    Method.prototype.extractCallback = function (args) {
+      if (utils.isFunction(args[args.length - 1])) {
+        return args.pop() // modify the args array!
+      }
     }
-};
 
 /**
  * Should be called to check if the number of arguments is correct
- * 
+ *
  * @method validateArgs
  * @param {Array} arguments
  * @throws {Error} if it is not
  */
-Method.prototype.validateArgs = function (args) {
-    if (args.length !== this.params) {
-        throw errors.InvalidNumberOfRPCParams();
+    Method.prototype.validateArgs = function (args) {
+      if (args.length !== this.params) {
+        throw errors.InvalidNumberOfRPCParams()
+      }
     }
-};
 
 /**
  * Should be called to format input args of method
- * 
+ *
  * @method formatInput
  * @param {Array}
  * @return {Array}
  */
-Method.prototype.formatInput = function (args) {
-    if (!this.inputFormatter) {
-        return args;
-    }
+    Method.prototype.formatInput = function (args) {
+      if (!this.inputFormatter) {
+        return args
+      }
 
-    return this.inputFormatter.map(function (formatter, index) {
-        return formatter ? formatter(args[index]) : args[index];
-    });
-};
+      return this.inputFormatter.map(function (formatter, index) {
+        return formatter ? formatter(args[index]) : args[index]
+      })
+    }
 
 /**
  * Should be called to format output(result) of method
@@ -5018,9 +4897,9 @@ Method.prototype.formatInput = function (args) {
  * @param {Object}
  * @return {Object}
  */
-Method.prototype.formatOutput = function (result) {
-    return this.outputFormatter && result ? this.outputFormatter(result) : result;
-};
+    Method.prototype.formatOutput = function (result) {
+      return this.outputFormatter && result ? this.outputFormatter(result) : result
+    }
 
 /**
  * Should create payload from given input args
@@ -5029,45 +4908,45 @@ Method.prototype.formatOutput = function (result) {
  * @param {Array} args
  * @return {Object}
  */
-Method.prototype.toPayload = function (args) {
-    var call = this.getCall(args);
-    var callback = this.extractCallback(args);
-    var params = this.formatInput(args);
-    this.validateArgs(params);
+    Method.prototype.toPayload = function (args) {
+      var call = this.getCall(args)
+      var callback = this.extractCallback(args)
+      var params = this.formatInput(args)
+      this.validateArgs(params)
 
-    return {
+      return {
         method: call,
         params: params,
         callback: callback
-    };
-};
-
-Method.prototype.attachToObject = function (obj) {
-    var func = this.buildCall();
-    func.call = this.call; // TODO!!! that's ugly. filter.js uses it
-    var name = this.name.split('.');
-    if (name.length > 1) {
-        obj[name[0]] = obj[name[0]] || {};
-        obj[name[0]][name[1]] = func;
-    } else {
-        obj[name[0]] = func; 
+      }
     }
-};
 
-Method.prototype.buildCall = function() {
-    var method = this;
-    var send = function () {
-        var payload = method.toPayload(Array.prototype.slice.call(arguments));
+    Method.prototype.attachToObject = function (obj) {
+      var func = this.buildCall()
+      func.call = this.call // TODO!!! that's ugly. filter.js uses it
+      var name = this.name.split('.')
+      if (name.length > 1) {
+        obj[name[0]] = obj[name[0]] || {}
+        obj[name[0]][name[1]] = func
+      } else {
+        obj[name[0]] = func
+      }
+    }
+
+    Method.prototype.buildCall = function () {
+      var method = this
+      var send = function () {
+        var payload = method.toPayload(Array.prototype.slice.call(arguments))
         if (payload.callback) {
-            return method.requestManager.sendAsync(payload, function (err, result) {
-                payload.callback(err, method.formatOutput(result));
-            });
+          return method.requestManager.sendAsync(payload, function (err, result) {
+            payload.callback(err, method.formatOutput(result))
+          })
         }
-        return method.formatOutput(method.requestManager.send(payload));
-    };
-    send.request = this.request.bind(this);
-    return send;
-};
+        return method.formatOutput(method.requestManager.send(payload))
+      }
+      send.request = this.request.bind(this)
+      return send
+    }
 
 /**
  * Should be called to create pure JSONRPC request which can be used in batch request
@@ -5076,15 +4955,15 @@ Method.prototype.buildCall = function() {
  * @param {...} params
  * @return {Object} jsonrpc request
  */
-Method.prototype.request = function () {
-    var payload = this.toPayload(Array.prototype.slice.call(arguments));
-    payload.format = this.formatOutput.bind(this);
-    return payload;
-};
+    Method.prototype.request = function () {
+      var payload = this.toPayload(Array.prototype.slice.call(arguments))
+      payload.format = this.formatOutput.bind(this)
+      return payload
+    }
 
-module.exports = Method;
-
-},{"../utils/utils":20,"./errors":26}],37:[function(require,module,exports){
+    module.exports = Method
+  }, { '../utils/utils':20, './errors':26 }],
+  37:[function (require, module, exports) {
 /*
     This file is part of web3.js.
 
@@ -5107,52 +4986,52 @@ module.exports = Method;
  * @date 2015
  */
 
-var Method = require('../method');
+    var Method = require('../method')
 
-var DB = function (web3) {
-    this._requestManager = web3._requestManager;
+    var DB = function (web3) {
+      this._requestManager = web3._requestManager
 
-    var self = this;
-    
-    methods().forEach(function(method) { 
-        method.attachToObject(self);
-        method.setRequestManager(web3._requestManager);
-    });
-};
+      var self = this
 
-var methods = function () {
-    var putString = new Method({
+      methods().forEach(function (method) {
+        method.attachToObject(self)
+        method.setRequestManager(web3._requestManager)
+      })
+    }
+
+    var methods = function () {
+      var putString = new Method({
         name: 'putString',
         call: 'db_putString',
         params: 3
-    });
+      })
 
-    var getString = new Method({
+      var getString = new Method({
         name: 'getString',
         call: 'db_getString',
         params: 2
-    });
+      })
 
-    var putHex = new Method({
+      var putHex = new Method({
         name: 'putHex',
         call: 'db_putHex',
         params: 3
-    });
+      })
 
-    var getHex = new Method({
+      var getHex = new Method({
         name: 'getHex',
         call: 'db_getHex',
         params: 2
-    });
+      })
 
-    return [
+      return [
         putString, getString, putHex, getHex
-    ];
-};
+      ]
+    }
 
-module.exports = DB;
-
-},{"../method":36}],38:[function(require,module,exports){
+    module.exports = DB
+  }, { '../method':36 }],
+  38:[function (require, module, exports) {
 /*
     This file is part of web3.js.
 
@@ -5176,247 +5055,246 @@ module.exports = DB;
  * @date 2015
  */
 
-"use strict";
+    'use strict'
 
-var formatters = require('../formatters');
-var utils = require('../../utils/utils');
-var Method = require('../method');
-var Property = require('../property');
-var c = require('../../utils/config');
-var Contract = require('../contract');
-var watches = require('./watches');
-var Filter = require('../filter');
-var IsSyncing = require('../syncing');
-var namereg = require('../namereg');
-var Iban = require('../iban');
-var transfer = require('../transfer');
+    var formatters = require('../formatters')
+    var utils = require('../../utils/utils')
+    var Method = require('../method')
+    var Property = require('../property')
+    var c = require('../../utils/config')
+    var Contract = require('../contract')
+    var watches = require('./watches')
+    var Filter = require('../filter')
+    var IsSyncing = require('../syncing')
+    var namereg = require('../namereg')
+    var Iban = require('../iban')
+    var transfer = require('../transfer')
 
-var blockCall = function (args) {
-    return (utils.isString(args[0]) && args[0].indexOf('0x') === 0) ? "eth_getBlockByHash" : "eth_getBlockByNumber";
-};
-
-var transactionFromBlockCall = function (args) {
-    return (utils.isString(args[0]) && args[0].indexOf('0x') === 0) ? 'eth_getTransactionByBlockHashAndIndex' : 'eth_getTransactionByBlockNumberAndIndex';
-};
-
-var uncleCall = function (args) {
-    return (utils.isString(args[0]) && args[0].indexOf('0x') === 0) ? 'eth_getUncleByBlockHashAndIndex' : 'eth_getUncleByBlockNumberAndIndex';
-};
-
-var getBlockTransactionCountCall = function (args) {
-    return (utils.isString(args[0]) && args[0].indexOf('0x') === 0) ? 'eth_getBlockTransactionCountByHash' : 'eth_getBlockTransactionCountByNumber';
-};
-
-var uncleCountCall = function (args) {
-    return (utils.isString(args[0]) && args[0].indexOf('0x') === 0) ? 'eth_getUncleCountByBlockHash' : 'eth_getUncleCountByBlockNumber';
-};
-
-function Eth(web3) {
-    this._requestManager = web3._requestManager;
-
-    var self = this;
-
-    methods().forEach(function(method) {
-        method.attachToObject(self);
-        method.setRequestManager(self._requestManager);
-    });
-
-    properties().forEach(function(p) {
-        p.attachToObject(self);
-        p.setRequestManager(self._requestManager);
-    });
-
-
-    this.iban = Iban;
-    this.sendIBANTransaction = transfer.bind(null, this);
-}
-
-Object.defineProperty(Eth.prototype, 'defaultBlock', {
-    get: function () {
-        return c.defaultBlock;
-    },
-    set: function (val) {
-        c.defaultBlock = val;
-        return val;
+    var blockCall = function (args) {
+      return (utils.isString(args[0]) && args[0].indexOf('0x') === 0) ? 'eth_getBlockByHash' : 'eth_getBlockByNumber'
     }
-});
 
-Object.defineProperty(Eth.prototype, 'defaultAccount', {
-    get: function () {
-        return c.defaultAccount;
-    },
-    set: function (val) {
-        c.defaultAccount = val;
-        return val;
+    var transactionFromBlockCall = function (args) {
+      return (utils.isString(args[0]) && args[0].indexOf('0x') === 0) ? 'eth_getTransactionByBlockHashAndIndex' : 'eth_getTransactionByBlockNumberAndIndex'
     }
-});
 
-var methods = function () {
-    var getBalance = new Method({
+    var uncleCall = function (args) {
+      return (utils.isString(args[0]) && args[0].indexOf('0x') === 0) ? 'eth_getUncleByBlockHashAndIndex' : 'eth_getUncleByBlockNumberAndIndex'
+    }
+
+    var getBlockTransactionCountCall = function (args) {
+      return (utils.isString(args[0]) && args[0].indexOf('0x') === 0) ? 'eth_getBlockTransactionCountByHash' : 'eth_getBlockTransactionCountByNumber'
+    }
+
+    var uncleCountCall = function (args) {
+      return (utils.isString(args[0]) && args[0].indexOf('0x') === 0) ? 'eth_getUncleCountByBlockHash' : 'eth_getUncleCountByBlockNumber'
+    }
+
+    function Eth (web3) {
+      this._requestManager = web3._requestManager
+
+      var self = this
+
+      methods().forEach(function (method) {
+        method.attachToObject(self)
+        method.setRequestManager(self._requestManager)
+      })
+
+      properties().forEach(function (p) {
+        p.attachToObject(self)
+        p.setRequestManager(self._requestManager)
+      })
+
+      this.iban = Iban
+      this.sendIBANTransaction = transfer.bind(null, this)
+    }
+
+    Object.defineProperty(Eth.prototype, 'defaultBlock', {
+      get: function () {
+        return c.defaultBlock
+      },
+      set: function (val) {
+        c.defaultBlock = val
+        return val
+      }
+    })
+
+    Object.defineProperty(Eth.prototype, 'defaultAccount', {
+      get: function () {
+        return c.defaultAccount
+      },
+      set: function (val) {
+        c.defaultAccount = val
+        return val
+      }
+    })
+
+    var methods = function () {
+      var getBalance = new Method({
         name: 'getBalance',
         call: 'eth_getBalance',
         params: 2,
         inputFormatter: [formatters.inputAddressFormatter, formatters.inputDefaultBlockNumberFormatter],
         outputFormatter: formatters.outputBigNumberFormatter
-    });
+      })
 
-    var getStorageAt = new Method({
+      var getStorageAt = new Method({
         name: 'getStorageAt',
         call: 'eth_getStorageAt',
         params: 3,
         inputFormatter: [null, utils.toHex, formatters.inputDefaultBlockNumberFormatter]
-    });
+      })
 
-    var getCode = new Method({
+      var getCode = new Method({
         name: 'getCode',
         call: 'eth_getCode',
         params: 2,
         inputFormatter: [formatters.inputAddressFormatter, formatters.inputDefaultBlockNumberFormatter]
-    });
+      })
 
-    var getBlock = new Method({
+      var getBlock = new Method({
         name: 'getBlock',
         call: blockCall,
         params: 2,
-        inputFormatter: [formatters.inputBlockNumberFormatter, function (val) { return !!val; }],
+        inputFormatter: [formatters.inputBlockNumberFormatter, function (val) { return !!val }],
         outputFormatter: formatters.outputBlockFormatter
-    });
+      })
 
-    var getUncle = new Method({
+      var getUncle = new Method({
         name: 'getUncle',
         call: uncleCall,
         params: 2,
         inputFormatter: [formatters.inputBlockNumberFormatter, utils.toHex],
-        outputFormatter: formatters.outputBlockFormatter,
+        outputFormatter: formatters.outputBlockFormatter
 
-    });
+      })
 
-    var getCompilers = new Method({
+      var getCompilers = new Method({
         name: 'getCompilers',
         call: 'eth_getCompilers',
         params: 0
-    });
+      })
 
-    var getBlockTransactionCount = new Method({
+      var getBlockTransactionCount = new Method({
         name: 'getBlockTransactionCount',
         call: getBlockTransactionCountCall,
         params: 1,
         inputFormatter: [formatters.inputBlockNumberFormatter],
         outputFormatter: utils.toDecimal
-    });
+      })
 
-    var getBlockUncleCount = new Method({
+      var getBlockUncleCount = new Method({
         name: 'getBlockUncleCount',
         call: uncleCountCall,
         params: 1,
         inputFormatter: [formatters.inputBlockNumberFormatter],
         outputFormatter: utils.toDecimal
-    });
+      })
 
-    var getTransaction = new Method({
+      var getTransaction = new Method({
         name: 'getTransaction',
         call: 'eth_getTransactionByHash',
         params: 1,
         outputFormatter: formatters.outputTransactionFormatter
-    });
+      })
 
-    var getTransactionFromBlock = new Method({
+      var getTransactionFromBlock = new Method({
         name: 'getTransactionFromBlock',
         call: transactionFromBlockCall,
         params: 2,
         inputFormatter: [formatters.inputBlockNumberFormatter, utils.toHex],
         outputFormatter: formatters.outputTransactionFormatter
-    });
+      })
 
-    var getTransactionReceipt = new Method({
+      var getTransactionReceipt = new Method({
         name: 'getTransactionReceipt',
         call: 'eth_getTransactionReceipt',
         params: 1,
         outputFormatter: formatters.outputTransactionReceiptFormatter
-    });
+      })
 
-    var getTransactionCount = new Method({
+      var getTransactionCount = new Method({
         name: 'getTransactionCount',
         call: 'eth_getTransactionCount',
         params: 2,
         inputFormatter: [null, formatters.inputDefaultBlockNumberFormatter],
         outputFormatter: utils.toDecimal
-    });
+      })
 
-    var sendRawTransaction = new Method({
+      var sendRawTransaction = new Method({
         name: 'sendRawTransaction',
         call: 'eth_sendRawTransaction',
         params: 1,
         inputFormatter: [null]
-    });
+      })
 
-    var sendTransaction = new Method({
+      var sendTransaction = new Method({
         name: 'sendTransaction',
         call: 'eth_sendTransaction',
         params: 1,
         inputFormatter: [formatters.inputTransactionFormatter]
-    });
+      })
 
-    var signTransaction = new Method({
+      var signTransaction = new Method({
         name: 'signTransaction',
         call: 'eth_signTransaction',
         params: 1,
         inputFormatter: [formatters.inputTransactionFormatter]
-    });
+      })
 
-    var sign = new Method({
+      var sign = new Method({
         name: 'sign',
         call: 'eth_sign',
         params: 2,
         inputFormatter: [formatters.inputAddressFormatter, null]
-    });
+      })
 
-    var call = new Method({
+      var call = new Method({
         name: 'call',
         call: 'eth_call',
         params: 2,
         inputFormatter: [formatters.inputCallFormatter, formatters.inputDefaultBlockNumberFormatter]
-    });
+      })
 
-    var estimateGas = new Method({
+      var estimateGas = new Method({
         name: 'estimateGas',
         call: 'eth_estimateGas',
         params: 1,
         inputFormatter: [formatters.inputCallFormatter],
         outputFormatter: utils.toDecimal
-    });
+      })
 
-    var compileSolidity = new Method({
+      var compileSolidity = new Method({
         name: 'compile.solidity',
         call: 'eth_compileSolidity',
         params: 1
-    });
+      })
 
-    var compileLLL = new Method({
+      var compileLLL = new Method({
         name: 'compile.lll',
         call: 'eth_compileLLL',
         params: 1
-    });
+      })
 
-    var compileSerpent = new Method({
+      var compileSerpent = new Method({
         name: 'compile.serpent',
         call: 'eth_compileSerpent',
         params: 1
-    });
+      })
 
-    var submitWork = new Method({
+      var submitWork = new Method({
         name: 'submitWork',
         call: 'eth_submitWork',
         params: 3
-    });
+      })
 
-    var getWork = new Method({
+      var getWork = new Method({
         name: 'getWork',
         call: 'eth_getWork',
         params: 0
-    });
+      })
 
-    return [
+      return [
         getBalance,
         getStorageAt,
         getCode,
@@ -5440,75 +5318,74 @@ var methods = function () {
         compileSerpent,
         submitWork,
         getWork
-    ];
-};
+      ]
+    }
 
-
-var properties = function () {
-    return [
+    var properties = function () {
+      return [
         new Property({
-            name: 'coinbase',
-            getter: 'eth_coinbase'
+          name: 'coinbase',
+          getter: 'eth_coinbase'
         }),
         new Property({
-            name: 'mining',
-            getter: 'eth_mining'
+          name: 'mining',
+          getter: 'eth_mining'
         }),
         new Property({
-            name: 'hashrate',
-            getter: 'eth_hashrate',
-            outputFormatter: utils.toDecimal
+          name: 'hashrate',
+          getter: 'eth_hashrate',
+          outputFormatter: utils.toDecimal
         }),
         new Property({
-            name: 'syncing',
-            getter: 'eth_syncing',
-            outputFormatter: formatters.outputSyncingFormatter
+          name: 'syncing',
+          getter: 'eth_syncing',
+          outputFormatter: formatters.outputSyncingFormatter
         }),
         new Property({
-            name: 'gasPrice',
-            getter: 'eth_gasPrice',
-            outputFormatter: formatters.outputBigNumberFormatter
+          name: 'gasPrice',
+          getter: 'eth_gasPrice',
+          outputFormatter: formatters.outputBigNumberFormatter
         }),
         new Property({
-            name: 'accounts',
-            getter: 'eth_accounts'
+          name: 'accounts',
+          getter: 'eth_accounts'
         }),
         new Property({
-            name: 'blockNumber',
-            getter: 'eth_blockNumber',
-            outputFormatter: utils.toDecimal
+          name: 'blockNumber',
+          getter: 'eth_blockNumber',
+          outputFormatter: utils.toDecimal
         }),
         new Property({
-            name: 'protocolVersion',
-            getter: 'eth_protocolVersion'
+          name: 'protocolVersion',
+          getter: 'eth_protocolVersion'
         })
-    ];
-};
+      ]
+    }
 
-Eth.prototype.contract = function (abi) {
-    var factory = new Contract(this, abi);
-    return factory;
-};
+    Eth.prototype.contract = function (abi) {
+      var factory = new Contract(this, abi)
+      return factory
+    }
 
-Eth.prototype.filter = function (options, callback, filterCreationErrorCallback) {
-    return new Filter(options, 'eth', this._requestManager, watches.eth(), formatters.outputLogFormatter, callback, filterCreationErrorCallback);
-};
+    Eth.prototype.filter = function (options, callback, filterCreationErrorCallback) {
+      return new Filter(options, 'eth', this._requestManager, watches.eth(), formatters.outputLogFormatter, callback, filterCreationErrorCallback)
+    }
 
-Eth.prototype.namereg = function () {
-    return this.contract(namereg.global.abi).at(namereg.global.address);
-};
+    Eth.prototype.namereg = function () {
+      return this.contract(namereg.global.abi).at(namereg.global.address)
+    }
 
-Eth.prototype.icapNamereg = function () {
-    return this.contract(namereg.icap.abi).at(namereg.icap.address);
-};
+    Eth.prototype.icapNamereg = function () {
+      return this.contract(namereg.icap.abi).at(namereg.icap.address)
+    }
 
-Eth.prototype.isSyncing = function (callback) {
-    return new IsSyncing(this._requestManager, callback);
-};
+    Eth.prototype.isSyncing = function (callback) {
+      return new IsSyncing(this._requestManager, callback)
+    }
 
-module.exports = Eth;
-
-},{"../../utils/config":18,"../../utils/utils":20,"../contract":25,"../filter":29,"../formatters":30,"../iban":33,"../method":36,"../namereg":44,"../property":45,"../syncing":48,"../transfer":49,"./watches":43}],39:[function(require,module,exports){
+    module.exports = Eth
+  }, { '../../utils/config':18, '../../utils/utils':20, '../contract':25, '../filter':29, '../formatters':30, '../iban':33, '../method':36, '../namereg':44, '../property':45, '../syncing':48, '../transfer':49, './watches':43 }],
+  39:[function (require, module, exports) {
 /*
     This file is part of web3.js.
 
@@ -5531,38 +5408,38 @@ module.exports = Eth;
  * @date 2015
  */
 
-var utils = require('../../utils/utils');
-var Property = require('../property');
+    var utils = require('../../utils/utils')
+    var Property = require('../property')
 
-var Net = function (web3) {
-    this._requestManager = web3._requestManager;
+    var Net = function (web3) {
+      this._requestManager = web3._requestManager
 
-    var self = this;
+      var self = this
 
-    properties().forEach(function(p) { 
-        p.attachToObject(self);
-        p.setRequestManager(web3._requestManager);
-    });
-};
+      properties().forEach(function (p) {
+        p.attachToObject(self)
+        p.setRequestManager(web3._requestManager)
+      })
+    }
 
-/// @returns an array of objects describing web3.eth api properties
-var properties = function () {
-    return [
+// / @returns an array of objects describing web3.eth api properties
+    var properties = function () {
+      return [
         new Property({
-            name: 'listening',
-            getter: 'net_listening'
+          name: 'listening',
+          getter: 'net_listening'
         }),
         new Property({
-            name: 'peerCount',
-            getter: 'net_peerCount',
-            outputFormatter: utils.toDecimal
+          name: 'peerCount',
+          getter: 'net_peerCount',
+          outputFormatter: utils.toDecimal
         })
-    ];
-};
+      ]
+    }
 
-module.exports = Net;
-
-},{"../../utils/utils":20,"../property":45}],40:[function(require,module,exports){
+    module.exports = Net
+  }, { '../../utils/utils':20, '../property':45 }],
+  40:[function (require, module, exports) {
 /*
     This file is part of web3.js.
 
@@ -5586,77 +5463,77 @@ module.exports = Net;
  * @date 2015
  */
 
-"use strict";
+    'use strict'
 
-var Method = require('../method');
-var Property = require('../property');
-var formatters = require('../formatters');
+    var Method = require('../method')
+    var Property = require('../property')
+    var formatters = require('../formatters')
 
-function Personal(web3) {
-    this._requestManager = web3._requestManager;
+    function Personal (web3) {
+      this._requestManager = web3._requestManager
 
-    var self = this;
+      var self = this
 
-    methods().forEach(function(method) {
-        method.attachToObject(self);
-        method.setRequestManager(self._requestManager);
-    });
+      methods().forEach(function (method) {
+        method.attachToObject(self)
+        method.setRequestManager(self._requestManager)
+      })
 
-    properties().forEach(function(p) {
-        p.attachToObject(self);
-        p.setRequestManager(self._requestManager);
-    });
-}
+      properties().forEach(function (p) {
+        p.attachToObject(self)
+        p.setRequestManager(self._requestManager)
+      })
+    }
 
-var methods = function () {
-    var newAccount = new Method({
+    var methods = function () {
+      var newAccount = new Method({
         name: 'newAccount',
         call: 'personal_newAccount',
         params: 1,
         inputFormatter: [null]
-    });
+      })
 
-    var importRawKey = new Method({
+      var importRawKey = new Method({
         name: 'importRawKey',
-		call: 'personal_importRawKey',
-		params: 2
-    });
+        call: 'personal_importRawKey',
+        params: 2
+      })
 
-    var sign = new Method({
+      var sign = new Method({
         name: 'sign',
-		call: 'personal_sign',
-		params: 3,
-		inputFormatter: [null, formatters.inputAddressFormatter, null]
-    });
+        call: 'personal_sign',
+        params: 3,
+        inputFormatter: [null, formatters.inputAddressFormatter, null]
+      })
 
-    var ecRecover = new Method({
+      var ecRecover = new Method({
         name: 'ecRecover',
-		call: 'personal_ecRecover',
-		params: 2
-    });
+        call: 'personal_ecRecover',
+        params: 2
+      })
 
-    var unlockAccount = new Method({
+      var unlockAccount = new Method({
         name: 'unlockAccount',
         call: 'personal_unlockAccount',
         params: 3,
         inputFormatter: [formatters.inputAddressFormatter, null, null]
-    });
+      })
 
-    var sendTransaction = new Method({
+      var sendTransaction = new Method({
         name: 'sendTransaction',
         call: 'personal_sendTransaction',
         params: 2,
         inputFormatter: [formatters.inputTransactionFormatter, null]
-    });
+      })
 
-    var lockAccount = new Method({
+      var lockAccount = new Method({
         name: 'lockAccount',
         call: 'personal_lockAccount',
         params: 1,
         inputFormatter: [formatters.inputAddressFormatter]
-    });
+      })
 
-    return [
+      return [
         newAccount,
         importRawKey,
         unlockAccount,
@@ -5664,22 +5541,21 @@ var methods = function () {
         sign,
         sendTransaction,
         lockAccount
-    ];
-};
+      ]
+    }
 
-var properties = function () {
-    return [
+    var properties = function () {
+      return [
         new Property({
-            name: 'listAccounts',
-            getter: 'personal_listAccounts'
+          name: 'listAccounts',
+          getter: 'personal_listAccounts'
         })
-    ];
-};
+      ]
+    }
 
-
-module.exports = Personal;
-
-},{"../formatters":30,"../method":36,"../property":45}],41:[function(require,module,exports){
+    module.exports = Personal
+  }, { '../formatters':30, '../method':36, '../property':45 }],
+  41:[function (require, module, exports) {
 /*
     This file is part of web3.js.
 
@@ -5703,129 +5579,127 @@ module.exports = Personal;
  * @date 2017
  */
 
-var Method = require('../method');
-var Filter = require('../filter');
-var watches = require('./watches');
+    var Method = require('../method')
+    var Filter = require('../filter')
+    var watches = require('./watches')
 
-var Shh = function (web3) {
-    this._requestManager = web3._requestManager;
+    var Shh = function (web3) {
+      this._requestManager = web3._requestManager
 
-    var self = this;
+      var self = this
 
-    methods().forEach(function(method) {
-        method.attachToObject(self);
-        method.setRequestManager(self._requestManager);
-    });
-};
+      methods().forEach(function (method) {
+        method.attachToObject(self)
+        method.setRequestManager(self._requestManager)
+      })
+    }
 
-Shh.prototype.newMessageFilter = function (options, callback, filterCreationErrorCallback) {
-    return new Filter(options, 'shh', this._requestManager, watches.shh(), null, callback, filterCreationErrorCallback);
-};
+    Shh.prototype.newMessageFilter = function (options, callback, filterCreationErrorCallback) {
+      return new Filter(options, 'shh', this._requestManager, watches.shh(), null, callback, filterCreationErrorCallback)
+    }
 
-var methods = function () {
-
-    return [
+    var methods = function () {
+      return [
         new Method({
-            name: 'version',
-            call: 'shh_version',
-            params: 0
+          name: 'version',
+          call: 'shh_version',
+          params: 0
         }),
         new Method({
-            name: 'info',
-            call: 'shh_info',
-            params: 0
+          name: 'info',
+          call: 'shh_info',
+          params: 0
         }),
         new Method({
-            name: 'setMaxMessageSize',
-            call: 'shh_setMaxMessageSize',
-            params: 1
+          name: 'setMaxMessageSize',
+          call: 'shh_setMaxMessageSize',
+          params: 1
         }),
         new Method({
-            name: 'setMinPoW',
-            call: 'shh_setMinPoW',
-            params: 1
+          name: 'setMinPoW',
+          call: 'shh_setMinPoW',
+          params: 1
         }),
         new Method({
-            name: 'markTrustedPeer',
-            call: 'shh_markTrustedPeer',
-            params: 1
+          name: 'markTrustedPeer',
+          call: 'shh_markTrustedPeer',
+          params: 1
         }),
         new Method({
-            name: 'newKeyPair',
-            call: 'shh_newKeyPair',
-            params: 0
+          name: 'newKeyPair',
+          call: 'shh_newKeyPair',
+          params: 0
         }),
         new Method({
-            name: 'addPrivateKey',
-            call: 'shh_addPrivateKey',
-            params: 1
+          name: 'addPrivateKey',
+          call: 'shh_addPrivateKey',
+          params: 1
         }),
         new Method({
-            name: 'deleteKeyPair',
-            call: 'shh_deleteKeyPair',
-            params: 1
+          name: 'deleteKeyPair',
+          call: 'shh_deleteKeyPair',
+          params: 1
         }),
         new Method({
-            name: 'hasKeyPair',
-            call: 'shh_hasKeyPair',
-            params: 1
+          name: 'hasKeyPair',
+          call: 'shh_hasKeyPair',
+          params: 1
         }),
         new Method({
-            name: 'getPublicKey',
-            call: 'shh_getPublicKey',
-            params: 1
+          name: 'getPublicKey',
+          call: 'shh_getPublicKey',
+          params: 1
         }),
         new Method({
-            name: 'getPrivateKey',
-            call: 'shh_getPrivateKey',
-            params: 1
+          name: 'getPrivateKey',
+          call: 'shh_getPrivateKey',
+          params: 1
         }),
         new Method({
-            name: 'newSymKey',
-            call: 'shh_newSymKey',
-            params: 0
+          name: 'newSymKey',
+          call: 'shh_newSymKey',
+          params: 0
         }),
         new Method({
-            name: 'addSymKey',
-            call: 'shh_addSymKey',
-            params: 1
+          name: 'addSymKey',
+          call: 'shh_addSymKey',
+          params: 1
         }),
         new Method({
-            name: 'generateSymKeyFromPassword',
-            call: 'shh_generateSymKeyFromPassword',
-            params: 1
+          name: 'generateSymKeyFromPassword',
+          call: 'shh_generateSymKeyFromPassword',
+          params: 1
         }),
         new Method({
-            name: 'hasSymKey',
-            call: 'shh_hasSymKey',
-            params: 1
+          name: 'hasSymKey',
+          call: 'shh_hasSymKey',
+          params: 1
         }),
         new Method({
-            name: 'getSymKey',
-            call: 'shh_getSymKey',
-            params: 1
+          name: 'getSymKey',
+          call: 'shh_getSymKey',
+          params: 1
         }),
         new Method({
-            name: 'deleteSymKey',
-            call: 'shh_deleteSymKey',
-            params: 1
+          name: 'deleteSymKey',
+          call: 'shh_deleteSymKey',
+          params: 1
         }),
 
         // subscribe and unsubscribe missing
 
         new Method({
-            name: 'post',
-            call: 'shh_post',
-            params: 1,
-            inputFormatter: [null]
+          name: 'post',
+          call: 'shh_post',
+          params: 1,
+          inputFormatter: [null]
         })
-    ];
-};
+      ]
+    }
 
-module.exports = Shh;
-
-
-},{"../filter":29,"../method":36,"./watches":43}],42:[function(require,module,exports){
+    module.exports = Shh
+  }, { '../filter':29, '../method':36, './watches':43 }],
+  42:[function (require, module, exports) {
 /*
     This file is part of web3.js.
 
@@ -5850,99 +5724,99 @@ module.exports = Shh;
  * Reference: https://github.com/ethereum/go-ethereum/blob/swarm/internal/web3ext/web3ext.go#L33
  */
 
-"use strict";
+    'use strict'
 
-var Method = require('../method');
-var Property = require('../property');
+    var Method = require('../method')
+    var Property = require('../property')
 
-function Swarm(web3) {
-    this._requestManager = web3._requestManager;
+    function Swarm (web3) {
+      this._requestManager = web3._requestManager
 
-    var self = this;
+      var self = this
 
-    methods().forEach(function(method) {
-        method.attachToObject(self);
-        method.setRequestManager(self._requestManager);
-    });
+      methods().forEach(function (method) {
+        method.attachToObject(self)
+        method.setRequestManager(self._requestManager)
+      })
 
-    properties().forEach(function(p) {
-        p.attachToObject(self);
-        p.setRequestManager(self._requestManager);
-    });
-}
+      properties().forEach(function (p) {
+        p.attachToObject(self)
+        p.setRequestManager(self._requestManager)
+      })
+    }
 
-var methods = function () {
-    var blockNetworkRead = new Method({
+    var methods = function () {
+      var blockNetworkRead = new Method({
         name: 'blockNetworkRead',
         call: 'bzz_blockNetworkRead',
         params: 1,
         inputFormatter: [null]
-    });
+      })
 
-    var syncEnabled = new Method({
+      var syncEnabled = new Method({
         name: 'syncEnabled',
         call: 'bzz_syncEnabled',
         params: 1,
         inputFormatter: [null]
-    });
+      })
 
-    var swapEnabled = new Method({
+      var swapEnabled = new Method({
         name: 'swapEnabled',
         call: 'bzz_swapEnabled',
         params: 1,
         inputFormatter: [null]
-    });
+      })
 
-    var download = new Method({
+      var download = new Method({
         name: 'download',
         call: 'bzz_download',
         params: 2,
         inputFormatter: [null, null]
-    });
+      })
 
-    var upload = new Method({
+      var upload = new Method({
         name: 'upload',
         call: 'bzz_upload',
         params: 2,
         inputFormatter: [null, null]
-    });
+      })
 
-    var retrieve = new Method({
+      var retrieve = new Method({
         name: 'retrieve',
         call: 'bzz_retrieve',
         params: 1,
         inputFormatter: [null]
-    });
+      })
 
-    var store = new Method({
+      var store = new Method({
         name: 'store',
         call: 'bzz_store',
         params: 2,
         inputFormatter: [null, null]
-    });
+      })
 
-    var get = new Method({
+      var get = new Method({
         name: 'get',
         call: 'bzz_get',
         params: 1,
         inputFormatter: [null]
-    });
+      })
 
-    var put = new Method({
+      var put = new Method({
         name: 'put',
         call: 'bzz_put',
         params: 2,
         inputFormatter: [null, null]
-    });
+      })
 
-    var modify = new Method({
+      var modify = new Method({
         name: 'modify',
         call: 'bzz_modify',
         params: 4,
         inputFormatter: [null, null, null, null]
-    });
+      })
 
-    return [
+      return [
         blockNetworkRead,
         syncEnabled,
         swapEnabled,
@@ -5953,26 +5827,25 @@ var methods = function () {
         get,
         put,
         modify
-    ];
-};
+      ]
+    }
 
-var properties = function () {
-    return [
+    var properties = function () {
+      return [
         new Property({
-            name: 'hive',
-            getter: 'bzz_hive'
+          name: 'hive',
+          getter: 'bzz_hive'
         }),
         new Property({
-            name: 'info',
-            getter: 'bzz_info'
+          name: 'info',
+          getter: 'bzz_info'
         })
-    ];
-};
+      ]
+    }
 
-
-module.exports = Swarm;
-
-},{"../method":36,"../property":45}],43:[function(require,module,exports){
+    module.exports = Swarm
+  }, { '../method':36, '../property':45 }],
+  43:[function (require, module, exports) {
 /*
     This file is part of web3.js.
 
@@ -5995,93 +5868,91 @@ module.exports = Swarm;
  * @date 2015
  */
 
-var Method = require('../method');
+    var Method = require('../method')
 
-/// @returns an array of objects describing web3.eth.filter api methods
-var eth = function () {
-    var newFilterCall = function (args) {
-        var type = args[0];
+// / @returns an array of objects describing web3.eth.filter api methods
+    var eth = function () {
+      var newFilterCall = function (args) {
+        var type = args[0]
 
-        switch(type) {
-            case 'latest':
-                args.shift();
-                this.params = 0;
-                return 'eth_newBlockFilter';
-            case 'pending':
-                args.shift();
-                this.params = 0;
-                return 'eth_newPendingTransactionFilter';
-            default:
-                return 'eth_newFilter';
+        switch (type) {
+          case 'latest':
+            args.shift()
+            this.params = 0
+            return 'eth_newBlockFilter'
+          case 'pending':
+            args.shift()
+            this.params = 0
+            return 'eth_newPendingTransactionFilter'
+          default:
+            return 'eth_newFilter'
         }
-    };
+      }
 
-    var newFilter = new Method({
+      var newFilter = new Method({
         name: 'newFilter',
         call: newFilterCall,
         params: 1
-    });
+      })
 
-    var uninstallFilter = new Method({
+      var uninstallFilter = new Method({
         name: 'uninstallFilter',
         call: 'eth_uninstallFilter',
         params: 1
-    });
+      })
 
-    var getLogs = new Method({
+      var getLogs = new Method({
         name: 'getLogs',
         call: 'eth_getFilterLogs',
         params: 1
-    });
+      })
 
-    var poll = new Method({
+      var poll = new Method({
         name: 'poll',
         call: 'eth_getFilterChanges',
         params: 1
-    });
+      })
 
-    return [
+      return [
         newFilter,
         uninstallFilter,
         getLogs,
         poll
-    ];
-};
+      ]
+    }
 
-/// @returns an array of objects describing web3.shh.watch api methods
-var shh = function () {
-
-    return [
+// / @returns an array of objects describing web3.shh.watch api methods
+    var shh = function () {
+      return [
         new Method({
-            name: 'newFilter',
-            call: 'shh_newMessageFilter',
-            params: 1
+          name: 'newFilter',
+          call: 'shh_newMessageFilter',
+          params: 1
         }),
         new Method({
-            name: 'uninstallFilter',
-            call: 'shh_deleteMessageFilter',
-            params: 1
+          name: 'uninstallFilter',
+          call: 'shh_deleteMessageFilter',
+          params: 1
         }),
         new Method({
-            name: 'getLogs',
-            call: 'shh_getFilterMessages',
-            params: 1
+          name: 'getLogs',
+          call: 'shh_getFilterMessages',
+          params: 1
         }),
         new Method({
-            name: 'poll',
-            call: 'shh_getFilterMessages',
-            params: 1
+          name: 'poll',
+          call: 'shh_getFilterMessages',
+          params: 1
         })
-    ];
-};
+      ]
+    }
 
-module.exports = {
-    eth: eth,
-    shh: shh
-};
-
-
-},{"../method":36}],44:[function(require,module,exports){
+    module.exports = {
+      eth: eth,
+      shh: shh
+    }
+  }, { '../method':36 }],
+  44:[function (require, module, exports) {
 /*
     This file is part of web3.js.
 
@@ -6098,31 +5969,30 @@ module.exports = {
     You should have received a copy of the GNU Lesser General Public License
     along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
 */
-/** 
+/**
  * @file namereg.js
  * @author Marek Kotewicz <marek@ethdev.com>
  * @date 2015
  */
 
-var globalRegistrarAbi = require('../contracts/GlobalRegistrar.json');
-var icapRegistrarAbi= require('../contracts/ICAPRegistrar.json');
+    var globalRegistrarAbi = require('../contracts/GlobalRegistrar.json')
+    var icapRegistrarAbi = require('../contracts/ICAPRegistrar.json')
 
-var globalNameregAddress = '0xc6d9d2cd449a754c494264e1809c50e34d64562b';
-var icapNameregAddress = '0xa1a111bc074c9cfa781f0c38e63bd51c91b8af00';
+    var globalNameregAddress = '0xc6d9d2cd449a754c494264e1809c50e34d64562b'
+    var icapNameregAddress = '0xa1a111bc074c9cfa781f0c38e63bd51c91b8af00'
 
-module.exports = {
-    global: {
+    module.exports = {
+      global: {
         abi: globalRegistrarAbi,
         address: globalNameregAddress
-    },
-    icap: {
+      },
+      icap: {
         abi: icapRegistrarAbi,
         address: icapNameregAddress
+      }
     }
-};
-
-
-},{"../contracts/GlobalRegistrar.json":1,"../contracts/ICAPRegistrar.json":2}],45:[function(require,module,exports){
+  }, { '../contracts/GlobalRegistrar.json':1, '../contracts/ICAPRegistrar.json':2 }],
+  45:[function (require, module, exports) {
 /*
     This file is part of web3.js.
 
@@ -6146,20 +6016,20 @@ module.exports = {
  * @date 2015
  */
 
-var utils = require('../utils/utils');
+    var utils = require('../utils/utils')
 
-var Property = function (options) {
-    this.name = options.name;
-    this.getter = options.getter;
-    this.setter = options.setter;
-    this.outputFormatter = options.outputFormatter;
-    this.inputFormatter = options.inputFormatter;
-    this.requestManager = null;
-};
+    var Property = function (options) {
+      this.name = options.name
+      this.getter = options.getter
+      this.setter = options.setter
+      this.outputFormatter = options.outputFormatter
+      this.inputFormatter = options.inputFormatter
+      this.requestManager = null
+    }
 
-Property.prototype.setRequestManager = function (rm) {
-    this.requestManager = rm;
-};
+    Property.prototype.setRequestManager = function (rm) {
+      this.requestManager = rm
+    }
 
 /**
  * Should be called to format input args of method
@@ -6168,9 +6038,9 @@ Property.prototype.setRequestManager = function (rm) {
  * @param {Array}
  * @return {Array}
  */
-Property.prototype.formatInput = function (arg) {
-    return this.inputFormatter ? this.inputFormatter(arg) : arg;
-};
+    Property.prototype.formatInput = function (arg) {
+      return this.inputFormatter ? this.inputFormatter(arg) : arg
+    }
 
 /**
  * Should be called to format output(result) of method
@@ -6179,9 +6049,9 @@ Property.prototype.formatInput = function (arg) {
  * @param {Object}
  * @return {Object}
  */
-Property.prototype.formatOutput = function (result) {
-    return this.outputFormatter && result !== null && result !== undefined ? this.outputFormatter(result) : result;
-};
+    Property.prototype.formatOutput = function (result) {
+      return this.outputFormatter && result !== null && result !== undefined ? this.outputFormatter(result) : result
+    }
 
 /**
  * Should be used to extract callback from array of arguments. Modifies input param
@@ -6190,12 +6060,11 @@ Property.prototype.formatOutput = function (result) {
  * @param {Array} arguments
  * @return {Function|Null} callback, if exists
  */
-Property.prototype.extractCallback = function (args) {
-    if (utils.isFunction(args[args.length - 1])) {
-        return args.pop(); // modify the args array!
+    Property.prototype.extractCallback = function (args) {
+      if (utils.isFunction(args[args.length - 1])) {
+        return args.pop() // modify the args array!
+      }
     }
-};
-
 
 /**
  * Should attach function to method
@@ -6204,49 +6073,49 @@ Property.prototype.extractCallback = function (args) {
  * @param {Object}
  * @param {Function}
  */
-Property.prototype.attachToObject = function (obj) {
-    var proto = {
+    Property.prototype.attachToObject = function (obj) {
+      var proto = {
         get: this.buildGet(),
         enumerable: true
-    };
+      }
 
-    var names = this.name.split('.');
-    var name = names[0];
-    if (names.length > 1) {
-        obj[names[0]] = obj[names[0]] || {};
-        obj = obj[names[0]];
-        name = names[1];
+      var names = this.name.split('.')
+      var name = names[0]
+      if (names.length > 1) {
+        obj[names[0]] = obj[names[0]] || {}
+        obj = obj[names[0]]
+        name = names[1]
+      }
+
+      Object.defineProperty(obj, name, proto)
+      obj[asyncGetterName(name)] = this.buildAsyncGet()
     }
 
-    Object.defineProperty(obj, name, proto);
-    obj[asyncGetterName(name)] = this.buildAsyncGet();
-};
+    var asyncGetterName = function (name) {
+      return 'get' + name.charAt(0).toUpperCase() + name.slice(1)
+    }
 
-var asyncGetterName = function (name) {
-    return 'get' + name.charAt(0).toUpperCase() + name.slice(1);
-};
-
-Property.prototype.buildGet = function () {
-    var property = this;
-    return function get() {
+    Property.prototype.buildGet = function () {
+      var property = this
+      return function get () {
         return property.formatOutput(property.requestManager.send({
-            method: property.getter
-        }));
-    };
-};
+          method: property.getter
+        }))
+      }
+    }
 
-Property.prototype.buildAsyncGet = function () {
-    var property = this;
-    var get = function (callback) {
+    Property.prototype.buildAsyncGet = function () {
+      var property = this
+      var get = function (callback) {
         property.requestManager.sendAsync({
-            method: property.getter
+          method: property.getter
         }, function (err, result) {
-            callback(err, property.formatOutput(result));
-        });
-    };
-    get.request = this.request.bind(this);
-    return get;
-};
+          callback(err, property.formatOutput(result))
+        })
+      }
+      get.request = this.request.bind(this)
+      return get
+    }
 
 /**
  * Should be called to create pure JSONRPC request which can be used in batch request
@@ -6255,20 +6124,19 @@ Property.prototype.buildAsyncGet = function () {
  * @param {...} params
  * @return {Object} jsonrpc request
  */
-Property.prototype.request = function () {
-    var payload = {
+    Property.prototype.request = function () {
+      var payload = {
         method: this.getter,
         params: [],
         callback: this.extractCallback(Array.prototype.slice.call(arguments))
-    };
-    payload.format = this.formatOutput.bind(this);
-    return payload;
-};
+      }
+      payload.format = this.formatOutput.bind(this)
+      return payload
+    }
 
-module.exports = Property;
-
-
-},{"../utils/utils":20}],46:[function(require,module,exports){
+    module.exports = Property
+  }, { '../utils/utils':20 }],
+  46:[function (require, module, exports) {
 /*
     This file is part of web3.js.
 
@@ -6285,7 +6153,7 @@ module.exports = Property;
     You should have received a copy of the GNU Lesser General Public License
     along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
 */
-/** 
+/**
  * @file requestmanager.js
  * @author Jeffrey Wilcke <jeff@ethdev.com>
  * @author Marek Kotewicz <marek@ethdev.com>
@@ -6295,10 +6163,10 @@ module.exports = Property;
  * @date 2014
  */
 
-var Jsonrpc = require('./jsonrpc');
-var utils = require('../utils/utils');
-var c = require('../utils/config');
-var errors = require('./errors');
+    var Jsonrpc = require('./jsonrpc')
+    var utils = require('../utils/utils')
+    var c = require('../utils/config')
+    var errors = require('./errors')
 
 /**
  * It's responsible for passing messages to providers
@@ -6306,11 +6174,11 @@ var errors = require('./errors');
  * Default poll timeout is 1 second
  * Singleton
  */
-var RequestManager = function (provider) {
-    this.provider = provider;
-    this.polls = {};
-    this.timeout = null;
-};
+    var RequestManager = function (provider) {
+      this.provider = provider
+      this.polls = {}
+      this.timeout = null
+    }
 
 /**
  * Should be used to synchronously send request
@@ -6319,21 +6187,21 @@ var RequestManager = function (provider) {
  * @param {Object} data
  * @return {Object}
  */
-RequestManager.prototype.send = function (data) {
-    if (!this.provider) {
-        console.error(errors.InvalidProvider());
-        return null;
+    RequestManager.prototype.send = function (data) {
+      if (!this.provider) {
+        console.error(errors.InvalidProvider())
+        return null
+      }
+
+      var payload = Jsonrpc.toPayload(data.method, data.params)
+      var result = this.provider.send(payload)
+
+      if (!Jsonrpc.isValidResponse(result)) {
+        throw errors.InvalidResponse(result)
+      }
+
+      return result.result
     }
-
-    var payload = Jsonrpc.toPayload(data.method, data.params);
-    var result = this.provider.send(payload);
-
-    if (!Jsonrpc.isValidResponse(result)) {
-        throw errors.InvalidResponse(result);
-    }
-
-    return result.result;
-};
 
 /**
  * Should be used to asynchronously send request
@@ -6342,24 +6210,24 @@ RequestManager.prototype.send = function (data) {
  * @param {Object} data
  * @param {Function} callback
  */
-RequestManager.prototype.sendAsync = function (data, callback) {
-    if (!this.provider) {
-        return callback(errors.InvalidProvider());
-    }
+    RequestManager.prototype.sendAsync = function (data, callback) {
+      if (!this.provider) {
+        return callback(errors.InvalidProvider())
+      }
 
-    var payload = Jsonrpc.toPayload(data.method, data.params);
-    this.provider.sendAsync(payload, function (err, result) {
+      var payload = Jsonrpc.toPayload(data.method, data.params)
+      this.provider.sendAsync(payload, function (err, result) {
         if (err) {
-            return callback(err);
-        }
-        
-        if (!Jsonrpc.isValidResponse(result)) {
-            return callback(errors.InvalidResponse(result));
+          return callback(err)
         }
 
-        callback(null, result.result);
-    });
-};
+        if (!Jsonrpc.isValidResponse(result)) {
+          return callback(errors.InvalidResponse(result))
+        }
+
+        callback(null, result.result)
+      })
+    }
 
 /**
  * Should be called to asynchronously send batch request
@@ -6368,25 +6236,25 @@ RequestManager.prototype.sendAsync = function (data, callback) {
  * @param {Array} batch data
  * @param {Function} callback
  */
-RequestManager.prototype.sendBatch = function (data, callback) {
-    if (!this.provider) {
-        return callback(errors.InvalidProvider());
-    }
+    RequestManager.prototype.sendBatch = function (data, callback) {
+      if (!this.provider) {
+        return callback(errors.InvalidProvider())
+      }
 
-    var payload = Jsonrpc.toBatchPayload(data);
+      var payload = Jsonrpc.toBatchPayload(data)
 
-    this.provider.sendAsync(payload, function (err, results) {
+      this.provider.sendAsync(payload, function (err, results) {
         if (err) {
-            return callback(err);
+          return callback(err)
         }
 
         if (!utils.isArray(results)) {
-            return callback(errors.InvalidResponse(results));
+          return callback(errors.InvalidResponse(results))
         }
 
-        callback(err, results);
-    }); 
-};
+        callback(err, results)
+      })
+    }
 
 /**
  * Should be used to set provider of request manager
@@ -6394,9 +6262,9 @@ RequestManager.prototype.sendBatch = function (data, callback) {
  * @method setProvider
  * @param {Object}
  */
-RequestManager.prototype.setProvider = function (p) {
-    this.provider = p;
-};
+    RequestManager.prototype.setProvider = function (p) {
+      this.provider = p
+    }
 
 /**
  * Should be used to start polling
@@ -6409,15 +6277,14 @@ RequestManager.prototype.setProvider = function (p) {
  *
  * @todo cleanup number of params
  */
-RequestManager.prototype.startPolling = function (data, pollId, callback, uninstall) {
-    this.polls[pollId] = {data: data, id: pollId, callback: callback, uninstall: uninstall};
-
+    RequestManager.prototype.startPolling = function (data, pollId, callback, uninstall) {
+      this.polls[pollId] = { data: data, id: pollId, callback: callback, uninstall: uninstall }
 
     // start polling
-    if (!this.timeout) {
-        this.poll();
+      if (!this.timeout) {
+        this.poll()
+      }
     }
-};
 
 /**
  * Should be used to stop polling for filter with given id
@@ -6425,128 +6292,120 @@ RequestManager.prototype.startPolling = function (data, pollId, callback, uninst
  * @method stopPolling
  * @param {Number} pollId
  */
-RequestManager.prototype.stopPolling = function (pollId) {
-    delete this.polls[pollId];
+    RequestManager.prototype.stopPolling = function (pollId) {
+      delete this.polls[pollId]
 
     // stop polling
-    if(Object.keys(this.polls).length === 0 && this.timeout) {
-        clearTimeout(this.timeout);
-        this.timeout = null;
+      if (Object.keys(this.polls).length === 0 && this.timeout) {
+        clearTimeout(this.timeout)
+        this.timeout = null
+      }
     }
-};
 
 /**
  * Should be called to reset the polling mechanism of the request manager
  *
  * @method reset
  */
-RequestManager.prototype.reset = function (keepIsSyncing) {
-    /*jshint maxcomplexity:5 */
+    RequestManager.prototype.reset = function (keepIsSyncing) {
+    /* jshint maxcomplexity:5 */
 
-    for (var key in this.polls) {
+      for (var key in this.polls) {
         // remove all polls, except sync polls,
         // they need to be removed manually by calling syncing.stopWatching()
-        if(!keepIsSyncing || key.indexOf('syncPoll_') === -1) {
-            this.polls[key].uninstall();
-            delete this.polls[key];
+        if (!keepIsSyncing || key.indexOf('syncPoll_') === -1) {
+          this.polls[key].uninstall()
+          delete this.polls[key]
         }
-    }
+      }
 
     // stop polling
-    if(Object.keys(this.polls).length === 0 && this.timeout) {
-        clearTimeout(this.timeout);
-        this.timeout = null;
+      if (Object.keys(this.polls).length === 0 && this.timeout) {
+        clearTimeout(this.timeout)
+        this.timeout = null
+      }
     }
-};
 
 /**
  * Should be called to poll for changes on filter with given id
  *
  * @method poll
  */
-RequestManager.prototype.poll = function () {
-    /*jshint maxcomplexity: 6 */
-    this.timeout = setTimeout(this.poll.bind(this), c.ETH_POLLING_TIMEOUT);
+    RequestManager.prototype.poll = function () {
+    /* jshint maxcomplexity: 6 */
+      this.timeout = setTimeout(this.poll.bind(this), c.ETH_POLLING_TIMEOUT)
 
-    if (Object.keys(this.polls).length === 0) {
-        return;
-    }
+      if (Object.keys(this.polls).length === 0) {
+        return
+      }
 
-    if (!this.provider) {
-        console.error(errors.InvalidProvider());
-        return;
-    }
+      if (!this.provider) {
+        console.error(errors.InvalidProvider())
+        return
+      }
 
-    var pollsData = [];
-    var pollsIds = [];
-    for (var key in this.polls) {
-        pollsData.push(this.polls[key].data);
-        pollsIds.push(key);
-    }
+      var pollsData = []
+      var pollsIds = []
+      for (var key in this.polls) {
+        pollsData.push(this.polls[key].data)
+        pollsIds.push(key)
+      }
 
-    if (pollsData.length === 0) {
-        return;
-    }
+      if (pollsData.length === 0) {
+        return
+      }
 
-    var payload = Jsonrpc.toBatchPayload(pollsData);
-    
+      var payload = Jsonrpc.toBatchPayload(pollsData)
+
     // map the request id to they poll id
-    var pollsIdMap = {};
-    payload.forEach(function(load, index){
-        pollsIdMap[load.id] = pollsIds[index];
-    });
+      var pollsIdMap = {}
+      payload.forEach(function (load, index) {
+        pollsIdMap[load.id] = pollsIds[index]
+      })
 
-
-    var self = this;
-    this.provider.sendAsync(payload, function (error, results) {
-
-
+      var self = this
+      this.provider.sendAsync(payload, function (error, results) {
         // TODO: console log?
         if (error) {
-            return;
+          return
         }
 
         if (!utils.isArray(results)) {
-            throw errors.InvalidResponse(results);
+          throw errors.InvalidResponse(results)
         }
         results.map(function (result) {
-            var id = pollsIdMap[result.id];
+          var id = pollsIdMap[result.id]
 
             // make sure the filter is still installed after arrival of the request
-            if (self.polls[id]) {
-                result.callback = self.polls[id].callback;
-                return result;
-            } else
-                return false;
+          if (self.polls[id]) {
+            result.callback = self.polls[id].callback
+            return result
+          } else { return false }
         }).filter(function (result) {
-            return !!result; 
+          return !!result
         }).filter(function (result) {
-            var valid = Jsonrpc.isValidResponse(result);
-            if (!valid) {
-                result.callback(errors.InvalidResponse(result));
-            }
-            return valid;
+          var valid = Jsonrpc.isValidResponse(result)
+          if (!valid) {
+            result.callback(errors.InvalidResponse(result))
+          }
+          return valid
         }).forEach(function (result) {
-            result.callback(null, result.result);
-        });
-    });
-};
+          result.callback(null, result.result)
+        })
+      })
+    }
 
-module.exports = RequestManager;
+    module.exports = RequestManager
+  }, { '../utils/config':18, '../utils/utils':20, './errors':26, './jsonrpc':35 }],
+  47:[function (require, module, exports) {
+    var Settings = function () {
+      this.defaultBlock = 'latest'
+      this.defaultAccount = undefined
+    }
 
-
-},{"../utils/config":18,"../utils/utils":20,"./errors":26,"./jsonrpc":35}],47:[function(require,module,exports){
-
-
-var Settings = function () {
-    this.defaultBlock = 'latest';
-    this.defaultAccount = undefined;
-};
-
-module.exports = Settings;
-
-
-},{}],48:[function(require,module,exports){
+    module.exports = Settings
+  }, {}],
+  48:[function (require, module, exports) {
 /*
     This file is part of web3.js.
 
@@ -6569,10 +6428,10 @@ module.exports = Settings;
  * @date 2015
  */
 
-var formatters = require('./formatters');
-var utils = require('../utils/utils');
+    var formatters = require('./formatters')
+    var utils = require('../utils/utils')
 
-var count = 1;
+    var count = 1
 
 /**
 Adds the callback and sets up the methods, to iterate over the results.
@@ -6580,68 +6439,61 @@ Adds the callback and sets up the methods, to iterate over the results.
 @method pollSyncing
 @param {Object} self
 */
-var pollSyncing = function(self) {
-
-    var onMessage = function (error, sync) {
+    var pollSyncing = function (self) {
+      var onMessage = function (error, sync) {
         if (error) {
-            return self.callbacks.forEach(function (callback) {
-                callback(error);
-            });
+          return self.callbacks.forEach(function (callback) {
+            callback(error)
+          })
         }
 
-        if(utils.isObject(sync) && sync.startingBlock)
-            sync = formatters.outputSyncingFormatter(sync);
+        if (utils.isObject(sync) && sync.startingBlock) { sync = formatters.outputSyncingFormatter(sync) }
 
         self.callbacks.forEach(function (callback) {
-            if (self.lastSyncState !== sync) {
-                
+          if (self.lastSyncState !== sync) {
                 // call the callback with true first so the app can stop anything, before receiving the sync data
-                if(!self.lastSyncState && utils.isObject(sync))
-                    callback(null, true);
-                
+            if (!self.lastSyncState && utils.isObject(sync)) { callback(null, true) }
+
                 // call on the next CPU cycle, so the actions of the sync stop can be processes first
-                setTimeout(function() {
-                    callback(null, sync);
-                }, 0);
-                
-                self.lastSyncState = sync;
-            }
-        });
-    };
+            setTimeout(function () {
+              callback(null, sync)
+            }, 0)
 
-    self.requestManager.startPolling({
+            self.lastSyncState = sync
+          }
+        })
+      }
+
+      self.requestManager.startPolling({
         method: 'eth_syncing',
-        params: [],
-    }, self.pollId, onMessage, self.stopWatching.bind(self));
+        params: []
+      }, self.pollId, onMessage, self.stopWatching.bind(self))
+    }
 
-};
+    var IsSyncing = function (requestManager, callback) {
+      this.requestManager = requestManager
+      this.pollId = 'syncPoll_' + count++
+      this.callbacks = []
+      this.addCallback(callback)
+      this.lastSyncState = false
+      pollSyncing(this)
 
-var IsSyncing = function (requestManager, callback) {
-    this.requestManager = requestManager;
-    this.pollId = 'syncPoll_'+ count++;
-    this.callbacks = [];
-    this.addCallback(callback);
-    this.lastSyncState = false;
-    pollSyncing(this);
+      return this
+    }
 
-    return this;
-};
+    IsSyncing.prototype.addCallback = function (callback) {
+      if (callback) { this.callbacks.push(callback) }
+      return this
+    }
 
-IsSyncing.prototype.addCallback = function (callback) {
-    if(callback)
-        this.callbacks.push(callback);
-    return this;
-};
+    IsSyncing.prototype.stopWatching = function () {
+      this.requestManager.stopPolling(this.pollId)
+      this.callbacks = []
+    }
 
-IsSyncing.prototype.stopWatching = function () {
-    this.requestManager.stopPolling(this.pollId);
-    this.callbacks = [];
-};
-
-module.exports = IsSyncing;
-
-
-},{"../utils/utils":20,"./formatters":30}],49:[function(require,module,exports){
+    module.exports = IsSyncing
+  }, { '../utils/utils':20, './formatters':30 }],
+  49:[function (require, module, exports) {
 /*
     This file is part of web3.js.
 
@@ -6658,14 +6510,14 @@ module.exports = IsSyncing;
     You should have received a copy of the GNU Lesser General Public License
     along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
 */
-/** 
+/**
  * @file transfer.js
  * @author Marek Kotewicz <marek@ethdev.com>
  * @date 2015
  */
 
-var Iban = require('./iban');
-var exchangeAbi = require('../contracts/SmartExchange.json');
+    var Iban = require('./iban')
+    var exchangeAbi = require('../contracts/SmartExchange.json')
 
 /**
  * Should be used to make Iban transfer
@@ -6676,26 +6528,25 @@ var exchangeAbi = require('../contracts/SmartExchange.json');
  * @param {Value} value to be tranfered
  * @param {Function} callback, callback
  */
-var transfer = function (eth, from, to, value, callback) {
-    var iban = new Iban(to); 
-    if (!iban.isValid()) {
-        throw new Error('invalid iban address');
-    }
+    var transfer = function (eth, from, to, value, callback) {
+      var iban = new Iban(to)
+      if (!iban.isValid()) {
+        throw new Error('invalid iban address')
+      }
 
-    if (iban.isDirect()) {
-        return transferToAddress(eth, from, iban.address(), value, callback);
-    }
-    
-    if (!callback) {
-        var address = eth.icapNamereg().addr(iban.institution());
-        return deposit(eth, from, address, value, iban.client());
-    }
+      if (iban.isDirect()) {
+        return transferToAddress(eth, from, iban.address(), value, callback)
+      }
 
-    eth.icapNamereg().addr(iban.institution(), function (err, address) {
-        return deposit(eth, from, address, value, iban.client(), callback);
-    });
-    
-};
+      if (!callback) {
+        var address = eth.icapNamereg().addr(iban.institution())
+        return deposit(eth, from, address, value, iban.client())
+      }
+
+      eth.icapNamereg().addr(iban.institution(), function (err, address) {
+        return deposit(eth, from, address, value, iban.client(), callback)
+      })
+    }
 
 /**
  * Should be used to transfer funds to certain address
@@ -6706,13 +6557,13 @@ var transfer = function (eth, from, to, value, callback) {
  * @param {Value} value to be tranfered
  * @param {Function} callback, callback
  */
-var transferToAddress = function (eth, from, to, value, callback) {
-    return eth.sendTransaction({
+    var transferToAddress = function (eth, from, to, value, callback) {
+      return eth.sendTransaction({
         address: to,
         from: from,
         value: value
-    }, callback);
-};
+      }, callback)
+    }
 
 /**
  * Should be used to deposit funds to generic Exchange contract (must implement deposit(bytes32) method!)
@@ -6724,105 +6575,101 @@ var transferToAddress = function (eth, from, to, value, callback) {
  * @param {String} client unique identifier
  * @param {Function} callback, callback
  */
-var deposit = function (eth, from, to, value, client, callback) {
-    var abi = exchangeAbi;
-    return eth.contract(abi).at(to).deposit(client, {
+    var deposit = function (eth, from, to, value, client, callback) {
+      var abi = exchangeAbi
+      return eth.contract(abi).at(to).deposit(client, {
         from: from,
         value: value
-    }, callback);
-};
+      }, callback)
+    }
 
-module.exports = transfer;
-
-
-},{"../contracts/SmartExchange.json":3,"./iban":33}],50:[function(require,module,exports){
-;(function (root, factory, undef) {
-	if (typeof exports === "object") {
+    module.exports = transfer
+  }, { '../contracts/SmartExchange.json':3, './iban':33 }],
+  50:[function (require, module, exports) {
+    ;(function (root, factory, undef) {
+      if (typeof exports === 'object') {
 		// CommonJS
-		module.exports = exports = factory(require("./core"), require("./enc-base64"), require("./md5"), require("./evpkdf"), require("./cipher-core"));
-	}
-	else if (typeof define === "function" && define.amd) {
+        module.exports = exports = factory(require('./core'), require('./enc-base64'), require('./md5'), require('./evpkdf'), require('./cipher-core'))
+      } else if (typeof define === 'function' && define.amd) {
 		// AMD
-		define(["./core", "./enc-base64", "./md5", "./evpkdf", "./cipher-core"], factory);
-	}
-	else {
+        define(['./core', './enc-base64', './md5', './evpkdf', './cipher-core'], factory)
+      } else {
 		// Global (browser)
-		factory(root.CryptoJS);
-	}
-}(this, function (CryptoJS) {
-
-	(function () {
+        factory(root.CryptoJS)
+      }
+    }(this, function (CryptoJS) {
+      (function () {
 	    // Shortcuts
-	    var C = CryptoJS;
-	    var C_lib = C.lib;
-	    var BlockCipher = C_lib.BlockCipher;
-	    var C_algo = C.algo;
+	    var C = CryptoJS
+	    var C_lib = C.lib
+	    var BlockCipher = C_lib.BlockCipher
+	    var C_algo = C.algo
 
 	    // Lookup tables
-	    var SBOX = [];
-	    var INV_SBOX = [];
-	    var SUB_MIX_0 = [];
-	    var SUB_MIX_1 = [];
-	    var SUB_MIX_2 = [];
-	    var SUB_MIX_3 = [];
-	    var INV_SUB_MIX_0 = [];
-	    var INV_SUB_MIX_1 = [];
-	    var INV_SUB_MIX_2 = [];
+	    var SBOX = []
+	    var INV_SBOX = []
+	    var SUB_MIX_0 = []
+	    var SUB_MIX_1 = []
+	    var SUB_MIX_2 = []
+	    var SUB_MIX_3 = []
+	    var INV_SUB_MIX_0 = []
+	    var INV_SUB_MIX_1 = []
+	    var INV_SUB_MIX_2 = []
 	    var INV_SUB_MIX_3 = [];
 
 	    // Compute lookup tables
 	    (function () {
 	        // Compute double table
-	        var d = [];
+	        var d = []
 	        for (var i = 0; i < 256; i++) {
 	            if (i < 128) {
-	                d[i] = i << 1;
+	                d[i] = i << 1
 	            } else {
-	                d[i] = (i << 1) ^ 0x11b;
+	                d[i] = (i << 1) ^ 0x11b
 	            }
 	        }
 
 	        // Walk GF(2^8)
-	        var x = 0;
-	        var xi = 0;
+	        var x = 0
+	        var xi = 0
 	        for (var i = 0; i < 256; i++) {
 	            // Compute sbox
-	            var sx = xi ^ (xi << 1) ^ (xi << 2) ^ (xi << 3) ^ (xi << 4);
-	            sx = (sx >>> 8) ^ (sx & 0xff) ^ 0x63;
-	            SBOX[x] = sx;
-	            INV_SBOX[sx] = x;
+	            var sx = xi ^ (xi << 1) ^ (xi << 2) ^ (xi << 3) ^ (xi << 4)
+	            sx = (sx >>> 8) ^ (sx & 0xff) ^ 0x63
+	            SBOX[x] = sx
+	            INV_SBOX[sx] = x
 
 	            // Compute multiplication
-	            var x2 = d[x];
-	            var x4 = d[x2];
-	            var x8 = d[x4];
+	            var x2 = d[x]
+	            var x4 = d[x2]
+	            var x8 = d[x4]
 
 	            // Compute sub bytes, mix columns tables
-	            var t = (d[sx] * 0x101) ^ (sx * 0x1010100);
-	            SUB_MIX_0[x] = (t << 24) | (t >>> 8);
-	            SUB_MIX_1[x] = (t << 16) | (t >>> 16);
-	            SUB_MIX_2[x] = (t << 8)  | (t >>> 24);
-	            SUB_MIX_3[x] = t;
+	            var t = (d[sx] * 0x101) ^ (sx * 0x1010100)
+	            SUB_MIX_0[x] = (t << 24) | (t >>> 8)
+	            SUB_MIX_1[x] = (t << 16) | (t >>> 16)
+	            SUB_MIX_2[x] = (t << 8) | (t >>> 24)
+	            SUB_MIX_3[x] = t
 
 	            // Compute inv sub bytes, inv mix columns tables
-	            var t = (x8 * 0x1010101) ^ (x4 * 0x10001) ^ (x2 * 0x101) ^ (x * 0x1010100);
-	            INV_SUB_MIX_0[sx] = (t << 24) | (t >>> 8);
-	            INV_SUB_MIX_1[sx] = (t << 16) | (t >>> 16);
-	            INV_SUB_MIX_2[sx] = (t << 8)  | (t >>> 24);
-	            INV_SUB_MIX_3[sx] = t;
+	            var t = (x8 * 0x1010101) ^ (x4 * 0x10001) ^ (x2 * 0x101) ^ (x * 0x1010100)
+	            INV_SUB_MIX_0[sx] = (t << 24) | (t >>> 8)
+	            INV_SUB_MIX_1[sx] = (t << 16) | (t >>> 16)
+	            INV_SUB_MIX_2[sx] = (t << 8) | (t >>> 24)
+	            INV_SUB_MIX_3[sx] = t
 
 	            // Compute next counter
 	            if (!x) {
-	                x = xi = 1;
+	                x = xi = 1
 	            } else {
-	                x = x2 ^ d[d[d[x8 ^ x2]]];
-	                xi ^= d[d[xi]];
+	                x = x2 ^ d[d[d[x8 ^ x2]]]
+	                xi ^= d[d[xi]]
 	            }
 	        }
-	    }());
+	    }())
 
 	    // Precomputed Rcon lookup
-	    var RCON = [0x00, 0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x1b, 0x36];
+	    var RCON = [0x00, 0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x1b, 0x36]
 
 	    /**
 	     * AES block cipher algorithm.
@@ -6831,127 +6678,127 @@ module.exports = transfer;
 	        _doReset: function () {
 	            // Skip reset of nRounds has been set before and key did not change
 	            if (this._nRounds && this._keyPriorReset === this._key) {
-	                return;
+	                return
 	            }
 
 	            // Shortcuts
-	            var key = this._keyPriorReset = this._key;
-	            var keyWords = key.words;
-	            var keySize = key.sigBytes / 4;
+	            var key = this._keyPriorReset = this._key
+	            var keyWords = key.words
+	            var keySize = key.sigBytes / 4
 
 	            // Compute number of rounds
-	            var nRounds = this._nRounds = keySize + 6;
+	            var nRounds = this._nRounds = keySize + 6
 
 	            // Compute number of key schedule rows
-	            var ksRows = (nRounds + 1) * 4;
+	            var ksRows = (nRounds + 1) * 4
 
 	            // Compute key schedule
-	            var keySchedule = this._keySchedule = [];
+	            var keySchedule = this._keySchedule = []
 	            for (var ksRow = 0; ksRow < ksRows; ksRow++) {
 	                if (ksRow < keySize) {
-	                    keySchedule[ksRow] = keyWords[ksRow];
+	                    keySchedule[ksRow] = keyWords[ksRow]
 	                } else {
-	                    var t = keySchedule[ksRow - 1];
+	                    var t = keySchedule[ksRow - 1]
 
 	                    if (!(ksRow % keySize)) {
 	                        // Rot word
-	                        t = (t << 8) | (t >>> 24);
+	                        t = (t << 8) | (t >>> 24)
 
 	                        // Sub word
-	                        t = (SBOX[t >>> 24] << 24) | (SBOX[(t >>> 16) & 0xff] << 16) | (SBOX[(t >>> 8) & 0xff] << 8) | SBOX[t & 0xff];
+	                        t = (SBOX[t >>> 24] << 24) | (SBOX[(t >>> 16) & 0xff] << 16) | (SBOX[(t >>> 8) & 0xff] << 8) | SBOX[t & 0xff]
 
 	                        // Mix Rcon
-	                        t ^= RCON[(ksRow / keySize) | 0] << 24;
+	                        t ^= RCON[(ksRow / keySize) | 0] << 24
 	                    } else if (keySize > 6 && ksRow % keySize == 4) {
 	                        // Sub word
-	                        t = (SBOX[t >>> 24] << 24) | (SBOX[(t >>> 16) & 0xff] << 16) | (SBOX[(t >>> 8) & 0xff] << 8) | SBOX[t & 0xff];
+	                        t = (SBOX[t >>> 24] << 24) | (SBOX[(t >>> 16) & 0xff] << 16) | (SBOX[(t >>> 8) & 0xff] << 8) | SBOX[t & 0xff]
 	                    }
 
-	                    keySchedule[ksRow] = keySchedule[ksRow - keySize] ^ t;
+	                    keySchedule[ksRow] = keySchedule[ksRow - keySize] ^ t
 	                }
 	            }
 
 	            // Compute inv key schedule
-	            var invKeySchedule = this._invKeySchedule = [];
+	            var invKeySchedule = this._invKeySchedule = []
 	            for (var invKsRow = 0; invKsRow < ksRows; invKsRow++) {
-	                var ksRow = ksRows - invKsRow;
+	                var ksRow = ksRows - invKsRow
 
 	                if (invKsRow % 4) {
-	                    var t = keySchedule[ksRow];
+	                    var t = keySchedule[ksRow]
 	                } else {
-	                    var t = keySchedule[ksRow - 4];
+	                    var t = keySchedule[ksRow - 4]
 	                }
 
 	                if (invKsRow < 4 || ksRow <= 4) {
-	                    invKeySchedule[invKsRow] = t;
+	                    invKeySchedule[invKsRow] = t
 	                } else {
 	                    invKeySchedule[invKsRow] = INV_SUB_MIX_0[SBOX[t >>> 24]] ^ INV_SUB_MIX_1[SBOX[(t >>> 16) & 0xff]] ^
-	                                               INV_SUB_MIX_2[SBOX[(t >>> 8) & 0xff]] ^ INV_SUB_MIX_3[SBOX[t & 0xff]];
+	                                               INV_SUB_MIX_2[SBOX[(t >>> 8) & 0xff]] ^ INV_SUB_MIX_3[SBOX[t & 0xff]]
 	                }
 	            }
 	        },
 
 	        encryptBlock: function (M, offset) {
-	            this._doCryptBlock(M, offset, this._keySchedule, SUB_MIX_0, SUB_MIX_1, SUB_MIX_2, SUB_MIX_3, SBOX);
+	            this._doCryptBlock(M, offset, this._keySchedule, SUB_MIX_0, SUB_MIX_1, SUB_MIX_2, SUB_MIX_3, SBOX)
 	        },
 
 	        decryptBlock: function (M, offset) {
 	            // Swap 2nd and 4th rows
-	            var t = M[offset + 1];
-	            M[offset + 1] = M[offset + 3];
-	            M[offset + 3] = t;
+	            var t = M[offset + 1]
+	            M[offset + 1] = M[offset + 3]
+	            M[offset + 3] = t
 
-	            this._doCryptBlock(M, offset, this._invKeySchedule, INV_SUB_MIX_0, INV_SUB_MIX_1, INV_SUB_MIX_2, INV_SUB_MIX_3, INV_SBOX);
+	            this._doCryptBlock(M, offset, this._invKeySchedule, INV_SUB_MIX_0, INV_SUB_MIX_1, INV_SUB_MIX_2, INV_SUB_MIX_3, INV_SBOX)
 
 	            // Inv swap 2nd and 4th rows
-	            var t = M[offset + 1];
-	            M[offset + 1] = M[offset + 3];
-	            M[offset + 3] = t;
+	            var t = M[offset + 1]
+	            M[offset + 1] = M[offset + 3]
+	            M[offset + 3] = t
 	        },
 
 	        _doCryptBlock: function (M, offset, keySchedule, SUB_MIX_0, SUB_MIX_1, SUB_MIX_2, SUB_MIX_3, SBOX) {
 	            // Shortcut
-	            var nRounds = this._nRounds;
+	            var nRounds = this._nRounds
 
 	            // Get input, add round key
-	            var s0 = M[offset]     ^ keySchedule[0];
-	            var s1 = M[offset + 1] ^ keySchedule[1];
-	            var s2 = M[offset + 2] ^ keySchedule[2];
-	            var s3 = M[offset + 3] ^ keySchedule[3];
+	            var s0 = M[offset] ^ keySchedule[0]
+	            var s1 = M[offset + 1] ^ keySchedule[1]
+	            var s2 = M[offset + 2] ^ keySchedule[2]
+	            var s3 = M[offset + 3] ^ keySchedule[3]
 
 	            // Key schedule row counter
-	            var ksRow = 4;
+	            var ksRow = 4
 
 	            // Rounds
 	            for (var round = 1; round < nRounds; round++) {
 	                // Shift rows, sub bytes, mix columns, add round key
-	                var t0 = SUB_MIX_0[s0 >>> 24] ^ SUB_MIX_1[(s1 >>> 16) & 0xff] ^ SUB_MIX_2[(s2 >>> 8) & 0xff] ^ SUB_MIX_3[s3 & 0xff] ^ keySchedule[ksRow++];
-	                var t1 = SUB_MIX_0[s1 >>> 24] ^ SUB_MIX_1[(s2 >>> 16) & 0xff] ^ SUB_MIX_2[(s3 >>> 8) & 0xff] ^ SUB_MIX_3[s0 & 0xff] ^ keySchedule[ksRow++];
-	                var t2 = SUB_MIX_0[s2 >>> 24] ^ SUB_MIX_1[(s3 >>> 16) & 0xff] ^ SUB_MIX_2[(s0 >>> 8) & 0xff] ^ SUB_MIX_3[s1 & 0xff] ^ keySchedule[ksRow++];
-	                var t3 = SUB_MIX_0[s3 >>> 24] ^ SUB_MIX_1[(s0 >>> 16) & 0xff] ^ SUB_MIX_2[(s1 >>> 8) & 0xff] ^ SUB_MIX_3[s2 & 0xff] ^ keySchedule[ksRow++];
+	                var t0 = SUB_MIX_0[s0 >>> 24] ^ SUB_MIX_1[(s1 >>> 16) & 0xff] ^ SUB_MIX_2[(s2 >>> 8) & 0xff] ^ SUB_MIX_3[s3 & 0xff] ^ keySchedule[ksRow++]
+	                var t1 = SUB_MIX_0[s1 >>> 24] ^ SUB_MIX_1[(s2 >>> 16) & 0xff] ^ SUB_MIX_2[(s3 >>> 8) & 0xff] ^ SUB_MIX_3[s0 & 0xff] ^ keySchedule[ksRow++]
+	                var t2 = SUB_MIX_0[s2 >>> 24] ^ SUB_MIX_1[(s3 >>> 16) & 0xff] ^ SUB_MIX_2[(s0 >>> 8) & 0xff] ^ SUB_MIX_3[s1 & 0xff] ^ keySchedule[ksRow++]
+	                var t3 = SUB_MIX_0[s3 >>> 24] ^ SUB_MIX_1[(s0 >>> 16) & 0xff] ^ SUB_MIX_2[(s1 >>> 8) & 0xff] ^ SUB_MIX_3[s2 & 0xff] ^ keySchedule[ksRow++]
 
 	                // Update state
-	                s0 = t0;
-	                s1 = t1;
-	                s2 = t2;
-	                s3 = t3;
+	                s0 = t0
+	                s1 = t1
+	                s2 = t2
+	                s3 = t3
 	            }
 
 	            // Shift rows, sub bytes, add round key
-	            var t0 = ((SBOX[s0 >>> 24] << 24) | (SBOX[(s1 >>> 16) & 0xff] << 16) | (SBOX[(s2 >>> 8) & 0xff] << 8) | SBOX[s3 & 0xff]) ^ keySchedule[ksRow++];
-	            var t1 = ((SBOX[s1 >>> 24] << 24) | (SBOX[(s2 >>> 16) & 0xff] << 16) | (SBOX[(s3 >>> 8) & 0xff] << 8) | SBOX[s0 & 0xff]) ^ keySchedule[ksRow++];
-	            var t2 = ((SBOX[s2 >>> 24] << 24) | (SBOX[(s3 >>> 16) & 0xff] << 16) | (SBOX[(s0 >>> 8) & 0xff] << 8) | SBOX[s1 & 0xff]) ^ keySchedule[ksRow++];
-	            var t3 = ((SBOX[s3 >>> 24] << 24) | (SBOX[(s0 >>> 16) & 0xff] << 16) | (SBOX[(s1 >>> 8) & 0xff] << 8) | SBOX[s2 & 0xff]) ^ keySchedule[ksRow++];
+	            var t0 = ((SBOX[s0 >>> 24] << 24) | (SBOX[(s1 >>> 16) & 0xff] << 16) | (SBOX[(s2 >>> 8) & 0xff] << 8) | SBOX[s3 & 0xff]) ^ keySchedule[ksRow++]
+	            var t1 = ((SBOX[s1 >>> 24] << 24) | (SBOX[(s2 >>> 16) & 0xff] << 16) | (SBOX[(s3 >>> 8) & 0xff] << 8) | SBOX[s0 & 0xff]) ^ keySchedule[ksRow++]
+	            var t2 = ((SBOX[s2 >>> 24] << 24) | (SBOX[(s3 >>> 16) & 0xff] << 16) | (SBOX[(s0 >>> 8) & 0xff] << 8) | SBOX[s1 & 0xff]) ^ keySchedule[ksRow++]
+	            var t3 = ((SBOX[s3 >>> 24] << 24) | (SBOX[(s0 >>> 16) & 0xff] << 16) | (SBOX[(s1 >>> 8) & 0xff] << 8) | SBOX[s2 & 0xff]) ^ keySchedule[ksRow++]
 
 	            // Set output
-	            M[offset]     = t0;
-	            M[offset + 1] = t1;
-	            M[offset + 2] = t2;
-	            M[offset + 3] = t3;
+	            M[offset] = t0
+	            M[offset + 1] = t1
+	            M[offset + 2] = t2
+	            M[offset + 3] = t3
 	        },
 
-	        keySize: 256/32
-	    });
+	        keySize: 256 / 32
+	    })
 
 	    /**
 	     * Shortcut functions to the cipher's object interface.
@@ -6961,44 +6808,40 @@ module.exports = transfer;
 	     *     var ciphertext = CryptoJS.AES.encrypt(message, key, cfg);
 	     *     var plaintext  = CryptoJS.AES.decrypt(ciphertext, key, cfg);
 	     */
-	    C.AES = BlockCipher._createHelper(AES);
-	}());
+	    C.AES = BlockCipher._createHelper(AES)
+      }())
 
-
-	return CryptoJS.AES;
-
-}));
-},{"./cipher-core":51,"./core":52,"./enc-base64":53,"./evpkdf":55,"./md5":60}],51:[function(require,module,exports){
-;(function (root, factory) {
-	if (typeof exports === "object") {
+      return CryptoJS.AES
+    }))
+  }, { './cipher-core':51, './core':52, './enc-base64':53, './evpkdf':55, './md5':60 }],
+  51:[function (require, module, exports) {
+    ;(function (root, factory) {
+      if (typeof exports === 'object') {
 		// CommonJS
-		module.exports = exports = factory(require("./core"));
-	}
-	else if (typeof define === "function" && define.amd) {
+        module.exports = exports = factory(require('./core'))
+      } else if (typeof define === 'function' && define.amd) {
 		// AMD
-		define(["./core"], factory);
-	}
-	else {
+        define(['./core'], factory)
+      } else {
 		// Global (browser)
-		factory(root.CryptoJS);
-	}
-}(this, function (CryptoJS) {
-
+        factory(root.CryptoJS)
+      }
+    }(this, function (CryptoJS) {
 	/**
 	 * Cipher core components.
 	 */
-	CryptoJS.lib.Cipher || (function (undefined) {
+      CryptoJS.lib.Cipher || (function (undefined) {
 	    // Shortcuts
-	    var C = CryptoJS;
-	    var C_lib = C.lib;
-	    var Base = C_lib.Base;
-	    var WordArray = C_lib.WordArray;
-	    var BufferedBlockAlgorithm = C_lib.BufferedBlockAlgorithm;
-	    var C_enc = C.enc;
-	    var Utf8 = C_enc.Utf8;
-	    var Base64 = C_enc.Base64;
-	    var C_algo = C.algo;
-	    var EvpKDF = C_algo.EvpKDF;
+	    var C = CryptoJS
+	    var C_lib = C.lib
+	    var Base = C_lib.Base
+	    var WordArray = C_lib.WordArray
+	    var BufferedBlockAlgorithm = C_lib.BufferedBlockAlgorithm
+	    var C_enc = C.enc
+	    var Utf8 = C_enc.Utf8
+	    var Base64 = C_enc.Base64
+	    var C_algo = C.algo
+	    var EvpKDF = C_algo.EvpKDF
 
 	    /**
 	     * Abstract base cipher template.
@@ -7031,7 +6874,7 @@ module.exports = transfer;
 	         *     var cipher = CryptoJS.algo.AES.createEncryptor(keyWordArray, { iv: ivWordArray });
 	         */
 	        createEncryptor: function (key, cfg) {
-	            return this.create(this._ENC_XFORM_MODE, key, cfg);
+	            return this.create(this._ENC_XFORM_MODE, key, cfg)
 	        },
 
 	        /**
@@ -7049,7 +6892,7 @@ module.exports = transfer;
 	         *     var cipher = CryptoJS.algo.AES.createDecryptor(keyWordArray, { iv: ivWordArray });
 	         */
 	        createDecryptor: function (key, cfg) {
-	            return this.create(this._DEC_XFORM_MODE, key, cfg);
+	            return this.create(this._DEC_XFORM_MODE, key, cfg)
 	        },
 
 	        /**
@@ -7065,14 +6908,14 @@ module.exports = transfer;
 	         */
 	        init: function (xformMode, key, cfg) {
 	            // Apply config defaults
-	            this.cfg = this.cfg.extend(cfg);
+	            this.cfg = this.cfg.extend(cfg)
 
 	            // Store transform mode and key
-	            this._xformMode = xformMode;
-	            this._key = key;
+	            this._xformMode = xformMode
+	            this._key = key
 
 	            // Set initial values
-	            this.reset();
+	            this.reset()
 	        },
 
 	        /**
@@ -7084,10 +6927,10 @@ module.exports = transfer;
 	         */
 	        reset: function () {
 	            // Reset data buffer
-	            BufferedBlockAlgorithm.reset.call(this);
+	            BufferedBlockAlgorithm.reset.call(this)
 
 	            // Perform concrete-cipher logic
-	            this._doReset();
+	            this._doReset()
 	        },
 
 	        /**
@@ -7104,10 +6947,10 @@ module.exports = transfer;
 	         */
 	        process: function (dataUpdate) {
 	            // Append
-	            this._append(dataUpdate);
+	            this._append(dataUpdate)
 
 	            // Process available blocks
-	            return this._process();
+	            return this._process()
 	        },
 
 	        /**
@@ -7127,18 +6970,18 @@ module.exports = transfer;
 	        finalize: function (dataUpdate) {
 	            // Final data update
 	            if (dataUpdate) {
-	                this._append(dataUpdate);
+	                this._append(dataUpdate)
 	            }
 
 	            // Perform concrete-cipher logic
-	            var finalProcessedData = this._doFinalize();
+	            var finalProcessedData = this._doFinalize()
 
-	            return finalProcessedData;
+	            return finalProcessedData
 	        },
 
-	        keySize: 128/32,
+	        keySize: 128 / 32,
 
-	        ivSize: 128/32,
+	        ivSize: 128 / 32,
 
 	        _ENC_XFORM_MODE: 1,
 
@@ -7158,27 +7001,27 @@ module.exports = transfer;
 	         *     var AES = CryptoJS.lib.Cipher._createHelper(CryptoJS.algo.AES);
 	         */
 	        _createHelper: (function () {
-	            function selectCipherStrategy(key) {
-	                if (typeof key == 'string') {
-	                    return PasswordBasedCipher;
+	            function selectCipherStrategy (key) {
+	                if (typeof key === 'string') {
+	                    return PasswordBasedCipher
 	                } else {
-	                    return SerializableCipher;
+	                    return SerializableCipher
 	                }
 	            }
 
 	            return function (cipher) {
 	                return {
 	                    encrypt: function (message, key, cfg) {
-	                        return selectCipherStrategy(key).encrypt(cipher, message, key, cfg);
+	                        return selectCipherStrategy(key).encrypt(cipher, message, key, cfg)
 	                    },
 
 	                    decrypt: function (ciphertext, key, cfg) {
-	                        return selectCipherStrategy(key).decrypt(cipher, ciphertext, key, cfg);
+	                        return selectCipherStrategy(key).decrypt(cipher, ciphertext, key, cfg)
 	                    }
-	                };
-	            };
+	                }
+	            }
 	        }())
-	    });
+	    })
 
 	    /**
 	     * Abstract base stream cipher template.
@@ -7188,18 +7031,18 @@ module.exports = transfer;
 	    var StreamCipher = C_lib.StreamCipher = Cipher.extend({
 	        _doFinalize: function () {
 	            // Process partial blocks
-	            var finalProcessedBlocks = this._process(!!'flush');
+	            var finalProcessedBlocks = this._process(!!'flush')
 
-	            return finalProcessedBlocks;
+	            return finalProcessedBlocks
 	        },
 
 	        blockSize: 1
-	    });
+	    })
 
 	    /**
 	     * Mode namespace.
 	     */
-	    var C_mode = C.mode = {};
+	    var C_mode = C.mode = {}
 
 	    /**
 	     * Abstract base block cipher mode template.
@@ -7218,7 +7061,7 @@ module.exports = transfer;
 	         *     var mode = CryptoJS.mode.CBC.createEncryptor(cipher, iv.words);
 	         */
 	        createEncryptor: function (cipher, iv) {
-	            return this.Encryptor.create(cipher, iv);
+	            return this.Encryptor.create(cipher, iv)
 	        },
 
 	        /**
@@ -7234,7 +7077,7 @@ module.exports = transfer;
 	         *     var mode = CryptoJS.mode.CBC.createDecryptor(cipher, iv.words);
 	         */
 	        createDecryptor: function (cipher, iv) {
-	            return this.Decryptor.create(cipher, iv);
+	            return this.Decryptor.create(cipher, iv)
 	        },
 
 	        /**
@@ -7248,10 +7091,10 @@ module.exports = transfer;
 	         *     var mode = CryptoJS.mode.CBC.Encryptor.create(cipher, iv.words);
 	         */
 	        init: function (cipher, iv) {
-	            this._cipher = cipher;
-	            this._iv = iv;
+	            this._cipher = cipher
+	            this._iv = iv
 	        }
-	    });
+	    })
 
 	    /**
 	     * Cipher Block Chaining mode.
@@ -7260,7 +7103,7 @@ module.exports = transfer;
 	        /**
 	         * Abstract base CBC mode.
 	         */
-	        var CBC = BlockCipherMode.extend();
+	        var CBC = BlockCipherMode.extend()
 
 	        /**
 	         * CBC encryptor.
@@ -7278,17 +7121,17 @@ module.exports = transfer;
 	             */
 	            processBlock: function (words, offset) {
 	                // Shortcuts
-	                var cipher = this._cipher;
-	                var blockSize = cipher.blockSize;
+	                var cipher = this._cipher
+	                var blockSize = cipher.blockSize
 
 	                // XOR and encrypt
-	                xorBlock.call(this, words, offset, blockSize);
-	                cipher.encryptBlock(words, offset);
+	                xorBlock.call(this, words, offset, blockSize)
+	                cipher.encryptBlock(words, offset)
 
 	                // Remember this block to use with next block
-	                this._prevBlock = words.slice(offset, offset + blockSize);
+	                this._prevBlock = words.slice(offset, offset + blockSize)
 	            }
-	        });
+	        })
 
 	        /**
 	         * CBC decryptor.
@@ -7306,48 +7149,48 @@ module.exports = transfer;
 	             */
 	            processBlock: function (words, offset) {
 	                // Shortcuts
-	                var cipher = this._cipher;
-	                var blockSize = cipher.blockSize;
+	                var cipher = this._cipher
+	                var blockSize = cipher.blockSize
 
 	                // Remember this block to use with next block
-	                var thisBlock = words.slice(offset, offset + blockSize);
+	                var thisBlock = words.slice(offset, offset + blockSize)
 
 	                // Decrypt and XOR
-	                cipher.decryptBlock(words, offset);
-	                xorBlock.call(this, words, offset, blockSize);
+	                cipher.decryptBlock(words, offset)
+	                xorBlock.call(this, words, offset, blockSize)
 
 	                // This block becomes the previous block
-	                this._prevBlock = thisBlock;
+	                this._prevBlock = thisBlock
 	            }
-	        });
+	        })
 
-	        function xorBlock(words, offset, blockSize) {
+	        function xorBlock (words, offset, blockSize) {
 	            // Shortcut
-	            var iv = this._iv;
+	            var iv = this._iv
 
 	            // Choose mixing block
 	            if (iv) {
-	                var block = iv;
+	                var block = iv
 
 	                // Remove IV for subsequent blocks
-	                this._iv = undefined;
+	                this._iv = undefined
 	            } else {
-	                var block = this._prevBlock;
+	                var block = this._prevBlock
 	            }
 
 	            // XOR blocks
 	            for (var i = 0; i < blockSize; i++) {
-	                words[offset + i] ^= block[i];
+	                words[offset + i] ^= block[i]
 	            }
 	        }
 
-	        return CBC;
-	    }());
+	        return CBC
+	    }())
 
 	    /**
 	     * Padding namespace.
 	     */
-	    var C_pad = C.pad = {};
+	    var C_pad = C.pad = {}
 
 	    /**
 	     * PKCS #5/7 padding strategy.
@@ -7367,23 +7210,23 @@ module.exports = transfer;
 	         */
 	        pad: function (data, blockSize) {
 	            // Shortcut
-	            var blockSizeBytes = blockSize * 4;
+	            var blockSizeBytes = blockSize * 4
 
 	            // Count padding bytes
-	            var nPaddingBytes = blockSizeBytes - data.sigBytes % blockSizeBytes;
+	            var nPaddingBytes = blockSizeBytes - data.sigBytes % blockSizeBytes
 
 	            // Create padding word
-	            var paddingWord = (nPaddingBytes << 24) | (nPaddingBytes << 16) | (nPaddingBytes << 8) | nPaddingBytes;
+	            var paddingWord = (nPaddingBytes << 24) | (nPaddingBytes << 16) | (nPaddingBytes << 8) | nPaddingBytes
 
 	            // Create padding
-	            var paddingWords = [];
+	            var paddingWords = []
 	            for (var i = 0; i < nPaddingBytes; i += 4) {
-	                paddingWords.push(paddingWord);
+	                paddingWords.push(paddingWord)
 	            }
-	            var padding = WordArray.create(paddingWords, nPaddingBytes);
+	            var padding = WordArray.create(paddingWords, nPaddingBytes)
 
 	            // Add padding
-	            data.concat(padding);
+	            data.concat(padding)
 	        },
 
 	        /**
@@ -7399,12 +7242,12 @@ module.exports = transfer;
 	         */
 	        unpad: function (data) {
 	            // Get number of padding bytes from last byte
-	            var nPaddingBytes = data.words[(data.sigBytes - 1) >>> 2] & 0xff;
+	            var nPaddingBytes = data.words[(data.sigBytes - 1) >>> 2] & 0xff
 
 	            // Remove padding
-	            data.sigBytes -= nPaddingBytes;
+	            data.sigBytes -= nPaddingBytes
 	        }
-	    };
+	    }
 
 	    /**
 	     * Abstract base block cipher template.
@@ -7425,53 +7268,53 @@ module.exports = transfer;
 
 	        reset: function () {
 	            // Reset cipher
-	            Cipher.reset.call(this);
+	            Cipher.reset.call(this)
 
 	            // Shortcuts
-	            var cfg = this.cfg;
-	            var iv = cfg.iv;
-	            var mode = cfg.mode;
+	            var cfg = this.cfg
+	            var iv = cfg.iv
+	            var mode = cfg.mode
 
 	            // Reset block mode
 	            if (this._xformMode == this._ENC_XFORM_MODE) {
-	                var modeCreator = mode.createEncryptor;
+	                var modeCreator = mode.createEncryptor
 	            } else /* if (this._xformMode == this._DEC_XFORM_MODE) */ {
-	                var modeCreator = mode.createDecryptor;
+	                var modeCreator = mode.createDecryptor
 
 	                // Keep at least one block in the buffer for unpadding
-	                this._minBufferSize = 1;
+	                this._minBufferSize = 1
 	            }
-	            this._mode = modeCreator.call(mode, this, iv && iv.words);
+	            this._mode = modeCreator.call(mode, this, iv && iv.words)
 	        },
 
 	        _doProcessBlock: function (words, offset) {
-	            this._mode.processBlock(words, offset);
+	            this._mode.processBlock(words, offset)
 	        },
 
 	        _doFinalize: function () {
 	            // Shortcut
-	            var padding = this.cfg.padding;
+	            var padding = this.cfg.padding
 
 	            // Finalize
 	            if (this._xformMode == this._ENC_XFORM_MODE) {
 	                // Pad data
-	                padding.pad(this._data, this.blockSize);
+	                padding.pad(this._data, this.blockSize)
 
 	                // Process final blocks
-	                var finalProcessedBlocks = this._process(!!'flush');
+	                var finalProcessedBlocks = this._process(!!'flush')
 	            } else /* if (this._xformMode == this._DEC_XFORM_MODE) */ {
 	                // Process final blocks
-	                var finalProcessedBlocks = this._process(!!'flush');
+	                var finalProcessedBlocks = this._process(!!'flush')
 
 	                // Unpad data
-	                padding.unpad(finalProcessedBlocks);
+	                padding.unpad(finalProcessedBlocks)
 	            }
 
-	            return finalProcessedBlocks;
+	            return finalProcessedBlocks
 	        },
 
-	        blockSize: 128/32
-	    });
+	        blockSize: 128 / 32
+	    })
 
 	    /**
 	     * A collection of cipher parameters.
@@ -7507,7 +7350,7 @@ module.exports = transfer;
 	         *     });
 	         */
 	        init: function (cipherParams) {
-	            this.mixIn(cipherParams);
+	            this.mixIn(cipherParams)
 	        },
 
 	        /**
@@ -7526,14 +7369,14 @@ module.exports = transfer;
 	         *     var string = cipherParams.toString(CryptoJS.format.OpenSSL);
 	         */
 	        toString: function (formatter) {
-	            return (formatter || this.formatter).stringify(this);
+	            return (formatter || this.formatter).stringify(this)
 	        }
-	    });
+	    })
 
 	    /**
 	     * Format namespace.
 	     */
-	    var C_format = C.format = {};
+	    var C_format = C.format = {}
 
 	    /**
 	     * OpenSSL formatting strategy.
@@ -7554,17 +7397,17 @@ module.exports = transfer;
 	         */
 	        stringify: function (cipherParams) {
 	            // Shortcuts
-	            var ciphertext = cipherParams.ciphertext;
-	            var salt = cipherParams.salt;
+	            var ciphertext = cipherParams.ciphertext
+	            var salt = cipherParams.salt
 
 	            // Format
 	            if (salt) {
-	                var wordArray = WordArray.create([0x53616c74, 0x65645f5f]).concat(salt).concat(ciphertext);
+	                var wordArray = WordArray.create([0x53616c74, 0x65645f5f]).concat(salt).concat(ciphertext)
 	            } else {
-	                var wordArray = ciphertext;
+	                var wordArray = ciphertext
 	            }
 
-	            return wordArray.toString(Base64);
+	            return wordArray.toString(Base64)
 	        },
 
 	        /**
@@ -7582,24 +7425,24 @@ module.exports = transfer;
 	         */
 	        parse: function (openSSLStr) {
 	            // Parse base64
-	            var ciphertext = Base64.parse(openSSLStr);
+	            var ciphertext = Base64.parse(openSSLStr)
 
 	            // Shortcut
-	            var ciphertextWords = ciphertext.words;
+	            var ciphertextWords = ciphertext.words
 
 	            // Test for salt
 	            if (ciphertextWords[0] == 0x53616c74 && ciphertextWords[1] == 0x65645f5f) {
 	                // Extract salt
-	                var salt = WordArray.create(ciphertextWords.slice(2, 4));
+	                var salt = WordArray.create(ciphertextWords.slice(2, 4))
 
 	                // Remove salt from ciphertext
-	                ciphertextWords.splice(0, 4);
-	                ciphertext.sigBytes -= 16;
+	                ciphertextWords.splice(0, 4)
+	                ciphertext.sigBytes -= 16
 	            }
 
-	            return CipherParams.create({ ciphertext: ciphertext, salt: salt });
+	            return CipherParams.create({ ciphertext: ciphertext, salt: salt })
 	        }
-	    };
+	    }
 
 	    /**
 	     * A cipher wrapper that returns ciphertext as a serializable cipher params object.
@@ -7634,14 +7477,14 @@ module.exports = transfer;
 	         */
 	        encrypt: function (cipher, message, key, cfg) {
 	            // Apply config defaults
-	            cfg = this.cfg.extend(cfg);
+	            cfg = this.cfg.extend(cfg)
 
 	            // Encrypt
-	            var encryptor = cipher.createEncryptor(key, cfg);
-	            var ciphertext = encryptor.finalize(message);
+	            var encryptor = cipher.createEncryptor(key, cfg)
+	            var ciphertext = encryptor.finalize(message)
 
 	            // Shortcut
-	            var cipherCfg = encryptor.cfg;
+	            var cipherCfg = encryptor.cfg
 
 	            // Create and return serializable cipher params
 	            return CipherParams.create({
@@ -7653,7 +7496,7 @@ module.exports = transfer;
 	                padding: cipherCfg.padding,
 	                blockSize: cipher.blockSize,
 	                formatter: cfg.format
-	            });
+	            })
 	        },
 
 	        /**
@@ -7675,15 +7518,15 @@ module.exports = transfer;
 	         */
 	        decrypt: function (cipher, ciphertext, key, cfg) {
 	            // Apply config defaults
-	            cfg = this.cfg.extend(cfg);
+	            cfg = this.cfg.extend(cfg)
 
 	            // Convert string to CipherParams
-	            ciphertext = this._parse(ciphertext, cfg.format);
+	            ciphertext = this._parse(ciphertext, cfg.format)
 
 	            // Decrypt
-	            var plaintext = cipher.createDecryptor(key, cfg).finalize(ciphertext.ciphertext);
+	            var plaintext = cipher.createDecryptor(key, cfg).finalize(ciphertext.ciphertext)
 
-	            return plaintext;
+	            return plaintext
 	        },
 
 	        /**
@@ -7702,18 +7545,18 @@ module.exports = transfer;
 	         *     var ciphertextParams = CryptoJS.lib.SerializableCipher._parse(ciphertextStringOrParams, format);
 	         */
 	        _parse: function (ciphertext, format) {
-	            if (typeof ciphertext == 'string') {
-	                return format.parse(ciphertext, this);
+	            if (typeof ciphertext === 'string') {
+	                return format.parse(ciphertext, this)
 	            } else {
-	                return ciphertext;
+	                return ciphertext
 	            }
 	        }
-	    });
+	    })
 
 	    /**
 	     * Key derivation function namespace.
 	     */
-	    var C_kdf = C.kdf = {};
+	    var C_kdf = C.kdf = {}
 
 	    /**
 	     * OpenSSL key derivation function.
@@ -7739,20 +7582,20 @@ module.exports = transfer;
 	        execute: function (password, keySize, ivSize, salt) {
 	            // Generate random salt
 	            if (!salt) {
-	                salt = WordArray.random(64/8);
+	                salt = WordArray.random(64 / 8)
 	            }
 
 	            // Derive key and IV
-	            var key = EvpKDF.create({ keySize: keySize + ivSize }).compute(password, salt);
+	            var key = EvpKDF.create({ keySize: keySize + ivSize }).compute(password, salt)
 
 	            // Separate key and IV
-	            var iv = WordArray.create(key.words.slice(keySize), ivSize * 4);
-	            key.sigBytes = keySize * 4;
+	            var iv = WordArray.create(key.words.slice(keySize), ivSize * 4)
+	            key.sigBytes = keySize * 4
 
 	            // Return params
-	            return CipherParams.create({ key: key, iv: iv, salt: salt });
+	            return CipherParams.create({ key: key, iv: iv, salt: salt })
 	        }
-	    };
+	    }
 
 	    /**
 	     * A serializable cipher wrapper that derives the key from a password,
@@ -7787,21 +7630,21 @@ module.exports = transfer;
 	         */
 	        encrypt: function (cipher, message, password, cfg) {
 	            // Apply config defaults
-	            cfg = this.cfg.extend(cfg);
+	            cfg = this.cfg.extend(cfg)
 
 	            // Derive key and other params
-	            var derivedParams = cfg.kdf.execute(password, cipher.keySize, cipher.ivSize);
+	            var derivedParams = cfg.kdf.execute(password, cipher.keySize, cipher.ivSize)
 
 	            // Add IV to config
-	            cfg.iv = derivedParams.iv;
+	            cfg.iv = derivedParams.iv
 
 	            // Encrypt
-	            var ciphertext = SerializableCipher.encrypt.call(this, cipher, message, derivedParams.key, cfg);
+	            var ciphertext = SerializableCipher.encrypt.call(this, cipher, message, derivedParams.key, cfg)
 
 	            // Mix in derived params
-	            ciphertext.mixIn(derivedParams);
+	            ciphertext.mixIn(derivedParams)
 
-	            return ciphertext;
+	            return ciphertext
 	        },
 
 	        /**
@@ -7823,82 +7666,76 @@ module.exports = transfer;
 	         */
 	        decrypt: function (cipher, ciphertext, password, cfg) {
 	            // Apply config defaults
-	            cfg = this.cfg.extend(cfg);
+	            cfg = this.cfg.extend(cfg)
 
 	            // Convert string to CipherParams
-	            ciphertext = this._parse(ciphertext, cfg.format);
+	            ciphertext = this._parse(ciphertext, cfg.format)
 
 	            // Derive key and other params
-	            var derivedParams = cfg.kdf.execute(password, cipher.keySize, cipher.ivSize, ciphertext.salt);
+	            var derivedParams = cfg.kdf.execute(password, cipher.keySize, cipher.ivSize, ciphertext.salt)
 
 	            // Add IV to config
-	            cfg.iv = derivedParams.iv;
+	            cfg.iv = derivedParams.iv
 
 	            // Decrypt
-	            var plaintext = SerializableCipher.decrypt.call(this, cipher, ciphertext, derivedParams.key, cfg);
+	            var plaintext = SerializableCipher.decrypt.call(this, cipher, ciphertext, derivedParams.key, cfg)
 
-	            return plaintext;
+	            return plaintext
 	        }
-	    });
-	}());
-
-
-}));
-},{"./core":52}],52:[function(require,module,exports){
-;(function (root, factory) {
-	if (typeof exports === "object") {
+	    })
+      }())
+    }))
+  }, { './core':52 }],
+  52:[function (require, module, exports) {
+    ;(function (root, factory) {
+      if (typeof exports === 'object') {
 		// CommonJS
-		module.exports = exports = factory();
-	}
-	else if (typeof define === "function" && define.amd) {
+        module.exports = exports = factory()
+      } else if (typeof define === 'function' && define.amd) {
 		// AMD
-		define([], factory);
-	}
-	else {
+        define([], factory)
+      } else {
 		// Global (browser)
-		root.CryptoJS = factory();
-	}
-}(this, function () {
-
+        root.CryptoJS = factory()
+      }
+    }(this, function () {
 	/**
 	 * CryptoJS core components.
 	 */
-	var CryptoJS = CryptoJS || (function (Math, undefined) {
+      var CryptoJS = CryptoJS || (function (Math, undefined) {
 	    /*
 	     * Local polyfil of Object.create
 	     */
 	    var create = Object.create || (function () {
-	        function F() {};
+	        function F () {};
 
 	        return function (obj) {
-	            var subtype;
+	            var subtype
 
-	            F.prototype = obj;
+	            F.prototype = obj
 
-	            subtype = new F();
+	            subtype = new F()
 
-	            F.prototype = null;
+	            F.prototype = null
 
-	            return subtype;
-	        };
+	            return subtype
+	        }
 	    }())
 
 	    /**
 	     * CryptoJS namespace.
 	     */
-	    var C = {};
+	    var C = {}
 
 	    /**
 	     * Library namespace.
 	     */
-	    var C_lib = C.lib = {};
+	    var C_lib = C.lib = {}
 
 	    /**
 	     * Base object for prototypal inheritance.
 	     */
 	    var Base = C_lib.Base = (function () {
-
-
 	        return {
 	            /**
 	             * Creates a new object that inherits from this object.
@@ -7920,27 +7757,27 @@ module.exports = transfer;
 	             */
 	            extend: function (overrides) {
 	                // Spawn
-	                var subtype = create(this);
+	                var subtype = create(this)
 
 	                // Augment
 	                if (overrides) {
-	                    subtype.mixIn(overrides);
+	                    subtype.mixIn(overrides)
 	                }
 
 	                // Create default initializer
 	                if (!subtype.hasOwnProperty('init') || this.init === subtype.init) {
 	                    subtype.init = function () {
-	                        subtype.$super.init.apply(this, arguments);
-	                    };
+	                        subtype.$super.init.apply(this, arguments)
+	                    }
 	                }
 
 	                // Initializer's prototype is the subtype object
-	                subtype.init.prototype = subtype;
+	                subtype.init.prototype = subtype
 
 	                // Reference supertype
-	                subtype.$super = this;
+	                subtype.$super = this
 
-	                return subtype;
+	                return subtype
 	            },
 
 	            /**
@@ -7956,10 +7793,10 @@ module.exports = transfer;
 	             *     var instance = MyType.create();
 	             */
 	            create: function () {
-	                var instance = this.extend();
-	                instance.init.apply(instance, arguments);
+	                var instance = this.extend()
+	                instance.init.apply(instance, arguments)
 
-	                return instance;
+	                return instance
 	            },
 
 	            /**
@@ -7991,13 +7828,13 @@ module.exports = transfer;
 	            mixIn: function (properties) {
 	                for (var propertyName in properties) {
 	                    if (properties.hasOwnProperty(propertyName)) {
-	                        this[propertyName] = properties[propertyName];
+	                        this[propertyName] = properties[propertyName]
 	                    }
 	                }
 
 	                // IE won't copy toString using the loop above
 	                if (properties.hasOwnProperty('toString')) {
-	                    this.toString = properties.toString;
+	                    this.toString = properties.toString
 	                }
 	            },
 
@@ -8011,10 +7848,10 @@ module.exports = transfer;
 	             *     var clone = instance.clone();
 	             */
 	            clone: function () {
-	                return this.init.prototype.extend(this);
+	                return this.init.prototype.extend(this)
 	            }
-	        };
-	    }());
+	        }
+	    }())
 
 	    /**
 	     * An array of 32-bit words.
@@ -8036,12 +7873,12 @@ module.exports = transfer;
 	         *     var wordArray = CryptoJS.lib.WordArray.create([0x00010203, 0x04050607], 6);
 	         */
 	        init: function (words, sigBytes) {
-	            words = this.words = words || [];
+	            words = this.words = words || []
 
 	            if (sigBytes != undefined) {
-	                this.sigBytes = sigBytes;
+	                this.sigBytes = sigBytes
 	            } else {
-	                this.sigBytes = words.length * 4;
+	                this.sigBytes = words.length * 4
 	            }
 	        },
 
@@ -8059,7 +7896,7 @@ module.exports = transfer;
 	         *     var string = wordArray.toString(CryptoJS.enc.Utf8);
 	         */
 	        toString: function (encoder) {
-	            return (encoder || Hex).stringify(this);
+	            return (encoder || Hex).stringify(this)
 	        },
 
 	        /**
@@ -8075,31 +7912,31 @@ module.exports = transfer;
 	         */
 	        concat: function (wordArray) {
 	            // Shortcuts
-	            var thisWords = this.words;
-	            var thatWords = wordArray.words;
-	            var thisSigBytes = this.sigBytes;
-	            var thatSigBytes = wordArray.sigBytes;
+	            var thisWords = this.words
+	            var thatWords = wordArray.words
+	            var thisSigBytes = this.sigBytes
+	            var thatSigBytes = wordArray.sigBytes
 
 	            // Clamp excess bits
-	            this.clamp();
+	            this.clamp()
 
 	            // Concat
 	            if (thisSigBytes % 4) {
 	                // Copy one byte at a time
 	                for (var i = 0; i < thatSigBytes; i++) {
-	                    var thatByte = (thatWords[i >>> 2] >>> (24 - (i % 4) * 8)) & 0xff;
-	                    thisWords[(thisSigBytes + i) >>> 2] |= thatByte << (24 - ((thisSigBytes + i) % 4) * 8);
+	                    var thatByte = (thatWords[i >>> 2] >>> (24 - (i % 4) * 8)) & 0xff
+	                    thisWords[(thisSigBytes + i) >>> 2] |= thatByte << (24 - ((thisSigBytes + i) % 4) * 8)
 	                }
 	            } else {
 	                // Copy one word at a time
 	                for (var i = 0; i < thatSigBytes; i += 4) {
-	                    thisWords[(thisSigBytes + i) >>> 2] = thatWords[i >>> 2];
+	                    thisWords[(thisSigBytes + i) >>> 2] = thatWords[i >>> 2]
 	                }
 	            }
-	            this.sigBytes += thatSigBytes;
+	            this.sigBytes += thatSigBytes
 
 	            // Chainable
-	            return this;
+	            return this
 	        },
 
 	        /**
@@ -8111,12 +7948,12 @@ module.exports = transfer;
 	         */
 	        clamp: function () {
 	            // Shortcuts
-	            var words = this.words;
-	            var sigBytes = this.sigBytes;
+	            var words = this.words
+	            var sigBytes = this.sigBytes
 
 	            // Clamp
-	            words[sigBytes >>> 2] &= 0xffffffff << (32 - (sigBytes % 4) * 8);
-	            words.length = Math.ceil(sigBytes / 4);
+	            words[sigBytes >>> 2] &= 0xffffffff << (32 - (sigBytes % 4) * 8)
+	            words.length = Math.ceil(sigBytes / 4)
 	        },
 
 	        /**
@@ -8129,10 +7966,10 @@ module.exports = transfer;
 	         *     var clone = wordArray.clone();
 	         */
 	        clone: function () {
-	            var clone = Base.clone.call(this);
-	            clone.words = this.words.slice(0);
+	            var clone = Base.clone.call(this)
+	            clone.words = this.words.slice(0)
 
-	            return clone;
+	            return clone
 	        },
 
 	        /**
@@ -8149,38 +7986,38 @@ module.exports = transfer;
 	         *     var wordArray = CryptoJS.lib.WordArray.random(16);
 	         */
 	        random: function (nBytes) {
-	            var words = [];
+	            var words = []
 
-	            var r = (function (m_w) {
-	                var m_w = m_w;
-	                var m_z = 0x3ade68b1;
-	                var mask = 0xffffffff;
+	            var r = function (m_w) {
+	                var m_w = m_w
+	                var m_z = 0x3ade68b1
+	                var mask = 0xffffffff
 
 	                return function () {
-	                    m_z = (0x9069 * (m_z & 0xFFFF) + (m_z >> 0x10)) & mask;
-	                    m_w = (0x4650 * (m_w & 0xFFFF) + (m_w >> 0x10)) & mask;
-	                    var result = ((m_z << 0x10) + m_w) & mask;
-	                    result /= 0x100000000;
-	                    result += 0.5;
-	                    return result * (Math.random() > .5 ? 1 : -1);
+	                    m_z = (0x9069 * (m_z & 0xFFFF) + (m_z >> 0x10)) & mask
+	                    m_w = (0x4650 * (m_w & 0xFFFF) + (m_w >> 0x10)) & mask
+	                    var result = ((m_z << 0x10) + m_w) & mask
+	                    result /= 0x100000000
+	                    result += 0.5
+	                    return result * (Math.random() > 0.5 ? 1 : -1)
 	                }
-	            });
-
-	            for (var i = 0, rcache; i < nBytes; i += 4) {
-	                var _r = r((rcache || Math.random()) * 0x100000000);
-
-	                rcache = _r() * 0x3ade67b7;
-	                words.push((_r() * 0x100000000) | 0);
 	            }
 
-	            return new WordArray.init(words, nBytes);
+	            for (var i = 0, rcache; i < nBytes; i += 4) {
+	                var _r = r((rcache || Math.random()) * 0x100000000)
+
+	                rcache = _r() * 0x3ade67b7
+	                words.push((_r() * 0x100000000) | 0)
+	            }
+
+	            return new WordArray.init(words, nBytes)
 	        }
-	    });
+	    })
 
 	    /**
 	     * Encoder namespace.
 	     */
-	    var C_enc = C.enc = {};
+	    var C_enc = C.enc = {}
 
 	    /**
 	     * Hex encoding strategy.
@@ -8201,18 +8038,18 @@ module.exports = transfer;
 	         */
 	        stringify: function (wordArray) {
 	            // Shortcuts
-	            var words = wordArray.words;
-	            var sigBytes = wordArray.sigBytes;
+	            var words = wordArray.words
+	            var sigBytes = wordArray.sigBytes
 
 	            // Convert
-	            var hexChars = [];
+	            var hexChars = []
 	            for (var i = 0; i < sigBytes; i++) {
-	                var bite = (words[i >>> 2] >>> (24 - (i % 4) * 8)) & 0xff;
-	                hexChars.push((bite >>> 4).toString(16));
-	                hexChars.push((bite & 0x0f).toString(16));
+	                var bite = (words[i >>> 2] >>> (24 - (i % 4) * 8)) & 0xff
+	                hexChars.push((bite >>> 4).toString(16))
+	                hexChars.push((bite & 0x0f).toString(16))
 	            }
 
-	            return hexChars.join('');
+	            return hexChars.join('')
 	        },
 
 	        /**
@@ -8230,17 +8067,17 @@ module.exports = transfer;
 	         */
 	        parse: function (hexStr) {
 	            // Shortcut
-	            var hexStrLength = hexStr.length;
+	            var hexStrLength = hexStr.length
 
 	            // Convert
-	            var words = [];
+	            var words = []
 	            for (var i = 0; i < hexStrLength; i += 2) {
-	                words[i >>> 3] |= parseInt(hexStr.substr(i, 2), 16) << (24 - (i % 8) * 4);
+	                words[i >>> 3] |= parseInt(hexStr.substr(i, 2), 16) << (24 - (i % 8) * 4)
 	            }
 
-	            return new WordArray.init(words, hexStrLength / 2);
+	            return new WordArray.init(words, hexStrLength / 2)
 	        }
-	    };
+	    }
 
 	    /**
 	     * Latin1 encoding strategy.
@@ -8261,17 +8098,17 @@ module.exports = transfer;
 	         */
 	        stringify: function (wordArray) {
 	            // Shortcuts
-	            var words = wordArray.words;
-	            var sigBytes = wordArray.sigBytes;
+	            var words = wordArray.words
+	            var sigBytes = wordArray.sigBytes
 
 	            // Convert
-	            var latin1Chars = [];
+	            var latin1Chars = []
 	            for (var i = 0; i < sigBytes; i++) {
-	                var bite = (words[i >>> 2] >>> (24 - (i % 4) * 8)) & 0xff;
-	                latin1Chars.push(String.fromCharCode(bite));
+	                var bite = (words[i >>> 2] >>> (24 - (i % 4) * 8)) & 0xff
+	                latin1Chars.push(String.fromCharCode(bite))
 	            }
 
-	            return latin1Chars.join('');
+	            return latin1Chars.join('')
 	        },
 
 	        /**
@@ -8289,17 +8126,17 @@ module.exports = transfer;
 	         */
 	        parse: function (latin1Str) {
 	            // Shortcut
-	            var latin1StrLength = latin1Str.length;
+	            var latin1StrLength = latin1Str.length
 
 	            // Convert
-	            var words = [];
+	            var words = []
 	            for (var i = 0; i < latin1StrLength; i++) {
-	                words[i >>> 2] |= (latin1Str.charCodeAt(i) & 0xff) << (24 - (i % 4) * 8);
+	                words[i >>> 2] |= (latin1Str.charCodeAt(i) & 0xff) << (24 - (i % 4) * 8)
 	            }
 
-	            return new WordArray.init(words, latin1StrLength);
+	            return new WordArray.init(words, latin1StrLength)
 	        }
-	    };
+	    }
 
 	    /**
 	     * UTF-8 encoding strategy.
@@ -8320,9 +8157,9 @@ module.exports = transfer;
 	         */
 	        stringify: function (wordArray) {
 	            try {
-	                return decodeURIComponent(escape(Latin1.stringify(wordArray)));
+	                return decodeURIComponent(escape(Latin1.stringify(wordArray)))
 	            } catch (e) {
-	                throw new Error('Malformed UTF-8 data');
+	                throw new Error('Malformed UTF-8 data')
 	            }
 	        },
 
@@ -8340,9 +8177,9 @@ module.exports = transfer;
 	         *     var wordArray = CryptoJS.enc.Utf8.parse(utf8String);
 	         */
 	        parse: function (utf8Str) {
-	            return Latin1.parse(unescape(encodeURIComponent(utf8Str)));
+	            return Latin1.parse(unescape(encodeURIComponent(utf8Str)))
 	        }
-	    };
+	    }
 
 	    /**
 	     * Abstract buffered block algorithm template.
@@ -8361,8 +8198,8 @@ module.exports = transfer;
 	         */
 	        reset: function () {
 	            // Initial values
-	            this._data = new WordArray.init();
-	            this._nDataBytes = 0;
+	            this._data = new WordArray.init()
+	            this._nDataBytes = 0
 	        },
 
 	        /**
@@ -8377,13 +8214,13 @@ module.exports = transfer;
 	         */
 	        _append: function (data) {
 	            // Convert string to WordArray, else assume WordArray already
-	            if (typeof data == 'string') {
-	                data = Utf8.parse(data);
+	            if (typeof data === 'string') {
+	                data = Utf8.parse(data)
 	            }
 
 	            // Append
-	            this._data.concat(data);
-	            this._nDataBytes += data.sigBytes;
+	            this._data.concat(data)
+	            this._nDataBytes += data.sigBytes
 	        },
 
 	        /**
@@ -8402,43 +8239,43 @@ module.exports = transfer;
 	         */
 	        _process: function (doFlush) {
 	            // Shortcuts
-	            var data = this._data;
-	            var dataWords = data.words;
-	            var dataSigBytes = data.sigBytes;
-	            var blockSize = this.blockSize;
-	            var blockSizeBytes = blockSize * 4;
+	            var data = this._data
+	            var dataWords = data.words
+	            var dataSigBytes = data.sigBytes
+	            var blockSize = this.blockSize
+	            var blockSizeBytes = blockSize * 4
 
 	            // Count blocks ready
-	            var nBlocksReady = dataSigBytes / blockSizeBytes;
+	            var nBlocksReady = dataSigBytes / blockSizeBytes
 	            if (doFlush) {
 	                // Round up to include partial blocks
-	                nBlocksReady = Math.ceil(nBlocksReady);
+	                nBlocksReady = Math.ceil(nBlocksReady)
 	            } else {
 	                // Round down to include only full blocks,
 	                // less the number of blocks that must remain in the buffer
-	                nBlocksReady = Math.max((nBlocksReady | 0) - this._minBufferSize, 0);
+	                nBlocksReady = Math.max((nBlocksReady | 0) - this._minBufferSize, 0)
 	            }
 
 	            // Count words ready
-	            var nWordsReady = nBlocksReady * blockSize;
+	            var nWordsReady = nBlocksReady * blockSize
 
 	            // Count bytes ready
-	            var nBytesReady = Math.min(nWordsReady * 4, dataSigBytes);
+	            var nBytesReady = Math.min(nWordsReady * 4, dataSigBytes)
 
 	            // Process blocks
 	            if (nWordsReady) {
 	                for (var offset = 0; offset < nWordsReady; offset += blockSize) {
 	                    // Perform concrete-algorithm logic
-	                    this._doProcessBlock(dataWords, offset);
+	                    this._doProcessBlock(dataWords, offset)
 	                }
 
 	                // Remove processed words
-	                var processedWords = dataWords.splice(0, nWordsReady);
-	                data.sigBytes -= nBytesReady;
+	                var processedWords = dataWords.splice(0, nWordsReady)
+	                data.sigBytes -= nBytesReady
 	            }
 
 	            // Return processed words
-	            return new WordArray.init(processedWords, nBytesReady);
+	            return new WordArray.init(processedWords, nBytesReady)
 	        },
 
 	        /**
@@ -8451,14 +8288,14 @@ module.exports = transfer;
 	         *     var clone = bufferedBlockAlgorithm.clone();
 	         */
 	        clone: function () {
-	            var clone = Base.clone.call(this);
-	            clone._data = this._data.clone();
+	            var clone = Base.clone.call(this)
+	            clone._data = this._data.clone()
 
-	            return clone;
+	            return clone
 	        },
 
 	        _minBufferSize: 0
-	    });
+	    })
 
 	    /**
 	     * Abstract hasher template.
@@ -8482,10 +8319,10 @@ module.exports = transfer;
 	         */
 	        init: function (cfg) {
 	            // Apply config defaults
-	            this.cfg = this.cfg.extend(cfg);
+	            this.cfg = this.cfg.extend(cfg)
 
 	            // Set initial values
-	            this.reset();
+	            this.reset()
 	        },
 
 	        /**
@@ -8497,10 +8334,10 @@ module.exports = transfer;
 	         */
 	        reset: function () {
 	            // Reset data buffer
-	            BufferedBlockAlgorithm.reset.call(this);
+	            BufferedBlockAlgorithm.reset.call(this)
 
 	            // Perform concrete-hasher logic
-	            this._doReset();
+	            this._doReset()
 	        },
 
 	        /**
@@ -8517,13 +8354,13 @@ module.exports = transfer;
 	         */
 	        update: function (messageUpdate) {
 	            // Append
-	            this._append(messageUpdate);
+	            this._append(messageUpdate)
 
 	            // Update the hash
-	            this._process();
+	            this._process()
 
 	            // Chainable
-	            return this;
+	            return this
 	        },
 
 	        /**
@@ -8543,16 +8380,16 @@ module.exports = transfer;
 	        finalize: function (messageUpdate) {
 	            // Final message update
 	            if (messageUpdate) {
-	                this._append(messageUpdate);
+	                this._append(messageUpdate)
 	            }
 
 	            // Perform concrete-hasher logic
-	            var hash = this._doFinalize();
+	            var hash = this._doFinalize()
 
-	            return hash;
+	            return hash
 	        },
 
-	        blockSize: 512/32,
+	        blockSize: 512 / 32,
 
 	        /**
 	         * Creates a shortcut function to a hasher's object interface.
@@ -8569,8 +8406,8 @@ module.exports = transfer;
 	         */
 	        _createHelper: function (hasher) {
 	            return function (message, cfg) {
-	                return new hasher.init(cfg).finalize(message);
-	            };
+	                return new hasher.init(cfg).finalize(message)
+	            }
 	        },
 
 	        /**
@@ -8588,45 +8425,41 @@ module.exports = transfer;
 	         */
 	        _createHmacHelper: function (hasher) {
 	            return function (message, key) {
-	                return new C_algo.HMAC.init(hasher, key).finalize(message);
-	            };
+	                return new C_algo.HMAC.init(hasher, key).finalize(message)
+	            }
 	        }
-	    });
+	    })
 
 	    /**
 	     * Algorithm namespace.
 	     */
-	    var C_algo = C.algo = {};
+	    var C_algo = C.algo = {}
 
-	    return C;
-	}(Math));
+	    return C
+      }(Math))
 
-
-	return CryptoJS;
-
-}));
-},{}],53:[function(require,module,exports){
-;(function (root, factory) {
-	if (typeof exports === "object") {
+      return CryptoJS
+    }))
+  }, {}],
+  53:[function (require, module, exports) {
+    ;(function (root, factory) {
+      if (typeof exports === 'object') {
 		// CommonJS
-		module.exports = exports = factory(require("./core"));
-	}
-	else if (typeof define === "function" && define.amd) {
+        module.exports = exports = factory(require('./core'))
+      } else if (typeof define === 'function' && define.amd) {
 		// AMD
-		define(["./core"], factory);
-	}
-	else {
+        define(['./core'], factory)
+      } else {
 		// Global (browser)
-		factory(root.CryptoJS);
-	}
-}(this, function (CryptoJS) {
-
-	(function () {
+        factory(root.CryptoJS)
+      }
+    }(this, function (CryptoJS) {
+      (function () {
 	    // Shortcuts
-	    var C = CryptoJS;
-	    var C_lib = C.lib;
-	    var WordArray = C_lib.WordArray;
-	    var C_enc = C.enc;
+	    var C = CryptoJS
+	    var C_lib = C.lib
+	    var WordArray = C_lib.WordArray
+	    var C_enc = C.enc
 
 	    /**
 	     * Base64 encoding strategy.
@@ -8647,36 +8480,36 @@ module.exports = transfer;
 	         */
 	        stringify: function (wordArray) {
 	            // Shortcuts
-	            var words = wordArray.words;
-	            var sigBytes = wordArray.sigBytes;
-	            var map = this._map;
+	            var words = wordArray.words
+	            var sigBytes = wordArray.sigBytes
+	            var map = this._map
 
 	            // Clamp excess bits
-	            wordArray.clamp();
+	            wordArray.clamp()
 
 	            // Convert
-	            var base64Chars = [];
+	            var base64Chars = []
 	            for (var i = 0; i < sigBytes; i += 3) {
-	                var byte1 = (words[i >>> 2]       >>> (24 - (i % 4) * 8))       & 0xff;
-	                var byte2 = (words[(i + 1) >>> 2] >>> (24 - ((i + 1) % 4) * 8)) & 0xff;
-	                var byte3 = (words[(i + 2) >>> 2] >>> (24 - ((i + 2) % 4) * 8)) & 0xff;
+	                var byte1 = (words[i >>> 2] >>> (24 - (i % 4) * 8)) & 0xff
+	                var byte2 = (words[(i + 1) >>> 2] >>> (24 - ((i + 1) % 4) * 8)) & 0xff
+	                var byte3 = (words[(i + 2) >>> 2] >>> (24 - ((i + 2) % 4) * 8)) & 0xff
 
-	                var triplet = (byte1 << 16) | (byte2 << 8) | byte3;
+	                var triplet = (byte1 << 16) | (byte2 << 8) | byte3
 
 	                for (var j = 0; (j < 4) && (i + j * 0.75 < sigBytes); j++) {
-	                    base64Chars.push(map.charAt((triplet >>> (6 * (3 - j))) & 0x3f));
+	                    base64Chars.push(map.charAt((triplet >>> (6 * (3 - j))) & 0x3f))
 	                }
 	            }
 
 	            // Add padding
-	            var paddingChar = map.charAt(64);
+	            var paddingChar = map.charAt(64)
 	            if (paddingChar) {
 	                while (base64Chars.length % 4) {
-	                    base64Chars.push(paddingChar);
+	                    base64Chars.push(paddingChar)
 	                }
 	            }
 
-	            return base64Chars.join('');
+	            return base64Chars.join('')
 	        },
 
 	        /**
@@ -8694,75 +8527,70 @@ module.exports = transfer;
 	         */
 	        parse: function (base64Str) {
 	            // Shortcuts
-	            var base64StrLength = base64Str.length;
-	            var map = this._map;
-	            var reverseMap = this._reverseMap;
+	            var base64StrLength = base64Str.length
+	            var map = this._map
+	            var reverseMap = this._reverseMap
 
 	            if (!reverseMap) {
-	                    reverseMap = this._reverseMap = [];
+	                    reverseMap = this._reverseMap = []
 	                    for (var j = 0; j < map.length; j++) {
-	                        reverseMap[map.charCodeAt(j)] = j;
+	                        reverseMap[map.charCodeAt(j)] = j
 	                    }
 	            }
 
 	            // Ignore padding
-	            var paddingChar = map.charAt(64);
+	            var paddingChar = map.charAt(64)
 	            if (paddingChar) {
-	                var paddingIndex = base64Str.indexOf(paddingChar);
+	                var paddingIndex = base64Str.indexOf(paddingChar)
 	                if (paddingIndex !== -1) {
-	                    base64StrLength = paddingIndex;
+	                    base64StrLength = paddingIndex
 	                }
 	            }
 
 	            // Convert
-	            return parseLoop(base64Str, base64StrLength, reverseMap);
-
+	            return parseLoop(base64Str, base64StrLength, reverseMap)
 	        },
 
 	        _map: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/='
-	    };
+	    }
 
-	    function parseLoop(base64Str, base64StrLength, reverseMap) {
-	      var words = [];
-	      var nBytes = 0;
+	    function parseLoop (base64Str, base64StrLength, reverseMap) {
+	      var words = []
+	      var nBytes = 0
 	      for (var i = 0; i < base64StrLength; i++) {
 	          if (i % 4) {
-	              var bits1 = reverseMap[base64Str.charCodeAt(i - 1)] << ((i % 4) * 2);
-	              var bits2 = reverseMap[base64Str.charCodeAt(i)] >>> (6 - (i % 4) * 2);
-	              words[nBytes >>> 2] |= (bits1 | bits2) << (24 - (nBytes % 4) * 8);
-	              nBytes++;
+	              var bits1 = reverseMap[base64Str.charCodeAt(i - 1)] << ((i % 4) * 2)
+	              var bits2 = reverseMap[base64Str.charCodeAt(i)] >>> (6 - (i % 4) * 2)
+	              words[nBytes >>> 2] |= (bits1 | bits2) << (24 - (nBytes % 4) * 8)
+	              nBytes++
 	          }
 	      }
-	      return WordArray.create(words, nBytes);
+	      return WordArray.create(words, nBytes)
 	    }
-	}());
+      }())
 
-
-	return CryptoJS.enc.Base64;
-
-}));
-},{"./core":52}],54:[function(require,module,exports){
-;(function (root, factory) {
-	if (typeof exports === "object") {
+      return CryptoJS.enc.Base64
+    }))
+  }, { './core':52 }],
+  54:[function (require, module, exports) {
+    ;(function (root, factory) {
+      if (typeof exports === 'object') {
 		// CommonJS
-		module.exports = exports = factory(require("./core"));
-	}
-	else if (typeof define === "function" && define.amd) {
+        module.exports = exports = factory(require('./core'))
+      } else if (typeof define === 'function' && define.amd) {
 		// AMD
-		define(["./core"], factory);
-	}
-	else {
+        define(['./core'], factory)
+      } else {
 		// Global (browser)
-		factory(root.CryptoJS);
-	}
-}(this, function (CryptoJS) {
-
-	(function () {
+        factory(root.CryptoJS)
+      }
+    }(this, function (CryptoJS) {
+      (function () {
 	    // Shortcuts
-	    var C = CryptoJS;
-	    var C_lib = C.lib;
-	    var WordArray = C_lib.WordArray;
-	    var C_enc = C.enc;
+	    var C = CryptoJS
+	    var C_lib = C.lib
+	    var WordArray = C_lib.WordArray
+	    var C_enc = C.enc
 
 	    /**
 	     * UTF-16 BE encoding strategy.
@@ -8783,17 +8611,17 @@ module.exports = transfer;
 	         */
 	        stringify: function (wordArray) {
 	            // Shortcuts
-	            var words = wordArray.words;
-	            var sigBytes = wordArray.sigBytes;
+	            var words = wordArray.words
+	            var sigBytes = wordArray.sigBytes
 
 	            // Convert
-	            var utf16Chars = [];
+	            var utf16Chars = []
 	            for (var i = 0; i < sigBytes; i += 2) {
-	                var codePoint = (words[i >>> 2] >>> (16 - (i % 4) * 8)) & 0xffff;
-	                utf16Chars.push(String.fromCharCode(codePoint));
+	                var codePoint = (words[i >>> 2] >>> (16 - (i % 4) * 8)) & 0xffff
+	                utf16Chars.push(String.fromCharCode(codePoint))
 	            }
 
-	            return utf16Chars.join('');
+	            return utf16Chars.join('')
 	        },
 
 	        /**
@@ -8811,17 +8639,17 @@ module.exports = transfer;
 	         */
 	        parse: function (utf16Str) {
 	            // Shortcut
-	            var utf16StrLength = utf16Str.length;
+	            var utf16StrLength = utf16Str.length
 
 	            // Convert
-	            var words = [];
+	            var words = []
 	            for (var i = 0; i < utf16StrLength; i++) {
-	                words[i >>> 1] |= utf16Str.charCodeAt(i) << (16 - (i % 2) * 16);
+	                words[i >>> 1] |= utf16Str.charCodeAt(i) << (16 - (i % 2) * 16)
 	            }
 
-	            return WordArray.create(words, utf16StrLength * 2);
+	            return WordArray.create(words, utf16StrLength * 2)
 	        }
-	    };
+	    }
 
 	    /**
 	     * UTF-16 LE encoding strategy.
@@ -8842,17 +8670,17 @@ module.exports = transfer;
 	         */
 	        stringify: function (wordArray) {
 	            // Shortcuts
-	            var words = wordArray.words;
-	            var sigBytes = wordArray.sigBytes;
+	            var words = wordArray.words
+	            var sigBytes = wordArray.sigBytes
 
 	            // Convert
-	            var utf16Chars = [];
+	            var utf16Chars = []
 	            for (var i = 0; i < sigBytes; i += 2) {
-	                var codePoint = swapEndian((words[i >>> 2] >>> (16 - (i % 4) * 8)) & 0xffff);
-	                utf16Chars.push(String.fromCharCode(codePoint));
+	                var codePoint = swapEndian((words[i >>> 2] >>> (16 - (i % 4) * 8)) & 0xffff)
+	                utf16Chars.push(String.fromCharCode(codePoint))
 	            }
 
-	            return utf16Chars.join('');
+	            return utf16Chars.join('')
 	        },
 
 	        /**
@@ -8870,51 +8698,47 @@ module.exports = transfer;
 	         */
 	        parse: function (utf16Str) {
 	            // Shortcut
-	            var utf16StrLength = utf16Str.length;
+	            var utf16StrLength = utf16Str.length
 
 	            // Convert
-	            var words = [];
+	            var words = []
 	            for (var i = 0; i < utf16StrLength; i++) {
-	                words[i >>> 1] |= swapEndian(utf16Str.charCodeAt(i) << (16 - (i % 2) * 16));
+	                words[i >>> 1] |= swapEndian(utf16Str.charCodeAt(i) << (16 - (i % 2) * 16))
 	            }
 
-	            return WordArray.create(words, utf16StrLength * 2);
+	            return WordArray.create(words, utf16StrLength * 2)
 	        }
-	    };
-
-	    function swapEndian(word) {
-	        return ((word << 8) & 0xff00ff00) | ((word >>> 8) & 0x00ff00ff);
 	    }
-	}());
 
+	    function swapEndian (word) {
+	        return ((word << 8) & 0xff00ff00) | ((word >>> 8) & 0x00ff00ff)
+	    }
+      }())
 
-	return CryptoJS.enc.Utf16;
-
-}));
-},{"./core":52}],55:[function(require,module,exports){
-;(function (root, factory, undef) {
-	if (typeof exports === "object") {
+      return CryptoJS.enc.Utf16
+    }))
+  }, { './core':52 }],
+  55:[function (require, module, exports) {
+    ;(function (root, factory, undef) {
+      if (typeof exports === 'object') {
 		// CommonJS
-		module.exports = exports = factory(require("./core"), require("./sha1"), require("./hmac"));
-	}
-	else if (typeof define === "function" && define.amd) {
+        module.exports = exports = factory(require('./core'), require('./sha1'), require('./hmac'))
+      } else if (typeof define === 'function' && define.amd) {
 		// AMD
-		define(["./core", "./sha1", "./hmac"], factory);
-	}
-	else {
+        define(['./core', './sha1', './hmac'], factory)
+      } else {
 		// Global (browser)
-		factory(root.CryptoJS);
-	}
-}(this, function (CryptoJS) {
-
-	(function () {
+        factory(root.CryptoJS)
+      }
+    }(this, function (CryptoJS) {
+      (function () {
 	    // Shortcuts
-	    var C = CryptoJS;
-	    var C_lib = C.lib;
-	    var Base = C_lib.Base;
-	    var WordArray = C_lib.WordArray;
-	    var C_algo = C.algo;
-	    var MD5 = C_algo.MD5;
+	    var C = CryptoJS
+	    var C_lib = C.lib
+	    var Base = C_lib.Base
+	    var WordArray = C_lib.WordArray
+	    var C_algo = C.algo
+	    var MD5 = C_algo.MD5
 
 	    /**
 	     * This key derivation function is meant to conform with EVP_BytesToKey.
@@ -8929,7 +8753,7 @@ module.exports = transfer;
 	         * @property {number} iterations The number of iterations to perform. Default: 1
 	         */
 	        cfg: Base.extend({
-	            keySize: 128/32,
+	            keySize: 128 / 32,
 	            hasher: MD5,
 	            iterations: 1
 	        }),
@@ -8946,7 +8770,7 @@ module.exports = transfer;
 	         *     var kdf = CryptoJS.algo.EvpKDF.create({ keySize: 8, iterations: 1000 });
 	         */
 	        init: function (cfg) {
-	            this.cfg = this.cfg.extend(cfg);
+	            this.cfg = this.cfg.extend(cfg)
 	        },
 
 	        /**
@@ -8963,40 +8787,40 @@ module.exports = transfer;
 	         */
 	        compute: function (password, salt) {
 	            // Shortcut
-	            var cfg = this.cfg;
+	            var cfg = this.cfg
 
 	            // Init hasher
-	            var hasher = cfg.hasher.create();
+	            var hasher = cfg.hasher.create()
 
 	            // Initial values
-	            var derivedKey = WordArray.create();
+	            var derivedKey = WordArray.create()
 
 	            // Shortcuts
-	            var derivedKeyWords = derivedKey.words;
-	            var keySize = cfg.keySize;
-	            var iterations = cfg.iterations;
+	            var derivedKeyWords = derivedKey.words
+	            var keySize = cfg.keySize
+	            var iterations = cfg.iterations
 
 	            // Generate key
 	            while (derivedKeyWords.length < keySize) {
 	                if (block) {
-	                    hasher.update(block);
+	                    hasher.update(block)
 	                }
-	                var block = hasher.update(password).finalize(salt);
-	                hasher.reset();
+	                var block = hasher.update(password).finalize(salt)
+	                hasher.reset()
 
 	                // Iterations
 	                for (var i = 1; i < iterations; i++) {
-	                    block = hasher.finalize(block);
-	                    hasher.reset();
+	                    block = hasher.finalize(block)
+	                    hasher.reset()
 	                }
 
-	                derivedKey.concat(block);
+	                derivedKey.concat(block)
 	            }
-	            derivedKey.sigBytes = keySize * 4;
+	            derivedKey.sigBytes = keySize * 4
 
-	            return derivedKey;
+	            return derivedKey
 	        }
-	    });
+	    })
 
 	    /**
 	     * Derives a key from a password.
@@ -9016,38 +8840,34 @@ module.exports = transfer;
 	     *     var key = CryptoJS.EvpKDF(password, salt, { keySize: 8, iterations: 1000 });
 	     */
 	    C.EvpKDF = function (password, salt, cfg) {
-	        return EvpKDF.create(cfg).compute(password, salt);
-	    };
-	}());
+	        return EvpKDF.create(cfg).compute(password, salt)
+	    }
+      }())
 
-
-	return CryptoJS.EvpKDF;
-
-}));
-},{"./core":52,"./hmac":57,"./sha1":76}],56:[function(require,module,exports){
-;(function (root, factory, undef) {
-	if (typeof exports === "object") {
+      return CryptoJS.EvpKDF
+    }))
+  }, { './core':52, './hmac':57, './sha1':76 }],
+  56:[function (require, module, exports) {
+    ;(function (root, factory, undef) {
+      if (typeof exports === 'object') {
 		// CommonJS
-		module.exports = exports = factory(require("./core"), require("./cipher-core"));
-	}
-	else if (typeof define === "function" && define.amd) {
+        module.exports = exports = factory(require('./core'), require('./cipher-core'))
+      } else if (typeof define === 'function' && define.amd) {
 		// AMD
-		define(["./core", "./cipher-core"], factory);
-	}
-	else {
+        define(['./core', './cipher-core'], factory)
+      } else {
 		// Global (browser)
-		factory(root.CryptoJS);
-	}
-}(this, function (CryptoJS) {
-
-	(function (undefined) {
+        factory(root.CryptoJS)
+      }
+    }(this, function (CryptoJS) {
+      (function (undefined) {
 	    // Shortcuts
-	    var C = CryptoJS;
-	    var C_lib = C.lib;
-	    var CipherParams = C_lib.CipherParams;
-	    var C_enc = C.enc;
-	    var Hex = C_enc.Hex;
-	    var C_format = C.format;
+	    var C = CryptoJS
+	    var C_lib = C.lib
+	    var CipherParams = C_lib.CipherParams
+	    var C_enc = C.enc
+	    var Hex = C_enc.Hex
+	    var C_format = C.format
 
 	    var HexFormatter = C_format.Hex = {
 	        /**
@@ -9064,7 +8884,7 @@ module.exports = transfer;
 	         *     var hexString = CryptoJS.format.Hex.stringify(cipherParams);
 	         */
 	        stringify: function (cipherParams) {
-	            return cipherParams.ciphertext.toString(Hex);
+	            return cipherParams.ciphertext.toString(Hex)
 	        },
 
 	        /**
@@ -9081,40 +8901,36 @@ module.exports = transfer;
 	         *     var cipherParams = CryptoJS.format.Hex.parse(hexString);
 	         */
 	        parse: function (input) {
-	            var ciphertext = Hex.parse(input);
-	            return CipherParams.create({ ciphertext: ciphertext });
+	            var ciphertext = Hex.parse(input)
+	            return CipherParams.create({ ciphertext: ciphertext })
 	        }
-	    };
-	}());
+	    }
+      }())
 
-
-	return CryptoJS.format.Hex;
-
-}));
-},{"./cipher-core":51,"./core":52}],57:[function(require,module,exports){
-;(function (root, factory) {
-	if (typeof exports === "object") {
+      return CryptoJS.format.Hex
+    }))
+  }, { './cipher-core':51, './core':52 }],
+  57:[function (require, module, exports) {
+    ;(function (root, factory) {
+      if (typeof exports === 'object') {
 		// CommonJS
-		module.exports = exports = factory(require("./core"));
-	}
-	else if (typeof define === "function" && define.amd) {
+        module.exports = exports = factory(require('./core'))
+      } else if (typeof define === 'function' && define.amd) {
 		// AMD
-		define(["./core"], factory);
-	}
-	else {
+        define(['./core'], factory)
+      } else {
 		// Global (browser)
-		factory(root.CryptoJS);
-	}
-}(this, function (CryptoJS) {
-
-	(function () {
+        factory(root.CryptoJS)
+      }
+    }(this, function (CryptoJS) {
+      (function () {
 	    // Shortcuts
-	    var C = CryptoJS;
-	    var C_lib = C.lib;
-	    var Base = C_lib.Base;
-	    var C_enc = C.enc;
-	    var Utf8 = C_enc.Utf8;
-	    var C_algo = C.algo;
+	    var C = CryptoJS
+	    var C_lib = C.lib
+	    var Base = C_lib.Base
+	    var C_enc = C.enc
+	    var Utf8 = C_enc.Utf8
+	    var C_algo = C.algo
 
 	    /**
 	     * HMAC algorithm.
@@ -9132,42 +8948,42 @@ module.exports = transfer;
 	         */
 	        init: function (hasher, key) {
 	            // Init hasher
-	            hasher = this._hasher = new hasher.init();
+	            hasher = this._hasher = new hasher.init()
 
 	            // Convert string to WordArray, else assume WordArray already
-	            if (typeof key == 'string') {
-	                key = Utf8.parse(key);
+	            if (typeof key === 'string') {
+	                key = Utf8.parse(key)
 	            }
 
 	            // Shortcuts
-	            var hasherBlockSize = hasher.blockSize;
-	            var hasherBlockSizeBytes = hasherBlockSize * 4;
+	            var hasherBlockSize = hasher.blockSize
+	            var hasherBlockSizeBytes = hasherBlockSize * 4
 
 	            // Allow arbitrary length keys
 	            if (key.sigBytes > hasherBlockSizeBytes) {
-	                key = hasher.finalize(key);
+	                key = hasher.finalize(key)
 	            }
 
 	            // Clamp excess bits
-	            key.clamp();
+	            key.clamp()
 
 	            // Clone key for inner and outer pads
-	            var oKey = this._oKey = key.clone();
-	            var iKey = this._iKey = key.clone();
+	            var oKey = this._oKey = key.clone()
+	            var iKey = this._iKey = key.clone()
 
 	            // Shortcuts
-	            var oKeyWords = oKey.words;
-	            var iKeyWords = iKey.words;
+	            var oKeyWords = oKey.words
+	            var iKeyWords = iKey.words
 
 	            // XOR keys with pad constants
 	            for (var i = 0; i < hasherBlockSize; i++) {
-	                oKeyWords[i] ^= 0x5c5c5c5c;
-	                iKeyWords[i] ^= 0x36363636;
+	                oKeyWords[i] ^= 0x5c5c5c5c
+	                iKeyWords[i] ^= 0x36363636
 	            }
-	            oKey.sigBytes = iKey.sigBytes = hasherBlockSizeBytes;
+	            oKey.sigBytes = iKey.sigBytes = hasherBlockSizeBytes
 
 	            // Set initial values
-	            this.reset();
+	            this.reset()
 	        },
 
 	        /**
@@ -9179,11 +8995,11 @@ module.exports = transfer;
 	         */
 	        reset: function () {
 	            // Shortcut
-	            var hasher = this._hasher;
+	            var hasher = this._hasher
 
 	            // Reset
-	            hasher.reset();
-	            hasher.update(this._iKey);
+	            hasher.reset()
+	            hasher.update(this._iKey)
 	        },
 
 	        /**
@@ -9199,10 +9015,10 @@ module.exports = transfer;
 	         *     hmacHasher.update(wordArray);
 	         */
 	        update: function (messageUpdate) {
-	            this._hasher.update(messageUpdate);
+	            this._hasher.update(messageUpdate)
 
 	            // Chainable
-	            return this;
+	            return this
 	        },
 
 	        /**
@@ -9221,80 +9037,73 @@ module.exports = transfer;
 	         */
 	        finalize: function (messageUpdate) {
 	            // Shortcut
-	            var hasher = this._hasher;
+	            var hasher = this._hasher
 
 	            // Compute HMAC
-	            var innerHash = hasher.finalize(messageUpdate);
-	            hasher.reset();
-	            var hmac = hasher.finalize(this._oKey.clone().concat(innerHash));
+	            var innerHash = hasher.finalize(messageUpdate)
+	            hasher.reset()
+	            var hmac = hasher.finalize(this._oKey.clone().concat(innerHash))
 
-	            return hmac;
+	            return hmac
 	        }
-	    });
-	}());
-
-
-}));
-},{"./core":52}],58:[function(require,module,exports){
-;(function (root, factory, undef) {
-	if (typeof exports === "object") {
+	    })
+      }())
+    }))
+  }, { './core':52 }],
+  58:[function (require, module, exports) {
+    ;(function (root, factory, undef) {
+      if (typeof exports === 'object') {
 		// CommonJS
-		module.exports = exports = factory(require("./core"), require("./x64-core"), require("./lib-typedarrays"), require("./enc-utf16"), require("./enc-base64"), require("./md5"), require("./sha1"), require("./sha256"), require("./sha224"), require("./sha512"), require("./sha384"), require("./sha3"), require("./ripemd160"), require("./hmac"), require("./pbkdf2"), require("./evpkdf"), require("./cipher-core"), require("./mode-cfb"), require("./mode-ctr"), require("./mode-ctr-gladman"), require("./mode-ofb"), require("./mode-ecb"), require("./pad-ansix923"), require("./pad-iso10126"), require("./pad-iso97971"), require("./pad-zeropadding"), require("./pad-nopadding"), require("./format-hex"), require("./aes"), require("./tripledes"), require("./rc4"), require("./rabbit"), require("./rabbit-legacy"));
-	}
-	else if (typeof define === "function" && define.amd) {
+        module.exports = exports = factory(require('./core'), require('./x64-core'), require('./lib-typedarrays'), require('./enc-utf16'), require('./enc-base64'), require('./md5'), require('./sha1'), require('./sha256'), require('./sha224'), require('./sha512'), require('./sha384'), require('./sha3'), require('./ripemd160'), require('./hmac'), require('./pbkdf2'), require('./evpkdf'), require('./cipher-core'), require('./mode-cfb'), require('./mode-ctr'), require('./mode-ctr-gladman'), require('./mode-ofb'), require('./mode-ecb'), require('./pad-ansix923'), require('./pad-iso10126'), require('./pad-iso97971'), require('./pad-zeropadding'), require('./pad-nopadding'), require('./format-hex'), require('./aes'), require('./tripledes'), require('./rc4'), require('./rabbit'), require('./rabbit-legacy'))
+      } else if (typeof define === 'function' && define.amd) {
 		// AMD
-		define(["./core", "./x64-core", "./lib-typedarrays", "./enc-utf16", "./enc-base64", "./md5", "./sha1", "./sha256", "./sha224", "./sha512", "./sha384", "./sha3", "./ripemd160", "./hmac", "./pbkdf2", "./evpkdf", "./cipher-core", "./mode-cfb", "./mode-ctr", "./mode-ctr-gladman", "./mode-ofb", "./mode-ecb", "./pad-ansix923", "./pad-iso10126", "./pad-iso97971", "./pad-zeropadding", "./pad-nopadding", "./format-hex", "./aes", "./tripledes", "./rc4", "./rabbit", "./rabbit-legacy"], factory);
-	}
-	else {
+        define(['./core', './x64-core', './lib-typedarrays', './enc-utf16', './enc-base64', './md5', './sha1', './sha256', './sha224', './sha512', './sha384', './sha3', './ripemd160', './hmac', './pbkdf2', './evpkdf', './cipher-core', './mode-cfb', './mode-ctr', './mode-ctr-gladman', './mode-ofb', './mode-ecb', './pad-ansix923', './pad-iso10126', './pad-iso97971', './pad-zeropadding', './pad-nopadding', './format-hex', './aes', './tripledes', './rc4', './rabbit', './rabbit-legacy'], factory)
+      } else {
 		// Global (browser)
-		root.CryptoJS = factory(root.CryptoJS);
-	}
-}(this, function (CryptoJS) {
-
-	return CryptoJS;
-
-}));
-},{"./aes":50,"./cipher-core":51,"./core":52,"./enc-base64":53,"./enc-utf16":54,"./evpkdf":55,"./format-hex":56,"./hmac":57,"./lib-typedarrays":59,"./md5":60,"./mode-cfb":61,"./mode-ctr":63,"./mode-ctr-gladman":62,"./mode-ecb":64,"./mode-ofb":65,"./pad-ansix923":66,"./pad-iso10126":67,"./pad-iso97971":68,"./pad-nopadding":69,"./pad-zeropadding":70,"./pbkdf2":71,"./rabbit":73,"./rabbit-legacy":72,"./rc4":74,"./ripemd160":75,"./sha1":76,"./sha224":77,"./sha256":78,"./sha3":79,"./sha384":80,"./sha512":81,"./tripledes":82,"./x64-core":83}],59:[function(require,module,exports){
-;(function (root, factory) {
-	if (typeof exports === "object") {
+        root.CryptoJS = factory(root.CryptoJS)
+      }
+    }(this, function (CryptoJS) {
+      return CryptoJS
+    }))
+  }, { './aes':50, './cipher-core':51, './core':52, './enc-base64':53, './enc-utf16':54, './evpkdf':55, './format-hex':56, './hmac':57, './lib-typedarrays':59, './md5':60, './mode-cfb':61, './mode-ctr':63, './mode-ctr-gladman':62, './mode-ecb':64, './mode-ofb':65, './pad-ansix923':66, './pad-iso10126':67, './pad-iso97971':68, './pad-nopadding':69, './pad-zeropadding':70, './pbkdf2':71, './rabbit':73, './rabbit-legacy':72, './rc4':74, './ripemd160':75, './sha1':76, './sha224':77, './sha256':78, './sha3':79, './sha384':80, './sha512':81, './tripledes':82, './x64-core':83 }],
+  59:[function (require, module, exports) {
+    ;(function (root, factory) {
+      if (typeof exports === 'object') {
 		// CommonJS
-		module.exports = exports = factory(require("./core"));
-	}
-	else if (typeof define === "function" && define.amd) {
+        module.exports = exports = factory(require('./core'))
+      } else if (typeof define === 'function' && define.amd) {
 		// AMD
-		define(["./core"], factory);
-	}
-	else {
+        define(['./core'], factory)
+      } else {
 		// Global (browser)
-		factory(root.CryptoJS);
-	}
-}(this, function (CryptoJS) {
-
-	(function () {
+        factory(root.CryptoJS)
+      }
+    }(this, function (CryptoJS) {
+      (function () {
 	    // Check if typed arrays are supported
-	    if (typeof ArrayBuffer != 'function') {
-	        return;
+	    if (typeof ArrayBuffer !== 'function') {
+	        return
 	    }
 
 	    // Shortcuts
-	    var C = CryptoJS;
-	    var C_lib = C.lib;
-	    var WordArray = C_lib.WordArray;
+	    var C = CryptoJS
+	    var C_lib = C.lib
+	    var WordArray = C_lib.WordArray
 
 	    // Reference original init
-	    var superInit = WordArray.init;
+	    var superInit = WordArray.init
 
 	    // Augment WordArray.init to handle typed arrays
 	    var subInit = WordArray.init = function (typedArray) {
 	        // Convert buffers to uint8
 	        if (typedArray instanceof ArrayBuffer) {
-	            typedArray = new Uint8Array(typedArray);
+	            typedArray = new Uint8Array(typedArray)
 	        }
 
 	        // Convert other array views to uint8
 	        if (
 	            typedArray instanceof Int8Array ||
-	            (typeof Uint8ClampedArray !== "undefined" && typedArray instanceof Uint8ClampedArray) ||
+	            (typeof Uint8ClampedArray !== 'undefined' && typedArray instanceof Uint8ClampedArray) ||
 	            typedArray instanceof Int16Array ||
 	            typedArray instanceof Uint16Array ||
 	            typedArray instanceof Int32Array ||
@@ -9302,58 +9111,54 @@ module.exports = transfer;
 	            typedArray instanceof Float32Array ||
 	            typedArray instanceof Float64Array
 	        ) {
-	            typedArray = new Uint8Array(typedArray.buffer, typedArray.byteOffset, typedArray.byteLength);
+	            typedArray = new Uint8Array(typedArray.buffer, typedArray.byteOffset, typedArray.byteLength)
 	        }
 
 	        // Handle Uint8Array
 	        if (typedArray instanceof Uint8Array) {
 	            // Shortcut
-	            var typedArrayByteLength = typedArray.byteLength;
+	            var typedArrayByteLength = typedArray.byteLength
 
 	            // Extract bytes
-	            var words = [];
+	            var words = []
 	            for (var i = 0; i < typedArrayByteLength; i++) {
-	                words[i >>> 2] |= typedArray[i] << (24 - (i % 4) * 8);
+	                words[i >>> 2] |= typedArray[i] << (24 - (i % 4) * 8)
 	            }
 
 	            // Initialize this word array
-	            superInit.call(this, words, typedArrayByteLength);
+	            superInit.call(this, words, typedArrayByteLength)
 	        } else {
 	            // Else call normal init
-	            superInit.apply(this, arguments);
+	            superInit.apply(this, arguments)
 	        }
-	    };
+	    }
 
-	    subInit.prototype = WordArray;
-	}());
+	    subInit.prototype = WordArray
+      }())
 
-
-	return CryptoJS.lib.WordArray;
-
-}));
-},{"./core":52}],60:[function(require,module,exports){
-;(function (root, factory) {
-	if (typeof exports === "object") {
+      return CryptoJS.lib.WordArray
+    }))
+  }, { './core':52 }],
+  60:[function (require, module, exports) {
+    ;(function (root, factory) {
+      if (typeof exports === 'object') {
 		// CommonJS
-		module.exports = exports = factory(require("./core"));
-	}
-	else if (typeof define === "function" && define.amd) {
+        module.exports = exports = factory(require('./core'))
+      } else if (typeof define === 'function' && define.amd) {
 		// AMD
-		define(["./core"], factory);
-	}
-	else {
+        define(['./core'], factory)
+      } else {
 		// Global (browser)
-		factory(root.CryptoJS);
-	}
-}(this, function (CryptoJS) {
-
-	(function (Math) {
+        factory(root.CryptoJS)
+      }
+    }(this, function (CryptoJS) {
+      (function (Math) {
 	    // Shortcuts
-	    var C = CryptoJS;
-	    var C_lib = C.lib;
-	    var WordArray = C_lib.WordArray;
-	    var Hasher = C_lib.Hasher;
-	    var C_algo = C.algo;
+	    var C = CryptoJS
+	    var C_lib = C.lib
+	    var WordArray = C_lib.WordArray
+	    var Hasher = C_lib.Hasher
+	    var C_algo = C.algo
 
 	    // Constants table
 	    var T = [];
@@ -9361,9 +9166,9 @@ module.exports = transfer;
 	    // Compute constants
 	    (function () {
 	        for (var i = 0; i < 64; i++) {
-	            T[i] = (Math.abs(Math.sin(i + 1)) * 0x100000000) | 0;
+	            T[i] = (Math.abs(Math.sin(i + 1)) * 0x100000000) | 0
 	        }
-	    }());
+	    }())
 
 	    /**
 	     * MD5 hash algorithm.
@@ -9373,194 +9178,194 @@ module.exports = transfer;
 	            this._hash = new WordArray.init([
 	                0x67452301, 0xefcdab89,
 	                0x98badcfe, 0x10325476
-	            ]);
+	            ])
 	        },
 
 	        _doProcessBlock: function (M, offset) {
 	            // Swap endian
 	            for (var i = 0; i < 16; i++) {
 	                // Shortcuts
-	                var offset_i = offset + i;
-	                var M_offset_i = M[offset_i];
+	                var offset_i = offset + i
+	                var M_offset_i = M[offset_i]
 
 	                M[offset_i] = (
-	                    (((M_offset_i << 8)  | (M_offset_i >>> 24)) & 0x00ff00ff) |
-	                    (((M_offset_i << 24) | (M_offset_i >>> 8))  & 0xff00ff00)
-	                );
+	                    (((M_offset_i << 8) | (M_offset_i >>> 24)) & 0x00ff00ff) |
+	                    (((M_offset_i << 24) | (M_offset_i >>> 8)) & 0xff00ff00)
+	                )
 	            }
 
 	            // Shortcuts
-	            var H = this._hash.words;
+	            var H = this._hash.words
 
-	            var M_offset_0  = M[offset + 0];
-	            var M_offset_1  = M[offset + 1];
-	            var M_offset_2  = M[offset + 2];
-	            var M_offset_3  = M[offset + 3];
-	            var M_offset_4  = M[offset + 4];
-	            var M_offset_5  = M[offset + 5];
-	            var M_offset_6  = M[offset + 6];
-	            var M_offset_7  = M[offset + 7];
-	            var M_offset_8  = M[offset + 8];
-	            var M_offset_9  = M[offset + 9];
-	            var M_offset_10 = M[offset + 10];
-	            var M_offset_11 = M[offset + 11];
-	            var M_offset_12 = M[offset + 12];
-	            var M_offset_13 = M[offset + 13];
-	            var M_offset_14 = M[offset + 14];
-	            var M_offset_15 = M[offset + 15];
+	            var M_offset_0 = M[offset + 0]
+	            var M_offset_1 = M[offset + 1]
+	            var M_offset_2 = M[offset + 2]
+	            var M_offset_3 = M[offset + 3]
+	            var M_offset_4 = M[offset + 4]
+	            var M_offset_5 = M[offset + 5]
+	            var M_offset_6 = M[offset + 6]
+	            var M_offset_7 = M[offset + 7]
+	            var M_offset_8 = M[offset + 8]
+	            var M_offset_9 = M[offset + 9]
+	            var M_offset_10 = M[offset + 10]
+	            var M_offset_11 = M[offset + 11]
+	            var M_offset_12 = M[offset + 12]
+	            var M_offset_13 = M[offset + 13]
+	            var M_offset_14 = M[offset + 14]
+	            var M_offset_15 = M[offset + 15]
 
 	            // Working varialbes
-	            var a = H[0];
-	            var b = H[1];
-	            var c = H[2];
-	            var d = H[3];
+	            var a = H[0]
+	            var b = H[1]
+	            var c = H[2]
+	            var d = H[3]
 
 	            // Computation
-	            a = FF(a, b, c, d, M_offset_0,  7,  T[0]);
-	            d = FF(d, a, b, c, M_offset_1,  12, T[1]);
-	            c = FF(c, d, a, b, M_offset_2,  17, T[2]);
-	            b = FF(b, c, d, a, M_offset_3,  22, T[3]);
-	            a = FF(a, b, c, d, M_offset_4,  7,  T[4]);
-	            d = FF(d, a, b, c, M_offset_5,  12, T[5]);
-	            c = FF(c, d, a, b, M_offset_6,  17, T[6]);
-	            b = FF(b, c, d, a, M_offset_7,  22, T[7]);
-	            a = FF(a, b, c, d, M_offset_8,  7,  T[8]);
-	            d = FF(d, a, b, c, M_offset_9,  12, T[9]);
-	            c = FF(c, d, a, b, M_offset_10, 17, T[10]);
-	            b = FF(b, c, d, a, M_offset_11, 22, T[11]);
-	            a = FF(a, b, c, d, M_offset_12, 7,  T[12]);
-	            d = FF(d, a, b, c, M_offset_13, 12, T[13]);
-	            c = FF(c, d, a, b, M_offset_14, 17, T[14]);
-	            b = FF(b, c, d, a, M_offset_15, 22, T[15]);
+	            a = FF(a, b, c, d, M_offset_0, 7, T[0])
+	            d = FF(d, a, b, c, M_offset_1, 12, T[1])
+	            c = FF(c, d, a, b, M_offset_2, 17, T[2])
+	            b = FF(b, c, d, a, M_offset_3, 22, T[3])
+	            a = FF(a, b, c, d, M_offset_4, 7, T[4])
+	            d = FF(d, a, b, c, M_offset_5, 12, T[5])
+	            c = FF(c, d, a, b, M_offset_6, 17, T[6])
+	            b = FF(b, c, d, a, M_offset_7, 22, T[7])
+	            a = FF(a, b, c, d, M_offset_8, 7, T[8])
+	            d = FF(d, a, b, c, M_offset_9, 12, T[9])
+	            c = FF(c, d, a, b, M_offset_10, 17, T[10])
+	            b = FF(b, c, d, a, M_offset_11, 22, T[11])
+	            a = FF(a, b, c, d, M_offset_12, 7, T[12])
+	            d = FF(d, a, b, c, M_offset_13, 12, T[13])
+	            c = FF(c, d, a, b, M_offset_14, 17, T[14])
+	            b = FF(b, c, d, a, M_offset_15, 22, T[15])
 
-	            a = GG(a, b, c, d, M_offset_1,  5,  T[16]);
-	            d = GG(d, a, b, c, M_offset_6,  9,  T[17]);
-	            c = GG(c, d, a, b, M_offset_11, 14, T[18]);
-	            b = GG(b, c, d, a, M_offset_0,  20, T[19]);
-	            a = GG(a, b, c, d, M_offset_5,  5,  T[20]);
-	            d = GG(d, a, b, c, M_offset_10, 9,  T[21]);
-	            c = GG(c, d, a, b, M_offset_15, 14, T[22]);
-	            b = GG(b, c, d, a, M_offset_4,  20, T[23]);
-	            a = GG(a, b, c, d, M_offset_9,  5,  T[24]);
-	            d = GG(d, a, b, c, M_offset_14, 9,  T[25]);
-	            c = GG(c, d, a, b, M_offset_3,  14, T[26]);
-	            b = GG(b, c, d, a, M_offset_8,  20, T[27]);
-	            a = GG(a, b, c, d, M_offset_13, 5,  T[28]);
-	            d = GG(d, a, b, c, M_offset_2,  9,  T[29]);
-	            c = GG(c, d, a, b, M_offset_7,  14, T[30]);
-	            b = GG(b, c, d, a, M_offset_12, 20, T[31]);
+	            a = GG(a, b, c, d, M_offset_1, 5, T[16])
+	            d = GG(d, a, b, c, M_offset_6, 9, T[17])
+	            c = GG(c, d, a, b, M_offset_11, 14, T[18])
+	            b = GG(b, c, d, a, M_offset_0, 20, T[19])
+	            a = GG(a, b, c, d, M_offset_5, 5, T[20])
+	            d = GG(d, a, b, c, M_offset_10, 9, T[21])
+	            c = GG(c, d, a, b, M_offset_15, 14, T[22])
+	            b = GG(b, c, d, a, M_offset_4, 20, T[23])
+	            a = GG(a, b, c, d, M_offset_9, 5, T[24])
+	            d = GG(d, a, b, c, M_offset_14, 9, T[25])
+	            c = GG(c, d, a, b, M_offset_3, 14, T[26])
+	            b = GG(b, c, d, a, M_offset_8, 20, T[27])
+	            a = GG(a, b, c, d, M_offset_13, 5, T[28])
+	            d = GG(d, a, b, c, M_offset_2, 9, T[29])
+	            c = GG(c, d, a, b, M_offset_7, 14, T[30])
+	            b = GG(b, c, d, a, M_offset_12, 20, T[31])
 
-	            a = HH(a, b, c, d, M_offset_5,  4,  T[32]);
-	            d = HH(d, a, b, c, M_offset_8,  11, T[33]);
-	            c = HH(c, d, a, b, M_offset_11, 16, T[34]);
-	            b = HH(b, c, d, a, M_offset_14, 23, T[35]);
-	            a = HH(a, b, c, d, M_offset_1,  4,  T[36]);
-	            d = HH(d, a, b, c, M_offset_4,  11, T[37]);
-	            c = HH(c, d, a, b, M_offset_7,  16, T[38]);
-	            b = HH(b, c, d, a, M_offset_10, 23, T[39]);
-	            a = HH(a, b, c, d, M_offset_13, 4,  T[40]);
-	            d = HH(d, a, b, c, M_offset_0,  11, T[41]);
-	            c = HH(c, d, a, b, M_offset_3,  16, T[42]);
-	            b = HH(b, c, d, a, M_offset_6,  23, T[43]);
-	            a = HH(a, b, c, d, M_offset_9,  4,  T[44]);
-	            d = HH(d, a, b, c, M_offset_12, 11, T[45]);
-	            c = HH(c, d, a, b, M_offset_15, 16, T[46]);
-	            b = HH(b, c, d, a, M_offset_2,  23, T[47]);
+	            a = HH(a, b, c, d, M_offset_5, 4, T[32])
+	            d = HH(d, a, b, c, M_offset_8, 11, T[33])
+	            c = HH(c, d, a, b, M_offset_11, 16, T[34])
+	            b = HH(b, c, d, a, M_offset_14, 23, T[35])
+	            a = HH(a, b, c, d, M_offset_1, 4, T[36])
+	            d = HH(d, a, b, c, M_offset_4, 11, T[37])
+	            c = HH(c, d, a, b, M_offset_7, 16, T[38])
+	            b = HH(b, c, d, a, M_offset_10, 23, T[39])
+	            a = HH(a, b, c, d, M_offset_13, 4, T[40])
+	            d = HH(d, a, b, c, M_offset_0, 11, T[41])
+	            c = HH(c, d, a, b, M_offset_3, 16, T[42])
+	            b = HH(b, c, d, a, M_offset_6, 23, T[43])
+	            a = HH(a, b, c, d, M_offset_9, 4, T[44])
+	            d = HH(d, a, b, c, M_offset_12, 11, T[45])
+	            c = HH(c, d, a, b, M_offset_15, 16, T[46])
+	            b = HH(b, c, d, a, M_offset_2, 23, T[47])
 
-	            a = II(a, b, c, d, M_offset_0,  6,  T[48]);
-	            d = II(d, a, b, c, M_offset_7,  10, T[49]);
-	            c = II(c, d, a, b, M_offset_14, 15, T[50]);
-	            b = II(b, c, d, a, M_offset_5,  21, T[51]);
-	            a = II(a, b, c, d, M_offset_12, 6,  T[52]);
-	            d = II(d, a, b, c, M_offset_3,  10, T[53]);
-	            c = II(c, d, a, b, M_offset_10, 15, T[54]);
-	            b = II(b, c, d, a, M_offset_1,  21, T[55]);
-	            a = II(a, b, c, d, M_offset_8,  6,  T[56]);
-	            d = II(d, a, b, c, M_offset_15, 10, T[57]);
-	            c = II(c, d, a, b, M_offset_6,  15, T[58]);
-	            b = II(b, c, d, a, M_offset_13, 21, T[59]);
-	            a = II(a, b, c, d, M_offset_4,  6,  T[60]);
-	            d = II(d, a, b, c, M_offset_11, 10, T[61]);
-	            c = II(c, d, a, b, M_offset_2,  15, T[62]);
-	            b = II(b, c, d, a, M_offset_9,  21, T[63]);
+	            a = II(a, b, c, d, M_offset_0, 6, T[48])
+	            d = II(d, a, b, c, M_offset_7, 10, T[49])
+	            c = II(c, d, a, b, M_offset_14, 15, T[50])
+	            b = II(b, c, d, a, M_offset_5, 21, T[51])
+	            a = II(a, b, c, d, M_offset_12, 6, T[52])
+	            d = II(d, a, b, c, M_offset_3, 10, T[53])
+	            c = II(c, d, a, b, M_offset_10, 15, T[54])
+	            b = II(b, c, d, a, M_offset_1, 21, T[55])
+	            a = II(a, b, c, d, M_offset_8, 6, T[56])
+	            d = II(d, a, b, c, M_offset_15, 10, T[57])
+	            c = II(c, d, a, b, M_offset_6, 15, T[58])
+	            b = II(b, c, d, a, M_offset_13, 21, T[59])
+	            a = II(a, b, c, d, M_offset_4, 6, T[60])
+	            d = II(d, a, b, c, M_offset_11, 10, T[61])
+	            c = II(c, d, a, b, M_offset_2, 15, T[62])
+	            b = II(b, c, d, a, M_offset_9, 21, T[63])
 
 	            // Intermediate hash value
-	            H[0] = (H[0] + a) | 0;
-	            H[1] = (H[1] + b) | 0;
-	            H[2] = (H[2] + c) | 0;
-	            H[3] = (H[3] + d) | 0;
+	            H[0] = (H[0] + a) | 0
+	            H[1] = (H[1] + b) | 0
+	            H[2] = (H[2] + c) | 0
+	            H[3] = (H[3] + d) | 0
 	        },
 
 	        _doFinalize: function () {
 	            // Shortcuts
-	            var data = this._data;
-	            var dataWords = data.words;
+	            var data = this._data
+	            var dataWords = data.words
 
-	            var nBitsTotal = this._nDataBytes * 8;
-	            var nBitsLeft = data.sigBytes * 8;
+	            var nBitsTotal = this._nDataBytes * 8
+	            var nBitsLeft = data.sigBytes * 8
 
 	            // Add padding
-	            dataWords[nBitsLeft >>> 5] |= 0x80 << (24 - nBitsLeft % 32);
+	            dataWords[nBitsLeft >>> 5] |= 0x80 << (24 - nBitsLeft % 32)
 
-	            var nBitsTotalH = Math.floor(nBitsTotal / 0x100000000);
-	            var nBitsTotalL = nBitsTotal;
+	            var nBitsTotalH = Math.floor(nBitsTotal / 0x100000000)
+	            var nBitsTotalL = nBitsTotal
 	            dataWords[(((nBitsLeft + 64) >>> 9) << 4) + 15] = (
-	                (((nBitsTotalH << 8)  | (nBitsTotalH >>> 24)) & 0x00ff00ff) |
-	                (((nBitsTotalH << 24) | (nBitsTotalH >>> 8))  & 0xff00ff00)
-	            );
+	                (((nBitsTotalH << 8) | (nBitsTotalH >>> 24)) & 0x00ff00ff) |
+	                (((nBitsTotalH << 24) | (nBitsTotalH >>> 8)) & 0xff00ff00)
+	            )
 	            dataWords[(((nBitsLeft + 64) >>> 9) << 4) + 14] = (
-	                (((nBitsTotalL << 8)  | (nBitsTotalL >>> 24)) & 0x00ff00ff) |
-	                (((nBitsTotalL << 24) | (nBitsTotalL >>> 8))  & 0xff00ff00)
-	            );
+	                (((nBitsTotalL << 8) | (nBitsTotalL >>> 24)) & 0x00ff00ff) |
+	                (((nBitsTotalL << 24) | (nBitsTotalL >>> 8)) & 0xff00ff00)
+	            )
 
-	            data.sigBytes = (dataWords.length + 1) * 4;
+	            data.sigBytes = (dataWords.length + 1) * 4
 
 	            // Hash final blocks
-	            this._process();
+	            this._process()
 
 	            // Shortcuts
-	            var hash = this._hash;
-	            var H = hash.words;
+	            var hash = this._hash
+	            var H = hash.words
 
 	            // Swap endian
 	            for (var i = 0; i < 4; i++) {
 	                // Shortcut
-	                var H_i = H[i];
+	                var H_i = H[i]
 
-	                H[i] = (((H_i << 8)  | (H_i >>> 24)) & 0x00ff00ff) |
-	                       (((H_i << 24) | (H_i >>> 8))  & 0xff00ff00);
+	                H[i] = (((H_i << 8) | (H_i >>> 24)) & 0x00ff00ff) |
+	                       (((H_i << 24) | (H_i >>> 8)) & 0xff00ff00)
 	            }
 
 	            // Return final computed hash
-	            return hash;
+	            return hash
 	        },
 
 	        clone: function () {
-	            var clone = Hasher.clone.call(this);
-	            clone._hash = this._hash.clone();
+	            var clone = Hasher.clone.call(this)
+	            clone._hash = this._hash.clone()
 
-	            return clone;
+	            return clone
 	        }
-	    });
+	    })
 
-	    function FF(a, b, c, d, x, s, t) {
-	        var n = a + ((b & c) | (~b & d)) + x + t;
-	        return ((n << s) | (n >>> (32 - s))) + b;
+	    function FF (a, b, c, d, x, s, t) {
+	        var n = a + ((b & c) | (~b & d)) + x + t
+	        return ((n << s) | (n >>> (32 - s))) + b
 	    }
 
-	    function GG(a, b, c, d, x, s, t) {
-	        var n = a + ((b & d) | (c & ~d)) + x + t;
-	        return ((n << s) | (n >>> (32 - s))) + b;
+	    function GG (a, b, c, d, x, s, t) {
+	        var n = a + ((b & d) | (c & ~d)) + x + t
+	        return ((n << s) | (n >>> (32 - s))) + b
 	    }
 
-	    function HH(a, b, c, d, x, s, t) {
-	        var n = a + (b ^ c ^ d) + x + t;
-	        return ((n << s) | (n >>> (32 - s))) + b;
+	    function HH (a, b, c, d, x, s, t) {
+	        var n = a + (b ^ c ^ d) + x + t
+	        return ((n << s) | (n >>> (32 - s))) + b
 	    }
 
-	    function II(a, b, c, d, x, s, t) {
-	        var n = a + (c ^ (b | ~d)) + x + t;
-	        return ((n << s) | (n >>> (32 - s))) + b;
+	    function II (a, b, c, d, x, s, t) {
+	        var n = a + (c ^ (b | ~d)) + x + t
+	        return ((n << s) | (n >>> (32 - s))) + b
 	    }
 
 	    /**
@@ -9577,7 +9382,7 @@ module.exports = transfer;
 	     *     var hash = CryptoJS.MD5('message');
 	     *     var hash = CryptoJS.MD5(wordArray);
 	     */
-	    C.MD5 = Hasher._createHelper(MD5);
+	    C.MD5 = Hasher._createHelper(MD5)
 
 	    /**
 	     * Shortcut function to the HMAC's object interface.
@@ -9593,602 +9398,543 @@ module.exports = transfer;
 	     *
 	     *     var hmac = CryptoJS.HmacMD5(message, key);
 	     */
-	    C.HmacMD5 = Hasher._createHmacHelper(MD5);
-	}(Math));
+	    C.HmacMD5 = Hasher._createHmacHelper(MD5)
+      }(Math))
 
-
-	return CryptoJS.MD5;
-
-}));
-},{"./core":52}],61:[function(require,module,exports){
-;(function (root, factory, undef) {
-	if (typeof exports === "object") {
+      return CryptoJS.MD5
+    }))
+  }, { './core':52 }],
+  61:[function (require, module, exports) {
+    ;(function (root, factory, undef) {
+      if (typeof exports === 'object') {
 		// CommonJS
-		module.exports = exports = factory(require("./core"), require("./cipher-core"));
-	}
-	else if (typeof define === "function" && define.amd) {
+        module.exports = exports = factory(require('./core'), require('./cipher-core'))
+      } else if (typeof define === 'function' && define.amd) {
 		// AMD
-		define(["./core", "./cipher-core"], factory);
-	}
-	else {
+        define(['./core', './cipher-core'], factory)
+      } else {
 		// Global (browser)
-		factory(root.CryptoJS);
-	}
-}(this, function (CryptoJS) {
-
+        factory(root.CryptoJS)
+      }
+    }(this, function (CryptoJS) {
 	/**
 	 * Cipher Feedback block mode.
 	 */
-	CryptoJS.mode.CFB = (function () {
-	    var CFB = CryptoJS.lib.BlockCipherMode.extend();
+      CryptoJS.mode.CFB = (function () {
+	    var CFB = CryptoJS.lib.BlockCipherMode.extend()
 
 	    CFB.Encryptor = CFB.extend({
 	        processBlock: function (words, offset) {
 	            // Shortcuts
-	            var cipher = this._cipher;
-	            var blockSize = cipher.blockSize;
+	            var cipher = this._cipher
+	            var blockSize = cipher.blockSize
 
-	            generateKeystreamAndEncrypt.call(this, words, offset, blockSize, cipher);
+	            generateKeystreamAndEncrypt.call(this, words, offset, blockSize, cipher)
 
 	            // Remember this block to use with next block
-	            this._prevBlock = words.slice(offset, offset + blockSize);
+	            this._prevBlock = words.slice(offset, offset + blockSize)
 	        }
-	    });
+	    })
 
 	    CFB.Decryptor = CFB.extend({
 	        processBlock: function (words, offset) {
 	            // Shortcuts
-	            var cipher = this._cipher;
-	            var blockSize = cipher.blockSize;
+	            var cipher = this._cipher
+	            var blockSize = cipher.blockSize
 
 	            // Remember this block to use with next block
-	            var thisBlock = words.slice(offset, offset + blockSize);
+	            var thisBlock = words.slice(offset, offset + blockSize)
 
-	            generateKeystreamAndEncrypt.call(this, words, offset, blockSize, cipher);
+	            generateKeystreamAndEncrypt.call(this, words, offset, blockSize, cipher)
 
 	            // This block becomes the previous block
-	            this._prevBlock = thisBlock;
+	            this._prevBlock = thisBlock
 	        }
-	    });
+	    })
 
-	    function generateKeystreamAndEncrypt(words, offset, blockSize, cipher) {
+	    function generateKeystreamAndEncrypt (words, offset, blockSize, cipher) {
 	        // Shortcut
-	        var iv = this._iv;
+	        var iv = this._iv
 
 	        // Generate keystream
 	        if (iv) {
-	            var keystream = iv.slice(0);
+	            var keystream = iv.slice(0)
 
 	            // Remove IV for subsequent blocks
-	            this._iv = undefined;
+	            this._iv = undefined
 	        } else {
-	            var keystream = this._prevBlock;
+	            var keystream = this._prevBlock
 	        }
-	        cipher.encryptBlock(keystream, 0);
+	        cipher.encryptBlock(keystream, 0)
 
 	        // Encrypt
 	        for (var i = 0; i < blockSize; i++) {
-	            words[offset + i] ^= keystream[i];
+	            words[offset + i] ^= keystream[i]
 	        }
 	    }
 
-	    return CFB;
-	}());
+	    return CFB
+      }())
 
-
-	return CryptoJS.mode.CFB;
-
-}));
-},{"./cipher-core":51,"./core":52}],62:[function(require,module,exports){
-;(function (root, factory, undef) {
-	if (typeof exports === "object") {
+      return CryptoJS.mode.CFB
+    }))
+  }, { './cipher-core':51, './core':52 }],
+  62:[function (require, module, exports) {
+    ;(function (root, factory, undef) {
+      if (typeof exports === 'object') {
 		// CommonJS
-		module.exports = exports = factory(require("./core"), require("./cipher-core"));
-	}
-	else if (typeof define === "function" && define.amd) {
+        module.exports = exports = factory(require('./core'), require('./cipher-core'))
+      } else if (typeof define === 'function' && define.amd) {
 		// AMD
-		define(["./core", "./cipher-core"], factory);
-	}
-	else {
+        define(['./core', './cipher-core'], factory)
+      } else {
 		// Global (browser)
-		factory(root.CryptoJS);
-	}
-}(this, function (CryptoJS) {
-
+        factory(root.CryptoJS)
+      }
+    }(this, function (CryptoJS) {
 	/** @preserve
 	 * Counter block mode compatible with  Dr Brian Gladman fileenc.c
 	 * derived from CryptoJS.mode.CTR
 	 * Jan Hruby jhruby.web@gmail.com
 	 */
-	CryptoJS.mode.CTRGladman = (function () {
-	    var CTRGladman = CryptoJS.lib.BlockCipherMode.extend();
+      CryptoJS.mode.CTRGladman = (function () {
+	    var CTRGladman = CryptoJS.lib.BlockCipherMode.extend()
 
-		function incWord(word)
-		{
-			if (((word >> 24) & 0xff) === 0xff) { //overflow
-			var b1 = (word >> 16)&0xff;
-			var b2 = (word >> 8)&0xff;
-			var b3 = word & 0xff;
+        function incWord (word)		{
+          if (((word >> 24) & 0xff) === 0xff) { // overflow
+            var b1 = (word >> 16) & 0xff
+            var b2 = (word >> 8) & 0xff
+            var b3 = word & 0xff
 
-			if (b1 === 0xff) // overflow b1
+            if (b1 === 0xff) // overflow b1
 			{
-			b1 = 0;
-			if (b2 === 0xff)
-			{
-				b2 = 0;
-				if (b3 === 0xff)
-				{
-					b3 = 0;
-				}
-				else
-				{
-					++b3;
-				}
-			}
-			else
-			{
-				++b2;
-			}
-			}
-			else
-			{
-			++b1;
-			}
+              b1 = 0
+              if (b2 === 0xff)			{
+                b2 = 0
+                if (b3 === 0xff)				{
+                b3 = 0
+              } else				{
+                ++b3
+              }
+              }			else			{
+                ++b2
+              }
+            }			else			{
+              ++b1
+            }
 
-			word = 0;
-			word += (b1 << 16);
-			word += (b2 << 8);
-			word += b3;
-			}
-			else
-			{
-			word += (0x01 << 24);
-			}
-			return word;
-		}
+            word = 0
+            word += (b1 << 16)
+            word += (b2 << 8)
+            word += b3
+          } else			{
+            word += (0x01 << 24)
+          }
+          return word
+        }
 
-		function incCounter(counter)
-		{
-			if ((counter[0] = incWord(counter[0])) === 0)
-			{
+        function incCounter (counter)		{
+          if ((counter[0] = incWord(counter[0])) === 0)			{
 				// encr_data in fileenc.c from  Dr Brian Gladman's counts only with DWORD j < 8
-				counter[1] = incWord(counter[1]);
-			}
-			return counter;
-		}
+            counter[1] = incWord(counter[1])
+          }
+          return counter
+        }
 
 	    var Encryptor = CTRGladman.Encryptor = CTRGladman.extend({
 	        processBlock: function (words, offset) {
 	            // Shortcuts
 	            var cipher = this._cipher
-	            var blockSize = cipher.blockSize;
-	            var iv = this._iv;
-	            var counter = this._counter;
+	            var blockSize = cipher.blockSize
+	            var iv = this._iv
+	            var counter = this._counter
 
 	            // Generate keystream
 	            if (iv) {
-	                counter = this._counter = iv.slice(0);
+	                counter = this._counter = iv.slice(0)
 
 	                // Remove IV for subsequent blocks
-	                this._iv = undefined;
+	                this._iv = undefined
 	            }
 
-				incCounter(counter);
+          incCounter(counter)
 
-				var keystream = counter.slice(0);
-	            cipher.encryptBlock(keystream, 0);
+          var keystream = counter.slice(0)
+	            cipher.encryptBlock(keystream, 0)
 
 	            // Encrypt
 	            for (var i = 0; i < blockSize; i++) {
-	                words[offset + i] ^= keystream[i];
+	                words[offset + i] ^= keystream[i]
 	            }
 	        }
-	    });
+	    })
 
-	    CTRGladman.Decryptor = Encryptor;
+	    CTRGladman.Decryptor = Encryptor
 
-	    return CTRGladman;
-	}());
+	    return CTRGladman
+      }())
 
-
-
-
-	return CryptoJS.mode.CTRGladman;
-
-}));
-},{"./cipher-core":51,"./core":52}],63:[function(require,module,exports){
-;(function (root, factory, undef) {
-	if (typeof exports === "object") {
+      return CryptoJS.mode.CTRGladman
+    }))
+  }, { './cipher-core':51, './core':52 }],
+  63:[function (require, module, exports) {
+    ;(function (root, factory, undef) {
+      if (typeof exports === 'object') {
 		// CommonJS
-		module.exports = exports = factory(require("./core"), require("./cipher-core"));
-	}
-	else if (typeof define === "function" && define.amd) {
+        module.exports = exports = factory(require('./core'), require('./cipher-core'))
+      } else if (typeof define === 'function' && define.amd) {
 		// AMD
-		define(["./core", "./cipher-core"], factory);
-	}
-	else {
+        define(['./core', './cipher-core'], factory)
+      } else {
 		// Global (browser)
-		factory(root.CryptoJS);
-	}
-}(this, function (CryptoJS) {
-
+        factory(root.CryptoJS)
+      }
+    }(this, function (CryptoJS) {
 	/**
 	 * Counter block mode.
 	 */
-	CryptoJS.mode.CTR = (function () {
-	    var CTR = CryptoJS.lib.BlockCipherMode.extend();
+      CryptoJS.mode.CTR = (function () {
+	    var CTR = CryptoJS.lib.BlockCipherMode.extend()
 
 	    var Encryptor = CTR.Encryptor = CTR.extend({
 	        processBlock: function (words, offset) {
 	            // Shortcuts
 	            var cipher = this._cipher
-	            var blockSize = cipher.blockSize;
-	            var iv = this._iv;
-	            var counter = this._counter;
+	            var blockSize = cipher.blockSize
+	            var iv = this._iv
+	            var counter = this._counter
 
 	            // Generate keystream
 	            if (iv) {
-	                counter = this._counter = iv.slice(0);
+	                counter = this._counter = iv.slice(0)
 
 	                // Remove IV for subsequent blocks
-	                this._iv = undefined;
+	                this._iv = undefined
 	            }
-	            var keystream = counter.slice(0);
-	            cipher.encryptBlock(keystream, 0);
+	            var keystream = counter.slice(0)
+	            cipher.encryptBlock(keystream, 0)
 
 	            // Increment counter
 	            counter[blockSize - 1] = (counter[blockSize - 1] + 1) | 0
 
 	            // Encrypt
 	            for (var i = 0; i < blockSize; i++) {
-	                words[offset + i] ^= keystream[i];
+	                words[offset + i] ^= keystream[i]
 	            }
 	        }
-	    });
+	    })
 
-	    CTR.Decryptor = Encryptor;
+	    CTR.Decryptor = Encryptor
 
-	    return CTR;
-	}());
+	    return CTR
+      }())
 
-
-	return CryptoJS.mode.CTR;
-
-}));
-},{"./cipher-core":51,"./core":52}],64:[function(require,module,exports){
-;(function (root, factory, undef) {
-	if (typeof exports === "object") {
+      return CryptoJS.mode.CTR
+    }))
+  }, { './cipher-core':51, './core':52 }],
+  64:[function (require, module, exports) {
+    ;(function (root, factory, undef) {
+      if (typeof exports === 'object') {
 		// CommonJS
-		module.exports = exports = factory(require("./core"), require("./cipher-core"));
-	}
-	else if (typeof define === "function" && define.amd) {
+        module.exports = exports = factory(require('./core'), require('./cipher-core'))
+      } else if (typeof define === 'function' && define.amd) {
 		// AMD
-		define(["./core", "./cipher-core"], factory);
-	}
-	else {
+        define(['./core', './cipher-core'], factory)
+      } else {
 		// Global (browser)
-		factory(root.CryptoJS);
-	}
-}(this, function (CryptoJS) {
-
+        factory(root.CryptoJS)
+      }
+    }(this, function (CryptoJS) {
 	/**
 	 * Electronic Codebook block mode.
 	 */
-	CryptoJS.mode.ECB = (function () {
-	    var ECB = CryptoJS.lib.BlockCipherMode.extend();
+      CryptoJS.mode.ECB = (function () {
+	    var ECB = CryptoJS.lib.BlockCipherMode.extend()
 
 	    ECB.Encryptor = ECB.extend({
 	        processBlock: function (words, offset) {
-	            this._cipher.encryptBlock(words, offset);
+	            this._cipher.encryptBlock(words, offset)
 	        }
-	    });
+	    })
 
 	    ECB.Decryptor = ECB.extend({
 	        processBlock: function (words, offset) {
-	            this._cipher.decryptBlock(words, offset);
+	            this._cipher.decryptBlock(words, offset)
 	        }
-	    });
+	    })
 
-	    return ECB;
-	}());
+	    return ECB
+      }())
 
-
-	return CryptoJS.mode.ECB;
-
-}));
-},{"./cipher-core":51,"./core":52}],65:[function(require,module,exports){
-;(function (root, factory, undef) {
-	if (typeof exports === "object") {
+      return CryptoJS.mode.ECB
+    }))
+  }, { './cipher-core':51, './core':52 }],
+  65:[function (require, module, exports) {
+    ;(function (root, factory, undef) {
+      if (typeof exports === 'object') {
 		// CommonJS
-		module.exports = exports = factory(require("./core"), require("./cipher-core"));
-	}
-	else if (typeof define === "function" && define.amd) {
+        module.exports = exports = factory(require('./core'), require('./cipher-core'))
+      } else if (typeof define === 'function' && define.amd) {
 		// AMD
-		define(["./core", "./cipher-core"], factory);
-	}
-	else {
+        define(['./core', './cipher-core'], factory)
+      } else {
 		// Global (browser)
-		factory(root.CryptoJS);
-	}
-}(this, function (CryptoJS) {
-
+        factory(root.CryptoJS)
+      }
+    }(this, function (CryptoJS) {
 	/**
 	 * Output Feedback block mode.
 	 */
-	CryptoJS.mode.OFB = (function () {
-	    var OFB = CryptoJS.lib.BlockCipherMode.extend();
+      CryptoJS.mode.OFB = (function () {
+	    var OFB = CryptoJS.lib.BlockCipherMode.extend()
 
 	    var Encryptor = OFB.Encryptor = OFB.extend({
 	        processBlock: function (words, offset) {
 	            // Shortcuts
 	            var cipher = this._cipher
-	            var blockSize = cipher.blockSize;
-	            var iv = this._iv;
-	            var keystream = this._keystream;
+	            var blockSize = cipher.blockSize
+	            var iv = this._iv
+	            var keystream = this._keystream
 
 	            // Generate keystream
 	            if (iv) {
-	                keystream = this._keystream = iv.slice(0);
+	                keystream = this._keystream = iv.slice(0)
 
 	                // Remove IV for subsequent blocks
-	                this._iv = undefined;
+	                this._iv = undefined
 	            }
-	            cipher.encryptBlock(keystream, 0);
+	            cipher.encryptBlock(keystream, 0)
 
 	            // Encrypt
 	            for (var i = 0; i < blockSize; i++) {
-	                words[offset + i] ^= keystream[i];
+	                words[offset + i] ^= keystream[i]
 	            }
 	        }
-	    });
+	    })
 
-	    OFB.Decryptor = Encryptor;
+	    OFB.Decryptor = Encryptor
 
-	    return OFB;
-	}());
+	    return OFB
+      }())
 
-
-	return CryptoJS.mode.OFB;
-
-}));
-},{"./cipher-core":51,"./core":52}],66:[function(require,module,exports){
-;(function (root, factory, undef) {
-	if (typeof exports === "object") {
+      return CryptoJS.mode.OFB
+    }))
+  }, { './cipher-core':51, './core':52 }],
+  66:[function (require, module, exports) {
+    ;(function (root, factory, undef) {
+      if (typeof exports === 'object') {
 		// CommonJS
-		module.exports = exports = factory(require("./core"), require("./cipher-core"));
-	}
-	else if (typeof define === "function" && define.amd) {
+        module.exports = exports = factory(require('./core'), require('./cipher-core'))
+      } else if (typeof define === 'function' && define.amd) {
 		// AMD
-		define(["./core", "./cipher-core"], factory);
-	}
-	else {
+        define(['./core', './cipher-core'], factory)
+      } else {
 		// Global (browser)
-		factory(root.CryptoJS);
-	}
-}(this, function (CryptoJS) {
-
+        factory(root.CryptoJS)
+      }
+    }(this, function (CryptoJS) {
 	/**
 	 * ANSI X.923 padding strategy.
 	 */
-	CryptoJS.pad.AnsiX923 = {
+      CryptoJS.pad.AnsiX923 = {
 	    pad: function (data, blockSize) {
 	        // Shortcuts
-	        var dataSigBytes = data.sigBytes;
-	        var blockSizeBytes = blockSize * 4;
+	        var dataSigBytes = data.sigBytes
+	        var blockSizeBytes = blockSize * 4
 
 	        // Count padding bytes
-	        var nPaddingBytes = blockSizeBytes - dataSigBytes % blockSizeBytes;
+	        var nPaddingBytes = blockSizeBytes - dataSigBytes % blockSizeBytes
 
 	        // Compute last byte position
-	        var lastBytePos = dataSigBytes + nPaddingBytes - 1;
+	        var lastBytePos = dataSigBytes + nPaddingBytes - 1
 
 	        // Pad
-	        data.clamp();
-	        data.words[lastBytePos >>> 2] |= nPaddingBytes << (24 - (lastBytePos % 4) * 8);
-	        data.sigBytes += nPaddingBytes;
+	        data.clamp()
+	        data.words[lastBytePos >>> 2] |= nPaddingBytes << (24 - (lastBytePos % 4) * 8)
+	        data.sigBytes += nPaddingBytes
 	    },
 
 	    unpad: function (data) {
 	        // Get number of padding bytes from last byte
-	        var nPaddingBytes = data.words[(data.sigBytes - 1) >>> 2] & 0xff;
+	        var nPaddingBytes = data.words[(data.sigBytes - 1) >>> 2] & 0xff
 
 	        // Remove padding
-	        data.sigBytes -= nPaddingBytes;
+	        data.sigBytes -= nPaddingBytes
 	    }
-	};
+      }
 
-
-	return CryptoJS.pad.Ansix923;
-
-}));
-},{"./cipher-core":51,"./core":52}],67:[function(require,module,exports){
-;(function (root, factory, undef) {
-	if (typeof exports === "object") {
+      return CryptoJS.pad.Ansix923
+    }))
+  }, { './cipher-core':51, './core':52 }],
+  67:[function (require, module, exports) {
+    ;(function (root, factory, undef) {
+      if (typeof exports === 'object') {
 		// CommonJS
-		module.exports = exports = factory(require("./core"), require("./cipher-core"));
-	}
-	else if (typeof define === "function" && define.amd) {
+        module.exports = exports = factory(require('./core'), require('./cipher-core'))
+      } else if (typeof define === 'function' && define.amd) {
 		// AMD
-		define(["./core", "./cipher-core"], factory);
-	}
-	else {
+        define(['./core', './cipher-core'], factory)
+      } else {
 		// Global (browser)
-		factory(root.CryptoJS);
-	}
-}(this, function (CryptoJS) {
-
+        factory(root.CryptoJS)
+      }
+    }(this, function (CryptoJS) {
 	/**
 	 * ISO 10126 padding strategy.
 	 */
-	CryptoJS.pad.Iso10126 = {
+      CryptoJS.pad.Iso10126 = {
 	    pad: function (data, blockSize) {
 	        // Shortcut
-	        var blockSizeBytes = blockSize * 4;
+	        var blockSizeBytes = blockSize * 4
 
 	        // Count padding bytes
-	        var nPaddingBytes = blockSizeBytes - data.sigBytes % blockSizeBytes;
+	        var nPaddingBytes = blockSizeBytes - data.sigBytes % blockSizeBytes
 
 	        // Pad
-	        data.concat(CryptoJS.lib.WordArray.random(nPaddingBytes - 1)).
-	             concat(CryptoJS.lib.WordArray.create([nPaddingBytes << 24], 1));
+	        data.concat(CryptoJS.lib.WordArray.random(nPaddingBytes - 1))
+	             .concat(CryptoJS.lib.WordArray.create([nPaddingBytes << 24], 1))
 	    },
 
 	    unpad: function (data) {
 	        // Get number of padding bytes from last byte
-	        var nPaddingBytes = data.words[(data.sigBytes - 1) >>> 2] & 0xff;
+	        var nPaddingBytes = data.words[(data.sigBytes - 1) >>> 2] & 0xff
 
 	        // Remove padding
-	        data.sigBytes -= nPaddingBytes;
+	        data.sigBytes -= nPaddingBytes
 	    }
-	};
+      }
 
-
-	return CryptoJS.pad.Iso10126;
-
-}));
-},{"./cipher-core":51,"./core":52}],68:[function(require,module,exports){
-;(function (root, factory, undef) {
-	if (typeof exports === "object") {
+      return CryptoJS.pad.Iso10126
+    }))
+  }, { './cipher-core':51, './core':52 }],
+  68:[function (require, module, exports) {
+    ;(function (root, factory, undef) {
+      if (typeof exports === 'object') {
 		// CommonJS
-		module.exports = exports = factory(require("./core"), require("./cipher-core"));
-	}
-	else if (typeof define === "function" && define.amd) {
+        module.exports = exports = factory(require('./core'), require('./cipher-core'))
+      } else if (typeof define === 'function' && define.amd) {
 		// AMD
-		define(["./core", "./cipher-core"], factory);
-	}
-	else {
+        define(['./core', './cipher-core'], factory)
+      } else {
 		// Global (browser)
-		factory(root.CryptoJS);
-	}
-}(this, function (CryptoJS) {
-
+        factory(root.CryptoJS)
+      }
+    }(this, function (CryptoJS) {
 	/**
 	 * ISO/IEC 9797-1 Padding Method 2.
 	 */
-	CryptoJS.pad.Iso97971 = {
+      CryptoJS.pad.Iso97971 = {
 	    pad: function (data, blockSize) {
 	        // Add 0x80 byte
-	        data.concat(CryptoJS.lib.WordArray.create([0x80000000], 1));
+	        data.concat(CryptoJS.lib.WordArray.create([0x80000000], 1))
 
 	        // Zero pad the rest
-	        CryptoJS.pad.ZeroPadding.pad(data, blockSize);
+	        CryptoJS.pad.ZeroPadding.pad(data, blockSize)
 	    },
 
 	    unpad: function (data) {
 	        // Remove zero padding
-	        CryptoJS.pad.ZeroPadding.unpad(data);
+	        CryptoJS.pad.ZeroPadding.unpad(data)
 
 	        // Remove one more byte -- the 0x80 byte
-	        data.sigBytes--;
+	        data.sigBytes--
 	    }
-	};
+      }
 
-
-	return CryptoJS.pad.Iso97971;
-
-}));
-},{"./cipher-core":51,"./core":52}],69:[function(require,module,exports){
-;(function (root, factory, undef) {
-	if (typeof exports === "object") {
+      return CryptoJS.pad.Iso97971
+    }))
+  }, { './cipher-core':51, './core':52 }],
+  69:[function (require, module, exports) {
+    ;(function (root, factory, undef) {
+      if (typeof exports === 'object') {
 		// CommonJS
-		module.exports = exports = factory(require("./core"), require("./cipher-core"));
-	}
-	else if (typeof define === "function" && define.amd) {
+        module.exports = exports = factory(require('./core'), require('./cipher-core'))
+      } else if (typeof define === 'function' && define.amd) {
 		// AMD
-		define(["./core", "./cipher-core"], factory);
-	}
-	else {
+        define(['./core', './cipher-core'], factory)
+      } else {
 		// Global (browser)
-		factory(root.CryptoJS);
-	}
-}(this, function (CryptoJS) {
-
+        factory(root.CryptoJS)
+      }
+    }(this, function (CryptoJS) {
 	/**
 	 * A noop padding strategy.
 	 */
-	CryptoJS.pad.NoPadding = {
+      CryptoJS.pad.NoPadding = {
 	    pad: function () {
 	    },
 
 	    unpad: function () {
 	    }
-	};
+      }
 
-
-	return CryptoJS.pad.NoPadding;
-
-}));
-},{"./cipher-core":51,"./core":52}],70:[function(require,module,exports){
-;(function (root, factory, undef) {
-	if (typeof exports === "object") {
+      return CryptoJS.pad.NoPadding
+    }))
+  }, { './cipher-core':51, './core':52 }],
+  70:[function (require, module, exports) {
+    ;(function (root, factory, undef) {
+      if (typeof exports === 'object') {
 		// CommonJS
-		module.exports = exports = factory(require("./core"), require("./cipher-core"));
-	}
-	else if (typeof define === "function" && define.amd) {
+        module.exports = exports = factory(require('./core'), require('./cipher-core'))
+      } else if (typeof define === 'function' && define.amd) {
 		// AMD
-		define(["./core", "./cipher-core"], factory);
-	}
-	else {
+        define(['./core', './cipher-core'], factory)
+      } else {
 		// Global (browser)
-		factory(root.CryptoJS);
-	}
-}(this, function (CryptoJS) {
-
+        factory(root.CryptoJS)
+      }
+    }(this, function (CryptoJS) {
 	/**
 	 * Zero padding strategy.
 	 */
-	CryptoJS.pad.ZeroPadding = {
+      CryptoJS.pad.ZeroPadding = {
 	    pad: function (data, blockSize) {
 	        // Shortcut
-	        var blockSizeBytes = blockSize * 4;
+	        var blockSizeBytes = blockSize * 4
 
 	        // Pad
-	        data.clamp();
-	        data.sigBytes += blockSizeBytes - ((data.sigBytes % blockSizeBytes) || blockSizeBytes);
+	        data.clamp()
+	        data.sigBytes += blockSizeBytes - ((data.sigBytes % blockSizeBytes) || blockSizeBytes)
 	    },
 
 	    unpad: function (data) {
 	        // Shortcut
-	        var dataWords = data.words;
+	        var dataWords = data.words
 
 	        // Unpad
-	        var i = data.sigBytes - 1;
+	        var i = data.sigBytes - 1
 	        while (!((dataWords[i >>> 2] >>> (24 - (i % 4) * 8)) & 0xff)) {
-	            i--;
+	            i--
 	        }
-	        data.sigBytes = i + 1;
+	        data.sigBytes = i + 1
 	    }
-	};
+      }
 
-
-	return CryptoJS.pad.ZeroPadding;
-
-}));
-},{"./cipher-core":51,"./core":52}],71:[function(require,module,exports){
-;(function (root, factory, undef) {
-	if (typeof exports === "object") {
+      return CryptoJS.pad.ZeroPadding
+    }))
+  }, { './cipher-core':51, './core':52 }],
+  71:[function (require, module, exports) {
+    ;(function (root, factory, undef) {
+      if (typeof exports === 'object') {
 		// CommonJS
-		module.exports = exports = factory(require("./core"), require("./sha1"), require("./hmac"));
-	}
-	else if (typeof define === "function" && define.amd) {
+        module.exports = exports = factory(require('./core'), require('./sha1'), require('./hmac'))
+      } else if (typeof define === 'function' && define.amd) {
 		// AMD
-		define(["./core", "./sha1", "./hmac"], factory);
-	}
-	else {
+        define(['./core', './sha1', './hmac'], factory)
+      } else {
 		// Global (browser)
-		factory(root.CryptoJS);
-	}
-}(this, function (CryptoJS) {
-
-	(function () {
+        factory(root.CryptoJS)
+      }
+    }(this, function (CryptoJS) {
+      (function () {
 	    // Shortcuts
-	    var C = CryptoJS;
-	    var C_lib = C.lib;
-	    var Base = C_lib.Base;
-	    var WordArray = C_lib.WordArray;
-	    var C_algo = C.algo;
-	    var SHA1 = C_algo.SHA1;
-	    var HMAC = C_algo.HMAC;
+	    var C = CryptoJS
+	    var C_lib = C.lib
+	    var Base = C_lib.Base
+	    var WordArray = C_lib.WordArray
+	    var C_algo = C.algo
+	    var SHA1 = C_algo.SHA1
+	    var HMAC = C_algo.HMAC
 
 	    /**
 	     * Password-Based Key Derivation Function 2 algorithm.
@@ -10202,7 +9948,7 @@ module.exports = transfer;
 	         * @property {number} iterations The number of iterations to perform. Default: 1
 	         */
 	        cfg: Base.extend({
-	            keySize: 128/32,
+	            keySize: 128 / 32,
 	            hasher: SHA1,
 	            iterations: 1
 	        }),
@@ -10219,7 +9965,7 @@ module.exports = transfer;
 	         *     var kdf = CryptoJS.algo.PBKDF2.create({ keySize: 8, iterations: 1000 });
 	         */
 	        init: function (cfg) {
-	            this.cfg = this.cfg.extend(cfg);
+	            this.cfg = this.cfg.extend(cfg)
 	        },
 
 	        /**
@@ -10236,53 +9982,53 @@ module.exports = transfer;
 	         */
 	        compute: function (password, salt) {
 	            // Shortcut
-	            var cfg = this.cfg;
+	            var cfg = this.cfg
 
 	            // Init HMAC
-	            var hmac = HMAC.create(cfg.hasher, password);
+	            var hmac = HMAC.create(cfg.hasher, password)
 
 	            // Initial values
-	            var derivedKey = WordArray.create();
-	            var blockIndex = WordArray.create([0x00000001]);
+	            var derivedKey = WordArray.create()
+	            var blockIndex = WordArray.create([0x00000001])
 
 	            // Shortcuts
-	            var derivedKeyWords = derivedKey.words;
-	            var blockIndexWords = blockIndex.words;
-	            var keySize = cfg.keySize;
-	            var iterations = cfg.iterations;
+	            var derivedKeyWords = derivedKey.words
+	            var blockIndexWords = blockIndex.words
+	            var keySize = cfg.keySize
+	            var iterations = cfg.iterations
 
 	            // Generate key
 	            while (derivedKeyWords.length < keySize) {
-	                var block = hmac.update(salt).finalize(blockIndex);
-	                hmac.reset();
+	                var block = hmac.update(salt).finalize(blockIndex)
+	                hmac.reset()
 
 	                // Shortcuts
-	                var blockWords = block.words;
-	                var blockWordsLength = blockWords.length;
+	                var blockWords = block.words
+	                var blockWordsLength = blockWords.length
 
 	                // Iterations
-	                var intermediate = block;
+	                var intermediate = block
 	                for (var i = 1; i < iterations; i++) {
-	                    intermediate = hmac.finalize(intermediate);
-	                    hmac.reset();
+	                    intermediate = hmac.finalize(intermediate)
+	                    hmac.reset()
 
 	                    // Shortcut
-	                    var intermediateWords = intermediate.words;
+	                    var intermediateWords = intermediate.words
 
 	                    // XOR intermediate with block
 	                    for (var j = 0; j < blockWordsLength; j++) {
-	                        blockWords[j] ^= intermediateWords[j];
+	                        blockWords[j] ^= intermediateWords[j]
 	                    }
 	                }
 
-	                derivedKey.concat(block);
-	                blockIndexWords[0]++;
+	                derivedKey.concat(block)
+	                blockIndexWords[0]++
 	            }
-	            derivedKey.sigBytes = keySize * 4;
+	            derivedKey.sigBytes = keySize * 4
 
-	            return derivedKey;
+	            return derivedKey
 	        }
-	    });
+	    })
 
 	    /**
 	     * Computes the Password-Based Key Derivation Function 2.
@@ -10302,41 +10048,37 @@ module.exports = transfer;
 	     *     var key = CryptoJS.PBKDF2(password, salt, { keySize: 8, iterations: 1000 });
 	     */
 	    C.PBKDF2 = function (password, salt, cfg) {
-	        return PBKDF2.create(cfg).compute(password, salt);
-	    };
-	}());
+	        return PBKDF2.create(cfg).compute(password, salt)
+	    }
+      }())
 
-
-	return CryptoJS.PBKDF2;
-
-}));
-},{"./core":52,"./hmac":57,"./sha1":76}],72:[function(require,module,exports){
-;(function (root, factory, undef) {
-	if (typeof exports === "object") {
+      return CryptoJS.PBKDF2
+    }))
+  }, { './core':52, './hmac':57, './sha1':76 }],
+  72:[function (require, module, exports) {
+    ;(function (root, factory, undef) {
+      if (typeof exports === 'object') {
 		// CommonJS
-		module.exports = exports = factory(require("./core"), require("./enc-base64"), require("./md5"), require("./evpkdf"), require("./cipher-core"));
-	}
-	else if (typeof define === "function" && define.amd) {
+        module.exports = exports = factory(require('./core'), require('./enc-base64'), require('./md5'), require('./evpkdf'), require('./cipher-core'))
+      } else if (typeof define === 'function' && define.amd) {
 		// AMD
-		define(["./core", "./enc-base64", "./md5", "./evpkdf", "./cipher-core"], factory);
-	}
-	else {
+        define(['./core', './enc-base64', './md5', './evpkdf', './cipher-core'], factory)
+      } else {
 		// Global (browser)
-		factory(root.CryptoJS);
-	}
-}(this, function (CryptoJS) {
-
-	(function () {
+        factory(root.CryptoJS)
+      }
+    }(this, function (CryptoJS) {
+      (function () {
 	    // Shortcuts
-	    var C = CryptoJS;
-	    var C_lib = C.lib;
-	    var StreamCipher = C_lib.StreamCipher;
-	    var C_algo = C.algo;
+	    var C = CryptoJS
+	    var C_lib = C.lib
+	    var StreamCipher = C_lib.StreamCipher
+	    var C_algo = C.algo
 
 	    // Reusable objects
-	    var S  = [];
-	    var C_ = [];
-	    var G  = [];
+	    var S = []
+	    var C_ = []
+	    var G = []
 
 	    /**
 	     * Rabbit stream cipher algorithm.
@@ -10348,8 +10090,8 @@ module.exports = transfer;
 	    var RabbitLegacy = C_algo.RabbitLegacy = StreamCipher.extend({
 	        _doReset: function () {
 	            // Shortcuts
-	            var K = this._key.words;
-	            var iv = this.cfg.iv;
+	            var K = this._key.words
+	            var iv = this.cfg.iv
 
 	            // Generate initial state values
 	            var X = this._X = [
@@ -10357,7 +10099,7 @@ module.exports = transfer;
 	                K[1], (K[0] << 16) | (K[3] >>> 16),
 	                K[2], (K[1] << 16) | (K[0] >>> 16),
 	                K[3], (K[2] << 16) | (K[1] >>> 16)
-	            ];
+	            ]
 
 	            // Generate initial counter values
 	            var C = this._C = [
@@ -10365,125 +10107,125 @@ module.exports = transfer;
 	                (K[3] << 16) | (K[3] >>> 16), (K[1] & 0xffff0000) | (K[2] & 0x0000ffff),
 	                (K[0] << 16) | (K[0] >>> 16), (K[2] & 0xffff0000) | (K[3] & 0x0000ffff),
 	                (K[1] << 16) | (K[1] >>> 16), (K[3] & 0xffff0000) | (K[0] & 0x0000ffff)
-	            ];
+	            ]
 
 	            // Carry bit
-	            this._b = 0;
+	            this._b = 0
 
 	            // Iterate the system four times
 	            for (var i = 0; i < 4; i++) {
-	                nextState.call(this);
+	                nextState.call(this)
 	            }
 
 	            // Modify the counters
 	            for (var i = 0; i < 8; i++) {
-	                C[i] ^= X[(i + 4) & 7];
+	                C[i] ^= X[(i + 4) & 7]
 	            }
 
 	            // IV setup
 	            if (iv) {
 	                // Shortcuts
-	                var IV = iv.words;
-	                var IV_0 = IV[0];
-	                var IV_1 = IV[1];
+	                var IV = iv.words
+	                var IV_0 = IV[0]
+	                var IV_1 = IV[1]
 
 	                // Generate four subvectors
-	                var i0 = (((IV_0 << 8) | (IV_0 >>> 24)) & 0x00ff00ff) | (((IV_0 << 24) | (IV_0 >>> 8)) & 0xff00ff00);
-	                var i2 = (((IV_1 << 8) | (IV_1 >>> 24)) & 0x00ff00ff) | (((IV_1 << 24) | (IV_1 >>> 8)) & 0xff00ff00);
-	                var i1 = (i0 >>> 16) | (i2 & 0xffff0000);
-	                var i3 = (i2 << 16)  | (i0 & 0x0000ffff);
+	                var i0 = (((IV_0 << 8) | (IV_0 >>> 24)) & 0x00ff00ff) | (((IV_0 << 24) | (IV_0 >>> 8)) & 0xff00ff00)
+	                var i2 = (((IV_1 << 8) | (IV_1 >>> 24)) & 0x00ff00ff) | (((IV_1 << 24) | (IV_1 >>> 8)) & 0xff00ff00)
+	                var i1 = (i0 >>> 16) | (i2 & 0xffff0000)
+	                var i3 = (i2 << 16) | (i0 & 0x0000ffff)
 
 	                // Modify counter values
-	                C[0] ^= i0;
-	                C[1] ^= i1;
-	                C[2] ^= i2;
-	                C[3] ^= i3;
-	                C[4] ^= i0;
-	                C[5] ^= i1;
-	                C[6] ^= i2;
-	                C[7] ^= i3;
+	                C[0] ^= i0
+	                C[1] ^= i1
+	                C[2] ^= i2
+	                C[3] ^= i3
+	                C[4] ^= i0
+	                C[5] ^= i1
+	                C[6] ^= i2
+	                C[7] ^= i3
 
 	                // Iterate the system four times
 	                for (var i = 0; i < 4; i++) {
-	                    nextState.call(this);
+	                    nextState.call(this)
 	                }
 	            }
 	        },
 
 	        _doProcessBlock: function (M, offset) {
 	            // Shortcut
-	            var X = this._X;
+	            var X = this._X
 
 	            // Iterate the system
-	            nextState.call(this);
+	            nextState.call(this)
 
 	            // Generate four keystream words
-	            S[0] = X[0] ^ (X[5] >>> 16) ^ (X[3] << 16);
-	            S[1] = X[2] ^ (X[7] >>> 16) ^ (X[5] << 16);
-	            S[2] = X[4] ^ (X[1] >>> 16) ^ (X[7] << 16);
-	            S[3] = X[6] ^ (X[3] >>> 16) ^ (X[1] << 16);
+	            S[0] = X[0] ^ (X[5] >>> 16) ^ (X[3] << 16)
+	            S[1] = X[2] ^ (X[7] >>> 16) ^ (X[5] << 16)
+	            S[2] = X[4] ^ (X[1] >>> 16) ^ (X[7] << 16)
+	            S[3] = X[6] ^ (X[3] >>> 16) ^ (X[1] << 16)
 
 	            for (var i = 0; i < 4; i++) {
 	                // Swap endian
-	                S[i] = (((S[i] << 8)  | (S[i] >>> 24)) & 0x00ff00ff) |
-	                       (((S[i] << 24) | (S[i] >>> 8))  & 0xff00ff00);
+	                S[i] = (((S[i] << 8) | (S[i] >>> 24)) & 0x00ff00ff) |
+	                       (((S[i] << 24) | (S[i] >>> 8)) & 0xff00ff00)
 
 	                // Encrypt
-	                M[offset + i] ^= S[i];
+	                M[offset + i] ^= S[i]
 	            }
 	        },
 
-	        blockSize: 128/32,
+	        blockSize: 128 / 32,
 
-	        ivSize: 64/32
-	    });
+	        ivSize: 64 / 32
+	    })
 
-	    function nextState() {
+	    function nextState () {
 	        // Shortcuts
-	        var X = this._X;
-	        var C = this._C;
+	        var X = this._X
+	        var C = this._C
 
 	        // Save old counter values
 	        for (var i = 0; i < 8; i++) {
-	            C_[i] = C[i];
+	            C_[i] = C[i]
 	        }
 
 	        // Calculate new counter values
-	        C[0] = (C[0] + 0x4d34d34d + this._b) | 0;
-	        C[1] = (C[1] + 0xd34d34d3 + ((C[0] >>> 0) < (C_[0] >>> 0) ? 1 : 0)) | 0;
-	        C[2] = (C[2] + 0x34d34d34 + ((C[1] >>> 0) < (C_[1] >>> 0) ? 1 : 0)) | 0;
-	        C[3] = (C[3] + 0x4d34d34d + ((C[2] >>> 0) < (C_[2] >>> 0) ? 1 : 0)) | 0;
-	        C[4] = (C[4] + 0xd34d34d3 + ((C[3] >>> 0) < (C_[3] >>> 0) ? 1 : 0)) | 0;
-	        C[5] = (C[5] + 0x34d34d34 + ((C[4] >>> 0) < (C_[4] >>> 0) ? 1 : 0)) | 0;
-	        C[6] = (C[6] + 0x4d34d34d + ((C[5] >>> 0) < (C_[5] >>> 0) ? 1 : 0)) | 0;
-	        C[7] = (C[7] + 0xd34d34d3 + ((C[6] >>> 0) < (C_[6] >>> 0) ? 1 : 0)) | 0;
-	        this._b = (C[7] >>> 0) < (C_[7] >>> 0) ? 1 : 0;
+	        C[0] = (C[0] + 0x4d34d34d + this._b) | 0
+	        C[1] = (C[1] + 0xd34d34d3 + ((C[0] >>> 0) < (C_[0] >>> 0) ? 1 : 0)) | 0
+	        C[2] = (C[2] + 0x34d34d34 + ((C[1] >>> 0) < (C_[1] >>> 0) ? 1 : 0)) | 0
+	        C[3] = (C[3] + 0x4d34d34d + ((C[2] >>> 0) < (C_[2] >>> 0) ? 1 : 0)) | 0
+	        C[4] = (C[4] + 0xd34d34d3 + ((C[3] >>> 0) < (C_[3] >>> 0) ? 1 : 0)) | 0
+	        C[5] = (C[5] + 0x34d34d34 + ((C[4] >>> 0) < (C_[4] >>> 0) ? 1 : 0)) | 0
+	        C[6] = (C[6] + 0x4d34d34d + ((C[5] >>> 0) < (C_[5] >>> 0) ? 1 : 0)) | 0
+	        C[7] = (C[7] + 0xd34d34d3 + ((C[6] >>> 0) < (C_[6] >>> 0) ? 1 : 0)) | 0
+	        this._b = (C[7] >>> 0) < (C_[7] >>> 0) ? 1 : 0
 
 	        // Calculate the g-values
 	        for (var i = 0; i < 8; i++) {
-	            var gx = X[i] + C[i];
+	            var gx = X[i] + C[i]
 
 	            // Construct high and low argument for squaring
-	            var ga = gx & 0xffff;
-	            var gb = gx >>> 16;
+	            var ga = gx & 0xffff
+	            var gb = gx >>> 16
 
 	            // Calculate high and low result of squaring
-	            var gh = ((((ga * ga) >>> 17) + ga * gb) >>> 15) + gb * gb;
-	            var gl = (((gx & 0xffff0000) * gx) | 0) + (((gx & 0x0000ffff) * gx) | 0);
+	            var gh = ((((ga * ga) >>> 17) + ga * gb) >>> 15) + gb * gb
+	            var gl = (((gx & 0xffff0000) * gx) | 0) + (((gx & 0x0000ffff) * gx) | 0)
 
 	            // High XOR low
-	            G[i] = gh ^ gl;
+	            G[i] = gh ^ gl
 	        }
 
 	        // Calculate new state values
-	        X[0] = (G[0] + ((G[7] << 16) | (G[7] >>> 16)) + ((G[6] << 16) | (G[6] >>> 16))) | 0;
-	        X[1] = (G[1] + ((G[0] << 8)  | (G[0] >>> 24)) + G[7]) | 0;
-	        X[2] = (G[2] + ((G[1] << 16) | (G[1] >>> 16)) + ((G[0] << 16) | (G[0] >>> 16))) | 0;
-	        X[3] = (G[3] + ((G[2] << 8)  | (G[2] >>> 24)) + G[1]) | 0;
-	        X[4] = (G[4] + ((G[3] << 16) | (G[3] >>> 16)) + ((G[2] << 16) | (G[2] >>> 16))) | 0;
-	        X[5] = (G[5] + ((G[4] << 8)  | (G[4] >>> 24)) + G[3]) | 0;
-	        X[6] = (G[6] + ((G[5] << 16) | (G[5] >>> 16)) + ((G[4] << 16) | (G[4] >>> 16))) | 0;
-	        X[7] = (G[7] + ((G[6] << 8)  | (G[6] >>> 24)) + G[5]) | 0;
+	        X[0] = (G[0] + ((G[7] << 16) | (G[7] >>> 16)) + ((G[6] << 16) | (G[6] >>> 16))) | 0
+	        X[1] = (G[1] + ((G[0] << 8) | (G[0] >>> 24)) + G[7]) | 0
+	        X[2] = (G[2] + ((G[1] << 16) | (G[1] >>> 16)) + ((G[0] << 16) | (G[0] >>> 16))) | 0
+	        X[3] = (G[3] + ((G[2] << 8) | (G[2] >>> 24)) + G[1]) | 0
+	        X[4] = (G[4] + ((G[3] << 16) | (G[3] >>> 16)) + ((G[2] << 16) | (G[2] >>> 16))) | 0
+	        X[5] = (G[5] + ((G[4] << 8) | (G[4] >>> 24)) + G[3]) | 0
+	        X[6] = (G[6] + ((G[5] << 16) | (G[5] >>> 16)) + ((G[4] << 16) | (G[4] >>> 16))) | 0
+	        X[7] = (G[7] + ((G[6] << 8) | (G[6] >>> 24)) + G[5]) | 0
 	    }
 
 	    /**
@@ -10494,40 +10236,36 @@ module.exports = transfer;
 	     *     var ciphertext = CryptoJS.RabbitLegacy.encrypt(message, key, cfg);
 	     *     var plaintext  = CryptoJS.RabbitLegacy.decrypt(ciphertext, key, cfg);
 	     */
-	    C.RabbitLegacy = StreamCipher._createHelper(RabbitLegacy);
-	}());
+	    C.RabbitLegacy = StreamCipher._createHelper(RabbitLegacy)
+      }())
 
-
-	return CryptoJS.RabbitLegacy;
-
-}));
-},{"./cipher-core":51,"./core":52,"./enc-base64":53,"./evpkdf":55,"./md5":60}],73:[function(require,module,exports){
-;(function (root, factory, undef) {
-	if (typeof exports === "object") {
+      return CryptoJS.RabbitLegacy
+    }))
+  }, { './cipher-core':51, './core':52, './enc-base64':53, './evpkdf':55, './md5':60 }],
+  73:[function (require, module, exports) {
+    ;(function (root, factory, undef) {
+      if (typeof exports === 'object') {
 		// CommonJS
-		module.exports = exports = factory(require("./core"), require("./enc-base64"), require("./md5"), require("./evpkdf"), require("./cipher-core"));
-	}
-	else if (typeof define === "function" && define.amd) {
+        module.exports = exports = factory(require('./core'), require('./enc-base64'), require('./md5'), require('./evpkdf'), require('./cipher-core'))
+      } else if (typeof define === 'function' && define.amd) {
 		// AMD
-		define(["./core", "./enc-base64", "./md5", "./evpkdf", "./cipher-core"], factory);
-	}
-	else {
+        define(['./core', './enc-base64', './md5', './evpkdf', './cipher-core'], factory)
+      } else {
 		// Global (browser)
-		factory(root.CryptoJS);
-	}
-}(this, function (CryptoJS) {
-
-	(function () {
+        factory(root.CryptoJS)
+      }
+    }(this, function (CryptoJS) {
+      (function () {
 	    // Shortcuts
-	    var C = CryptoJS;
-	    var C_lib = C.lib;
-	    var StreamCipher = C_lib.StreamCipher;
-	    var C_algo = C.algo;
+	    var C = CryptoJS
+	    var C_lib = C.lib
+	    var StreamCipher = C_lib.StreamCipher
+	    var C_algo = C.algo
 
 	    // Reusable objects
-	    var S  = [];
-	    var C_ = [];
-	    var G  = [];
+	    var S = []
+	    var C_ = []
+	    var G = []
 
 	    /**
 	     * Rabbit stream cipher algorithm
@@ -10535,13 +10273,13 @@ module.exports = transfer;
 	    var Rabbit = C_algo.Rabbit = StreamCipher.extend({
 	        _doReset: function () {
 	            // Shortcuts
-	            var K = this._key.words;
-	            var iv = this.cfg.iv;
+	            var K = this._key.words
+	            var iv = this.cfg.iv
 
 	            // Swap endian
 	            for (var i = 0; i < 4; i++) {
-	                K[i] = (((K[i] << 8)  | (K[i] >>> 24)) & 0x00ff00ff) |
-	                       (((K[i] << 24) | (K[i] >>> 8))  & 0xff00ff00);
+	                K[i] = (((K[i] << 8) | (K[i] >>> 24)) & 0x00ff00ff) |
+	                       (((K[i] << 24) | (K[i] >>> 8)) & 0xff00ff00)
 	            }
 
 	            // Generate initial state values
@@ -10550,7 +10288,7 @@ module.exports = transfer;
 	                K[1], (K[0] << 16) | (K[3] >>> 16),
 	                K[2], (K[1] << 16) | (K[0] >>> 16),
 	                K[3], (K[2] << 16) | (K[1] >>> 16)
-	            ];
+	            ]
 
 	            // Generate initial counter values
 	            var C = this._C = [
@@ -10558,125 +10296,125 @@ module.exports = transfer;
 	                (K[3] << 16) | (K[3] >>> 16), (K[1] & 0xffff0000) | (K[2] & 0x0000ffff),
 	                (K[0] << 16) | (K[0] >>> 16), (K[2] & 0xffff0000) | (K[3] & 0x0000ffff),
 	                (K[1] << 16) | (K[1] >>> 16), (K[3] & 0xffff0000) | (K[0] & 0x0000ffff)
-	            ];
+	            ]
 
 	            // Carry bit
-	            this._b = 0;
+	            this._b = 0
 
 	            // Iterate the system four times
 	            for (var i = 0; i < 4; i++) {
-	                nextState.call(this);
+	                nextState.call(this)
 	            }
 
 	            // Modify the counters
 	            for (var i = 0; i < 8; i++) {
-	                C[i] ^= X[(i + 4) & 7];
+	                C[i] ^= X[(i + 4) & 7]
 	            }
 
 	            // IV setup
 	            if (iv) {
 	                // Shortcuts
-	                var IV = iv.words;
-	                var IV_0 = IV[0];
-	                var IV_1 = IV[1];
+	                var IV = iv.words
+	                var IV_0 = IV[0]
+	                var IV_1 = IV[1]
 
 	                // Generate four subvectors
-	                var i0 = (((IV_0 << 8) | (IV_0 >>> 24)) & 0x00ff00ff) | (((IV_0 << 24) | (IV_0 >>> 8)) & 0xff00ff00);
-	                var i2 = (((IV_1 << 8) | (IV_1 >>> 24)) & 0x00ff00ff) | (((IV_1 << 24) | (IV_1 >>> 8)) & 0xff00ff00);
-	                var i1 = (i0 >>> 16) | (i2 & 0xffff0000);
-	                var i3 = (i2 << 16)  | (i0 & 0x0000ffff);
+	                var i0 = (((IV_0 << 8) | (IV_0 >>> 24)) & 0x00ff00ff) | (((IV_0 << 24) | (IV_0 >>> 8)) & 0xff00ff00)
+	                var i2 = (((IV_1 << 8) | (IV_1 >>> 24)) & 0x00ff00ff) | (((IV_1 << 24) | (IV_1 >>> 8)) & 0xff00ff00)
+	                var i1 = (i0 >>> 16) | (i2 & 0xffff0000)
+	                var i3 = (i2 << 16) | (i0 & 0x0000ffff)
 
 	                // Modify counter values
-	                C[0] ^= i0;
-	                C[1] ^= i1;
-	                C[2] ^= i2;
-	                C[3] ^= i3;
-	                C[4] ^= i0;
-	                C[5] ^= i1;
-	                C[6] ^= i2;
-	                C[7] ^= i3;
+	                C[0] ^= i0
+	                C[1] ^= i1
+	                C[2] ^= i2
+	                C[3] ^= i3
+	                C[4] ^= i0
+	                C[5] ^= i1
+	                C[6] ^= i2
+	                C[7] ^= i3
 
 	                // Iterate the system four times
 	                for (var i = 0; i < 4; i++) {
-	                    nextState.call(this);
+	                    nextState.call(this)
 	                }
 	            }
 	        },
 
 	        _doProcessBlock: function (M, offset) {
 	            // Shortcut
-	            var X = this._X;
+	            var X = this._X
 
 	            // Iterate the system
-	            nextState.call(this);
+	            nextState.call(this)
 
 	            // Generate four keystream words
-	            S[0] = X[0] ^ (X[5] >>> 16) ^ (X[3] << 16);
-	            S[1] = X[2] ^ (X[7] >>> 16) ^ (X[5] << 16);
-	            S[2] = X[4] ^ (X[1] >>> 16) ^ (X[7] << 16);
-	            S[3] = X[6] ^ (X[3] >>> 16) ^ (X[1] << 16);
+	            S[0] = X[0] ^ (X[5] >>> 16) ^ (X[3] << 16)
+	            S[1] = X[2] ^ (X[7] >>> 16) ^ (X[5] << 16)
+	            S[2] = X[4] ^ (X[1] >>> 16) ^ (X[7] << 16)
+	            S[3] = X[6] ^ (X[3] >>> 16) ^ (X[1] << 16)
 
 	            for (var i = 0; i < 4; i++) {
 	                // Swap endian
-	                S[i] = (((S[i] << 8)  | (S[i] >>> 24)) & 0x00ff00ff) |
-	                       (((S[i] << 24) | (S[i] >>> 8))  & 0xff00ff00);
+	                S[i] = (((S[i] << 8) | (S[i] >>> 24)) & 0x00ff00ff) |
+	                       (((S[i] << 24) | (S[i] >>> 8)) & 0xff00ff00)
 
 	                // Encrypt
-	                M[offset + i] ^= S[i];
+	                M[offset + i] ^= S[i]
 	            }
 	        },
 
-	        blockSize: 128/32,
+	        blockSize: 128 / 32,
 
-	        ivSize: 64/32
-	    });
+	        ivSize: 64 / 32
+	    })
 
-	    function nextState() {
+	    function nextState () {
 	        // Shortcuts
-	        var X = this._X;
-	        var C = this._C;
+	        var X = this._X
+	        var C = this._C
 
 	        // Save old counter values
 	        for (var i = 0; i < 8; i++) {
-	            C_[i] = C[i];
+	            C_[i] = C[i]
 	        }
 
 	        // Calculate new counter values
-	        C[0] = (C[0] + 0x4d34d34d + this._b) | 0;
-	        C[1] = (C[1] + 0xd34d34d3 + ((C[0] >>> 0) < (C_[0] >>> 0) ? 1 : 0)) | 0;
-	        C[2] = (C[2] + 0x34d34d34 + ((C[1] >>> 0) < (C_[1] >>> 0) ? 1 : 0)) | 0;
-	        C[3] = (C[3] + 0x4d34d34d + ((C[2] >>> 0) < (C_[2] >>> 0) ? 1 : 0)) | 0;
-	        C[4] = (C[4] + 0xd34d34d3 + ((C[3] >>> 0) < (C_[3] >>> 0) ? 1 : 0)) | 0;
-	        C[5] = (C[5] + 0x34d34d34 + ((C[4] >>> 0) < (C_[4] >>> 0) ? 1 : 0)) | 0;
-	        C[6] = (C[6] + 0x4d34d34d + ((C[5] >>> 0) < (C_[5] >>> 0) ? 1 : 0)) | 0;
-	        C[7] = (C[7] + 0xd34d34d3 + ((C[6] >>> 0) < (C_[6] >>> 0) ? 1 : 0)) | 0;
-	        this._b = (C[7] >>> 0) < (C_[7] >>> 0) ? 1 : 0;
+	        C[0] = (C[0] + 0x4d34d34d + this._b) | 0
+	        C[1] = (C[1] + 0xd34d34d3 + ((C[0] >>> 0) < (C_[0] >>> 0) ? 1 : 0)) | 0
+	        C[2] = (C[2] + 0x34d34d34 + ((C[1] >>> 0) < (C_[1] >>> 0) ? 1 : 0)) | 0
+	        C[3] = (C[3] + 0x4d34d34d + ((C[2] >>> 0) < (C_[2] >>> 0) ? 1 : 0)) | 0
+	        C[4] = (C[4] + 0xd34d34d3 + ((C[3] >>> 0) < (C_[3] >>> 0) ? 1 : 0)) | 0
+	        C[5] = (C[5] + 0x34d34d34 + ((C[4] >>> 0) < (C_[4] >>> 0) ? 1 : 0)) | 0
+	        C[6] = (C[6] + 0x4d34d34d + ((C[5] >>> 0) < (C_[5] >>> 0) ? 1 : 0)) | 0
+	        C[7] = (C[7] + 0xd34d34d3 + ((C[6] >>> 0) < (C_[6] >>> 0) ? 1 : 0)) | 0
+	        this._b = (C[7] >>> 0) < (C_[7] >>> 0) ? 1 : 0
 
 	        // Calculate the g-values
 	        for (var i = 0; i < 8; i++) {
-	            var gx = X[i] + C[i];
+	            var gx = X[i] + C[i]
 
 	            // Construct high and low argument for squaring
-	            var ga = gx & 0xffff;
-	            var gb = gx >>> 16;
+	            var ga = gx & 0xffff
+	            var gb = gx >>> 16
 
 	            // Calculate high and low result of squaring
-	            var gh = ((((ga * ga) >>> 17) + ga * gb) >>> 15) + gb * gb;
-	            var gl = (((gx & 0xffff0000) * gx) | 0) + (((gx & 0x0000ffff) * gx) | 0);
+	            var gh = ((((ga * ga) >>> 17) + ga * gb) >>> 15) + gb * gb
+	            var gl = (((gx & 0xffff0000) * gx) | 0) + (((gx & 0x0000ffff) * gx) | 0)
 
 	            // High XOR low
-	            G[i] = gh ^ gl;
+	            G[i] = gh ^ gl
 	        }
 
 	        // Calculate new state values
-	        X[0] = (G[0] + ((G[7] << 16) | (G[7] >>> 16)) + ((G[6] << 16) | (G[6] >>> 16))) | 0;
-	        X[1] = (G[1] + ((G[0] << 8)  | (G[0] >>> 24)) + G[7]) | 0;
-	        X[2] = (G[2] + ((G[1] << 16) | (G[1] >>> 16)) + ((G[0] << 16) | (G[0] >>> 16))) | 0;
-	        X[3] = (G[3] + ((G[2] << 8)  | (G[2] >>> 24)) + G[1]) | 0;
-	        X[4] = (G[4] + ((G[3] << 16) | (G[3] >>> 16)) + ((G[2] << 16) | (G[2] >>> 16))) | 0;
-	        X[5] = (G[5] + ((G[4] << 8)  | (G[4] >>> 24)) + G[3]) | 0;
-	        X[6] = (G[6] + ((G[5] << 16) | (G[5] >>> 16)) + ((G[4] << 16) | (G[4] >>> 16))) | 0;
-	        X[7] = (G[7] + ((G[6] << 8)  | (G[6] >>> 24)) + G[5]) | 0;
+	        X[0] = (G[0] + ((G[7] << 16) | (G[7] >>> 16)) + ((G[6] << 16) | (G[6] >>> 16))) | 0
+	        X[1] = (G[1] + ((G[0] << 8) | (G[0] >>> 24)) + G[7]) | 0
+	        X[2] = (G[2] + ((G[1] << 16) | (G[1] >>> 16)) + ((G[0] << 16) | (G[0] >>> 16))) | 0
+	        X[3] = (G[3] + ((G[2] << 8) | (G[2] >>> 24)) + G[1]) | 0
+	        X[4] = (G[4] + ((G[3] << 16) | (G[3] >>> 16)) + ((G[2] << 16) | (G[2] >>> 16))) | 0
+	        X[5] = (G[5] + ((G[4] << 8) | (G[4] >>> 24)) + G[3]) | 0
+	        X[6] = (G[6] + ((G[5] << 16) | (G[5] >>> 16)) + ((G[4] << 16) | (G[4] >>> 16))) | 0
+	        X[7] = (G[7] + ((G[6] << 8) | (G[6] >>> 24)) + G[5]) | 0
 	    }
 
 	    /**
@@ -10687,35 +10425,31 @@ module.exports = transfer;
 	     *     var ciphertext = CryptoJS.Rabbit.encrypt(message, key, cfg);
 	     *     var plaintext  = CryptoJS.Rabbit.decrypt(ciphertext, key, cfg);
 	     */
-	    C.Rabbit = StreamCipher._createHelper(Rabbit);
-	}());
+	    C.Rabbit = StreamCipher._createHelper(Rabbit)
+      }())
 
-
-	return CryptoJS.Rabbit;
-
-}));
-},{"./cipher-core":51,"./core":52,"./enc-base64":53,"./evpkdf":55,"./md5":60}],74:[function(require,module,exports){
-;(function (root, factory, undef) {
-	if (typeof exports === "object") {
+      return CryptoJS.Rabbit
+    }))
+  }, { './cipher-core':51, './core':52, './enc-base64':53, './evpkdf':55, './md5':60 }],
+  74:[function (require, module, exports) {
+    ;(function (root, factory, undef) {
+      if (typeof exports === 'object') {
 		// CommonJS
-		module.exports = exports = factory(require("./core"), require("./enc-base64"), require("./md5"), require("./evpkdf"), require("./cipher-core"));
-	}
-	else if (typeof define === "function" && define.amd) {
+        module.exports = exports = factory(require('./core'), require('./enc-base64'), require('./md5'), require('./evpkdf'), require('./cipher-core'))
+      } else if (typeof define === 'function' && define.amd) {
 		// AMD
-		define(["./core", "./enc-base64", "./md5", "./evpkdf", "./cipher-core"], factory);
-	}
-	else {
+        define(['./core', './enc-base64', './md5', './evpkdf', './cipher-core'], factory)
+      } else {
 		// Global (browser)
-		factory(root.CryptoJS);
-	}
-}(this, function (CryptoJS) {
-
-	(function () {
+        factory(root.CryptoJS)
+      }
+    }(this, function (CryptoJS) {
+      (function () {
 	    // Shortcuts
-	    var C = CryptoJS;
-	    var C_lib = C.lib;
-	    var StreamCipher = C_lib.StreamCipher;
-	    var C_algo = C.algo;
+	    var C = CryptoJS
+	    var C_lib = C.lib
+	    var StreamCipher = C_lib.StreamCipher
+	    var C_algo = C.algo
 
 	    /**
 	     * RC4 stream cipher algorithm.
@@ -10723,67 +10457,67 @@ module.exports = transfer;
 	    var RC4 = C_algo.RC4 = StreamCipher.extend({
 	        _doReset: function () {
 	            // Shortcuts
-	            var key = this._key;
-	            var keyWords = key.words;
-	            var keySigBytes = key.sigBytes;
+	            var key = this._key
+	            var keyWords = key.words
+	            var keySigBytes = key.sigBytes
 
 	            // Init sbox
-	            var S = this._S = [];
+	            var S = this._S = []
 	            for (var i = 0; i < 256; i++) {
-	                S[i] = i;
+	                S[i] = i
 	            }
 
 	            // Key setup
 	            for (var i = 0, j = 0; i < 256; i++) {
-	                var keyByteIndex = i % keySigBytes;
-	                var keyByte = (keyWords[keyByteIndex >>> 2] >>> (24 - (keyByteIndex % 4) * 8)) & 0xff;
+	                var keyByteIndex = i % keySigBytes
+	                var keyByte = (keyWords[keyByteIndex >>> 2] >>> (24 - (keyByteIndex % 4) * 8)) & 0xff
 
-	                j = (j + S[i] + keyByte) % 256;
+	                j = (j + S[i] + keyByte) % 256
 
 	                // Swap
-	                var t = S[i];
-	                S[i] = S[j];
-	                S[j] = t;
+	                var t = S[i]
+	                S[i] = S[j]
+	                S[j] = t
 	            }
 
 	            // Counters
-	            this._i = this._j = 0;
+	            this._i = this._j = 0
 	        },
 
 	        _doProcessBlock: function (M, offset) {
-	            M[offset] ^= generateKeystreamWord.call(this);
+	            M[offset] ^= generateKeystreamWord.call(this)
 	        },
 
-	        keySize: 256/32,
+	        keySize: 256 / 32,
 
 	        ivSize: 0
-	    });
+	    })
 
-	    function generateKeystreamWord() {
+	    function generateKeystreamWord () {
 	        // Shortcuts
-	        var S = this._S;
-	        var i = this._i;
-	        var j = this._j;
+	        var S = this._S
+	        var i = this._i
+	        var j = this._j
 
 	        // Generate keystream word
-	        var keystreamWord = 0;
+	        var keystreamWord = 0
 	        for (var n = 0; n < 4; n++) {
-	            i = (i + 1) % 256;
-	            j = (j + S[i]) % 256;
+	            i = (i + 1) % 256
+	            j = (j + S[i]) % 256
 
 	            // Swap
-	            var t = S[i];
-	            S[i] = S[j];
-	            S[j] = t;
+	            var t = S[i]
+	            S[i] = S[j]
+	            S[j] = t
 
-	            keystreamWord |= S[(S[i] + S[j]) % 256] << (24 - n * 8);
+	            keystreamWord |= S[(S[i] + S[j]) % 256] << (24 - n * 8)
 	        }
 
 	        // Update counters
-	        this._i = i;
-	        this._j = j;
+	        this._i = i
+	        this._j = j
 
-	        return keystreamWord;
+	        return keystreamWord
 	    }
 
 	    /**
@@ -10794,7 +10528,7 @@ module.exports = transfer;
 	     *     var ciphertext = CryptoJS.RC4.encrypt(message, key, cfg);
 	     *     var plaintext  = CryptoJS.RC4.decrypt(ciphertext, key, cfg);
 	     */
-	    C.RC4 = StreamCipher._createHelper(RC4);
+	    C.RC4 = StreamCipher._createHelper(RC4)
 
 	    /**
 	     * Modified RC4 stream cipher algorithm.
@@ -10810,14 +10544,14 @@ module.exports = transfer;
 	        }),
 
 	        _doReset: function () {
-	            RC4._doReset.call(this);
+	            RC4._doReset.call(this)
 
 	            // Drop
 	            for (var i = this.cfg.drop; i > 0; i--) {
-	                generateKeystreamWord.call(this);
+	                generateKeystreamWord.call(this)
 	            }
 	        }
-	    });
+	    })
 
 	    /**
 	     * Shortcut functions to the cipher's object interface.
@@ -10827,29 +10561,25 @@ module.exports = transfer;
 	     *     var ciphertext = CryptoJS.RC4Drop.encrypt(message, key, cfg);
 	     *     var plaintext  = CryptoJS.RC4Drop.decrypt(ciphertext, key, cfg);
 	     */
-	    C.RC4Drop = StreamCipher._createHelper(RC4Drop);
-	}());
+	    C.RC4Drop = StreamCipher._createHelper(RC4Drop)
+      }())
 
-
-	return CryptoJS.RC4;
-
-}));
-},{"./cipher-core":51,"./core":52,"./enc-base64":53,"./evpkdf":55,"./md5":60}],75:[function(require,module,exports){
-;(function (root, factory) {
-	if (typeof exports === "object") {
+      return CryptoJS.RC4
+    }))
+  }, { './cipher-core':51, './core':52, './enc-base64':53, './evpkdf':55, './md5':60 }],
+  75:[function (require, module, exports) {
+    ;(function (root, factory) {
+      if (typeof exports === 'object') {
 		// CommonJS
-		module.exports = exports = factory(require("./core"));
-	}
-	else if (typeof define === "function" && define.amd) {
+        module.exports = exports = factory(require('./core'))
+      } else if (typeof define === 'function' && define.amd) {
 		// AMD
-		define(["./core"], factory);
-	}
-	else {
+        define(['./core'], factory)
+      } else {
 		// Global (browser)
-		factory(root.CryptoJS);
-	}
-}(this, function (CryptoJS) {
-
+        factory(root.CryptoJS)
+      }
+    }(this, function (CryptoJS) {
 	/** @preserve
 	(c) 2012 by Cédric Mesnil. All rights reserved.
 
@@ -10861,209 +10591,204 @@ module.exports = transfer;
 	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	*/
 
-	(function (Math) {
+      (function (Math) {
 	    // Shortcuts
-	    var C = CryptoJS;
-	    var C_lib = C.lib;
-	    var WordArray = C_lib.WordArray;
-	    var Hasher = C_lib.Hasher;
-	    var C_algo = C.algo;
+	    var C = CryptoJS
+	    var C_lib = C.lib
+	    var WordArray = C_lib.WordArray
+	    var Hasher = C_lib.Hasher
+	    var C_algo = C.algo
 
 	    // Constants table
 	    var _zl = WordArray.create([
-	        0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15,
-	        7,  4, 13,  1, 10,  6, 15,  3, 12,  0,  9,  5,  2, 14, 11,  8,
-	        3, 10, 14,  4,  9, 15,  8,  1,  2,  7,  0,  6, 13, 11,  5, 12,
-	        1,  9, 11, 10,  0,  8, 12,  4, 13,  3,  7, 15, 14,  5,  6,  2,
-	        4,  0,  5,  9,  7, 12,  2, 10, 14,  1,  3,  8, 11,  6, 15, 13]);
+	        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
+	        7, 4, 13, 1, 10, 6, 15, 3, 12, 0, 9, 5, 2, 14, 11, 8,
+	        3, 10, 14, 4, 9, 15, 8, 1, 2, 7, 0, 6, 13, 11, 5, 12,
+	        1, 9, 11, 10, 0, 8, 12, 4, 13, 3, 7, 15, 14, 5, 6, 2,
+	        4, 0, 5, 9, 7, 12, 2, 10, 14, 1, 3, 8, 11, 6, 15, 13])
 	    var _zr = WordArray.create([
-	        5, 14,  7,  0,  9,  2, 11,  4, 13,  6, 15,  8,  1, 10,  3, 12,
-	        6, 11,  3,  7,  0, 13,  5, 10, 14, 15,  8, 12,  4,  9,  1,  2,
-	        15,  5,  1,  3,  7, 14,  6,  9, 11,  8, 12,  2, 10,  0,  4, 13,
-	        8,  6,  4,  1,  3, 11, 15,  0,  5, 12,  2, 13,  9,  7, 10, 14,
-	        12, 15, 10,  4,  1,  5,  8,  7,  6,  2, 13, 14,  0,  3,  9, 11]);
+	        5, 14, 7, 0, 9, 2, 11, 4, 13, 6, 15, 8, 1, 10, 3, 12,
+	        6, 11, 3, 7, 0, 13, 5, 10, 14, 15, 8, 12, 4, 9, 1, 2,
+	        15, 5, 1, 3, 7, 14, 6, 9, 11, 8, 12, 2, 10, 0, 4, 13,
+	        8, 6, 4, 1, 3, 11, 15, 0, 5, 12, 2, 13, 9, 7, 10, 14,
+	        12, 15, 10, 4, 1, 5, 8, 7, 6, 2, 13, 14, 0, 3, 9, 11])
 	    var _sl = WordArray.create([
-	         11, 14, 15, 12,  5,  8,  7,  9, 11, 13, 14, 15,  6,  7,  9,  8,
-	        7, 6,   8, 13, 11,  9,  7, 15,  7, 12, 15,  9, 11,  7, 13, 12,
-	        11, 13,  6,  7, 14,  9, 13, 15, 14,  8, 13,  6,  5, 12,  7,  5,
-	          11, 12, 14, 15, 14, 15,  9,  8,  9, 14,  5,  6,  8,  6,  5, 12,
-	        9, 15,  5, 11,  6,  8, 13, 12,  5, 12, 13, 14, 11,  8,  5,  6 ]);
+	         11, 14, 15, 12, 5, 8, 7, 9, 11, 13, 14, 15, 6, 7, 9, 8,
+	        7, 6, 8, 13, 11, 9, 7, 15, 7, 12, 15, 9, 11, 7, 13, 12,
+	        11, 13, 6, 7, 14, 9, 13, 15, 14, 8, 13, 6, 5, 12, 7, 5,
+	          11, 12, 14, 15, 14, 15, 9, 8, 9, 14, 5, 6, 8, 6, 5, 12,
+	        9, 15, 5, 11, 6, 8, 13, 12, 5, 12, 13, 14, 11, 8, 5, 6 ])
 	    var _sr = WordArray.create([
-	        8,  9,  9, 11, 13, 15, 15,  5,  7,  7,  8, 11, 14, 14, 12,  6,
-	        9, 13, 15,  7, 12,  8,  9, 11,  7,  7, 12,  7,  6, 15, 13, 11,
-	        9,  7, 15, 11,  8,  6,  6, 14, 12, 13,  5, 14, 13, 13,  7,  5,
-	        15,  5,  8, 11, 14, 14,  6, 14,  6,  9, 12,  9, 12,  5, 15,  8,
-	        8,  5, 12,  9, 12,  5, 14,  6,  8, 13,  6,  5, 15, 13, 11, 11 ]);
+	        8, 9, 9, 11, 13, 15, 15, 5, 7, 7, 8, 11, 14, 14, 12, 6,
+	        9, 13, 15, 7, 12, 8, 9, 11, 7, 7, 12, 7, 6, 15, 13, 11,
+	        9, 7, 15, 11, 8, 6, 6, 14, 12, 13, 5, 14, 13, 13, 7, 5,
+	        15, 5, 8, 11, 14, 14, 6, 14, 6, 9, 12, 9, 12, 5, 15, 8,
+	        8, 5, 12, 9, 12, 5, 14, 6, 8, 13, 6, 5, 15, 13, 11, 11 ])
 
-	    var _hl =  WordArray.create([ 0x00000000, 0x5A827999, 0x6ED9EBA1, 0x8F1BBCDC, 0xA953FD4E]);
-	    var _hr =  WordArray.create([ 0x50A28BE6, 0x5C4DD124, 0x6D703EF3, 0x7A6D76E9, 0x00000000]);
+	    var _hl = WordArray.create([ 0x00000000, 0x5A827999, 0x6ED9EBA1, 0x8F1BBCDC, 0xA953FD4E])
+	    var _hr = WordArray.create([ 0x50A28BE6, 0x5C4DD124, 0x6D703EF3, 0x7A6D76E9, 0x00000000])
 
 	    /**
 	     * RIPEMD160 hash algorithm.
 	     */
 	    var RIPEMD160 = C_algo.RIPEMD160 = Hasher.extend({
 	        _doReset: function () {
-	            this._hash  = WordArray.create([0x67452301, 0xEFCDAB89, 0x98BADCFE, 0x10325476, 0xC3D2E1F0]);
+	            this._hash = WordArray.create([0x67452301, 0xEFCDAB89, 0x98BADCFE, 0x10325476, 0xC3D2E1F0])
 	        },
 
 	        _doProcessBlock: function (M, offset) {
-
 	            // Swap endian
 	            for (var i = 0; i < 16; i++) {
 	                // Shortcuts
-	                var offset_i = offset + i;
-	                var M_offset_i = M[offset_i];
+	                var offset_i = offset + i
+	                var M_offset_i = M[offset_i]
 
 	                // Swap
 	                M[offset_i] = (
-	                    (((M_offset_i << 8)  | (M_offset_i >>> 24)) & 0x00ff00ff) |
-	                    (((M_offset_i << 24) | (M_offset_i >>> 8))  & 0xff00ff00)
-	                );
+	                    (((M_offset_i << 8) | (M_offset_i >>> 24)) & 0x00ff00ff) |
+	                    (((M_offset_i << 24) | (M_offset_i >>> 8)) & 0xff00ff00)
+	                )
 	            }
 	            // Shortcut
-	            var H  = this._hash.words;
-	            var hl = _hl.words;
-	            var hr = _hr.words;
-	            var zl = _zl.words;
-	            var zr = _zr.words;
-	            var sl = _sl.words;
-	            var sr = _sr.words;
+	            var H = this._hash.words
+	            var hl = _hl.words
+	            var hr = _hr.words
+	            var zl = _zl.words
+	            var zr = _zr.words
+	            var sl = _sl.words
+	            var sr = _sr.words
 
 	            // Working variables
-	            var al, bl, cl, dl, el;
-	            var ar, br, cr, dr, er;
+	            var al, bl, cl, dl, el
+	            var ar, br, cr, dr, er
 
-	            ar = al = H[0];
-	            br = bl = H[1];
-	            cr = cl = H[2];
-	            dr = dl = H[3];
-	            er = el = H[4];
+	            ar = al = H[0]
+	            br = bl = H[1]
+	            cr = cl = H[2]
+	            dr = dl = H[3]
+	            er = el = H[4]
 	            // Computation
-	            var t;
+	            var t
 	            for (var i = 0; i < 80; i += 1) {
-	                t = (al +  M[offset+zl[i]])|0;
-	                if (i<16){
-		            t +=  f1(bl,cl,dl) + hl[0];
-	                } else if (i<32) {
-		            t +=  f2(bl,cl,dl) + hl[1];
-	                } else if (i<48) {
-		            t +=  f3(bl,cl,dl) + hl[2];
-	                } else if (i<64) {
-		            t +=  f4(bl,cl,dl) + hl[3];
-	                } else {// if (i<80) {
-		            t +=  f5(bl,cl,dl) + hl[4];
+	                t = (al + M[offset + zl[i]]) | 0
+	                if (i < 16) {
+		            t += f1(bl, cl, dl) + hl[0]
+	                } else if (i < 32) {
+		            t += f2(bl, cl, dl) + hl[1]
+	                } else if (i < 48) {
+		            t += f3(bl, cl, dl) + hl[2]
+	                } else if (i < 64) {
+		            t += f4(bl, cl, dl) + hl[3]
+	                } else { // if (i<80) {
+		            t += f5(bl, cl, dl) + hl[4]
 	                }
-	                t = t|0;
-	                t =  rotl(t,sl[i]);
-	                t = (t+el)|0;
-	                al = el;
-	                el = dl;
-	                dl = rotl(cl, 10);
-	                cl = bl;
-	                bl = t;
+	                t = t | 0
+	                t = rotl(t, sl[i])
+	                t = (t + el) | 0
+	                al = el
+	                el = dl
+	                dl = rotl(cl, 10)
+	                cl = bl
+	                bl = t
 
-	                t = (ar + M[offset+zr[i]])|0;
-	                if (i<16){
-		            t +=  f5(br,cr,dr) + hr[0];
-	                } else if (i<32) {
-		            t +=  f4(br,cr,dr) + hr[1];
-	                } else if (i<48) {
-		            t +=  f3(br,cr,dr) + hr[2];
-	                } else if (i<64) {
-		            t +=  f2(br,cr,dr) + hr[3];
-	                } else {// if (i<80) {
-		            t +=  f1(br,cr,dr) + hr[4];
+	                t = (ar + M[offset + zr[i]]) | 0
+	                if (i < 16) {
+		            t += f5(br, cr, dr) + hr[0]
+	                } else if (i < 32) {
+		            t += f4(br, cr, dr) + hr[1]
+	                } else if (i < 48) {
+		            t += f3(br, cr, dr) + hr[2]
+	                } else if (i < 64) {
+		            t += f2(br, cr, dr) + hr[3]
+	                } else { // if (i<80) {
+		            t += f1(br, cr, dr) + hr[4]
 	                }
-	                t = t|0;
-	                t =  rotl(t,sr[i]) ;
-	                t = (t+er)|0;
-	                ar = er;
-	                er = dr;
-	                dr = rotl(cr, 10);
-	                cr = br;
-	                br = t;
+	                t = t | 0
+	                t = rotl(t, sr[i])
+	                t = (t + er) | 0
+	                ar = er
+	                er = dr
+	                dr = rotl(cr, 10)
+	                cr = br
+	                br = t
 	            }
 	            // Intermediate hash value
-	            t    = (H[1] + cl + dr)|0;
-	            H[1] = (H[2] + dl + er)|0;
-	            H[2] = (H[3] + el + ar)|0;
-	            H[3] = (H[4] + al + br)|0;
-	            H[4] = (H[0] + bl + cr)|0;
-	            H[0] =  t;
+	            t = (H[1] + cl + dr) | 0
+	            H[1] = (H[2] + dl + er) | 0
+	            H[2] = (H[3] + el + ar) | 0
+	            H[3] = (H[4] + al + br) | 0
+	            H[4] = (H[0] + bl + cr) | 0
+	            H[0] = t
 	        },
 
 	        _doFinalize: function () {
 	            // Shortcuts
-	            var data = this._data;
-	            var dataWords = data.words;
+	            var data = this._data
+	            var dataWords = data.words
 
-	            var nBitsTotal = this._nDataBytes * 8;
-	            var nBitsLeft = data.sigBytes * 8;
+	            var nBitsTotal = this._nDataBytes * 8
+	            var nBitsLeft = data.sigBytes * 8
 
 	            // Add padding
-	            dataWords[nBitsLeft >>> 5] |= 0x80 << (24 - nBitsLeft % 32);
+	            dataWords[nBitsLeft >>> 5] |= 0x80 << (24 - nBitsLeft % 32)
 	            dataWords[(((nBitsLeft + 64) >>> 9) << 4) + 14] = (
-	                (((nBitsTotal << 8)  | (nBitsTotal >>> 24)) & 0x00ff00ff) |
-	                (((nBitsTotal << 24) | (nBitsTotal >>> 8))  & 0xff00ff00)
-	            );
-	            data.sigBytes = (dataWords.length + 1) * 4;
+	                (((nBitsTotal << 8) | (nBitsTotal >>> 24)) & 0x00ff00ff) |
+	                (((nBitsTotal << 24) | (nBitsTotal >>> 8)) & 0xff00ff00)
+	            )
+	            data.sigBytes = (dataWords.length + 1) * 4
 
 	            // Hash final blocks
-	            this._process();
+	            this._process()
 
 	            // Shortcuts
-	            var hash = this._hash;
-	            var H = hash.words;
+	            var hash = this._hash
+	            var H = hash.words
 
 	            // Swap endian
 	            for (var i = 0; i < 5; i++) {
 	                // Shortcut
-	                var H_i = H[i];
+	                var H_i = H[i]
 
 	                // Swap
-	                H[i] = (((H_i << 8)  | (H_i >>> 24)) & 0x00ff00ff) |
-	                       (((H_i << 24) | (H_i >>> 8))  & 0xff00ff00);
+	                H[i] = (((H_i << 8) | (H_i >>> 24)) & 0x00ff00ff) |
+	                       (((H_i << 24) | (H_i >>> 8)) & 0xff00ff00)
 	            }
 
 	            // Return final computed hash
-	            return hash;
+	            return hash
 	        },
 
 	        clone: function () {
-	            var clone = Hasher.clone.call(this);
-	            clone._hash = this._hash.clone();
+	            var clone = Hasher.clone.call(this)
+	            clone._hash = this._hash.clone()
 
-	            return clone;
+	            return clone
 	        }
-	    });
+	    })
 
-
-	    function f1(x, y, z) {
-	        return ((x) ^ (y) ^ (z));
-
+	    function f1 (x, y, z) {
+	        return ((x) ^ (y) ^ (z))
 	    }
 
-	    function f2(x, y, z) {
-	        return (((x)&(y)) | ((~x)&(z)));
+	    function f2 (x, y, z) {
+	        return (((x) & (y)) | ((~x) & (z)))
 	    }
 
-	    function f3(x, y, z) {
-	        return (((x) | (~(y))) ^ (z));
+	    function f3 (x, y, z) {
+	        return (((x) | (~(y))) ^ (z))
 	    }
 
-	    function f4(x, y, z) {
-	        return (((x) & (z)) | ((y)&(~(z))));
+	    function f4 (x, y, z) {
+	        return (((x) & (z)) | ((y) & (~(z))))
 	    }
 
-	    function f5(x, y, z) {
-	        return ((x) ^ ((y) |(~(z))));
-
+	    function f5 (x, y, z) {
+	        return ((x) ^ ((y) | (~(z))))
 	    }
 
-	    function rotl(x,n) {
-	        return (x<<n) | (x>>>(32-n));
+	    function rotl (x, n) {
+	        return (x << n) | (x >>> (32 - n))
 	    }
-
 
 	    /**
 	     * Shortcut function to the hasher's object interface.
@@ -11079,7 +10804,7 @@ module.exports = transfer;
 	     *     var hash = CryptoJS.RIPEMD160('message');
 	     *     var hash = CryptoJS.RIPEMD160(wordArray);
 	     */
-	    C.RIPEMD160 = Hasher._createHelper(RIPEMD160);
+	    C.RIPEMD160 = Hasher._createHelper(RIPEMD160)
 
 	    /**
 	     * Shortcut function to the HMAC's object interface.
@@ -11095,39 +10820,35 @@ module.exports = transfer;
 	     *
 	     *     var hmac = CryptoJS.HmacRIPEMD160(message, key);
 	     */
-	    C.HmacRIPEMD160 = Hasher._createHmacHelper(RIPEMD160);
-	}(Math));
+	    C.HmacRIPEMD160 = Hasher._createHmacHelper(RIPEMD160)
+      }(Math))
 
-
-	return CryptoJS.RIPEMD160;
-
-}));
-},{"./core":52}],76:[function(require,module,exports){
-;(function (root, factory) {
-	if (typeof exports === "object") {
+      return CryptoJS.RIPEMD160
+    }))
+  }, { './core':52 }],
+  76:[function (require, module, exports) {
+    ;(function (root, factory) {
+      if (typeof exports === 'object') {
 		// CommonJS
-		module.exports = exports = factory(require("./core"));
-	}
-	else if (typeof define === "function" && define.amd) {
+        module.exports = exports = factory(require('./core'))
+      } else if (typeof define === 'function' && define.amd) {
 		// AMD
-		define(["./core"], factory);
-	}
-	else {
+        define(['./core'], factory)
+      } else {
 		// Global (browser)
-		factory(root.CryptoJS);
-	}
-}(this, function (CryptoJS) {
-
-	(function () {
+        factory(root.CryptoJS)
+      }
+    }(this, function (CryptoJS) {
+      (function () {
 	    // Shortcuts
-	    var C = CryptoJS;
-	    var C_lib = C.lib;
-	    var WordArray = C_lib.WordArray;
-	    var Hasher = C_lib.Hasher;
-	    var C_algo = C.algo;
+	    var C = CryptoJS
+	    var C_lib = C.lib
+	    var WordArray = C_lib.WordArray
+	    var Hasher = C_lib.Hasher
+	    var C_algo = C.algo
 
 	    // Reusable object
-	    var W = [];
+	    var W = []
 
 	    /**
 	     * SHA-1 hash algorithm.
@@ -11138,83 +10859,83 @@ module.exports = transfer;
 	                0x67452301, 0xefcdab89,
 	                0x98badcfe, 0x10325476,
 	                0xc3d2e1f0
-	            ]);
+	            ])
 	        },
 
 	        _doProcessBlock: function (M, offset) {
 	            // Shortcut
-	            var H = this._hash.words;
+	            var H = this._hash.words
 
 	            // Working variables
-	            var a = H[0];
-	            var b = H[1];
-	            var c = H[2];
-	            var d = H[3];
-	            var e = H[4];
+	            var a = H[0]
+	            var b = H[1]
+	            var c = H[2]
+	            var d = H[3]
+	            var e = H[4]
 
 	            // Computation
 	            for (var i = 0; i < 80; i++) {
 	                if (i < 16) {
-	                    W[i] = M[offset + i] | 0;
+	                    W[i] = M[offset + i] | 0
 	                } else {
-	                    var n = W[i - 3] ^ W[i - 8] ^ W[i - 14] ^ W[i - 16];
-	                    W[i] = (n << 1) | (n >>> 31);
+	                    var n = W[i - 3] ^ W[i - 8] ^ W[i - 14] ^ W[i - 16]
+	                    W[i] = (n << 1) | (n >>> 31)
 	                }
 
-	                var t = ((a << 5) | (a >>> 27)) + e + W[i];
+	                var t = ((a << 5) | (a >>> 27)) + e + W[i]
 	                if (i < 20) {
-	                    t += ((b & c) | (~b & d)) + 0x5a827999;
+	                    t += ((b & c) | (~b & d)) + 0x5a827999
 	                } else if (i < 40) {
-	                    t += (b ^ c ^ d) + 0x6ed9eba1;
+	                    t += (b ^ c ^ d) + 0x6ed9eba1
 	                } else if (i < 60) {
-	                    t += ((b & c) | (b & d) | (c & d)) - 0x70e44324;
+	                    t += ((b & c) | (b & d) | (c & d)) - 0x70e44324
 	                } else /* if (i < 80) */ {
-	                    t += (b ^ c ^ d) - 0x359d3e2a;
+	                    t += (b ^ c ^ d) - 0x359d3e2a
 	                }
 
-	                e = d;
-	                d = c;
-	                c = (b << 30) | (b >>> 2);
-	                b = a;
-	                a = t;
+	                e = d
+	                d = c
+	                c = (b << 30) | (b >>> 2)
+	                b = a
+	                a = t
 	            }
 
 	            // Intermediate hash value
-	            H[0] = (H[0] + a) | 0;
-	            H[1] = (H[1] + b) | 0;
-	            H[2] = (H[2] + c) | 0;
-	            H[3] = (H[3] + d) | 0;
-	            H[4] = (H[4] + e) | 0;
+	            H[0] = (H[0] + a) | 0
+	            H[1] = (H[1] + b) | 0
+	            H[2] = (H[2] + c) | 0
+	            H[3] = (H[3] + d) | 0
+	            H[4] = (H[4] + e) | 0
 	        },
 
 	        _doFinalize: function () {
 	            // Shortcuts
-	            var data = this._data;
-	            var dataWords = data.words;
+	            var data = this._data
+	            var dataWords = data.words
 
-	            var nBitsTotal = this._nDataBytes * 8;
-	            var nBitsLeft = data.sigBytes * 8;
+	            var nBitsTotal = this._nDataBytes * 8
+	            var nBitsLeft = data.sigBytes * 8
 
 	            // Add padding
-	            dataWords[nBitsLeft >>> 5] |= 0x80 << (24 - nBitsLeft % 32);
-	            dataWords[(((nBitsLeft + 64) >>> 9) << 4) + 14] = Math.floor(nBitsTotal / 0x100000000);
-	            dataWords[(((nBitsLeft + 64) >>> 9) << 4) + 15] = nBitsTotal;
-	            data.sigBytes = dataWords.length * 4;
+	            dataWords[nBitsLeft >>> 5] |= 0x80 << (24 - nBitsLeft % 32)
+	            dataWords[(((nBitsLeft + 64) >>> 9) << 4) + 14] = Math.floor(nBitsTotal / 0x100000000)
+	            dataWords[(((nBitsLeft + 64) >>> 9) << 4) + 15] = nBitsTotal
+	            data.sigBytes = dataWords.length * 4
 
 	            // Hash final blocks
-	            this._process();
+	            this._process()
 
 	            // Return final computed hash
-	            return this._hash;
+	            return this._hash
 	        },
 
 	        clone: function () {
-	            var clone = Hasher.clone.call(this);
-	            clone._hash = this._hash.clone();
+	            var clone = Hasher.clone.call(this)
+	            clone._hash = this._hash.clone()
 
-	            return clone;
+	            return clone
 	        }
-	    });
+	    })
 
 	    /**
 	     * Shortcut function to the hasher's object interface.
@@ -11230,7 +10951,7 @@ module.exports = transfer;
 	     *     var hash = CryptoJS.SHA1('message');
 	     *     var hash = CryptoJS.SHA1(wordArray);
 	     */
-	    C.SHA1 = Hasher._createHelper(SHA1);
+	    C.SHA1 = Hasher._createHelper(SHA1)
 
 	    /**
 	     * Shortcut function to the HMAC's object interface.
@@ -11246,36 +10967,32 @@ module.exports = transfer;
 	     *
 	     *     var hmac = CryptoJS.HmacSHA1(message, key);
 	     */
-	    C.HmacSHA1 = Hasher._createHmacHelper(SHA1);
-	}());
+	    C.HmacSHA1 = Hasher._createHmacHelper(SHA1)
+      }())
 
-
-	return CryptoJS.SHA1;
-
-}));
-},{"./core":52}],77:[function(require,module,exports){
-;(function (root, factory, undef) {
-	if (typeof exports === "object") {
+      return CryptoJS.SHA1
+    }))
+  }, { './core':52 }],
+  77:[function (require, module, exports) {
+    ;(function (root, factory, undef) {
+      if (typeof exports === 'object') {
 		// CommonJS
-		module.exports = exports = factory(require("./core"), require("./sha256"));
-	}
-	else if (typeof define === "function" && define.amd) {
+        module.exports = exports = factory(require('./core'), require('./sha256'))
+      } else if (typeof define === 'function' && define.amd) {
 		// AMD
-		define(["./core", "./sha256"], factory);
-	}
-	else {
+        define(['./core', './sha256'], factory)
+      } else {
 		// Global (browser)
-		factory(root.CryptoJS);
-	}
-}(this, function (CryptoJS) {
-
-	(function () {
+        factory(root.CryptoJS)
+      }
+    }(this, function (CryptoJS) {
+      (function () {
 	    // Shortcuts
-	    var C = CryptoJS;
-	    var C_lib = C.lib;
-	    var WordArray = C_lib.WordArray;
-	    var C_algo = C.algo;
-	    var SHA256 = C_algo.SHA256;
+	    var C = CryptoJS
+	    var C_lib = C.lib
+	    var WordArray = C_lib.WordArray
+	    var C_algo = C.algo
+	    var SHA256 = C_algo.SHA256
 
 	    /**
 	     * SHA-224 hash algorithm.
@@ -11285,17 +11002,17 @@ module.exports = transfer;
 	            this._hash = new WordArray.init([
 	                0xc1059ed8, 0x367cd507, 0x3070dd17, 0xf70e5939,
 	                0xffc00b31, 0x68581511, 0x64f98fa7, 0xbefa4fa4
-	            ]);
+	            ])
 	        },
 
 	        _doFinalize: function () {
-	            var hash = SHA256._doFinalize.call(this);
+	            var hash = SHA256._doFinalize.call(this)
 
-	            hash.sigBytes -= 4;
+	            hash.sigBytes -= 4
 
-	            return hash;
+	            return hash
 	        }
-	    });
+	    })
 
 	    /**
 	     * Shortcut function to the hasher's object interface.
@@ -11311,7 +11028,7 @@ module.exports = transfer;
 	     *     var hash = CryptoJS.SHA224('message');
 	     *     var hash = CryptoJS.SHA224(wordArray);
 	     */
-	    C.SHA224 = SHA256._createHelper(SHA224);
+	    C.SHA224 = SHA256._createHelper(SHA224)
 
 	    /**
 	     * Shortcut function to the HMAC's object interface.
@@ -11327,175 +11044,171 @@ module.exports = transfer;
 	     *
 	     *     var hmac = CryptoJS.HmacSHA224(message, key);
 	     */
-	    C.HmacSHA224 = SHA256._createHmacHelper(SHA224);
-	}());
+	    C.HmacSHA224 = SHA256._createHmacHelper(SHA224)
+      }())
 
-
-	return CryptoJS.SHA224;
-
-}));
-},{"./core":52,"./sha256":78}],78:[function(require,module,exports){
-;(function (root, factory) {
-	if (typeof exports === "object") {
+      return CryptoJS.SHA224
+    }))
+  }, { './core':52, './sha256':78 }],
+  78:[function (require, module, exports) {
+    ;(function (root, factory) {
+      if (typeof exports === 'object') {
 		// CommonJS
-		module.exports = exports = factory(require("./core"));
-	}
-	else if (typeof define === "function" && define.amd) {
+        module.exports = exports = factory(require('./core'))
+      } else if (typeof define === 'function' && define.amd) {
 		// AMD
-		define(["./core"], factory);
-	}
-	else {
+        define(['./core'], factory)
+      } else {
 		// Global (browser)
-		factory(root.CryptoJS);
-	}
-}(this, function (CryptoJS) {
-
-	(function (Math) {
+        factory(root.CryptoJS)
+      }
+    }(this, function (CryptoJS) {
+      (function (Math) {
 	    // Shortcuts
-	    var C = CryptoJS;
-	    var C_lib = C.lib;
-	    var WordArray = C_lib.WordArray;
-	    var Hasher = C_lib.Hasher;
-	    var C_algo = C.algo;
+	    var C = CryptoJS
+	    var C_lib = C.lib
+	    var WordArray = C_lib.WordArray
+	    var Hasher = C_lib.Hasher
+	    var C_algo = C.algo
 
 	    // Initialization and round constants tables
-	    var H = [];
+	    var H = []
 	    var K = [];
 
 	    // Compute constants
 	    (function () {
-	        function isPrime(n) {
-	            var sqrtN = Math.sqrt(n);
+	        function isPrime (n) {
+	            var sqrtN = Math.sqrt(n)
 	            for (var factor = 2; factor <= sqrtN; factor++) {
 	                if (!(n % factor)) {
-	                    return false;
+	                    return false
 	                }
 	            }
 
-	            return true;
+	            return true
 	        }
 
-	        function getFractionalBits(n) {
-	            return ((n - (n | 0)) * 0x100000000) | 0;
+	        function getFractionalBits (n) {
+	            return ((n - (n | 0)) * 0x100000000) | 0
 	        }
 
-	        var n = 2;
-	        var nPrime = 0;
+	        var n = 2
+	        var nPrime = 0
 	        while (nPrime < 64) {
 	            if (isPrime(n)) {
 	                if (nPrime < 8) {
-	                    H[nPrime] = getFractionalBits(Math.pow(n, 1 / 2));
+	                    H[nPrime] = getFractionalBits(Math.pow(n, 1 / 2))
 	                }
-	                K[nPrime] = getFractionalBits(Math.pow(n, 1 / 3));
+	                K[nPrime] = getFractionalBits(Math.pow(n, 1 / 3))
 
-	                nPrime++;
+	                nPrime++
 	            }
 
-	            n++;
+	            n++
 	        }
-	    }());
+	    }())
 
 	    // Reusable object
-	    var W = [];
+	    var W = []
 
 	    /**
 	     * SHA-256 hash algorithm.
 	     */
 	    var SHA256 = C_algo.SHA256 = Hasher.extend({
 	        _doReset: function () {
-	            this._hash = new WordArray.init(H.slice(0));
+	            this._hash = new WordArray.init(H.slice(0))
 	        },
 
 	        _doProcessBlock: function (M, offset) {
 	            // Shortcut
-	            var H = this._hash.words;
+	            var H = this._hash.words
 
 	            // Working variables
-	            var a = H[0];
-	            var b = H[1];
-	            var c = H[2];
-	            var d = H[3];
-	            var e = H[4];
-	            var f = H[5];
-	            var g = H[6];
-	            var h = H[7];
+	            var a = H[0]
+	            var b = H[1]
+	            var c = H[2]
+	            var d = H[3]
+	            var e = H[4]
+	            var f = H[5]
+	            var g = H[6]
+	            var h = H[7]
 
 	            // Computation
 	            for (var i = 0; i < 64; i++) {
 	                if (i < 16) {
-	                    W[i] = M[offset + i] | 0;
+	                    W[i] = M[offset + i] | 0
 	                } else {
-	                    var gamma0x = W[i - 15];
-	                    var gamma0  = ((gamma0x << 25) | (gamma0x >>> 7))  ^
+	                    var gamma0x = W[i - 15]
+	                    var gamma0 = ((gamma0x << 25) | (gamma0x >>> 7)) ^
 	                                  ((gamma0x << 14) | (gamma0x >>> 18)) ^
-	                                   (gamma0x >>> 3);
+	                                   (gamma0x >>> 3)
 
-	                    var gamma1x = W[i - 2];
-	                    var gamma1  = ((gamma1x << 15) | (gamma1x >>> 17)) ^
+	                    var gamma1x = W[i - 2]
+	                    var gamma1 = ((gamma1x << 15) | (gamma1x >>> 17)) ^
 	                                  ((gamma1x << 13) | (gamma1x >>> 19)) ^
-	                                   (gamma1x >>> 10);
+	                                   (gamma1x >>> 10)
 
-	                    W[i] = gamma0 + W[i - 7] + gamma1 + W[i - 16];
+	                    W[i] = gamma0 + W[i - 7] + gamma1 + W[i - 16]
 	                }
 
-	                var ch  = (e & f) ^ (~e & g);
-	                var maj = (a & b) ^ (a & c) ^ (b & c);
+	                var ch = (e & f) ^ (~e & g)
+	                var maj = (a & b) ^ (a & c) ^ (b & c)
 
-	                var sigma0 = ((a << 30) | (a >>> 2)) ^ ((a << 19) | (a >>> 13)) ^ ((a << 10) | (a >>> 22));
-	                var sigma1 = ((e << 26) | (e >>> 6)) ^ ((e << 21) | (e >>> 11)) ^ ((e << 7)  | (e >>> 25));
+	                var sigma0 = ((a << 30) | (a >>> 2)) ^ ((a << 19) | (a >>> 13)) ^ ((a << 10) | (a >>> 22))
+	                var sigma1 = ((e << 26) | (e >>> 6)) ^ ((e << 21) | (e >>> 11)) ^ ((e << 7) | (e >>> 25))
 
-	                var t1 = h + sigma1 + ch + K[i] + W[i];
-	                var t2 = sigma0 + maj;
+	                var t1 = h + sigma1 + ch + K[i] + W[i]
+	                var t2 = sigma0 + maj
 
-	                h = g;
-	                g = f;
-	                f = e;
-	                e = (d + t1) | 0;
-	                d = c;
-	                c = b;
-	                b = a;
-	                a = (t1 + t2) | 0;
+	                h = g
+	                g = f
+	                f = e
+	                e = (d + t1) | 0
+	                d = c
+	                c = b
+	                b = a
+	                a = (t1 + t2) | 0
 	            }
 
 	            // Intermediate hash value
-	            H[0] = (H[0] + a) | 0;
-	            H[1] = (H[1] + b) | 0;
-	            H[2] = (H[2] + c) | 0;
-	            H[3] = (H[3] + d) | 0;
-	            H[4] = (H[4] + e) | 0;
-	            H[5] = (H[5] + f) | 0;
-	            H[6] = (H[6] + g) | 0;
-	            H[7] = (H[7] + h) | 0;
+	            H[0] = (H[0] + a) | 0
+	            H[1] = (H[1] + b) | 0
+	            H[2] = (H[2] + c) | 0
+	            H[3] = (H[3] + d) | 0
+	            H[4] = (H[4] + e) | 0
+	            H[5] = (H[5] + f) | 0
+	            H[6] = (H[6] + g) | 0
+	            H[7] = (H[7] + h) | 0
 	        },
 
 	        _doFinalize: function () {
 	            // Shortcuts
-	            var data = this._data;
-	            var dataWords = data.words;
+	            var data = this._data
+	            var dataWords = data.words
 
-	            var nBitsTotal = this._nDataBytes * 8;
-	            var nBitsLeft = data.sigBytes * 8;
+	            var nBitsTotal = this._nDataBytes * 8
+	            var nBitsLeft = data.sigBytes * 8
 
 	            // Add padding
-	            dataWords[nBitsLeft >>> 5] |= 0x80 << (24 - nBitsLeft % 32);
-	            dataWords[(((nBitsLeft + 64) >>> 9) << 4) + 14] = Math.floor(nBitsTotal / 0x100000000);
-	            dataWords[(((nBitsLeft + 64) >>> 9) << 4) + 15] = nBitsTotal;
-	            data.sigBytes = dataWords.length * 4;
+	            dataWords[nBitsLeft >>> 5] |= 0x80 << (24 - nBitsLeft % 32)
+	            dataWords[(((nBitsLeft + 64) >>> 9) << 4) + 14] = Math.floor(nBitsTotal / 0x100000000)
+	            dataWords[(((nBitsLeft + 64) >>> 9) << 4) + 15] = nBitsTotal
+	            data.sigBytes = dataWords.length * 4
 
 	            // Hash final blocks
-	            this._process();
+	            this._process()
 
 	            // Return final computed hash
-	            return this._hash;
+	            return this._hash
 	        },
 
 	        clone: function () {
-	            var clone = Hasher.clone.call(this);
-	            clone._hash = this._hash.clone();
+	            var clone = Hasher.clone.call(this)
+	            clone._hash = this._hash.clone()
 
-	            return clone;
+	            return clone
 	        }
-	    });
+	    })
 
 	    /**
 	     * Shortcut function to the hasher's object interface.
@@ -11511,7 +11224,7 @@ module.exports = transfer;
 	     *     var hash = CryptoJS.SHA256('message');
 	     *     var hash = CryptoJS.SHA256(wordArray);
 	     */
-	    C.SHA256 = Hasher._createHelper(SHA256);
+	    C.SHA256 = Hasher._createHelper(SHA256)
 
 	    /**
 	     * Shortcut function to the HMAC's object interface.
@@ -11527,100 +11240,96 @@ module.exports = transfer;
 	     *
 	     *     var hmac = CryptoJS.HmacSHA256(message, key);
 	     */
-	    C.HmacSHA256 = Hasher._createHmacHelper(SHA256);
-	}(Math));
+	    C.HmacSHA256 = Hasher._createHmacHelper(SHA256)
+      }(Math))
 
-
-	return CryptoJS.SHA256;
-
-}));
-},{"./core":52}],79:[function(require,module,exports){
-;(function (root, factory, undef) {
-	if (typeof exports === "object") {
+      return CryptoJS.SHA256
+    }))
+  }, { './core':52 }],
+  79:[function (require, module, exports) {
+    ;(function (root, factory, undef) {
+      if (typeof exports === 'object') {
 		// CommonJS
-		module.exports = exports = factory(require("./core"), require("./x64-core"));
-	}
-	else if (typeof define === "function" && define.amd) {
+        module.exports = exports = factory(require('./core'), require('./x64-core'))
+      } else if (typeof define === 'function' && define.amd) {
 		// AMD
-		define(["./core", "./x64-core"], factory);
-	}
-	else {
+        define(['./core', './x64-core'], factory)
+      } else {
 		// Global (browser)
-		factory(root.CryptoJS);
-	}
-}(this, function (CryptoJS) {
-
-	(function (Math) {
+        factory(root.CryptoJS)
+      }
+    }(this, function (CryptoJS) {
+      (function (Math) {
 	    // Shortcuts
-	    var C = CryptoJS;
-	    var C_lib = C.lib;
-	    var WordArray = C_lib.WordArray;
-	    var Hasher = C_lib.Hasher;
-	    var C_x64 = C.x64;
-	    var X64Word = C_x64.Word;
-	    var C_algo = C.algo;
+	    var C = CryptoJS
+	    var C_lib = C.lib
+	    var WordArray = C_lib.WordArray
+	    var Hasher = C_lib.Hasher
+	    var C_x64 = C.x64
+	    var X64Word = C_x64.Word
+	    var C_algo = C.algo
 
 	    // Constants tables
-	    var RHO_OFFSETS = [];
-	    var PI_INDEXES  = [];
+	    var RHO_OFFSETS = []
+	    var PI_INDEXES = []
 	    var ROUND_CONSTANTS = [];
 
 	    // Compute Constants
 	    (function () {
 	        // Compute rho offset constants
-	        var x = 1, y = 0;
+	        var x = 1, y = 0
 	        for (var t = 0; t < 24; t++) {
-	            RHO_OFFSETS[x + 5 * y] = ((t + 1) * (t + 2) / 2) % 64;
+	            RHO_OFFSETS[x + 5 * y] = ((t + 1) * (t + 2) / 2) % 64
 
-	            var newX = y % 5;
-	            var newY = (2 * x + 3 * y) % 5;
-	            x = newX;
-	            y = newY;
+	            var newX = y % 5
+	            var newY = (2 * x + 3 * y) % 5
+	            x = newX
+	            y = newY
 	        }
 
 	        // Compute pi index constants
 	        for (var x = 0; x < 5; x++) {
 	            for (var y = 0; y < 5; y++) {
-	                PI_INDEXES[x + 5 * y] = y + ((2 * x + 3 * y) % 5) * 5;
+	                PI_INDEXES[x + 5 * y] = y + ((2 * x + 3 * y) % 5) * 5
 	            }
 	        }
 
 	        // Compute round constants
-	        var LFSR = 0x01;
+	        var LFSR = 0x01
 	        for (var i = 0; i < 24; i++) {
-	            var roundConstantMsw = 0;
-	            var roundConstantLsw = 0;
+	            var roundConstantMsw = 0
+	            var roundConstantLsw = 0
 
 	            for (var j = 0; j < 7; j++) {
 	                if (LFSR & 0x01) {
-	                    var bitPosition = (1 << j) - 1;
+	                    var bitPosition = (1 << j) - 1
 	                    if (bitPosition < 32) {
-	                        roundConstantLsw ^= 1 << bitPosition;
+	                        roundConstantLsw ^= 1 << bitPosition
 	                    } else /* if (bitPosition >= 32) */ {
-	                        roundConstantMsw ^= 1 << (bitPosition - 32);
+	                        roundConstantMsw ^= 1 << (bitPosition - 32)
 	                    }
 	                }
 
 	                // Compute next LFSR
 	                if (LFSR & 0x80) {
 	                    // Primitive polynomial over GF(2): x^8 + x^6 + x^5 + x^4 + 1
-	                    LFSR = (LFSR << 1) ^ 0x71;
+	                    LFSR = (LFSR << 1) ^ 0x71
 	                } else {
-	                    LFSR <<= 1;
+	                    LFSR <<= 1
 	                }
 	            }
 
-	            ROUND_CONSTANTS[i] = X64Word.create(roundConstantMsw, roundConstantLsw);
+	            ROUND_CONSTANTS[i] = X64Word.create(roundConstantMsw, roundConstantLsw)
 	        }
-	    }());
+	    }())
 
 	    // Reusable objects for temporary values
 	    var T = [];
 	    (function () {
 	        for (var i = 0; i < 25; i++) {
-	            T[i] = X64Word.create();
+	            T[i] = X64Word.create()
 	        }
-	    }());
+	    }())
 
 	    /**
 	     * SHA-3 hash algorithm.
@@ -11641,37 +11350,37 @@ module.exports = transfer;
 	        _doReset: function () {
 	            var state = this._state = []
 	            for (var i = 0; i < 25; i++) {
-	                state[i] = new X64Word.init();
+	                state[i] = new X64Word.init()
 	            }
 
-	            this.blockSize = (1600 - 2 * this.cfg.outputLength) / 32;
+	            this.blockSize = (1600 - 2 * this.cfg.outputLength) / 32
 	        },
 
 	        _doProcessBlock: function (M, offset) {
 	            // Shortcuts
-	            var state = this._state;
-	            var nBlockSizeLanes = this.blockSize / 2;
+	            var state = this._state
+	            var nBlockSizeLanes = this.blockSize / 2
 
 	            // Absorb
 	            for (var i = 0; i < nBlockSizeLanes; i++) {
 	                // Shortcuts
-	                var M2i  = M[offset + 2 * i];
-	                var M2i1 = M[offset + 2 * i + 1];
+	                var M2i = M[offset + 2 * i]
+	                var M2i1 = M[offset + 2 * i + 1]
 
 	                // Swap endian
 	                M2i = (
-	                    (((M2i << 8)  | (M2i >>> 24)) & 0x00ff00ff) |
-	                    (((M2i << 24) | (M2i >>> 8))  & 0xff00ff00)
-	                );
+	                    (((M2i << 8) | (M2i >>> 24)) & 0x00ff00ff) |
+	                    (((M2i << 24) | (M2i >>> 8)) & 0xff00ff00)
+	                )
 	                M2i1 = (
-	                    (((M2i1 << 8)  | (M2i1 >>> 24)) & 0x00ff00ff) |
-	                    (((M2i1 << 24) | (M2i1 >>> 8))  & 0xff00ff00)
-	                );
+	                    (((M2i1 << 8) | (M2i1 >>> 24)) & 0x00ff00ff) |
+	                    (((M2i1 << 24) | (M2i1 >>> 8)) & 0xff00ff00)
+	                )
 
 	                // Absorb message into state
-	                var lane = state[i];
-	                lane.high ^= M2i1;
-	                lane.low  ^= M2i;
+	                var lane = state[i]
+	                lane.high ^= M2i1
+	                lane.low ^= M2i
 	            }
 
 	            // Rounds
@@ -11679,147 +11388,147 @@ module.exports = transfer;
 	                // Theta
 	                for (var x = 0; x < 5; x++) {
 	                    // Mix column lanes
-	                    var tMsw = 0, tLsw = 0;
+	                    var tMsw = 0, tLsw = 0
 	                    for (var y = 0; y < 5; y++) {
-	                        var lane = state[x + 5 * y];
-	                        tMsw ^= lane.high;
-	                        tLsw ^= lane.low;
+	                        var lane = state[x + 5 * y]
+	                        tMsw ^= lane.high
+	                        tLsw ^= lane.low
 	                    }
 
 	                    // Temporary values
-	                    var Tx = T[x];
-	                    Tx.high = tMsw;
-	                    Tx.low  = tLsw;
+	                    var Tx = T[x]
+	                    Tx.high = tMsw
+	                    Tx.low = tLsw
 	                }
 	                for (var x = 0; x < 5; x++) {
 	                    // Shortcuts
-	                    var Tx4 = T[(x + 4) % 5];
-	                    var Tx1 = T[(x + 1) % 5];
-	                    var Tx1Msw = Tx1.high;
-	                    var Tx1Lsw = Tx1.low;
+	                    var Tx4 = T[(x + 4) % 5]
+	                    var Tx1 = T[(x + 1) % 5]
+	                    var Tx1Msw = Tx1.high
+	                    var Tx1Lsw = Tx1.low
 
 	                    // Mix surrounding columns
-	                    var tMsw = Tx4.high ^ ((Tx1Msw << 1) | (Tx1Lsw >>> 31));
-	                    var tLsw = Tx4.low  ^ ((Tx1Lsw << 1) | (Tx1Msw >>> 31));
+	                    var tMsw = Tx4.high ^ ((Tx1Msw << 1) | (Tx1Lsw >>> 31))
+	                    var tLsw = Tx4.low ^ ((Tx1Lsw << 1) | (Tx1Msw >>> 31))
 	                    for (var y = 0; y < 5; y++) {
-	                        var lane = state[x + 5 * y];
-	                        lane.high ^= tMsw;
-	                        lane.low  ^= tLsw;
+	                        var lane = state[x + 5 * y]
+	                        lane.high ^= tMsw
+	                        lane.low ^= tLsw
 	                    }
 	                }
 
 	                // Rho Pi
 	                for (var laneIndex = 1; laneIndex < 25; laneIndex++) {
 	                    // Shortcuts
-	                    var lane = state[laneIndex];
-	                    var laneMsw = lane.high;
-	                    var laneLsw = lane.low;
-	                    var rhoOffset = RHO_OFFSETS[laneIndex];
+	                    var lane = state[laneIndex]
+	                    var laneMsw = lane.high
+	                    var laneLsw = lane.low
+	                    var rhoOffset = RHO_OFFSETS[laneIndex]
 
 	                    // Rotate lanes
 	                    if (rhoOffset < 32) {
-	                        var tMsw = (laneMsw << rhoOffset) | (laneLsw >>> (32 - rhoOffset));
-	                        var tLsw = (laneLsw << rhoOffset) | (laneMsw >>> (32 - rhoOffset));
+	                        var tMsw = (laneMsw << rhoOffset) | (laneLsw >>> (32 - rhoOffset))
+	                        var tLsw = (laneLsw << rhoOffset) | (laneMsw >>> (32 - rhoOffset))
 	                    } else /* if (rhoOffset >= 32) */ {
-	                        var tMsw = (laneLsw << (rhoOffset - 32)) | (laneMsw >>> (64 - rhoOffset));
-	                        var tLsw = (laneMsw << (rhoOffset - 32)) | (laneLsw >>> (64 - rhoOffset));
+	                        var tMsw = (laneLsw << (rhoOffset - 32)) | (laneMsw >>> (64 - rhoOffset))
+	                        var tLsw = (laneMsw << (rhoOffset - 32)) | (laneLsw >>> (64 - rhoOffset))
 	                    }
 
 	                    // Transpose lanes
-	                    var TPiLane = T[PI_INDEXES[laneIndex]];
-	                    TPiLane.high = tMsw;
-	                    TPiLane.low  = tLsw;
+	                    var TPiLane = T[PI_INDEXES[laneIndex]]
+	                    TPiLane.high = tMsw
+	                    TPiLane.low = tLsw
 	                }
 
 	                // Rho pi at x = y = 0
-	                var T0 = T[0];
-	                var state0 = state[0];
-	                T0.high = state0.high;
-	                T0.low  = state0.low;
+	                var T0 = T[0]
+	                var state0 = state[0]
+	                T0.high = state0.high
+	                T0.low = state0.low
 
 	                // Chi
 	                for (var x = 0; x < 5; x++) {
 	                    for (var y = 0; y < 5; y++) {
 	                        // Shortcuts
-	                        var laneIndex = x + 5 * y;
-	                        var lane = state[laneIndex];
-	                        var TLane = T[laneIndex];
-	                        var Tx1Lane = T[((x + 1) % 5) + 5 * y];
-	                        var Tx2Lane = T[((x + 2) % 5) + 5 * y];
+	                        var laneIndex = x + 5 * y
+	                        var lane = state[laneIndex]
+	                        var TLane = T[laneIndex]
+	                        var Tx1Lane = T[((x + 1) % 5) + 5 * y]
+	                        var Tx2Lane = T[((x + 2) % 5) + 5 * y]
 
 	                        // Mix rows
-	                        lane.high = TLane.high ^ (~Tx1Lane.high & Tx2Lane.high);
-	                        lane.low  = TLane.low  ^ (~Tx1Lane.low  & Tx2Lane.low);
+	                        lane.high = TLane.high ^ (~Tx1Lane.high & Tx2Lane.high)
+	                        lane.low = TLane.low ^ (~Tx1Lane.low & Tx2Lane.low)
 	                    }
 	                }
 
 	                // Iota
-	                var lane = state[0];
-	                var roundConstant = ROUND_CONSTANTS[round];
-	                lane.high ^= roundConstant.high;
-	                lane.low  ^= roundConstant.low;;
+	                var lane = state[0]
+	                var roundConstant = ROUND_CONSTANTS[round]
+	                lane.high ^= roundConstant.high
+	                lane.low ^= roundConstant.low
 	            }
 	        },
 
 	        _doFinalize: function () {
 	            // Shortcuts
-	            var data = this._data;
-	            var dataWords = data.words;
-	            var nBitsTotal = this._nDataBytes * 8;
-	            var nBitsLeft = data.sigBytes * 8;
-	            var blockSizeBits = this.blockSize * 32;
+	            var data = this._data
+	            var dataWords = data.words
+	            var nBitsTotal = this._nDataBytes * 8
+	            var nBitsLeft = data.sigBytes * 8
+	            var blockSizeBits = this.blockSize * 32
 
 	            // Add padding
-	            dataWords[nBitsLeft >>> 5] |= 0x1 << (24 - nBitsLeft % 32);
-	            dataWords[((Math.ceil((nBitsLeft + 1) / blockSizeBits) * blockSizeBits) >>> 5) - 1] |= 0x80;
-	            data.sigBytes = dataWords.length * 4;
+	            dataWords[nBitsLeft >>> 5] |= 0x1 << (24 - nBitsLeft % 32)
+	            dataWords[((Math.ceil((nBitsLeft + 1) / blockSizeBits) * blockSizeBits) >>> 5) - 1] |= 0x80
+	            data.sigBytes = dataWords.length * 4
 
 	            // Hash final blocks
-	            this._process();
+	            this._process()
 
 	            // Shortcuts
-	            var state = this._state;
-	            var outputLengthBytes = this.cfg.outputLength / 8;
-	            var outputLengthLanes = outputLengthBytes / 8;
+	            var state = this._state
+	            var outputLengthBytes = this.cfg.outputLength / 8
+	            var outputLengthLanes = outputLengthBytes / 8
 
 	            // Squeeze
-	            var hashWords = [];
+	            var hashWords = []
 	            for (var i = 0; i < outputLengthLanes; i++) {
 	                // Shortcuts
-	                var lane = state[i];
-	                var laneMsw = lane.high;
-	                var laneLsw = lane.low;
+	                var lane = state[i]
+	                var laneMsw = lane.high
+	                var laneLsw = lane.low
 
 	                // Swap endian
 	                laneMsw = (
-	                    (((laneMsw << 8)  | (laneMsw >>> 24)) & 0x00ff00ff) |
-	                    (((laneMsw << 24) | (laneMsw >>> 8))  & 0xff00ff00)
-	                );
+	                    (((laneMsw << 8) | (laneMsw >>> 24)) & 0x00ff00ff) |
+	                    (((laneMsw << 24) | (laneMsw >>> 8)) & 0xff00ff00)
+	                )
 	                laneLsw = (
-	                    (((laneLsw << 8)  | (laneLsw >>> 24)) & 0x00ff00ff) |
-	                    (((laneLsw << 24) | (laneLsw >>> 8))  & 0xff00ff00)
-	                );
+	                    (((laneLsw << 8) | (laneLsw >>> 24)) & 0x00ff00ff) |
+	                    (((laneLsw << 24) | (laneLsw >>> 8)) & 0xff00ff00)
+	                )
 
 	                // Squeeze state to retrieve hash
-	                hashWords.push(laneLsw);
-	                hashWords.push(laneMsw);
+	                hashWords.push(laneLsw)
+	                hashWords.push(laneMsw)
 	            }
 
 	            // Return final computed hash
-	            return new WordArray.init(hashWords, outputLengthBytes);
+	            return new WordArray.init(hashWords, outputLengthBytes)
 	        },
 
 	        clone: function () {
-	            var clone = Hasher.clone.call(this);
+	            var clone = Hasher.clone.call(this)
 
-	            var state = clone._state = this._state.slice(0);
+	            var state = clone._state = this._state.slice(0)
 	            for (var i = 0; i < 25; i++) {
-	                state[i] = state[i].clone();
+	                state[i] = state[i].clone()
 	            }
 
-	            return clone;
+	            return clone
 	        }
-	    });
+	    })
 
 	    /**
 	     * Shortcut function to the hasher's object interface.
@@ -11835,7 +11544,7 @@ module.exports = transfer;
 	     *     var hash = CryptoJS.SHA3('message');
 	     *     var hash = CryptoJS.SHA3(wordArray);
 	     */
-	    C.SHA3 = Hasher._createHelper(SHA3);
+	    C.SHA3 = Hasher._createHelper(SHA3)
 
 	    /**
 	     * Shortcut function to the HMAC's object interface.
@@ -11851,37 +11560,33 @@ module.exports = transfer;
 	     *
 	     *     var hmac = CryptoJS.HmacSHA3(message, key);
 	     */
-	    C.HmacSHA3 = Hasher._createHmacHelper(SHA3);
-	}(Math));
+	    C.HmacSHA3 = Hasher._createHmacHelper(SHA3)
+      }(Math))
 
-
-	return CryptoJS.SHA3;
-
-}));
-},{"./core":52,"./x64-core":83}],80:[function(require,module,exports){
-;(function (root, factory, undef) {
-	if (typeof exports === "object") {
+      return CryptoJS.SHA3
+    }))
+  }, { './core':52, './x64-core':83 }],
+  80:[function (require, module, exports) {
+    ;(function (root, factory, undef) {
+      if (typeof exports === 'object') {
 		// CommonJS
-		module.exports = exports = factory(require("./core"), require("./x64-core"), require("./sha512"));
-	}
-	else if (typeof define === "function" && define.amd) {
+        module.exports = exports = factory(require('./core'), require('./x64-core'), require('./sha512'))
+      } else if (typeof define === 'function' && define.amd) {
 		// AMD
-		define(["./core", "./x64-core", "./sha512"], factory);
-	}
-	else {
+        define(['./core', './x64-core', './sha512'], factory)
+      } else {
 		// Global (browser)
-		factory(root.CryptoJS);
-	}
-}(this, function (CryptoJS) {
-
-	(function () {
+        factory(root.CryptoJS)
+      }
+    }(this, function (CryptoJS) {
+      (function () {
 	    // Shortcuts
-	    var C = CryptoJS;
-	    var C_x64 = C.x64;
-	    var X64Word = C_x64.Word;
-	    var X64WordArray = C_x64.WordArray;
-	    var C_algo = C.algo;
-	    var SHA512 = C_algo.SHA512;
+	    var C = CryptoJS
+	    var C_x64 = C.x64
+	    var X64Word = C_x64.Word
+	    var X64WordArray = C_x64.WordArray
+	    var C_algo = C.algo
+	    var SHA512 = C_algo.SHA512
 
 	    /**
 	     * SHA-384 hash algorithm.
@@ -11893,17 +11598,17 @@ module.exports = transfer;
 	                new X64Word.init(0x9159015a, 0x3070dd17), new X64Word.init(0x152fecd8, 0xf70e5939),
 	                new X64Word.init(0x67332667, 0xffc00b31), new X64Word.init(0x8eb44a87, 0x68581511),
 	                new X64Word.init(0xdb0c2e0d, 0x64f98fa7), new X64Word.init(0x47b5481d, 0xbefa4fa4)
-	            ]);
+	            ])
 	        },
 
 	        _doFinalize: function () {
-	            var hash = SHA512._doFinalize.call(this);
+	            var hash = SHA512._doFinalize.call(this)
 
-	            hash.sigBytes -= 16;
+	            hash.sigBytes -= 16
 
-	            return hash;
+	            return hash
 	        }
-	    });
+	    })
 
 	    /**
 	     * Shortcut function to the hasher's object interface.
@@ -11919,7 +11624,7 @@ module.exports = transfer;
 	     *     var hash = CryptoJS.SHA384('message');
 	     *     var hash = CryptoJS.SHA384(wordArray);
 	     */
-	    C.SHA384 = SHA512._createHelper(SHA384);
+	    C.SHA384 = SHA512._createHelper(SHA384)
 
 	    /**
 	     * Shortcut function to the HMAC's object interface.
@@ -11935,41 +11640,37 @@ module.exports = transfer;
 	     *
 	     *     var hmac = CryptoJS.HmacSHA384(message, key);
 	     */
-	    C.HmacSHA384 = SHA512._createHmacHelper(SHA384);
-	}());
+	    C.HmacSHA384 = SHA512._createHmacHelper(SHA384)
+      }())
 
-
-	return CryptoJS.SHA384;
-
-}));
-},{"./core":52,"./sha512":81,"./x64-core":83}],81:[function(require,module,exports){
-;(function (root, factory, undef) {
-	if (typeof exports === "object") {
+      return CryptoJS.SHA384
+    }))
+  }, { './core':52, './sha512':81, './x64-core':83 }],
+  81:[function (require, module, exports) {
+    ;(function (root, factory, undef) {
+      if (typeof exports === 'object') {
 		// CommonJS
-		module.exports = exports = factory(require("./core"), require("./x64-core"));
-	}
-	else if (typeof define === "function" && define.amd) {
+        module.exports = exports = factory(require('./core'), require('./x64-core'))
+      } else if (typeof define === 'function' && define.amd) {
 		// AMD
-		define(["./core", "./x64-core"], factory);
-	}
-	else {
+        define(['./core', './x64-core'], factory)
+      } else {
 		// Global (browser)
-		factory(root.CryptoJS);
-	}
-}(this, function (CryptoJS) {
-
-	(function () {
+        factory(root.CryptoJS)
+      }
+    }(this, function (CryptoJS) {
+      (function () {
 	    // Shortcuts
-	    var C = CryptoJS;
-	    var C_lib = C.lib;
-	    var Hasher = C_lib.Hasher;
-	    var C_x64 = C.x64;
-	    var X64Word = C_x64.Word;
-	    var X64WordArray = C_x64.WordArray;
-	    var C_algo = C.algo;
+	    var C = CryptoJS
+	    var C_lib = C.lib
+	    var Hasher = C_lib.Hasher
+	    var C_x64 = C.x64
+	    var X64Word = C_x64.Word
+	    var X64WordArray = C_x64.WordArray
+	    var C_algo = C.algo
 
-	    function X64Word_create() {
-	        return X64Word.create.apply(X64Word, arguments);
+	    function X64Word_create () {
+	        return X64Word.create.apply(X64Word, arguments)
 	    }
 
 	    // Constants
@@ -12014,15 +11715,15 @@ module.exports = transfer;
 	        X64Word_create(0x3c9ebe0a, 0x15c9bebc), X64Word_create(0x431d67c4, 0x9c100d4c),
 	        X64Word_create(0x4cc5d4be, 0xcb3e42b6), X64Word_create(0x597f299c, 0xfc657e2a),
 	        X64Word_create(0x5fcb6fab, 0x3ad6faec), X64Word_create(0x6c44198c, 0x4a475817)
-	    ];
+	    ]
 
 	    // Reusable objects
 	    var W = [];
 	    (function () {
 	        for (var i = 0; i < 80; i++) {
-	            W[i] = X64Word_create();
+	            W[i] = X64Word_create()
 	        }
-	    }());
+	    }())
 
 	    /**
 	     * SHA-512 hash algorithm.
@@ -12034,200 +11735,200 @@ module.exports = transfer;
 	                new X64Word.init(0x3c6ef372, 0xfe94f82b), new X64Word.init(0xa54ff53a, 0x5f1d36f1),
 	                new X64Word.init(0x510e527f, 0xade682d1), new X64Word.init(0x9b05688c, 0x2b3e6c1f),
 	                new X64Word.init(0x1f83d9ab, 0xfb41bd6b), new X64Word.init(0x5be0cd19, 0x137e2179)
-	            ]);
+	            ])
 	        },
 
 	        _doProcessBlock: function (M, offset) {
 	            // Shortcuts
-	            var H = this._hash.words;
+	            var H = this._hash.words
 
-	            var H0 = H[0];
-	            var H1 = H[1];
-	            var H2 = H[2];
-	            var H3 = H[3];
-	            var H4 = H[4];
-	            var H5 = H[5];
-	            var H6 = H[6];
-	            var H7 = H[7];
+	            var H0 = H[0]
+	            var H1 = H[1]
+	            var H2 = H[2]
+	            var H3 = H[3]
+	            var H4 = H[4]
+	            var H5 = H[5]
+	            var H6 = H[6]
+	            var H7 = H[7]
 
-	            var H0h = H0.high;
-	            var H0l = H0.low;
-	            var H1h = H1.high;
-	            var H1l = H1.low;
-	            var H2h = H2.high;
-	            var H2l = H2.low;
-	            var H3h = H3.high;
-	            var H3l = H3.low;
-	            var H4h = H4.high;
-	            var H4l = H4.low;
-	            var H5h = H5.high;
-	            var H5l = H5.low;
-	            var H6h = H6.high;
-	            var H6l = H6.low;
-	            var H7h = H7.high;
-	            var H7l = H7.low;
+	            var H0h = H0.high
+	            var H0l = H0.low
+	            var H1h = H1.high
+	            var H1l = H1.low
+	            var H2h = H2.high
+	            var H2l = H2.low
+	            var H3h = H3.high
+	            var H3l = H3.low
+	            var H4h = H4.high
+	            var H4l = H4.low
+	            var H5h = H5.high
+	            var H5l = H5.low
+	            var H6h = H6.high
+	            var H6l = H6.low
+	            var H7h = H7.high
+	            var H7l = H7.low
 
 	            // Working variables
-	            var ah = H0h;
-	            var al = H0l;
-	            var bh = H1h;
-	            var bl = H1l;
-	            var ch = H2h;
-	            var cl = H2l;
-	            var dh = H3h;
-	            var dl = H3l;
-	            var eh = H4h;
-	            var el = H4l;
-	            var fh = H5h;
-	            var fl = H5l;
-	            var gh = H6h;
-	            var gl = H6l;
-	            var hh = H7h;
-	            var hl = H7l;
+	            var ah = H0h
+	            var al = H0l
+	            var bh = H1h
+	            var bl = H1l
+	            var ch = H2h
+	            var cl = H2l
+	            var dh = H3h
+	            var dl = H3l
+	            var eh = H4h
+	            var el = H4l
+	            var fh = H5h
+	            var fl = H5l
+	            var gh = H6h
+	            var gl = H6l
+	            var hh = H7h
+	            var hl = H7l
 
 	            // Rounds
 	            for (var i = 0; i < 80; i++) {
 	                // Shortcut
-	                var Wi = W[i];
+	                var Wi = W[i]
 
 	                // Extend message
 	                if (i < 16) {
-	                    var Wih = Wi.high = M[offset + i * 2]     | 0;
-	                    var Wil = Wi.low  = M[offset + i * 2 + 1] | 0;
+	                    var Wih = Wi.high = M[offset + i * 2] | 0
+	                    var Wil = Wi.low = M[offset + i * 2 + 1] | 0
 	                } else {
 	                    // Gamma0
-	                    var gamma0x  = W[i - 15];
-	                    var gamma0xh = gamma0x.high;
-	                    var gamma0xl = gamma0x.low;
-	                    var gamma0h  = ((gamma0xh >>> 1) | (gamma0xl << 31)) ^ ((gamma0xh >>> 8) | (gamma0xl << 24)) ^ (gamma0xh >>> 7);
-	                    var gamma0l  = ((gamma0xl >>> 1) | (gamma0xh << 31)) ^ ((gamma0xl >>> 8) | (gamma0xh << 24)) ^ ((gamma0xl >>> 7) | (gamma0xh << 25));
+	                    var gamma0x = W[i - 15]
+	                    var gamma0xh = gamma0x.high
+	                    var gamma0xl = gamma0x.low
+	                    var gamma0h = ((gamma0xh >>> 1) | (gamma0xl << 31)) ^ ((gamma0xh >>> 8) | (gamma0xl << 24)) ^ (gamma0xh >>> 7)
+	                    var gamma0l = ((gamma0xl >>> 1) | (gamma0xh << 31)) ^ ((gamma0xl >>> 8) | (gamma0xh << 24)) ^ ((gamma0xl >>> 7) | (gamma0xh << 25))
 
 	                    // Gamma1
-	                    var gamma1x  = W[i - 2];
-	                    var gamma1xh = gamma1x.high;
-	                    var gamma1xl = gamma1x.low;
-	                    var gamma1h  = ((gamma1xh >>> 19) | (gamma1xl << 13)) ^ ((gamma1xh << 3) | (gamma1xl >>> 29)) ^ (gamma1xh >>> 6);
-	                    var gamma1l  = ((gamma1xl >>> 19) | (gamma1xh << 13)) ^ ((gamma1xl << 3) | (gamma1xh >>> 29)) ^ ((gamma1xl >>> 6) | (gamma1xh << 26));
+	                    var gamma1x = W[i - 2]
+	                    var gamma1xh = gamma1x.high
+	                    var gamma1xl = gamma1x.low
+	                    var gamma1h = ((gamma1xh >>> 19) | (gamma1xl << 13)) ^ ((gamma1xh << 3) | (gamma1xl >>> 29)) ^ (gamma1xh >>> 6)
+	                    var gamma1l = ((gamma1xl >>> 19) | (gamma1xh << 13)) ^ ((gamma1xl << 3) | (gamma1xh >>> 29)) ^ ((gamma1xl >>> 6) | (gamma1xh << 26))
 
 	                    // W[i] = gamma0 + W[i - 7] + gamma1 + W[i - 16]
-	                    var Wi7  = W[i - 7];
-	                    var Wi7h = Wi7.high;
-	                    var Wi7l = Wi7.low;
+	                    var Wi7 = W[i - 7]
+	                    var Wi7h = Wi7.high
+	                    var Wi7l = Wi7.low
 
-	                    var Wi16  = W[i - 16];
-	                    var Wi16h = Wi16.high;
-	                    var Wi16l = Wi16.low;
+	                    var Wi16 = W[i - 16]
+	                    var Wi16h = Wi16.high
+	                    var Wi16l = Wi16.low
 
-	                    var Wil = gamma0l + Wi7l;
-	                    var Wih = gamma0h + Wi7h + ((Wil >>> 0) < (gamma0l >>> 0) ? 1 : 0);
-	                    var Wil = Wil + gamma1l;
-	                    var Wih = Wih + gamma1h + ((Wil >>> 0) < (gamma1l >>> 0) ? 1 : 0);
-	                    var Wil = Wil + Wi16l;
-	                    var Wih = Wih + Wi16h + ((Wil >>> 0) < (Wi16l >>> 0) ? 1 : 0);
+	                    var Wil = gamma0l + Wi7l
+	                    var Wih = gamma0h + Wi7h + ((Wil >>> 0) < (gamma0l >>> 0) ? 1 : 0)
+	                    var Wil = Wil + gamma1l
+	                    var Wih = Wih + gamma1h + ((Wil >>> 0) < (gamma1l >>> 0) ? 1 : 0)
+	                    var Wil = Wil + Wi16l
+	                    var Wih = Wih + Wi16h + ((Wil >>> 0) < (Wi16l >>> 0) ? 1 : 0)
 
-	                    Wi.high = Wih;
-	                    Wi.low  = Wil;
+	                    Wi.high = Wih
+	                    Wi.low = Wil
 	                }
 
-	                var chh  = (eh & fh) ^ (~eh & gh);
-	                var chl  = (el & fl) ^ (~el & gl);
-	                var majh = (ah & bh) ^ (ah & ch) ^ (bh & ch);
-	                var majl = (al & bl) ^ (al & cl) ^ (bl & cl);
+	                var chh = (eh & fh) ^ (~eh & gh)
+	                var chl = (el & fl) ^ (~el & gl)
+	                var majh = (ah & bh) ^ (ah & ch) ^ (bh & ch)
+	                var majl = (al & bl) ^ (al & cl) ^ (bl & cl)
 
-	                var sigma0h = ((ah >>> 28) | (al << 4))  ^ ((ah << 30)  | (al >>> 2)) ^ ((ah << 25) | (al >>> 7));
-	                var sigma0l = ((al >>> 28) | (ah << 4))  ^ ((al << 30)  | (ah >>> 2)) ^ ((al << 25) | (ah >>> 7));
-	                var sigma1h = ((eh >>> 14) | (el << 18)) ^ ((eh >>> 18) | (el << 14)) ^ ((eh << 23) | (el >>> 9));
-	                var sigma1l = ((el >>> 14) | (eh << 18)) ^ ((el >>> 18) | (eh << 14)) ^ ((el << 23) | (eh >>> 9));
+	                var sigma0h = ((ah >>> 28) | (al << 4)) ^ ((ah << 30) | (al >>> 2)) ^ ((ah << 25) | (al >>> 7))
+	                var sigma0l = ((al >>> 28) | (ah << 4)) ^ ((al << 30) | (ah >>> 2)) ^ ((al << 25) | (ah >>> 7))
+	                var sigma1h = ((eh >>> 14) | (el << 18)) ^ ((eh >>> 18) | (el << 14)) ^ ((eh << 23) | (el >>> 9))
+	                var sigma1l = ((el >>> 14) | (eh << 18)) ^ ((el >>> 18) | (eh << 14)) ^ ((el << 23) | (eh >>> 9))
 
 	                // t1 = h + sigma1 + ch + K[i] + W[i]
-	                var Ki  = K[i];
-	                var Kih = Ki.high;
-	                var Kil = Ki.low;
+	                var Ki = K[i]
+	                var Kih = Ki.high
+	                var Kil = Ki.low
 
-	                var t1l = hl + sigma1l;
-	                var t1h = hh + sigma1h + ((t1l >>> 0) < (hl >>> 0) ? 1 : 0);
-	                var t1l = t1l + chl;
-	                var t1h = t1h + chh + ((t1l >>> 0) < (chl >>> 0) ? 1 : 0);
-	                var t1l = t1l + Kil;
-	                var t1h = t1h + Kih + ((t1l >>> 0) < (Kil >>> 0) ? 1 : 0);
-	                var t1l = t1l + Wil;
-	                var t1h = t1h + Wih + ((t1l >>> 0) < (Wil >>> 0) ? 1 : 0);
+	                var t1l = hl + sigma1l
+	                var t1h = hh + sigma1h + ((t1l >>> 0) < (hl >>> 0) ? 1 : 0)
+	                var t1l = t1l + chl
+	                var t1h = t1h + chh + ((t1l >>> 0) < (chl >>> 0) ? 1 : 0)
+	                var t1l = t1l + Kil
+	                var t1h = t1h + Kih + ((t1l >>> 0) < (Kil >>> 0) ? 1 : 0)
+	                var t1l = t1l + Wil
+	                var t1h = t1h + Wih + ((t1l >>> 0) < (Wil >>> 0) ? 1 : 0)
 
 	                // t2 = sigma0 + maj
-	                var t2l = sigma0l + majl;
-	                var t2h = sigma0h + majh + ((t2l >>> 0) < (sigma0l >>> 0) ? 1 : 0);
+	                var t2l = sigma0l + majl
+	                var t2h = sigma0h + majh + ((t2l >>> 0) < (sigma0l >>> 0) ? 1 : 0)
 
 	                // Update working variables
-	                hh = gh;
-	                hl = gl;
-	                gh = fh;
-	                gl = fl;
-	                fh = eh;
-	                fl = el;
-	                el = (dl + t1l) | 0;
-	                eh = (dh + t1h + ((el >>> 0) < (dl >>> 0) ? 1 : 0)) | 0;
-	                dh = ch;
-	                dl = cl;
-	                ch = bh;
-	                cl = bl;
-	                bh = ah;
-	                bl = al;
-	                al = (t1l + t2l) | 0;
-	                ah = (t1h + t2h + ((al >>> 0) < (t1l >>> 0) ? 1 : 0)) | 0;
+	                hh = gh
+	                hl = gl
+	                gh = fh
+	                gl = fl
+	                fh = eh
+	                fl = el
+	                el = (dl + t1l) | 0
+	                eh = (dh + t1h + ((el >>> 0) < (dl >>> 0) ? 1 : 0)) | 0
+	                dh = ch
+	                dl = cl
+	                ch = bh
+	                cl = bl
+	                bh = ah
+	                bl = al
+	                al = (t1l + t2l) | 0
+	                ah = (t1h + t2h + ((al >>> 0) < (t1l >>> 0) ? 1 : 0)) | 0
 	            }
 
 	            // Intermediate hash value
-	            H0l = H0.low  = (H0l + al);
-	            H0.high = (H0h + ah + ((H0l >>> 0) < (al >>> 0) ? 1 : 0));
-	            H1l = H1.low  = (H1l + bl);
-	            H1.high = (H1h + bh + ((H1l >>> 0) < (bl >>> 0) ? 1 : 0));
-	            H2l = H2.low  = (H2l + cl);
-	            H2.high = (H2h + ch + ((H2l >>> 0) < (cl >>> 0) ? 1 : 0));
-	            H3l = H3.low  = (H3l + dl);
-	            H3.high = (H3h + dh + ((H3l >>> 0) < (dl >>> 0) ? 1 : 0));
-	            H4l = H4.low  = (H4l + el);
-	            H4.high = (H4h + eh + ((H4l >>> 0) < (el >>> 0) ? 1 : 0));
-	            H5l = H5.low  = (H5l + fl);
-	            H5.high = (H5h + fh + ((H5l >>> 0) < (fl >>> 0) ? 1 : 0));
-	            H6l = H6.low  = (H6l + gl);
-	            H6.high = (H6h + gh + ((H6l >>> 0) < (gl >>> 0) ? 1 : 0));
-	            H7l = H7.low  = (H7l + hl);
-	            H7.high = (H7h + hh + ((H7l >>> 0) < (hl >>> 0) ? 1 : 0));
+	            H0l = H0.low = (H0l + al)
+	            H0.high = (H0h + ah + ((H0l >>> 0) < (al >>> 0) ? 1 : 0))
+	            H1l = H1.low = (H1l + bl)
+	            H1.high = (H1h + bh + ((H1l >>> 0) < (bl >>> 0) ? 1 : 0))
+	            H2l = H2.low = (H2l + cl)
+	            H2.high = (H2h + ch + ((H2l >>> 0) < (cl >>> 0) ? 1 : 0))
+	            H3l = H3.low = (H3l + dl)
+	            H3.high = (H3h + dh + ((H3l >>> 0) < (dl >>> 0) ? 1 : 0))
+	            H4l = H4.low = (H4l + el)
+	            H4.high = (H4h + eh + ((H4l >>> 0) < (el >>> 0) ? 1 : 0))
+	            H5l = H5.low = (H5l + fl)
+	            H5.high = (H5h + fh + ((H5l >>> 0) < (fl >>> 0) ? 1 : 0))
+	            H6l = H6.low = (H6l + gl)
+	            H6.high = (H6h + gh + ((H6l >>> 0) < (gl >>> 0) ? 1 : 0))
+	            H7l = H7.low = (H7l + hl)
+	            H7.high = (H7h + hh + ((H7l >>> 0) < (hl >>> 0) ? 1 : 0))
 	        },
 
 	        _doFinalize: function () {
 	            // Shortcuts
-	            var data = this._data;
-	            var dataWords = data.words;
+	            var data = this._data
+	            var dataWords = data.words
 
-	            var nBitsTotal = this._nDataBytes * 8;
-	            var nBitsLeft = data.sigBytes * 8;
+	            var nBitsTotal = this._nDataBytes * 8
+	            var nBitsLeft = data.sigBytes * 8
 
 	            // Add padding
-	            dataWords[nBitsLeft >>> 5] |= 0x80 << (24 - nBitsLeft % 32);
-	            dataWords[(((nBitsLeft + 128) >>> 10) << 5) + 30] = Math.floor(nBitsTotal / 0x100000000);
-	            dataWords[(((nBitsLeft + 128) >>> 10) << 5) + 31] = nBitsTotal;
-	            data.sigBytes = dataWords.length * 4;
+	            dataWords[nBitsLeft >>> 5] |= 0x80 << (24 - nBitsLeft % 32)
+	            dataWords[(((nBitsLeft + 128) >>> 10) << 5) + 30] = Math.floor(nBitsTotal / 0x100000000)
+	            dataWords[(((nBitsLeft + 128) >>> 10) << 5) + 31] = nBitsTotal
+	            data.sigBytes = dataWords.length * 4
 
 	            // Hash final blocks
-	            this._process();
+	            this._process()
 
 	            // Convert hash to 32-bit word array before returning
-	            var hash = this._hash.toX32();
+	            var hash = this._hash.toX32()
 
 	            // Return final computed hash
-	            return hash;
+	            return hash
 	        },
 
 	        clone: function () {
-	            var clone = Hasher.clone.call(this);
-	            clone._hash = this._hash.clone();
+	            var clone = Hasher.clone.call(this)
+	            clone._hash = this._hash.clone()
 
-	            return clone;
+	            return clone
 	        },
 
-	        blockSize: 1024/32
-	    });
+	        blockSize: 1024 / 32
+	    })
 
 	    /**
 	     * Shortcut function to the hasher's object interface.
@@ -12243,7 +11944,7 @@ module.exports = transfer;
 	     *     var hash = CryptoJS.SHA512('message');
 	     *     var hash = CryptoJS.SHA512(wordArray);
 	     */
-	    C.SHA512 = Hasher._createHelper(SHA512);
+	    C.SHA512 = Hasher._createHelper(SHA512)
 
 	    /**
 	     * Shortcut function to the HMAC's object interface.
@@ -12259,62 +11960,58 @@ module.exports = transfer;
 	     *
 	     *     var hmac = CryptoJS.HmacSHA512(message, key);
 	     */
-	    C.HmacSHA512 = Hasher._createHmacHelper(SHA512);
-	}());
+	    C.HmacSHA512 = Hasher._createHmacHelper(SHA512)
+      }())
 
-
-	return CryptoJS.SHA512;
-
-}));
-},{"./core":52,"./x64-core":83}],82:[function(require,module,exports){
-;(function (root, factory, undef) {
-	if (typeof exports === "object") {
+      return CryptoJS.SHA512
+    }))
+  }, { './core':52, './x64-core':83 }],
+  82:[function (require, module, exports) {
+    ;(function (root, factory, undef) {
+      if (typeof exports === 'object') {
 		// CommonJS
-		module.exports = exports = factory(require("./core"), require("./enc-base64"), require("./md5"), require("./evpkdf"), require("./cipher-core"));
-	}
-	else if (typeof define === "function" && define.amd) {
+        module.exports = exports = factory(require('./core'), require('./enc-base64'), require('./md5'), require('./evpkdf'), require('./cipher-core'))
+      } else if (typeof define === 'function' && define.amd) {
 		// AMD
-		define(["./core", "./enc-base64", "./md5", "./evpkdf", "./cipher-core"], factory);
-	}
-	else {
+        define(['./core', './enc-base64', './md5', './evpkdf', './cipher-core'], factory)
+      } else {
 		// Global (browser)
-		factory(root.CryptoJS);
-	}
-}(this, function (CryptoJS) {
-
-	(function () {
+        factory(root.CryptoJS)
+      }
+    }(this, function (CryptoJS) {
+      (function () {
 	    // Shortcuts
-	    var C = CryptoJS;
-	    var C_lib = C.lib;
-	    var WordArray = C_lib.WordArray;
-	    var BlockCipher = C_lib.BlockCipher;
-	    var C_algo = C.algo;
+	    var C = CryptoJS
+	    var C_lib = C.lib
+	    var WordArray = C_lib.WordArray
+	    var BlockCipher = C_lib.BlockCipher
+	    var C_algo = C.algo
 
 	    // Permuted Choice 1 constants
 	    var PC1 = [
-	        57, 49, 41, 33, 25, 17, 9,  1,
+	        57, 49, 41, 33, 25, 17, 9, 1,
 	        58, 50, 42, 34, 26, 18, 10, 2,
 	        59, 51, 43, 35, 27, 19, 11, 3,
 	        60, 52, 44, 36, 63, 55, 47, 39,
-	        31, 23, 15, 7,  62, 54, 46, 38,
-	        30, 22, 14, 6,  61, 53, 45, 37,
-	        29, 21, 13, 5,  28, 20, 12, 4
-	    ];
+	        31, 23, 15, 7, 62, 54, 46, 38,
+	        30, 22, 14, 6, 61, 53, 45, 37,
+	        29, 21, 13, 5, 28, 20, 12, 4
+	    ]
 
 	    // Permuted Choice 2 constants
 	    var PC2 = [
-	        14, 17, 11, 24, 1,  5,
-	        3,  28, 15, 6,  21, 10,
-	        23, 19, 12, 4,  26, 8,
-	        16, 7,  27, 20, 13, 2,
+	        14, 17, 11, 24, 1, 5,
+	        3, 28, 15, 6, 21, 10,
+	        23, 19, 12, 4, 26, 8,
+	        16, 7, 27, 20, 13, 2,
 	        41, 52, 31, 37, 47, 55,
 	        30, 40, 51, 45, 33, 48,
 	        44, 49, 39, 56, 34, 53,
 	        46, 42, 50, 36, 29, 32
-	    ];
+	    ]
 
 	    // Cumulative bit shift constants
-	    var BIT_SHIFTS = [1,  2,  4,  6,  8,  10, 12, 14, 15, 17, 19, 21, 23, 25, 27, 28];
+	    var BIT_SHIFTS = [1, 2, 4, 6, 8, 10, 12, 14, 15, 17, 19, 21, 23, 25, 27, 28]
 
 	    // SBOXes and round permutation constants
 	    var SBOX_P = [
@@ -12846,13 +12543,13 @@ module.exports = transfer;
 	            0x8000001e: 0x20020,
 	            0x8000001f: 0x8020800
 	        }
-	    ];
+	    ]
 
 	    // Masks that select the SBOX input
 	    var SBOX_MASK = [
 	        0xf8000001, 0x1f800000, 0x01f80000, 0x001f8000,
 	        0x0001f800, 0x00001f80, 0x000001f8, 0x8000001f
-	    ];
+	    ]
 
 	    /**
 	     * DES block cipher algorithm.
@@ -12860,122 +12557,122 @@ module.exports = transfer;
 	    var DES = C_algo.DES = BlockCipher.extend({
 	        _doReset: function () {
 	            // Shortcuts
-	            var key = this._key;
-	            var keyWords = key.words;
+	            var key = this._key
+	            var keyWords = key.words
 
 	            // Select 56 bits according to PC1
-	            var keyBits = [];
+	            var keyBits = []
 	            for (var i = 0; i < 56; i++) {
-	                var keyBitPos = PC1[i] - 1;
-	                keyBits[i] = (keyWords[keyBitPos >>> 5] >>> (31 - keyBitPos % 32)) & 1;
+	                var keyBitPos = PC1[i] - 1
+	                keyBits[i] = (keyWords[keyBitPos >>> 5] >>> (31 - keyBitPos % 32)) & 1
 	            }
 
 	            // Assemble 16 subkeys
-	            var subKeys = this._subKeys = [];
+	            var subKeys = this._subKeys = []
 	            for (var nSubKey = 0; nSubKey < 16; nSubKey++) {
 	                // Create subkey
-	                var subKey = subKeys[nSubKey] = [];
+	                var subKey = subKeys[nSubKey] = []
 
 	                // Shortcut
-	                var bitShift = BIT_SHIFTS[nSubKey];
+	                var bitShift = BIT_SHIFTS[nSubKey]
 
 	                // Select 48 bits according to PC2
 	                for (var i = 0; i < 24; i++) {
 	                    // Select from the left 28 key bits
-	                    subKey[(i / 6) | 0] |= keyBits[((PC2[i] - 1) + bitShift) % 28] << (31 - i % 6);
+	                    subKey[(i / 6) | 0] |= keyBits[((PC2[i] - 1) + bitShift) % 28] << (31 - i % 6)
 
 	                    // Select from the right 28 key bits
-	                    subKey[4 + ((i / 6) | 0)] |= keyBits[28 + (((PC2[i + 24] - 1) + bitShift) % 28)] << (31 - i % 6);
+	                    subKey[4 + ((i / 6) | 0)] |= keyBits[28 + (((PC2[i + 24] - 1) + bitShift) % 28)] << (31 - i % 6)
 	                }
 
 	                // Since each subkey is applied to an expanded 32-bit input,
 	                // the subkey can be broken into 8 values scaled to 32-bits,
 	                // which allows the key to be used without expansion
-	                subKey[0] = (subKey[0] << 1) | (subKey[0] >>> 31);
+	                subKey[0] = (subKey[0] << 1) | (subKey[0] >>> 31)
 	                for (var i = 1; i < 7; i++) {
-	                    subKey[i] = subKey[i] >>> ((i - 1) * 4 + 3);
+	                    subKey[i] = subKey[i] >>> ((i - 1) * 4 + 3)
 	                }
-	                subKey[7] = (subKey[7] << 5) | (subKey[7] >>> 27);
+	                subKey[7] = (subKey[7] << 5) | (subKey[7] >>> 27)
 	            }
 
 	            // Compute inverse subkeys
-	            var invSubKeys = this._invSubKeys = [];
+	            var invSubKeys = this._invSubKeys = []
 	            for (var i = 0; i < 16; i++) {
-	                invSubKeys[i] = subKeys[15 - i];
+	                invSubKeys[i] = subKeys[15 - i]
 	            }
 	        },
 
 	        encryptBlock: function (M, offset) {
-	            this._doCryptBlock(M, offset, this._subKeys);
+	            this._doCryptBlock(M, offset, this._subKeys)
 	        },
 
 	        decryptBlock: function (M, offset) {
-	            this._doCryptBlock(M, offset, this._invSubKeys);
+	            this._doCryptBlock(M, offset, this._invSubKeys)
 	        },
 
 	        _doCryptBlock: function (M, offset, subKeys) {
 	            // Get input
-	            this._lBlock = M[offset];
-	            this._rBlock = M[offset + 1];
+	            this._lBlock = M[offset]
+	            this._rBlock = M[offset + 1]
 
 	            // Initial permutation
-	            exchangeLR.call(this, 4,  0x0f0f0f0f);
-	            exchangeLR.call(this, 16, 0x0000ffff);
-	            exchangeRL.call(this, 2,  0x33333333);
-	            exchangeRL.call(this, 8,  0x00ff00ff);
-	            exchangeLR.call(this, 1,  0x55555555);
+	            exchangeLR.call(this, 4, 0x0f0f0f0f)
+	            exchangeLR.call(this, 16, 0x0000ffff)
+	            exchangeRL.call(this, 2, 0x33333333)
+	            exchangeRL.call(this, 8, 0x00ff00ff)
+	            exchangeLR.call(this, 1, 0x55555555)
 
 	            // Rounds
 	            for (var round = 0; round < 16; round++) {
 	                // Shortcuts
-	                var subKey = subKeys[round];
-	                var lBlock = this._lBlock;
-	                var rBlock = this._rBlock;
+	                var subKey = subKeys[round]
+	                var lBlock = this._lBlock
+	                var rBlock = this._rBlock
 
 	                // Feistel function
-	                var f = 0;
+	                var f = 0
 	                for (var i = 0; i < 8; i++) {
-	                    f |= SBOX_P[i][((rBlock ^ subKey[i]) & SBOX_MASK[i]) >>> 0];
+	                    f |= SBOX_P[i][((rBlock ^ subKey[i]) & SBOX_MASK[i]) >>> 0]
 	                }
-	                this._lBlock = rBlock;
-	                this._rBlock = lBlock ^ f;
+	                this._lBlock = rBlock
+	                this._rBlock = lBlock ^ f
 	            }
 
 	            // Undo swap from last round
-	            var t = this._lBlock;
-	            this._lBlock = this._rBlock;
-	            this._rBlock = t;
+	            var t = this._lBlock
+	            this._lBlock = this._rBlock
+	            this._rBlock = t
 
 	            // Final permutation
-	            exchangeLR.call(this, 1,  0x55555555);
-	            exchangeRL.call(this, 8,  0x00ff00ff);
-	            exchangeRL.call(this, 2,  0x33333333);
-	            exchangeLR.call(this, 16, 0x0000ffff);
-	            exchangeLR.call(this, 4,  0x0f0f0f0f);
+	            exchangeLR.call(this, 1, 0x55555555)
+	            exchangeRL.call(this, 8, 0x00ff00ff)
+	            exchangeRL.call(this, 2, 0x33333333)
+	            exchangeLR.call(this, 16, 0x0000ffff)
+	            exchangeLR.call(this, 4, 0x0f0f0f0f)
 
 	            // Set output
-	            M[offset] = this._lBlock;
-	            M[offset + 1] = this._rBlock;
+	            M[offset] = this._lBlock
+	            M[offset + 1] = this._rBlock
 	        },
 
-	        keySize: 64/32,
+	        keySize: 64 / 32,
 
-	        ivSize: 64/32,
+	        ivSize: 64 / 32,
 
-	        blockSize: 64/32
-	    });
+	        blockSize: 64 / 32
+	    })
 
 	    // Swap bits across the left and right words
-	    function exchangeLR(offset, mask) {
-	        var t = ((this._lBlock >>> offset) ^ this._rBlock) & mask;
-	        this._rBlock ^= t;
-	        this._lBlock ^= t << offset;
+	    function exchangeLR (offset, mask) {
+	        var t = ((this._lBlock >>> offset) ^ this._rBlock) & mask
+	        this._rBlock ^= t
+	        this._lBlock ^= t << offset
 	    }
 
-	    function exchangeRL(offset, mask) {
-	        var t = ((this._rBlock >>> offset) ^ this._lBlock) & mask;
-	        this._lBlock ^= t;
-	        this._rBlock ^= t << offset;
+	    function exchangeRL (offset, mask) {
+	        var t = ((this._rBlock >>> offset) ^ this._lBlock) & mask
+	        this._lBlock ^= t
+	        this._rBlock ^= t << offset
 	    }
 
 	    /**
@@ -12986,7 +12683,7 @@ module.exports = transfer;
 	     *     var ciphertext = CryptoJS.DES.encrypt(message, key, cfg);
 	     *     var plaintext  = CryptoJS.DES.decrypt(ciphertext, key, cfg);
 	     */
-	    C.DES = BlockCipher._createHelper(DES);
+	    C.DES = BlockCipher._createHelper(DES)
 
 	    /**
 	     * Triple-DES block cipher algorithm.
@@ -12994,33 +12691,33 @@ module.exports = transfer;
 	    var TripleDES = C_algo.TripleDES = BlockCipher.extend({
 	        _doReset: function () {
 	            // Shortcuts
-	            var key = this._key;
-	            var keyWords = key.words;
+	            var key = this._key
+	            var keyWords = key.words
 
 	            // Create DES instances
-	            this._des1 = DES.createEncryptor(WordArray.create(keyWords.slice(0, 2)));
-	            this._des2 = DES.createEncryptor(WordArray.create(keyWords.slice(2, 4)));
-	            this._des3 = DES.createEncryptor(WordArray.create(keyWords.slice(4, 6)));
+	            this._des1 = DES.createEncryptor(WordArray.create(keyWords.slice(0, 2)))
+	            this._des2 = DES.createEncryptor(WordArray.create(keyWords.slice(2, 4)))
+	            this._des3 = DES.createEncryptor(WordArray.create(keyWords.slice(4, 6)))
 	        },
 
 	        encryptBlock: function (M, offset) {
-	            this._des1.encryptBlock(M, offset);
-	            this._des2.decryptBlock(M, offset);
-	            this._des3.encryptBlock(M, offset);
+	            this._des1.encryptBlock(M, offset)
+	            this._des2.decryptBlock(M, offset)
+	            this._des3.encryptBlock(M, offset)
 	        },
 
 	        decryptBlock: function (M, offset) {
-	            this._des3.decryptBlock(M, offset);
-	            this._des2.encryptBlock(M, offset);
-	            this._des1.decryptBlock(M, offset);
+	            this._des3.decryptBlock(M, offset)
+	            this._des2.encryptBlock(M, offset)
+	            this._des1.decryptBlock(M, offset)
 	        },
 
-	        keySize: 192/32,
+	        keySize: 192 / 32,
 
-	        ivSize: 64/32,
+	        ivSize: 64 / 32,
 
-	        blockSize: 64/32
-	    });
+	        blockSize: 64 / 32
+	    })
 
 	    /**
 	     * Shortcut functions to the cipher's object interface.
@@ -13030,40 +12727,36 @@ module.exports = transfer;
 	     *     var ciphertext = CryptoJS.TripleDES.encrypt(message, key, cfg);
 	     *     var plaintext  = CryptoJS.TripleDES.decrypt(ciphertext, key, cfg);
 	     */
-	    C.TripleDES = BlockCipher._createHelper(TripleDES);
-	}());
+	    C.TripleDES = BlockCipher._createHelper(TripleDES)
+      }())
 
-
-	return CryptoJS.TripleDES;
-
-}));
-},{"./cipher-core":51,"./core":52,"./enc-base64":53,"./evpkdf":55,"./md5":60}],83:[function(require,module,exports){
-;(function (root, factory) {
-	if (typeof exports === "object") {
+      return CryptoJS.TripleDES
+    }))
+  }, { './cipher-core':51, './core':52, './enc-base64':53, './evpkdf':55, './md5':60 }],
+  83:[function (require, module, exports) {
+    ;(function (root, factory) {
+      if (typeof exports === 'object') {
 		// CommonJS
-		module.exports = exports = factory(require("./core"));
-	}
-	else if (typeof define === "function" && define.amd) {
+        module.exports = exports = factory(require('./core'))
+      } else if (typeof define === 'function' && define.amd) {
 		// AMD
-		define(["./core"], factory);
-	}
-	else {
+        define(['./core'], factory)
+      } else {
 		// Global (browser)
-		factory(root.CryptoJS);
-	}
-}(this, function (CryptoJS) {
-
-	(function (undefined) {
+        factory(root.CryptoJS)
+      }
+    }(this, function (CryptoJS) {
+      (function (undefined) {
 	    // Shortcuts
-	    var C = CryptoJS;
-	    var C_lib = C.lib;
-	    var Base = C_lib.Base;
-	    var X32WordArray = C_lib.WordArray;
+	    var C = CryptoJS
+	    var C_lib = C.lib
+	    var Base = C_lib.Base
+	    var X32WordArray = C_lib.WordArray
 
 	    /**
 	     * x64 namespace.
 	     */
-	    var C_x64 = C.x64 = {};
+	    var C_x64 = C.x64 = {}
 
 	    /**
 	     * A 64-bit word.
@@ -13080,8 +12773,8 @@ module.exports = transfer;
 	         *     var x64Word = CryptoJS.x64.Word.create(0x00010203, 0x04050607);
 	         */
 	        init: function (high, low) {
-	            this.high = high;
-	            this.low = low;
+	            this.high = high
+	            this.low = low
 	        }
 
 	        /**
@@ -13248,7 +12941,7 @@ module.exports = transfer;
 
 	            // return X64Word.create(high, low);
 	        // }
-	    });
+	    })
 
 	    /**
 	     * An array of 64-bit words.
@@ -13278,12 +12971,12 @@ module.exports = transfer;
 	         *     ], 10);
 	         */
 	        init: function (words, sigBytes) {
-	            words = this.words = words || [];
+	            words = this.words = words || []
 
 	            if (sigBytes != undefined) {
-	                this.sigBytes = sigBytes;
+	                this.sigBytes = sigBytes
 	            } else {
-	                this.sigBytes = words.length * 8;
+	                this.sigBytes = words.length * 8
 	            }
 	        },
 
@@ -13298,18 +12991,18 @@ module.exports = transfer;
 	         */
 	        toX32: function () {
 	            // Shortcuts
-	            var x64Words = this.words;
-	            var x64WordsLength = x64Words.length;
+	            var x64Words = this.words
+	            var x64WordsLength = x64Words.length
 
 	            // Convert
-	            var x32Words = [];
+	            var x32Words = []
 	            for (var i = 0; i < x64WordsLength; i++) {
-	                var x64Word = x64Words[i];
-	                x32Words.push(x64Word.high);
-	                x32Words.push(x64Word.low);
+	                var x64Word = x64Words[i]
+	                x32Words.push(x64Word.high)
+	                x32Words.push(x64Word.low)
 	            }
 
-	            return X32WordArray.create(x32Words, this.sigBytes);
+	            return X32WordArray.create(x32Words, this.sigBytes)
 	        },
 
 	        /**
@@ -13322,280 +13015,275 @@ module.exports = transfer;
 	         *     var clone = x64WordArray.clone();
 	         */
 	        clone: function () {
-	            var clone = Base.clone.call(this);
+	            var clone = Base.clone.call(this)
 
 	            // Clone "words" array
-	            var words = clone.words = this.words.slice(0);
+	            var words = clone.words = this.words.slice(0)
 
 	            // Clone each X64Word object
-	            var wordsLength = words.length;
+	            var wordsLength = words.length
 	            for (var i = 0; i < wordsLength; i++) {
-	                words[i] = words[i].clone();
+	                words[i] = words[i].clone()
 	            }
 
-	            return clone;
+	            return clone
 	        }
-	    });
-	}());
+	    })
+      }())
 
-
-	return CryptoJS;
-
-}));
-},{"./core":52}],84:[function(require,module,exports){
+      return CryptoJS
+    }))
+  }, { './core':52 }],
+  84:[function (require, module, exports) {
 /*! https://mths.be/utf8js v2.1.2 by @mathias */
-;(function(root) {
-
+    ;(function (root) {
 	// Detect free variables `exports`
-	var freeExports = typeof exports == 'object' && exports;
+      var freeExports = typeof exports === 'object' && exports
 
 	// Detect free variable `module`
-	var freeModule = typeof module == 'object' && module &&
-		module.exports == freeExports && module;
+      var freeModule = typeof module === 'object' && module &&
+		module.exports == freeExports && module
 
 	// Detect free variable `global`, from Node.js or Browserified code,
 	// and use it as `root`
-	var freeGlobal = typeof global == 'object' && global;
-	if (freeGlobal.global === freeGlobal || freeGlobal.window === freeGlobal) {
-		root = freeGlobal;
-	}
+      var freeGlobal = typeof global === 'object' && global
+      if (freeGlobal.global === freeGlobal || freeGlobal.window === freeGlobal) {
+        root = freeGlobal
+      }
 
-	/*--------------------------------------------------------------------------*/
+	/* -------------------------------------------------------------------------- */
 
-	var stringFromCharCode = String.fromCharCode;
+      var stringFromCharCode = String.fromCharCode
 
 	// Taken from https://mths.be/punycode
-	function ucs2decode(string) {
-		var output = [];
-		var counter = 0;
-		var length = string.length;
-		var value;
-		var extra;
-		while (counter < length) {
-			value = string.charCodeAt(counter++);
-			if (value >= 0xD800 && value <= 0xDBFF && counter < length) {
+      function ucs2decode (string) {
+        var output = []
+        var counter = 0
+        var length = string.length
+        var value
+        var extra
+        while (counter < length) {
+          value = string.charCodeAt(counter++)
+          if (value >= 0xD800 && value <= 0xDBFF && counter < length) {
 				// high surrogate, and there is a next character
-				extra = string.charCodeAt(counter++);
-				if ((extra & 0xFC00) == 0xDC00) { // low surrogate
-					output.push(((value & 0x3FF) << 10) + (extra & 0x3FF) + 0x10000);
-				} else {
+            extra = string.charCodeAt(counter++)
+            if ((extra & 0xFC00) == 0xDC00) { // low surrogate
+              output.push(((value & 0x3FF) << 10) + (extra & 0x3FF) + 0x10000)
+            } else {
 					// unmatched surrogate; only append this code unit, in case the next
 					// code unit is the high surrogate of a surrogate pair
-					output.push(value);
-					counter--;
-				}
-			} else {
-				output.push(value);
-			}
-		}
-		return output;
-	}
+              output.push(value)
+              counter--
+            }
+          } else {
+            output.push(value)
+          }
+        }
+        return output
+      }
 
 	// Taken from https://mths.be/punycode
-	function ucs2encode(array) {
-		var length = array.length;
-		var index = -1;
-		var value;
-		var output = '';
-		while (++index < length) {
-			value = array[index];
-			if (value > 0xFFFF) {
-				value -= 0x10000;
-				output += stringFromCharCode(value >>> 10 & 0x3FF | 0xD800);
-				value = 0xDC00 | value & 0x3FF;
-			}
-			output += stringFromCharCode(value);
-		}
-		return output;
-	}
+      function ucs2encode (array) {
+        var length = array.length
+        var index = -1
+        var value
+        var output = ''
+        while (++index < length) {
+          value = array[index]
+          if (value > 0xFFFF) {
+            value -= 0x10000
+            output += stringFromCharCode(value >>> 10 & 0x3FF | 0xD800)
+            value = 0xDC00 | value & 0x3FF
+          }
+          output += stringFromCharCode(value)
+        }
+        return output
+      }
 
-	function checkScalarValue(codePoint) {
-		if (codePoint >= 0xD800 && codePoint <= 0xDFFF) {
-			throw Error(
+      function checkScalarValue (codePoint) {
+        if (codePoint >= 0xD800 && codePoint <= 0xDFFF) {
+          throw Error(
 				'Lone surrogate U+' + codePoint.toString(16).toUpperCase() +
 				' is not a scalar value'
-			);
-		}
-	}
-	/*--------------------------------------------------------------------------*/
+			)
+        }
+      }
+	/* -------------------------------------------------------------------------- */
 
-	function createByte(codePoint, shift) {
-		return stringFromCharCode(((codePoint >> shift) & 0x3F) | 0x80);
-	}
+      function createByte (codePoint, shift) {
+        return stringFromCharCode(((codePoint >> shift) & 0x3F) | 0x80)
+      }
 
-	function encodeCodePoint(codePoint) {
-		if ((codePoint & 0xFFFFFF80) == 0) { // 1-byte sequence
-			return stringFromCharCode(codePoint);
-		}
-		var symbol = '';
-		if ((codePoint & 0xFFFFF800) == 0) { // 2-byte sequence
-			symbol = stringFromCharCode(((codePoint >> 6) & 0x1F) | 0xC0);
-		}
-		else if ((codePoint & 0xFFFF0000) == 0) { // 3-byte sequence
-			checkScalarValue(codePoint);
-			symbol = stringFromCharCode(((codePoint >> 12) & 0x0F) | 0xE0);
-			symbol += createByte(codePoint, 6);
-		}
-		else if ((codePoint & 0xFFE00000) == 0) { // 4-byte sequence
-			symbol = stringFromCharCode(((codePoint >> 18) & 0x07) | 0xF0);
-			symbol += createByte(codePoint, 12);
-			symbol += createByte(codePoint, 6);
-		}
-		symbol += stringFromCharCode((codePoint & 0x3F) | 0x80);
-		return symbol;
-	}
+      function encodeCodePoint (codePoint) {
+        if ((codePoint & 0xFFFFFF80) == 0) { // 1-byte sequence
+          return stringFromCharCode(codePoint)
+        }
+        var symbol = ''
+        if ((codePoint & 0xFFFFF800) == 0) { // 2-byte sequence
+          symbol = stringFromCharCode(((codePoint >> 6) & 0x1F) | 0xC0)
+        } else if ((codePoint & 0xFFFF0000) == 0) { // 3-byte sequence
+          checkScalarValue(codePoint)
+          symbol = stringFromCharCode(((codePoint >> 12) & 0x0F) | 0xE0)
+          symbol += createByte(codePoint, 6)
+        } else if ((codePoint & 0xFFE00000) == 0) { // 4-byte sequence
+          symbol = stringFromCharCode(((codePoint >> 18) & 0x07) | 0xF0)
+          symbol += createByte(codePoint, 12)
+          symbol += createByte(codePoint, 6)
+        }
+        symbol += stringFromCharCode((codePoint & 0x3F) | 0x80)
+        return symbol
+      }
 
-	function utf8encode(string) {
-		var codePoints = ucs2decode(string);
-		var length = codePoints.length;
-		var index = -1;
-		var codePoint;
-		var byteString = '';
-		while (++index < length) {
-			codePoint = codePoints[index];
-			byteString += encodeCodePoint(codePoint);
-		}
-		return byteString;
-	}
+      function utf8encode (string) {
+        var codePoints = ucs2decode(string)
+        var length = codePoints.length
+        var index = -1
+        var codePoint
+        var byteString = ''
+        while (++index < length) {
+          codePoint = codePoints[index]
+          byteString += encodeCodePoint(codePoint)
+        }
+        return byteString
+      }
 
-	/*--------------------------------------------------------------------------*/
+	/* -------------------------------------------------------------------------- */
 
-	function readContinuationByte() {
-		if (byteIndex >= byteCount) {
-			throw Error('Invalid byte index');
-		}
+      function readContinuationByte () {
+        if (byteIndex >= byteCount) {
+          throw Error('Invalid byte index')
+        }
 
-		var continuationByte = byteArray[byteIndex] & 0xFF;
-		byteIndex++;
+        var continuationByte = byteArray[byteIndex] & 0xFF
+        byteIndex++
 
-		if ((continuationByte & 0xC0) == 0x80) {
-			return continuationByte & 0x3F;
-		}
+        if ((continuationByte & 0xC0) == 0x80) {
+          return continuationByte & 0x3F
+        }
 
 		// If we end up here, it’s not a continuation byte
-		throw Error('Invalid continuation byte');
-	}
+        throw Error('Invalid continuation byte')
+      }
 
-	function decodeSymbol() {
-		var byte1;
-		var byte2;
-		var byte3;
-		var byte4;
-		var codePoint;
+      function decodeSymbol () {
+        var byte1
+        var byte2
+        var byte3
+        var byte4
+        var codePoint
 
-		if (byteIndex > byteCount) {
-			throw Error('Invalid byte index');
-		}
+        if (byteIndex > byteCount) {
+          throw Error('Invalid byte index')
+        }
 
-		if (byteIndex == byteCount) {
-			return false;
-		}
+        if (byteIndex == byteCount) {
+          return false
+        }
 
 		// Read first byte
-		byte1 = byteArray[byteIndex] & 0xFF;
-		byteIndex++;
+        byte1 = byteArray[byteIndex] & 0xFF
+        byteIndex++
 
 		// 1-byte sequence (no continuation bytes)
-		if ((byte1 & 0x80) == 0) {
-			return byte1;
-		}
+        if ((byte1 & 0x80) == 0) {
+          return byte1
+        }
 
 		// 2-byte sequence
-		if ((byte1 & 0xE0) == 0xC0) {
-			byte2 = readContinuationByte();
-			codePoint = ((byte1 & 0x1F) << 6) | byte2;
-			if (codePoint >= 0x80) {
-				return codePoint;
-			} else {
-				throw Error('Invalid continuation byte');
-			}
-		}
+        if ((byte1 & 0xE0) == 0xC0) {
+          byte2 = readContinuationByte()
+          codePoint = ((byte1 & 0x1F) << 6) | byte2
+          if (codePoint >= 0x80) {
+            return codePoint
+          } else {
+            throw Error('Invalid continuation byte')
+          }
+        }
 
 		// 3-byte sequence (may include unpaired surrogates)
-		if ((byte1 & 0xF0) == 0xE0) {
-			byte2 = readContinuationByte();
-			byte3 = readContinuationByte();
-			codePoint = ((byte1 & 0x0F) << 12) | (byte2 << 6) | byte3;
-			if (codePoint >= 0x0800) {
-				checkScalarValue(codePoint);
-				return codePoint;
-			} else {
-				throw Error('Invalid continuation byte');
-			}
-		}
+        if ((byte1 & 0xF0) == 0xE0) {
+          byte2 = readContinuationByte()
+          byte3 = readContinuationByte()
+          codePoint = ((byte1 & 0x0F) << 12) | (byte2 << 6) | byte3
+          if (codePoint >= 0x0800) {
+            checkScalarValue(codePoint)
+            return codePoint
+          } else {
+            throw Error('Invalid continuation byte')
+          }
+        }
 
 		// 4-byte sequence
-		if ((byte1 & 0xF8) == 0xF0) {
-			byte2 = readContinuationByte();
-			byte3 = readContinuationByte();
-			byte4 = readContinuationByte();
-			codePoint = ((byte1 & 0x07) << 0x12) | (byte2 << 0x0C) |
-				(byte3 << 0x06) | byte4;
-			if (codePoint >= 0x010000 && codePoint <= 0x10FFFF) {
-				return codePoint;
-			}
-		}
+        if ((byte1 & 0xF8) == 0xF0) {
+          byte2 = readContinuationByte()
+          byte3 = readContinuationByte()
+          byte4 = readContinuationByte()
+          codePoint = ((byte1 & 0x07) << 0x12) | (byte2 << 0x0C) |
+				(byte3 << 0x06) | byte4
+          if (codePoint >= 0x010000 && codePoint <= 0x10FFFF) {
+            return codePoint
+          }
+        }
 
-		throw Error('Invalid UTF-8 detected');
-	}
+        throw Error('Invalid UTF-8 detected')
+      }
 
-	var byteArray;
-	var byteCount;
-	var byteIndex;
-	function utf8decode(byteString) {
-		byteArray = ucs2decode(byteString);
-		byteCount = byteArray.length;
-		byteIndex = 0;
-		var codePoints = [];
-		var tmp;
-		while ((tmp = decodeSymbol()) !== false) {
-			codePoints.push(tmp);
-		}
-		return ucs2encode(codePoints);
-	}
+      var byteArray
+      var byteCount
+      var byteIndex
+      function utf8decode (byteString) {
+        byteArray = ucs2decode(byteString)
+        byteCount = byteArray.length
+        byteIndex = 0
+        var codePoints = []
+        var tmp
+        while ((tmp = decodeSymbol()) !== false) {
+          codePoints.push(tmp)
+        }
+        return ucs2encode(codePoints)
+      }
 
-	/*--------------------------------------------------------------------------*/
+	/* -------------------------------------------------------------------------- */
 
-	var utf8 = {
-		'version': '2.1.2',
-		'encode': utf8encode,
-		'decode': utf8decode
-	};
+      var utf8 = {
+        'version': '2.1.2',
+        'encode': utf8encode,
+        'decode': utf8decode
+      }
 
 	// Some AMD build optimizers, like r.js, check for specific condition patterns
 	// like the following:
-	if (
-		typeof define == 'function' &&
-		typeof define.amd == 'object' &&
+      if (
+		typeof define === 'function' &&
+		typeof define.amd === 'object' &&
 		define.amd
 	) {
-		define(function() {
-			return utf8;
-		});
-	}	else if (freeExports && !freeExports.nodeType) {
-		if (freeModule) { // in Node.js or RingoJS v0.8.0+
-			freeModule.exports = utf8;
-		} else { // in Narwhal or RingoJS v0.7.0-
-			var object = {};
-			var hasOwnProperty = object.hasOwnProperty;
-			for (var key in utf8) {
-				hasOwnProperty.call(utf8, key) && (freeExports[key] = utf8[key]);
-			}
-		}
-	} else { // in Rhino or a web browser
-		root.utf8 = utf8;
-	}
-
-}(this));
-
-},{}],85:[function(require,module,exports){
-module.exports = XMLHttpRequest;
-
-},{}],"bignumber.js":[function(require,module,exports){
+        define(function () {
+          return utf8
+        })
+      }	else if (freeExports && !freeExports.nodeType) {
+        if (freeModule) { // in Node.js or RingoJS v0.8.0+
+          freeModule.exports = utf8
+        } else { // in Narwhal or RingoJS v0.7.0-
+          var object = {}
+          var hasOwnProperty = object.hasOwnProperty
+          for (var key in utf8) {
+            hasOwnProperty.call(utf8, key) && (freeExports[key] = utf8[key])
+          }
+        }
+      } else { // in Rhino or a web browser
+        root.utf8 = utf8
+      }
+    }(this))
+  }, {}],
+  85:[function (require, module, exports) {
+    module.exports = XMLHttpRequest
+  }, {}],
+  'bignumber.js':[function (require, module, exports) {
 /*! bignumber.js v4.0.0 https://github.com/MikeMcl/bignumber.js/LICENCE */
 
-;(function (globalObj) {
-    'use strict';
+    ;(function (globalObj) {
+      'use strict'
 
     /*
       bignumber.js v4.0.0
@@ -13605,8 +13293,7 @@ module.exports = XMLHttpRequest;
       MIT Expat Licence
     */
 
-
-    var BigNumber,
+      var BigNumber,
         isNumeric = /^-?(\d+(\.\d*)?|\.\d+)(e[+-]?\d+)?$/i,
         mathceil = Math.ceil,
         mathfloor = Math.floor,
@@ -13626,23 +13313,20 @@ module.exports = XMLHttpRequest;
          * the arguments to toExponential, toFixed, toFormat, and toPrecision, beyond which an
          * exception is thrown (if ERRORS is true).
          */
-        MAX = 1E9;                                   // 0 to MAX_INT32
-
+        MAX = 1E9                                   // 0 to MAX_INT32
 
     /*
      * Create and return a BigNumber constructor.
      */
-    function constructorFactory(config) {
+      function constructorFactory (config) {
         var div, parseNumeric,
 
             // id tracks the caller function, so its name can be included in error messages.
-            id = 0,
-            P = BigNumber.prototype,
-            ONE = new BigNumber(1),
+          id = 0,
+          P = BigNumber.prototype,
+          ONE = new BigNumber(1),
 
-
-            /********************************* EDITABLE DEFAULTS **********************************/
-
+            /** ******************************* EDITABLE DEFAULTS **********************************/
 
             /*
              * The default values below must be integers within the inclusive ranges stated.
@@ -13650,7 +13334,7 @@ module.exports = XMLHttpRequest;
              */
 
             // The maximum number of decimal places for operations involving division.
-            DECIMAL_PLACES = 20,                     // 0 to MAX
+          DECIMAL_PLACES = 20,                     // 0 to MAX
 
             /*
              * The rounding mode used when rounding to the above decimal places, and when using
@@ -13665,37 +13349,37 @@ module.exports = XMLHttpRequest;
              * HALF_CEIL  7 Towards nearest neighbour. If equidistant, towards +Infinity.
              * HALF_FLOOR 8 Towards nearest neighbour. If equidistant, towards -Infinity.
              */
-            ROUNDING_MODE = 4,                       // 0 to 8
+          ROUNDING_MODE = 4,                       // 0 to 8
 
             // EXPONENTIAL_AT : [TO_EXP_NEG , TO_EXP_POS]
 
             // The exponent value at and beneath which toString returns exponential notation.
             // Number type: -7
-            TO_EXP_NEG = -7,                         // 0 to -MAX
+          TO_EXP_NEG = -7,                         // 0 to -MAX
 
             // The exponent value at and above which toString returns exponential notation.
             // Number type: 21
-            TO_EXP_POS = 21,                         // 0 to MAX
+          TO_EXP_POS = 21,                         // 0 to MAX
 
             // RANGE : [MIN_EXP, MAX_EXP]
 
             // The minimum exponent value, beneath which underflow to zero occurs.
             // Number type: -324  (5e-324)
-            MIN_EXP = -1e7,                          // -1 to -MAX
+          MIN_EXP = -1e7,                          // -1 to -MAX
 
             // The maximum exponent value, above which overflow to Infinity occurs.
             // Number type:  308  (1.7976931348623157e+308)
             // For MAX_EXP > 1e7, e.g. new BigNumber('1e100000000').plus(1) may be slow.
-            MAX_EXP = 1e7,                           // 1 to MAX
+          MAX_EXP = 1e7,                           // 1 to MAX
 
             // Whether BigNumber Errors are ever thrown.
-            ERRORS = true,                           // true or false
+          ERRORS = true,                           // true or false
 
             // Change to intValidatorNoErrors if ERRORS is false.
-            isValidInt = intValidatorWithErrors,     // intValidatorWithErrors/intValidatorNoErrors
+          isValidInt = intValidatorWithErrors,     // intValidatorWithErrors/intValidatorNoErrors
 
             // Whether to use cryptographically-secure random number generation, if available.
-            CRYPTO = false,                          // true or false
+          CRYPTO = false,                          // true or false
 
             /*
              * The modulo mode used when calculating the modulus: a mod n.
@@ -13715,28 +13399,25 @@ module.exports = XMLHttpRequest;
              * modes are commonly used for the modulus operation.
              * Although the other rounding modes can also be used, they may not give useful results.
              */
-            MODULO_MODE = 1,                         // 0 to 9
+          MODULO_MODE = 1,                         // 0 to 9
 
             // The maximum number of significant digits of the result of the toPower operation.
             // If POW_PRECISION is 0, there will be unlimited significant digits.
-            POW_PRECISION = 0,                       // 0 to MAX
+          POW_PRECISION = 0,                       // 0 to MAX
 
             // The format specification used by the BigNumber.prototype.toFormat method.
-            FORMAT = {
-                decimalSeparator: '.',
-                groupSeparator: ',',
-                groupSize: 3,
-                secondaryGroupSize: 0,
-                fractionGroupSeparator: '\xA0',      // non-breaking space
-                fractionGroupSize: 0
-            };
-
+          FORMAT = {
+            decimalSeparator: '.',
+            groupSeparator: ',',
+            groupSize: 3,
+            secondaryGroupSize: 0,
+            fractionGroupSeparator: '\xA0',      // non-breaking space
+            fractionGroupSize: 0
+          }
 
         /******************************************************************************************/
 
-
         // CONSTRUCTOR
-
 
         /*
          * The BigNumber constructor and exported function.
@@ -13745,183 +13426,172 @@ module.exports = XMLHttpRequest;
          * n {number|string|BigNumber} A numeric value.
          * [b] {number} The base of n. Integer, 2 to 64 inclusive.
          */
-        function BigNumber( n, b ) {
-            var c, e, i, num, len, str,
-                x = this;
+        function BigNumber (n, b) {
+          var c, e, i, num, len, str,
+            x = this
 
             // Enable constructor usage without new.
-            if ( !( x instanceof BigNumber ) ) {
-
+          if (!(x instanceof BigNumber)) {
                 // 'BigNumber() constructor call without new: {n}'
-                if (ERRORS) raise( 26, 'constructor call without new', n );
-                return new BigNumber( n, b );
-            }
+            if (ERRORS) raise(26, 'constructor call without new', n)
+            return new BigNumber(n, b)
+          }
 
             // 'new BigNumber() base not an integer: {b}'
             // 'new BigNumber() base out of range: {b}'
-            if ( b == null || !isValidInt( b, 2, 64, id, 'base' ) ) {
-
+          if (b == null || !isValidInt(b, 2, 64, id, 'base')) {
                 // Duplicate.
-                if ( n instanceof BigNumber ) {
-                    x.s = n.s;
-                    x.e = n.e;
-                    x.c = ( n = n.c ) ? n.slice() : n;
-                    id = 0;
-                    return;
-                }
+            if (n instanceof BigNumber) {
+              x.s = n.s
+              x.e = n.e
+              x.c = (n = n.c) ? n.slice() : n
+              id = 0
+              return
+            }
 
-                if ( ( num = typeof n == 'number' ) && n * 0 == 0 ) {
-                    x.s = 1 / n < 0 ? ( n = -n, -1 ) : 1;
+            if ((num = typeof n === 'number') && n * 0 == 0) {
+              x.s = 1 / n < 0 ? (n = -n, -1) : 1
 
                     // Fast path for integers.
-                    if ( n === ~~n ) {
-                        for ( e = 0, i = n; i >= 10; i /= 10, e++ );
-                        x.e = e;
-                        x.c = [n];
-                        id = 0;
-                        return;
-                    }
+              if (n === ~~n) {
+                for (e = 0, i = n; i >= 10; i /= 10, e++);
+                x.e = e
+                x.c = [n]
+                id = 0
+                return
+              }
 
-                    str = n + '';
-                } else {
-                    if ( !isNumeric.test( str = n + '' ) ) return parseNumeric( x, str, num );
-                    x.s = str.charCodeAt(0) === 45 ? ( str = str.slice(1), -1 ) : 1;
-                }
+              str = n + ''
             } else {
-                b = b | 0;
-                str = n + '';
+              if (!isNumeric.test(str = n + '')) return parseNumeric(x, str, num)
+              x.s = str.charCodeAt(0) === 45 ? (str = str.slice(1), -1) : 1
+            }
+          } else {
+            b = b | 0
+            str = n + ''
 
                 // Ensure return value is rounded to DECIMAL_PLACES as with other bases.
                 // Allow exponential notation to be used with base 10 argument.
-                if ( b == 10 ) {
-                    x = new BigNumber( n instanceof BigNumber ? n : str );
-                    return round( x, DECIMAL_PLACES + x.e + 1, ROUNDING_MODE );
-                }
+            if (b == 10) {
+              x = new BigNumber(n instanceof BigNumber ? n : str)
+              return round(x, DECIMAL_PLACES + x.e + 1, ROUNDING_MODE)
+            }
 
                 // Avoid potential interpretation of Infinity and NaN as base 44+ values.
                 // Any number in exponential form will fail due to the [Ee][+-].
-                if ( ( num = typeof n == 'number' ) && n * 0 != 0 ||
-                  !( new RegExp( '^-?' + ( c = '[' + ALPHABET.slice( 0, b ) + ']+' ) +
-                    '(?:\\.' + c + ')?$',b < 37 ? 'i' : '' ) ).test(str) ) {
-                    return parseNumeric( x, str, num, b );
-                }
+            if ((num = typeof n === 'number') && n * 0 != 0 ||
+                  !(new RegExp('^-?' + (c = '[' + ALPHABET.slice(0, b) + ']+') +
+                    '(?:\\.' + c + ')?$', b < 37 ? 'i' : '')).test(str)) {
+              return parseNumeric(x, str, num, b)
+            }
 
-                if (num) {
-                    x.s = 1 / n < 0 ? ( str = str.slice(1), -1 ) : 1;
+            if (num) {
+              x.s = 1 / n < 0 ? (str = str.slice(1), -1) : 1
 
-                    if ( ERRORS && str.replace( /^0\.0*|\./, '' ).length > 15 ) {
-
+              if (ERRORS && str.replace(/^0\.0*|\./, '').length > 15) {
                         // 'new BigNumber() number type has more than 15 significant digits: {n}'
-                        raise( id, tooManyDigits, n );
-                    }
+                raise(id, tooManyDigits, n)
+              }
 
                     // Prevent later check for length on converted number.
-                    num = false;
-                } else {
-                    x.s = str.charCodeAt(0) === 45 ? ( str = str.slice(1), -1 ) : 1;
-                }
-
-                str = convertBase( str, 10, b, x.s );
+              num = false
+            } else {
+              x.s = str.charCodeAt(0) === 45 ? (str = str.slice(1), -1) : 1
             }
+
+            str = convertBase(str, 10, b, x.s)
+          }
 
             // Decimal point?
-            if ( ( e = str.indexOf('.') ) > -1 ) str = str.replace( '.', '' );
+          if ((e = str.indexOf('.')) > -1) str = str.replace('.', '')
 
             // Exponential form?
-            if ( ( i = str.search( /e/i ) ) > 0 ) {
-
+          if ((i = str.search(/e/i)) > 0) {
                 // Determine exponent.
-                if ( e < 0 ) e = i;
-                e += +str.slice( i + 1 );
-                str = str.substring( 0, i );
-            } else if ( e < 0 ) {
-
+            if (e < 0) e = i
+            e += +str.slice(i + 1)
+            str = str.substring(0, i)
+          } else if (e < 0) {
                 // Integer.
-                e = str.length;
-            }
+            e = str.length
+          }
 
             // Determine leading zeros.
-            for ( i = 0; str.charCodeAt(i) === 48; i++ );
+          for (i = 0; str.charCodeAt(i) === 48; i++);
 
             // Determine trailing zeros.
-            for ( len = str.length; str.charCodeAt(--len) === 48; );
-            str = str.slice( i, len + 1 );
+          for (len = str.length; str.charCodeAt(--len) === 48;);
+          str = str.slice(i, len + 1)
 
-            if (str) {
-                len = str.length;
+          if (str) {
+            len = str.length
 
                 // Disallow numbers with over 15 significant digits if number type.
                 // 'new BigNumber() number type has more than 15 significant digits: {n}'
-                if ( num && ERRORS && len > 15 && ( n > MAX_SAFE_INTEGER || n !== mathfloor(n) ) ) {
-                    raise( id, tooManyDigits, x.s * n );
-                }
+            if (num && ERRORS && len > 15 && (n > MAX_SAFE_INTEGER || n !== mathfloor(n))) {
+              raise(id, tooManyDigits, x.s * n)
+            }
 
-                e = e - i - 1;
+            e = e - i - 1
 
                  // Overflow?
-                if ( e > MAX_EXP ) {
-
+            if (e > MAX_EXP) {
                     // Infinity.
-                    x.c = x.e = null;
+              x.c = x.e = null
 
                 // Underflow?
-                } else if ( e < MIN_EXP ) {
-
+            } else if (e < MIN_EXP) {
                     // Zero.
-                    x.c = [ x.e = 0 ];
-                } else {
-                    x.e = e;
-                    x.c = [];
+              x.c = [ x.e = 0 ]
+            } else {
+              x.e = e
+              x.c = []
 
                     // Transform base
 
                     // e is the base 10 exponent.
                     // i is where to slice str to get the first element of the coefficient array.
-                    i = ( e + 1 ) % LOG_BASE;
-                    if ( e < 0 ) i += LOG_BASE;
+              i = (e + 1) % LOG_BASE
+              if (e < 0) i += LOG_BASE
 
-                    if ( i < len ) {
-                        if (i) x.c.push( +str.slice( 0, i ) );
+              if (i < len) {
+              if (i) x.c.push(+str.slice(0, i))
 
-                        for ( len -= LOG_BASE; i < len; ) {
-                            x.c.push( +str.slice( i, i += LOG_BASE ) );
-                        }
+              for (len -= LOG_BASE; i < len;) {
+                x.c.push(+str.slice(i, i += LOG_BASE))
+              }
 
-                        str = str.slice(i);
-                        i = LOG_BASE - str.length;
-                    } else {
-                        i -= len;
-                    }
-
-                    for ( ; i--; str += '0' );
-                    x.c.push( +str );
-                }
+              str = str.slice(i)
+              i = LOG_BASE - str.length
             } else {
-
-                // Zero.
-                x.c = [ x.e = 0 ];
+              i -= len
             }
 
-            id = 0;
-        }
+              for (; i--; str += '0');
+              x.c.push(+str)
+            }
+          } else {
+                // Zero.
+            x.c = [ x.e = 0 ]
+          }
 
+          id = 0
+        }
 
         // CONSTRUCTOR PROPERTIES
 
+        BigNumber.another = constructorFactory
 
-        BigNumber.another = constructorFactory;
-
-        BigNumber.ROUND_UP = 0;
-        BigNumber.ROUND_DOWN = 1;
-        BigNumber.ROUND_CEIL = 2;
-        BigNumber.ROUND_FLOOR = 3;
-        BigNumber.ROUND_HALF_UP = 4;
-        BigNumber.ROUND_HALF_DOWN = 5;
-        BigNumber.ROUND_HALF_EVEN = 6;
-        BigNumber.ROUND_HALF_CEIL = 7;
-        BigNumber.ROUND_HALF_FLOOR = 8;
-        BigNumber.EUCLID = 9;
-
+        BigNumber.ROUND_UP = 0
+        BigNumber.ROUND_DOWN = 1
+        BigNumber.ROUND_CEIL = 2
+        BigNumber.ROUND_FLOOR = 3
+        BigNumber.ROUND_HALF_UP = 4
+        BigNumber.ROUND_HALF_DOWN = 5
+        BigNumber.ROUND_HALF_EVEN = 6
+        BigNumber.ROUND_HALF_CEIL = 7
+        BigNumber.ROUND_HALF_FLOOR = 8
+        BigNumber.EUCLID = 9
 
         /*
          * Configure infrequently-changing library-wide settings.
@@ -13957,151 +13627,143 @@ module.exports = XMLHttpRequest;
          * Return an object with the properties current values.
          */
         BigNumber.config = BigNumber.set = function () {
-            var v, p,
-                i = 0,
-                r = {},
-                a = arguments,
-                o = a[0],
-                has = o && typeof o == 'object'
-                  ? function () { if ( o.hasOwnProperty(p) ) return ( v = o[p] ) != null; }
-                  : function () { if ( a.length > i ) return ( v = a[i++] ) != null; };
+          var v, p,
+            i = 0,
+            r = {},
+            a = arguments,
+            o = a[0],
+            has = o && typeof o === 'object'
+                  ? function () { if (o.hasOwnProperty(p)) return (v = o[p]) != null }
+                  : function () { if (a.length > i) return (v = a[i++]) != null }
 
             // DECIMAL_PLACES {number} Integer, 0 to MAX inclusive.
             // 'config() DECIMAL_PLACES not an integer: {v}'
             // 'config() DECIMAL_PLACES out of range: {v}'
-            if ( has( p = 'DECIMAL_PLACES' ) && isValidInt( v, 0, MAX, 2, p ) ) {
-                DECIMAL_PLACES = v | 0;
-            }
-            r[p] = DECIMAL_PLACES;
+          if (has(p = 'DECIMAL_PLACES') && isValidInt(v, 0, MAX, 2, p)) {
+            DECIMAL_PLACES = v | 0
+          }
+          r[p] = DECIMAL_PLACES
 
             // ROUNDING_MODE {number} Integer, 0 to 8 inclusive.
             // 'config() ROUNDING_MODE not an integer: {v}'
             // 'config() ROUNDING_MODE out of range: {v}'
-            if ( has( p = 'ROUNDING_MODE' ) && isValidInt( v, 0, 8, 2, p ) ) {
-                ROUNDING_MODE = v | 0;
-            }
-            r[p] = ROUNDING_MODE;
+          if (has(p = 'ROUNDING_MODE') && isValidInt(v, 0, 8, 2, p)) {
+            ROUNDING_MODE = v | 0
+          }
+          r[p] = ROUNDING_MODE
 
             // EXPONENTIAL_AT {number|number[]}
             // Integer, -MAX to MAX inclusive or [integer -MAX to 0 inclusive, 0 to MAX inclusive].
             // 'config() EXPONENTIAL_AT not an integer: {v}'
             // 'config() EXPONENTIAL_AT out of range: {v}'
-            if ( has( p = 'EXPONENTIAL_AT' ) ) {
-
-                if ( isArray(v) ) {
-                    if ( isValidInt( v[0], -MAX, 0, 2, p ) && isValidInt( v[1], 0, MAX, 2, p ) ) {
-                        TO_EXP_NEG = v[0] | 0;
-                        TO_EXP_POS = v[1] | 0;
-                    }
-                } else if ( isValidInt( v, -MAX, MAX, 2, p ) ) {
-                    TO_EXP_NEG = -( TO_EXP_POS = ( v < 0 ? -v : v ) | 0 );
-                }
+          if (has(p = 'EXPONENTIAL_AT')) {
+            if (isArray(v)) {
+              if (isValidInt(v[0], -MAX, 0, 2, p) && isValidInt(v[1], 0, MAX, 2, p)) {
+                TO_EXP_NEG = v[0] | 0
+                TO_EXP_POS = v[1] | 0
+              }
+            } else if (isValidInt(v, -MAX, MAX, 2, p)) {
+              TO_EXP_NEG = -(TO_EXP_POS = (v < 0 ? -v : v) | 0)
             }
-            r[p] = [ TO_EXP_NEG, TO_EXP_POS ];
+          }
+          r[p] = [ TO_EXP_NEG, TO_EXP_POS ]
 
             // RANGE {number|number[]} Non-zero integer, -MAX to MAX inclusive or
             // [integer -MAX to -1 inclusive, integer 1 to MAX inclusive].
             // 'config() RANGE not an integer: {v}'
             // 'config() RANGE cannot be zero: {v}'
             // 'config() RANGE out of range: {v}'
-            if ( has( p = 'RANGE' ) ) {
-
-                if ( isArray(v) ) {
-                    if ( isValidInt( v[0], -MAX, -1, 2, p ) && isValidInt( v[1], 1, MAX, 2, p ) ) {
-                        MIN_EXP = v[0] | 0;
-                        MAX_EXP = v[1] | 0;
-                    }
-                } else if ( isValidInt( v, -MAX, MAX, 2, p ) ) {
-                    if ( v | 0 ) MIN_EXP = -( MAX_EXP = ( v < 0 ? -v : v ) | 0 );
-                    else if (ERRORS) raise( 2, p + ' cannot be zero', v );
-                }
+          if (has(p = 'RANGE')) {
+            if (isArray(v)) {
+              if (isValidInt(v[0], -MAX, -1, 2, p) && isValidInt(v[1], 1, MAX, 2, p)) {
+                MIN_EXP = v[0] | 0
+                MAX_EXP = v[1] | 0
+              }
+            } else if (isValidInt(v, -MAX, MAX, 2, p)) {
+              if (v | 0) MIN_EXP = -(MAX_EXP = (v < 0 ? -v : v) | 0)
+              else if (ERRORS) raise(2, p + ' cannot be zero', v)
             }
-            r[p] = [ MIN_EXP, MAX_EXP ];
+          }
+          r[p] = [ MIN_EXP, MAX_EXP ]
 
             // ERRORS {boolean|number} true, false, 1 or 0.
             // 'config() ERRORS not a boolean or binary digit: {v}'
-            if ( has( p = 'ERRORS' ) ) {
-
-                if ( v === !!v || v === 1 || v === 0 ) {
-                    id = 0;
-                    isValidInt = ( ERRORS = !!v ) ? intValidatorWithErrors : intValidatorNoErrors;
-                } else if (ERRORS) {
-                    raise( 2, p + notBool, v );
-                }
+          if (has(p = 'ERRORS')) {
+            if (v === !!v || v === 1 || v === 0) {
+              id = 0
+              isValidInt = (ERRORS = !!v) ? intValidatorWithErrors : intValidatorNoErrors
+            } else if (ERRORS) {
+              raise(2, p + notBool, v)
             }
-            r[p] = ERRORS;
+          }
+          r[p] = ERRORS
 
             // CRYPTO {boolean|number} true, false, 1 or 0.
             // 'config() CRYPTO not a boolean or binary digit: {v}'
             // 'config() crypto unavailable: {crypto}'
-            if ( has( p = 'CRYPTO' ) ) {
-
-                if ( v === true || v === false || v === 1 || v === 0 ) {
-                    if (v) {
-                        v = typeof crypto == 'undefined';
-                        if ( !v && crypto && (crypto.getRandomValues || crypto.randomBytes)) {
-                            CRYPTO = true;
-                        } else if (ERRORS) {
-                            raise( 2, 'crypto unavailable', v ? void 0 : crypto );
-                        } else {
-                            CRYPTO = false;
-                        }
-                    } else {
-                        CRYPTO = false;
-                    }
-                } else if (ERRORS) {
-                    raise( 2, p + notBool, v );
-                }
+          if (has(p = 'CRYPTO')) {
+            if (v === true || v === false || v === 1 || v === 0) {
+              if (v) {
+                v = typeof crypto === 'undefined'
+                if (!v && crypto && (crypto.getRandomValues || crypto.randomBytes)) {
+                CRYPTO = true
+              } else if (ERRORS) {
+                raise(2, 'crypto unavailable', v ? void 0 : crypto)
+              } else {
+                CRYPTO = false
+              }
+              } else {
+                CRYPTO = false
+              }
+            } else if (ERRORS) {
+              raise(2, p + notBool, v)
             }
-            r[p] = CRYPTO;
+          }
+          r[p] = CRYPTO
 
             // MODULO_MODE {number} Integer, 0 to 9 inclusive.
             // 'config() MODULO_MODE not an integer: {v}'
             // 'config() MODULO_MODE out of range: {v}'
-            if ( has( p = 'MODULO_MODE' ) && isValidInt( v, 0, 9, 2, p ) ) {
-                MODULO_MODE = v | 0;
-            }
-            r[p] = MODULO_MODE;
+          if (has(p = 'MODULO_MODE') && isValidInt(v, 0, 9, 2, p)) {
+            MODULO_MODE = v | 0
+          }
+          r[p] = MODULO_MODE
 
             // POW_PRECISION {number} Integer, 0 to MAX inclusive.
             // 'config() POW_PRECISION not an integer: {v}'
             // 'config() POW_PRECISION out of range: {v}'
-            if ( has( p = 'POW_PRECISION' ) && isValidInt( v, 0, MAX, 2, p ) ) {
-                POW_PRECISION = v | 0;
-            }
-            r[p] = POW_PRECISION;
+          if (has(p = 'POW_PRECISION') && isValidInt(v, 0, MAX, 2, p)) {
+            POW_PRECISION = v | 0
+          }
+          r[p] = POW_PRECISION
 
             // FORMAT {object}
             // 'config() FORMAT not an object: {v}'
-            if ( has( p = 'FORMAT' ) ) {
-
-                if ( typeof v == 'object' ) {
-                    FORMAT = v;
-                } else if (ERRORS) {
-                    raise( 2, p + ' not an object', v );
-                }
+          if (has(p = 'FORMAT')) {
+            if (typeof v === 'object') {
+              FORMAT = v
+            } else if (ERRORS) {
+              raise(2, p + ' not an object', v)
             }
-            r[p] = FORMAT;
+          }
+          r[p] = FORMAT
 
-            return r;
-        };
-
+          return r
+        }
 
         /*
          * Return a new BigNumber whose value is the maximum of the arguments.
          *
          * arguments {number|string|BigNumber}
          */
-        BigNumber.max = function () { return maxOrMin( arguments, P.lt ); };
-
+        BigNumber.max = function () { return maxOrMin(arguments, P.lt) }
 
         /*
          * Return a new BigNumber whose value is the minimum of the arguments.
          *
          * arguments {number|string|BigNumber}
          */
-        BigNumber.min = function () { return maxOrMin( arguments, P.gt ); };
-
+        BigNumber.min = function () { return maxOrMin(arguments, P.gt) }
 
         /*
          * Return a new BigNumber with a random value equal to or greater than 0 and less than 1,
@@ -14115,376 +13777,359 @@ module.exports = XMLHttpRequest;
          * 'random() crypto unavailable: {crypto}'
          */
         BigNumber.random = (function () {
-            var pow2_53 = 0x20000000000000;
+          var pow2_53 = 0x20000000000000
 
             // Return a 53 bit integer n, where 0 <= n < 9007199254740992.
             // Check if Math.random() produces more than 32 bits of randomness.
             // If it does, assume at least 53 bits are produced, otherwise assume at least 30 bits.
             // 0x40000000 is 2^30, 0x800000 is 2^23, 0x1fffff is 2^21 - 1.
-            var random53bitInt = (Math.random() * pow2_53) & 0x1fffff
-              ? function () { return mathfloor( Math.random() * pow2_53 ); }
-              : function () { return ((Math.random() * 0x40000000 | 0) * 0x800000) +
-                  (Math.random() * 0x800000 | 0); };
+          var random53bitInt = (Math.random() * pow2_53) & 0x1fffff
+              ? function () { return mathfloor(Math.random() * pow2_53) }
+              : function () {
+                return ((Math.random() * 0x40000000 | 0) * 0x800000) +
+                  (Math.random() * 0x800000 | 0)
+              }
 
-            return function (dp) {
-                var a, b, e, k, v,
-                    i = 0,
-                    c = [],
-                    rand = new BigNumber(ONE);
+          return function (dp) {
+            var a, b, e, k, v,
+              i = 0,
+              c = [],
+              rand = new BigNumber(ONE)
 
-                dp = dp == null || !isValidInt( dp, 0, MAX, 14 ) ? DECIMAL_PLACES : dp | 0;
-                k = mathceil( dp / LOG_BASE );
+            dp = dp == null || !isValidInt(dp, 0, MAX, 14) ? DECIMAL_PLACES : dp | 0
+            k = mathceil(dp / LOG_BASE)
 
-                if (CRYPTO) {
-
+            if (CRYPTO) {
                     // Browsers supporting crypto.getRandomValues.
-                    if (crypto.getRandomValues) {
+              if (crypto.getRandomValues) {
+                a = crypto.getRandomValues(new Uint32Array(k *= 2))
 
-                        a = crypto.getRandomValues( new Uint32Array( k *= 2 ) );
-
-                        for ( ; i < k; ) {
-
+                for (; i < k;) {
                             // 53 bits:
                             // ((Math.pow(2, 32) - 1) * Math.pow(2, 21)).toString(2)
                             // 11111 11111111 11111111 11111111 11100000 00000000 00000000
                             // ((Math.pow(2, 32) - 1) >>> 11).toString(2)
                             //                                     11111 11111111 11111111
                             // 0x20000 is 2^21.
-                            v = a[i] * 0x20000 + (a[i + 1] >>> 11);
+                v = a[i] * 0x20000 + (a[i + 1] >>> 11)
 
                             // Rejection sampling:
                             // 0 <= v < 9007199254740992
                             // Probability that v >= 9e15, is
                             // 7199254740992 / 9007199254740992 ~= 0.0008, i.e. 1 in 1251
-                            if ( v >= 9e15 ) {
-                                b = crypto.getRandomValues( new Uint32Array(2) );
-                                a[i] = b[0];
-                                a[i + 1] = b[1];
-                            } else {
-
+                if (v >= 9e15) {
+                  b = crypto.getRandomValues(new Uint32Array(2))
+                  a[i] = b[0]
+                  a[i + 1] = b[1]
+                } else {
                                 // 0 <= v <= 8999999999999999
                                 // 0 <= (v % 1e14) <= 99999999999999
-                                c.push( v % 1e14 );
-                                i += 2;
-                            }
-                        }
-                        i = k / 2;
+                  c.push(v % 1e14)
+                  i += 2
+                }
+              }
+                i = k / 2
 
                     // Node.js supporting crypto.randomBytes.
-                    } else if (crypto.randomBytes) {
-
+              } else if (crypto.randomBytes) {
                         // buffer
-                        a = crypto.randomBytes( k *= 7 );
+              a = crypto.randomBytes(k *= 7)
 
-                        for ( ; i < k; ) {
-
+              for (; i < k;) {
                             // 0x1000000000000 is 2^48, 0x10000000000 is 2^40
                             // 0x100000000 is 2^32, 0x1000000 is 2^24
                             // 11111 11111111 11111111 11111111 11111111 11111111 11111111
                             // 0 <= v < 9007199254740992
-                            v = ( ( a[i] & 31 ) * 0x1000000000000 ) + ( a[i + 1] * 0x10000000000 ) +
-                                  ( a[i + 2] * 0x100000000 ) + ( a[i + 3] * 0x1000000 ) +
-                                  ( a[i + 4] << 16 ) + ( a[i + 5] << 8 ) + a[i + 6];
+                v = ((a[i] & 31) * 0x1000000000000) + (a[i + 1] * 0x10000000000) +
+                                  (a[i + 2] * 0x100000000) + (a[i + 3] * 0x1000000) +
+                                  (a[i + 4] << 16) + (a[i + 5] << 8) + a[i + 6]
 
-                            if ( v >= 9e15 ) {
-                                crypto.randomBytes(7).copy( a, i );
-                            } else {
-
+                if (v >= 9e15) {
+                  crypto.randomBytes(7).copy(a, i)
+                } else {
                                 // 0 <= (v % 1e14) <= 99999999999999
-                                c.push( v % 1e14 );
-                                i += 7;
-                            }
-                        }
-                        i = k / 7;
-                    } else {
-                        CRYPTO = false;
-                        if (ERRORS) raise( 14, 'crypto unavailable', crypto );
-                    }
+                  c.push(v % 1e14)
+                  i += 7
                 }
+              }
+              i = k / 7
+            } else {
+              CRYPTO = false
+              if (ERRORS) raise(14, 'crypto unavailable', crypto)
+            }
+            }
 
                 // Use Math.random.
-                if (!CRYPTO) {
+            if (!CRYPTO) {
+              for (; i < k;) {
+                v = random53bitInt()
+                if (v < 9e15) c[i++] = v % 1e14
+              }
+            }
 
-                    for ( ; i < k; ) {
-                        v = random53bitInt();
-                        if ( v < 9e15 ) c[i++] = v % 1e14;
-                    }
-                }
-
-                k = c[--i];
-                dp %= LOG_BASE;
+            k = c[--i]
+            dp %= LOG_BASE
 
                 // Convert trailing digits to zeros according to dp.
-                if ( k && dp ) {
-                    v = POWS_TEN[LOG_BASE - dp];
-                    c[i] = mathfloor( k / v ) * v;
-                }
+            if (k && dp) {
+              v = POWS_TEN[LOG_BASE - dp]
+              c[i] = mathfloor(k / v) * v
+            }
 
                 // Remove trailing elements which are zero.
-                for ( ; c[i] === 0; c.pop(), i-- );
+            for (; c[i] === 0; c.pop(), i--);
 
                 // Zero?
-                if ( i < 0 ) {
-                    c = [ e = 0 ];
-                } else {
-
+            if (i < 0) {
+              c = [ e = 0 ]
+            } else {
                     // Remove leading elements which are zero and adjust exponent accordingly.
-                    for ( e = -1 ; c[0] === 0; c.shift(), e -= LOG_BASE);
+              for (e = -1; c[0] === 0; c.shift(), e -= LOG_BASE);
 
                     // Count the digits of the first element of c to determine leading zeros, and...
-                    for ( i = 1, v = c[0]; v >= 10; v /= 10, i++);
+              for (i = 1, v = c[0]; v >= 10; v /= 10, i++);
 
                     // adjust the exponent accordingly.
-                    if ( i < LOG_BASE ) e -= LOG_BASE - i;
-                }
+              if (i < LOG_BASE) e -= LOG_BASE - i
+            }
 
-                rand.e = e;
-                rand.c = c;
-                return rand;
-            };
-        })();
-
+            rand.e = e
+            rand.c = c
+            return rand
+          }
+        })()
 
         // PRIVATE FUNCTIONS
 
-
         // Convert a numeric string of baseIn to a numeric string of baseOut.
-        function convertBase( str, baseOut, baseIn, sign ) {
-            var d, e, k, r, x, xc, y,
-                i = str.indexOf( '.' ),
-                dp = DECIMAL_PLACES,
-                rm = ROUNDING_MODE;
+        function convertBase (str, baseOut, baseIn, sign) {
+          var d, e, k, r, x, xc, y,
+            i = str.indexOf('.'),
+            dp = DECIMAL_PLACES,
+            rm = ROUNDING_MODE
 
-            if ( baseIn < 37 ) str = str.toLowerCase();
+          if (baseIn < 37) str = str.toLowerCase()
 
             // Non-integer.
-            if ( i >= 0 ) {
-                k = POW_PRECISION;
+          if (i >= 0) {
+            k = POW_PRECISION
 
                 // Unlimited precision.
-                POW_PRECISION = 0;
-                str = str.replace( '.', '' );
-                y = new BigNumber(baseIn);
-                x = y.pow( str.length - i );
-                POW_PRECISION = k;
+            POW_PRECISION = 0
+            str = str.replace('.', '')
+            y = new BigNumber(baseIn)
+            x = y.pow(str.length - i)
+            POW_PRECISION = k
 
                 // Convert str as if an integer, then restore the fraction part by dividing the
                 // result by its base raised to a power.
-                y.c = toBaseOut( toFixedPoint( coeffToString( x.c ), x.e ), 10, baseOut );
-                y.e = y.c.length;
-            }
+            y.c = toBaseOut(toFixedPoint(coeffToString(x.c), x.e), 10, baseOut)
+            y.e = y.c.length
+          }
 
             // Convert the number as integer.
-            xc = toBaseOut( str, baseIn, baseOut );
-            e = k = xc.length;
+          xc = toBaseOut(str, baseIn, baseOut)
+          e = k = xc.length
 
             // Remove trailing zeros.
-            for ( ; xc[--k] == 0; xc.pop() );
-            if ( !xc[0] ) return '0';
+          for (; xc[--k] == 0; xc.pop());
+          if (!xc[0]) return '0'
 
-            if ( i < 0 ) {
-                --e;
-            } else {
-                x.c = xc;
-                x.e = e;
+          if (i < 0) {
+            --e
+          } else {
+            x.c = xc
+            x.e = e
 
                 // sign is needed for correct rounding.
-                x.s = sign;
-                x = div( x, y, dp, rm, baseOut );
-                xc = x.c;
-                r = x.r;
-                e = x.e;
-            }
+            x.s = sign
+            x = div(x, y, dp, rm, baseOut)
+            xc = x.c
+            r = x.r
+            e = x.e
+          }
 
-            d = e + dp + 1;
+          d = e + dp + 1
 
             // The rounding digit, i.e. the digit to the right of the digit that may be rounded up.
-            i = xc[d];
-            k = baseOut / 2;
-            r = r || d < 0 || xc[d + 1] != null;
+          i = xc[d]
+          k = baseOut / 2
+          r = r || d < 0 || xc[d + 1] != null
 
-            r = rm < 4 ? ( i != null || r ) && ( rm == 0 || rm == ( x.s < 0 ? 3 : 2 ) )
-                       : i > k || i == k &&( rm == 4 || r || rm == 6 && xc[d - 1] & 1 ||
-                         rm == ( x.s < 0 ? 8 : 7 ) );
+          r = rm < 4 ? (i != null || r) && (rm == 0 || rm == (x.s < 0 ? 3 : 2))
+                       : i > k || i == k && (rm == 4 || r || rm == 6 && xc[d - 1] & 1 ||
+                         rm == (x.s < 0 ? 8 : 7))
 
-            if ( d < 1 || !xc[0] ) {
-
+          if (d < 1 || !xc[0]) {
                 // 1^-dp or 0.
-                str = r ? toFixedPoint( '1', -dp ) : '0';
-            } else {
-                xc.length = d;
+            str = r ? toFixedPoint('1', -dp) : '0'
+          } else {
+            xc.length = d
 
-                if (r) {
-
+            if (r) {
                     // Rounding up may mean the previous digit has to be rounded up and so on.
-                    for ( --baseOut; ++xc[--d] > baseOut; ) {
-                        xc[d] = 0;
+              for (--baseOut; ++xc[--d] > baseOut;) {
+                xc[d] = 0
 
-                        if ( !d ) {
-                            ++e;
-                            xc.unshift(1);
-                        }
-                    }
-                }
-
-                // Determine trailing zeros.
-                for ( k = xc.length; !xc[--k]; );
-
-                // E.g. [4, 11, 15] becomes 4bf.
-                for ( i = 0, str = ''; i <= k; str += ALPHABET.charAt( xc[i++] ) );
-                str = toFixedPoint( str, e );
+                if (!d) {
+                ++e
+                xc.unshift(1)
+              }
+              }
             }
 
-            // The caller will add the sign.
-            return str;
-        }
+                // Determine trailing zeros.
+            for (k = xc.length; !xc[--k];);
 
+                // E.g. [4, 11, 15] becomes 4bf.
+            for (i = 0, str = ''; i <= k; str += ALPHABET.charAt(xc[i++]));
+            str = toFixedPoint(str, e)
+          }
+
+            // The caller will add the sign.
+          return str
+        }
 
         // Perform division in the specified base. Called by div and convertBase.
         div = (function () {
-
             // Assume non-zero x and k.
-            function multiply( x, k, base ) {
-                var m, temp, xlo, xhi,
-                    carry = 0,
-                    i = x.length,
-                    klo = k % SQRT_BASE,
-                    khi = k / SQRT_BASE | 0;
+          function multiply (x, k, base) {
+            var m, temp, xlo, xhi,
+              carry = 0,
+              i = x.length,
+              klo = k % SQRT_BASE,
+              khi = k / SQRT_BASE | 0
 
-                for ( x = x.slice(); i--; ) {
-                    xlo = x[i] % SQRT_BASE;
-                    xhi = x[i] / SQRT_BASE | 0;
-                    m = khi * xlo + xhi * klo;
-                    temp = klo * xlo + ( ( m % SQRT_BASE ) * SQRT_BASE ) + carry;
-                    carry = ( temp / base | 0 ) + ( m / SQRT_BASE | 0 ) + khi * xhi;
-                    x[i] = temp % base;
-                }
-
-                if (carry) x.unshift(carry);
-
-                return x;
+            for (x = x.slice(); i--;) {
+              xlo = x[i] % SQRT_BASE
+              xhi = x[i] / SQRT_BASE | 0
+              m = khi * xlo + xhi * klo
+              temp = klo * xlo + ((m % SQRT_BASE) * SQRT_BASE) + carry
+              carry = (temp / base | 0) + (m / SQRT_BASE | 0) + khi * xhi
+              x[i] = temp % base
             }
 
-            function compare( a, b, aL, bL ) {
-                var i, cmp;
+            if (carry) x.unshift(carry)
 
-                if ( aL != bL ) {
-                    cmp = aL > bL ? 1 : -1;
-                } else {
+            return x
+          }
 
-                    for ( i = cmp = 0; i < aL; i++ ) {
+          function compare (a, b, aL, bL) {
+            var i, cmp
 
-                        if ( a[i] != b[i] ) {
-                            cmp = a[i] > b[i] ? 1 : -1;
-                            break;
-                        }
-                    }
-                }
-                return cmp;
+            if (aL != bL) {
+              cmp = aL > bL ? 1 : -1
+            } else {
+              for (i = cmp = 0; i < aL; i++) {
+                if (a[i] != b[i]) {
+                cmp = a[i] > b[i] ? 1 : -1
+                break
+              }
+              }
             }
+            return cmp
+          }
 
-            function subtract( a, b, aL, base ) {
-                var i = 0;
+          function subtract (a, b, aL, base) {
+            var i = 0
 
                 // Subtract b from a.
-                for ( ; aL--; ) {
-                    a[aL] -= i;
-                    i = a[aL] < b[aL] ? 1 : 0;
-                    a[aL] = i * base + a[aL] - b[aL];
-                }
-
-                // Remove leading zeros.
-                for ( ; !a[0] && a.length > 1; a.shift() );
+            for (; aL--;) {
+              a[aL] -= i
+              i = a[aL] < b[aL] ? 1 : 0
+              a[aL] = i * base + a[aL] - b[aL]
             }
 
+                // Remove leading zeros.
+            for (; !a[0] && a.length > 1; a.shift());
+          }
+
             // x: dividend, y: divisor.
-            return function ( x, y, dp, rm, base ) {
-                var cmp, e, i, more, n, prod, prodL, q, qc, rem, remL, rem0, xi, xL, yc0,
-                    yL, yz,
-                    s = x.s == y.s ? 1 : -1,
-                    xc = x.c,
-                    yc = y.c;
+          return function (x, y, dp, rm, base) {
+            var cmp, e, i, more, n, prod, prodL, q, qc, rem, remL, rem0, xi, xL, yc0,
+              yL, yz,
+              s = x.s == y.s ? 1 : -1,
+              xc = x.c,
+              yc = y.c
 
                 // Either NaN, Infinity or 0?
-                if ( !xc || !xc[0] || !yc || !yc[0] ) {
-
-                    return new BigNumber(
+            if (!xc || !xc[0] || !yc || !yc[0]) {
+              return new BigNumber(
 
                       // Return NaN if either NaN, or both Infinity or 0.
-                      !x.s || !y.s || ( xc ? yc && xc[0] == yc[0] : !yc ) ? NaN :
+                      !x.s || !y.s || (xc ? yc && xc[0] == yc[0] : !yc) ? NaN
 
                         // Return ±0 if x is ±0 or y is ±Infinity, or return ±Infinity as y is ±0.
-                        xc && xc[0] == 0 || !yc ? s * 0 : s / 0
-                    );
-                }
+                        : xc && xc[0] == 0 || !yc ? s * 0 : s / 0
+                    )
+            }
 
-                q = new BigNumber(s);
-                qc = q.c = [];
-                e = x.e - y.e;
-                s = dp + e + 1;
+            q = new BigNumber(s)
+            qc = q.c = []
+            e = x.e - y.e
+            s = dp + e + 1
 
-                if ( !base ) {
-                    base = BASE;
-                    e = bitFloor( x.e / LOG_BASE ) - bitFloor( y.e / LOG_BASE );
-                    s = s / LOG_BASE | 0;
-                }
+            if (!base) {
+              base = BASE
+              e = bitFloor(x.e / LOG_BASE) - bitFloor(y.e / LOG_BASE)
+              s = s / LOG_BASE | 0
+            }
 
                 // Result exponent may be one less then the current value of e.
                 // The coefficients of the BigNumbers from convertBase may have trailing zeros.
-                for ( i = 0; yc[i] == ( xc[i] || 0 ); i++ );
-                if ( yc[i] > ( xc[i] || 0 ) ) e--;
+            for (i = 0; yc[i] == (xc[i] || 0); i++);
+            if (yc[i] > (xc[i] || 0)) e--
 
-                if ( s < 0 ) {
-                    qc.push(1);
-                    more = true;
-                } else {
-                    xL = xc.length;
-                    yL = yc.length;
-                    i = 0;
-                    s += 2;
+            if (s < 0) {
+              qc.push(1)
+              more = true
+            } else {
+              xL = xc.length
+              yL = yc.length
+              i = 0
+              s += 2
 
                     // Normalise xc and yc so highest order digit of yc is >= base / 2.
 
-                    n = mathfloor( base / ( yc[0] + 1 ) );
+              n = mathfloor(base / (yc[0] + 1))
 
                     // Not necessary, but to handle odd bases where yc[0] == ( base / 2 ) - 1.
                     // if ( n > 1 || n++ == 1 && yc[0] < base / 2 ) {
-                    if ( n > 1 ) {
-                        yc = multiply( yc, n, base );
-                        xc = multiply( xc, n, base );
-                        yL = yc.length;
-                        xL = xc.length;
-                    }
+              if (n > 1) {
+                yc = multiply(yc, n, base)
+                xc = multiply(xc, n, base)
+                yL = yc.length
+                xL = xc.length
+              }
 
-                    xi = yL;
-                    rem = xc.slice( 0, yL );
-                    remL = rem.length;
+              xi = yL
+              rem = xc.slice(0, yL)
+              remL = rem.length
 
                     // Add zeros to make remainder as long as divisor.
-                    for ( ; remL < yL; rem[remL++] = 0 );
-                    yz = yc.slice();
-                    yz.unshift(0);
-                    yc0 = yc[0];
-                    if ( yc[1] >= base / 2 ) yc0++;
+              for (; remL < yL; rem[remL++] = 0);
+              yz = yc.slice()
+              yz.unshift(0)
+              yc0 = yc[0]
+              if (yc[1] >= base / 2) yc0++
                     // Not necessary, but to prevent trial digit n > base, when using base 3.
                     // else if ( base == 3 && yc0 == 1 ) yc0 = 1 + 1e-15;
 
-                    do {
-                        n = 0;
+              do {
+                n = 0
 
                         // Compare divisor and remainder.
-                        cmp = compare( yc, rem, yL, remL );
+                cmp = compare(yc, rem, yL, remL)
 
                         // If divisor < remainder.
-                        if ( cmp < 0 ) {
-
+                if (cmp < 0) {
                             // Calculate trial digit, n.
 
-                            rem0 = rem[0];
-                            if ( yL != remL ) rem0 = rem0 * base + ( rem[1] || 0 );
+                rem0 = rem[0]
+                if (yL != remL) rem0 = rem0 * base + (rem[1] || 0)
 
                             // n is how many times the divisor goes into the current remainder.
-                            n = mathfloor( rem0 / yc0 );
+                n = mathfloor(rem0 / yc0)
 
                             //  Algorithm:
                             //  1. product = divisor * trial digit (n)
@@ -14494,106 +14139,100 @@ module.exports = XMLHttpRequest;
                             //    5. compare new remainder and divisor
                             //    6. If remainder > divisor: remainder -= divisor, n++
 
-                            if ( n > 1 ) {
-
+                if (n > 1) {
                                 // n may be > base only when base is 3.
-                                if (n >= base) n = base - 1;
+                  if (n >= base) n = base - 1
 
                                 // product = divisor * trial digit.
-                                prod = multiply( yc, n, base );
-                                prodL = prod.length;
-                                remL = rem.length;
+                  prod = multiply(yc, n, base)
+                  prodL = prod.length
+                  remL = rem.length
 
                                 // Compare product and remainder.
                                 // If product > remainder.
                                 // Trial digit n too high.
                                 // n is 1 too high about 5% of the time, and is not known to have
                                 // ever been more than 1 too high.
-                                while ( compare( prod, rem, prodL, remL ) == 1 ) {
-                                    n--;
+                  while (compare(prod, rem, prodL, remL) == 1) {
+                    n--
 
                                     // Subtract divisor from product.
-                                    subtract( prod, yL < prodL ? yz : yc, prodL, base );
-                                    prodL = prod.length;
-                                    cmp = 1;
-                                }
-                            } else {
-
+                    subtract(prod, yL < prodL ? yz : yc, prodL, base)
+                    prodL = prod.length
+                    cmp = 1
+                  }
+                } else {
                                 // n is 0 or 1, cmp is -1.
                                 // If n is 0, there is no need to compare yc and rem again below,
                                 // so change cmp to 1 to avoid it.
                                 // If n is 1, leave cmp as -1, so yc and rem are compared again.
-                                if ( n == 0 ) {
-
+                  if (n == 0) {
                                     // divisor < remainder, so n must be at least 1.
-                                    cmp = n = 1;
-                                }
+                    cmp = n = 1
+                  }
 
                                 // product = divisor
-                                prod = yc.slice();
-                                prodL = prod.length;
-                            }
+                  prod = yc.slice()
+                  prodL = prod.length
+                }
 
-                            if ( prodL < remL ) prod.unshift(0);
+                if (prodL < remL) prod.unshift(0)
 
                             // Subtract product from remainder.
-                            subtract( rem, prod, remL, base );
-                            remL = rem.length;
+                subtract(rem, prod, remL, base)
+                remL = rem.length
 
                              // If product was < remainder.
-                            if ( cmp == -1 ) {
-
+                if (cmp == -1) {
                                 // Compare divisor and new remainder.
                                 // If divisor < new remainder, subtract divisor from remainder.
                                 // Trial digit n too low.
                                 // n is 1 too low about 5% of the time, and very rarely 2 too low.
-                                while ( compare( yc, rem, yL, remL ) < 1 ) {
-                                    n++;
+                  while (compare(yc, rem, yL, remL) < 1) {
+                    n++
 
                                     // Subtract divisor from remainder.
-                                    subtract( rem, yL < remL ? yz : yc, remL, base );
-                                    remL = rem.length;
-                                }
-                            }
-                        } else if ( cmp === 0 ) {
-                            n++;
-                            rem = [0];
-                        } // else cmp === 1 and n will be 0
+                    subtract(rem, yL < remL ? yz : yc, remL, base)
+                    remL = rem.length
+                  }
+                }
+              } else if (cmp === 0) {
+                n++
+                rem = [0]
+              } // else cmp === 1 and n will be 0
 
                         // Add the next digit, n, to the result array.
-                        qc[i++] = n;
+                qc[i++] = n
 
                         // Update the remainder.
-                        if ( rem[0] ) {
-                            rem[remL++] = xc[xi] || 0;
-                        } else {
-                            rem = [ xc[xi] ];
-                            remL = 1;
-                        }
-                    } while ( ( xi++ < xL || rem[0] != null ) && s-- );
+                if (rem[0]) {
+                rem[remL++] = xc[xi] || 0
+              } else {
+                rem = [ xc[xi] ]
+                remL = 1
+              }
+              } while ((xi++ < xL || rem[0] != null) && s--)
 
-                    more = rem[0] != null;
+              more = rem[0] != null
 
                     // Leading zero?
-                    if ( !qc[0] ) qc.shift();
-                }
+              if (!qc[0]) qc.shift()
+            }
 
-                if ( base == BASE ) {
-
+            if (base == BASE) {
                     // To calculate q.e, first get the number of digits of qc[0].
-                    for ( i = 1, s = qc[0]; s >= 10; s /= 10, i++ );
-                    round( q, dp + ( q.e = i + e * LOG_BASE - 1 ) + 1, rm, more );
+              for (i = 1, s = qc[0]; s >= 10; s /= 10, i++);
+              round(q, dp + (q.e = i + e * LOG_BASE - 1) + 1, rm, more)
 
                 // Caller is convertBase.
-                } else {
-                    q.e = e;
-                    q.r = +more;
-                }
+            } else {
+              q.e = e
+              q.r = +more
+            }
 
-                return q;
-            };
-        })();
-
+            return q
+          }
+        })()
 
         /*
          * Return a string representing the value of BigNumber n in fixed-point or exponential
@@ -14604,402 +14243,379 @@ module.exports = XMLHttpRequest;
          * rm is the rounding mode.
          * caller is caller id: toExponential 19, toFixed 20, toFormat 21, toPrecision 24.
          */
-        function format( n, i, rm, caller ) {
-            var c0, e, ne, len, str;
+        function format (n, i, rm, caller) {
+          var c0, e, ne, len, str
 
-            rm = rm != null && isValidInt( rm, 0, 8, caller, roundingMode )
-              ? rm | 0 : ROUNDING_MODE;
+          rm = rm != null && isValidInt(rm, 0, 8, caller, roundingMode)
+              ? rm | 0 : ROUNDING_MODE
 
-            if ( !n.c ) return n.toString();
-            c0 = n.c[0];
-            ne = n.e;
+          if (!n.c) return n.toString()
+          c0 = n.c[0]
+          ne = n.e
 
-            if ( i == null ) {
-                str = coeffToString( n.c );
-                str = caller == 19 || caller == 24 && ne <= TO_EXP_NEG
-                  ? toExponential( str, ne )
-                  : toFixedPoint( str, ne );
-            } else {
-                n = round( new BigNumber(n), i, rm );
+          if (i == null) {
+            str = coeffToString(n.c)
+            str = caller == 19 || caller == 24 && ne <= TO_EXP_NEG
+                  ? toExponential(str, ne)
+                  : toFixedPoint(str, ne)
+          } else {
+            n = round(new BigNumber(n), i, rm)
 
                 // n.e may have changed if the value was rounded up.
-                e = n.e;
+            e = n.e
 
-                str = coeffToString( n.c );
-                len = str.length;
+            str = coeffToString(n.c)
+            len = str.length
 
                 // toPrecision returns exponential notation if the number of significant digits
                 // specified is less than the number of digits necessary to represent the integer
                 // part of the value in fixed-point notation.
 
                 // Exponential notation.
-                if ( caller == 19 || caller == 24 && ( i <= e || e <= TO_EXP_NEG ) ) {
-
+            if (caller == 19 || caller == 24 && (i <= e || e <= TO_EXP_NEG)) {
                     // Append zeros?
-                    for ( ; len < i; str += '0', len++ );
-                    str = toExponential( str, e );
+              for (; len < i; str += '0', len++);
+              str = toExponential(str, e)
 
                 // Fixed-point notation.
-                } else {
-                    i -= ne;
-                    str = toFixedPoint( str, e );
+            } else {
+              i -= ne
+              str = toFixedPoint(str, e)
 
                     // Append zeros?
-                    if ( e + 1 > len ) {
-                        if ( --i > 0 ) for ( str += '.'; i--; str += '0' );
-                    } else {
-                        i += e - len;
-                        if ( i > 0 ) {
-                            if ( e + 1 == len ) str += '.';
-                            for ( ; i--; str += '0' );
-                        }
-                    }
-                }
+              if (e + 1 > len) {
+                if (--i > 0) for (str += '.'; i--; str += '0');
+              } else {
+                i += e - len
+                if (i > 0) {
+                if (e + 1 == len) str += '.'
+                for (; i--; str += '0');
+              }
+              }
             }
+          }
 
-            return n.s < 0 && c0 ? '-' + str : str;
+          return n.s < 0 && c0 ? '-' + str : str
         }
-
 
         // Handle BigNumber.max and BigNumber.min.
-        function maxOrMin( args, method ) {
-            var m, n,
-                i = 0;
+        function maxOrMin (args, method) {
+          var m, n,
+            i = 0
 
-            if ( isArray( args[0] ) ) args = args[0];
-            m = new BigNumber( args[0] );
+          if (isArray(args[0])) args = args[0]
+          m = new BigNumber(args[0])
 
-            for ( ; ++i < args.length; ) {
-                n = new BigNumber( args[i] );
+          for (; ++i < args.length;) {
+            n = new BigNumber(args[i])
 
                 // If any number is NaN, return NaN.
-                if ( !n.s ) {
-                    m = n;
-                    break;
-                } else if ( method.call( m, n ) ) {
-                    m = n;
-                }
+            if (!n.s) {
+              m = n
+              break
+            } else if (method.call(m, n)) {
+              m = n
             }
+          }
 
-            return m;
+          return m
         }
-
 
         /*
          * Return true if n is an integer in range, otherwise throw.
          * Use for argument validation when ERRORS is true.
          */
-        function intValidatorWithErrors( n, min, max, caller, name ) {
-            if ( n < min || n > max || n != truncate(n) ) {
-                raise( caller, ( name || 'decimal places' ) +
-                  ( n < min || n > max ? ' out of range' : ' not an integer' ), n );
-            }
+        function intValidatorWithErrors (n, min, max, caller, name) {
+          if (n < min || n > max || n != truncate(n)) {
+            raise(caller, (name || 'decimal places') +
+                  (n < min || n > max ? ' out of range' : ' not an integer'), n)
+          }
 
-            return true;
+          return true
         }
-
 
         /*
          * Strip trailing zeros, calculate base 10 exponent and check against MIN_EXP and MAX_EXP.
          * Called by minus, plus and times.
          */
-        function normalise( n, c, e ) {
-            var i = 1,
-                j = c.length;
+        function normalise (n, c, e) {
+          var i = 1,
+            j = c.length
 
              // Remove trailing zeros.
-            for ( ; !c[--j]; c.pop() );
+          for (; !c[--j]; c.pop());
 
             // Calculate the base 10 exponent. First get the number of digits of c[0].
-            for ( j = c[0]; j >= 10; j /= 10, i++ );
+          for (j = c[0]; j >= 10; j /= 10, i++);
 
             // Overflow?
-            if ( ( e = i + e * LOG_BASE - 1 ) > MAX_EXP ) {
-
+          if ((e = i + e * LOG_BASE - 1) > MAX_EXP) {
                 // Infinity.
-                n.c = n.e = null;
+            n.c = n.e = null
 
             // Underflow?
-            } else if ( e < MIN_EXP ) {
-
+          } else if (e < MIN_EXP) {
                 // Zero.
-                n.c = [ n.e = 0 ];
-            } else {
-                n.e = e;
-                n.c = c;
-            }
+            n.c = [ n.e = 0 ]
+          } else {
+            n.e = e
+            n.c = c
+          }
 
-            return n;
+          return n
         }
-
 
         // Handle values that fail the validity test in BigNumber.
         parseNumeric = (function () {
-            var basePrefix = /^(-?)0([xbo])(?=\w[\w.]*$)/i,
-                dotAfter = /^([^.]+)\.$/,
-                dotBefore = /^\.([^.]+)$/,
-                isInfinityOrNaN = /^-?(Infinity|NaN)$/,
-                whitespaceOrPlus = /^\s*\+(?=[\w.])|^\s+|\s+$/g;
+          var basePrefix = /^(-?)0([xbo])(?=\w[\w.]*$)/i,
+            dotAfter = /^([^.]+)\.$/,
+            dotBefore = /^\.([^.]+)$/,
+            isInfinityOrNaN = /^-?(Infinity|NaN)$/,
+            whitespaceOrPlus = /^\s*\+(?=[\w.])|^\s+|\s+$/g
 
-            return function ( x, str, num, b ) {
-                var base,
-                    s = num ? str : str.replace( whitespaceOrPlus, '' );
+          return function (x, str, num, b) {
+            var base,
+              s = num ? str : str.replace(whitespaceOrPlus, '')
 
                 // No exception on ±Infinity or NaN.
-                if ( isInfinityOrNaN.test(s) ) {
-                    x.s = isNaN(s) ? null : s < 0 ? -1 : 1;
-                } else {
-                    if ( !num ) {
-
+            if (isInfinityOrNaN.test(s)) {
+              x.s = isNaN(s) ? null : s < 0 ? -1 : 1
+            } else {
+              if (!num) {
                         // basePrefix = /^(-?)0([xbo])(?=\w[\w.]*$)/i
-                        s = s.replace( basePrefix, function ( m, p1, p2 ) {
-                            base = ( p2 = p2.toLowerCase() ) == 'x' ? 16 : p2 == 'b' ? 2 : 8;
-                            return !b || b == base ? p1 : m;
-                        });
+                s = s.replace(basePrefix, function (m, p1, p2) {
+                base = (p2 = p2.toLowerCase()) == 'x' ? 16 : p2 == 'b' ? 2 : 8
+                return !b || b == base ? p1 : m
+              })
 
-                        if (b) {
-                            base = b;
+                if (b) {
+                base = b
 
                             // E.g. '1.' to '1', '.1' to '0.1'
-                            s = s.replace( dotAfter, '$1' ).replace( dotBefore, '0.$1' );
-                        }
+                s = s.replace(dotAfter, '$1').replace(dotBefore, '0.$1')
+              }
 
-                        if ( str != s ) return new BigNumber( s, base );
-                    }
+                if (str != s) return new BigNumber(s, base)
+              }
 
                     // 'new BigNumber() not a number: {n}'
                     // 'new BigNumber() not a base {b} number: {n}'
-                    if (ERRORS) raise( id, 'not a' + ( b ? ' base ' + b : '' ) + ' number', str );
-                    x.s = null;
-                }
-
-                x.c = x.e = null;
-                id = 0;
+              if (ERRORS) raise(id, 'not a' + (b ? ' base ' + b : '') + ' number', str)
+              x.s = null
             }
-        })();
 
+            x.c = x.e = null
+            id = 0
+          }
+        })()
 
         // Throw a BigNumber Error.
-        function raise( caller, msg, val ) {
-            var error = new Error( [
-                'new BigNumber',     // 0
-                'cmp',               // 1
-                'config',            // 2
-                'div',               // 3
-                'divToInt',          // 4
-                'eq',                // 5
-                'gt',                // 6
-                'gte',               // 7
-                'lt',                // 8
-                'lte',               // 9
-                'minus',             // 10
-                'mod',               // 11
-                'plus',              // 12
-                'precision',         // 13
-                'random',            // 14
-                'round',             // 15
-                'shift',             // 16
-                'times',             // 17
-                'toDigits',          // 18
-                'toExponential',     // 19
-                'toFixed',           // 20
-                'toFormat',          // 21
-                'toFraction',        // 22
-                'pow',               // 23
-                'toPrecision',       // 24
-                'toString',          // 25
-                'BigNumber'          // 26
-            ][caller] + '() ' + msg + ': ' + val );
+        function raise (caller, msg, val) {
+          var error = new Error([
+            'new BigNumber',     // 0
+            'cmp',               // 1
+            'config',            // 2
+            'div',               // 3
+            'divToInt',          // 4
+            'eq',                // 5
+            'gt',                // 6
+            'gte',               // 7
+            'lt',                // 8
+            'lte',               // 9
+            'minus',             // 10
+            'mod',               // 11
+            'plus',              // 12
+            'precision',         // 13
+            'random',            // 14
+            'round',             // 15
+            'shift',             // 16
+            'times',             // 17
+            'toDigits',          // 18
+            'toExponential',     // 19
+            'toFixed',           // 20
+            'toFormat',          // 21
+            'toFraction',        // 22
+            'pow',               // 23
+            'toPrecision',       // 24
+            'toString',          // 25
+            'BigNumber'          // 26
+          ][caller] + '() ' + msg + ': ' + val)
 
-            error.name = 'BigNumber Error';
-            id = 0;
-            throw error;
+          error.name = 'BigNumber Error'
+          id = 0
+          throw error
         }
-
 
         /*
          * Round x to sd significant digits using rounding mode rm. Check for over/under-flow.
          * If r is truthy, it is known that there are more digits after the rounding digit.
          */
-        function round( x, sd, rm, r ) {
-            var d, i, j, k, n, ni, rd,
-                xc = x.c,
-                pows10 = POWS_TEN;
+        function round (x, sd, rm, r) {
+          var d, i, j, k, n, ni, rd,
+            xc = x.c,
+            pows10 = POWS_TEN
 
             // if x is not Infinity or NaN...
-            if (xc) {
-
+          if (xc) {
                 // rd is the rounding digit, i.e. the digit after the digit that may be rounded up.
                 // n is a base 1e14 number, the value of the element of array x.c containing rd.
                 // ni is the index of n within x.c.
                 // d is the number of digits of n.
                 // i is the index of rd within n including leading zeros.
                 // j is the actual index of rd within n (if < 0, rd is a leading zero).
-                out: {
-
+            out: {
                     // Get the number of digits of the first element of xc.
-                    for ( d = 1, k = xc[0]; k >= 10; k /= 10, d++ );
-                    i = sd - d;
+              for (d = 1, k = xc[0]; k >= 10; k /= 10, d++);
+              i = sd - d
 
                     // If the rounding digit is in the first element of xc...
-                    if ( i < 0 ) {
-                        i += LOG_BASE;
-                        j = sd;
-                        n = xc[ ni = 0 ];
+              if (i < 0) {
+                i += LOG_BASE
+                j = sd
+                n = xc[ ni = 0 ]
 
                         // Get the rounding digit at index j of n.
-                        rd = n / pows10[ d - j - 1 ] % 10 | 0;
-                    } else {
-                        ni = mathceil( ( i + 1 ) / LOG_BASE );
+                rd = n / pows10[ d - j - 1 ] % 10 | 0
+              } else {
+                ni = mathceil((i + 1) / LOG_BASE)
 
-                        if ( ni >= xc.length ) {
-
-                            if (r) {
-
+                if (ni >= xc.length) {
+                if (r) {
                                 // Needed by sqrt.
-                                for ( ; xc.length <= ni; xc.push(0) );
-                                n = rd = 0;
-                                d = 1;
-                                i %= LOG_BASE;
-                                j = i - LOG_BASE + 1;
-                            } else {
-                                break out;
-                            }
-                        } else {
-                            n = k = xc[ni];
+                  for (; xc.length <= ni; xc.push(0));
+                  n = rd = 0
+                  d = 1
+                  i %= LOG_BASE
+                  j = i - LOG_BASE + 1
+                } else {
+                  break out
+                }
+              } else {
+                n = k = xc[ni]
 
                             // Get the number of digits of n.
-                            for ( d = 1; k >= 10; k /= 10, d++ );
+                for (d = 1; k >= 10; k /= 10, d++);
 
                             // Get the index of rd within n.
-                            i %= LOG_BASE;
+                i %= LOG_BASE
 
                             // Get the index of rd within n, adjusted for leading zeros.
                             // The number of leading zeros of n is given by LOG_BASE - d.
-                            j = i - LOG_BASE + d;
+                j = i - LOG_BASE + d
 
                             // Get the rounding digit at index j of n.
-                            rd = j < 0 ? 0 : n / pows10[ d - j - 1 ] % 10 | 0;
-                        }
-                    }
+                rd = j < 0 ? 0 : n / pows10[ d - j - 1 ] % 10 | 0
+              }
+              }
 
-                    r = r || sd < 0 ||
+              r = r || sd < 0 ||
 
                     // Are there any non-zero digits after the rounding digit?
                     // The expression  n % pows10[ d - j - 1 ]  returns all digits of n to the right
                     // of the digit at j, e.g. if n is 908714 and j is 2, the expression gives 714.
-                      xc[ni + 1] != null || ( j < 0 ? n : n % pows10[ d - j - 1 ] );
+                      xc[ni + 1] != null || (j < 0 ? n : n % pows10[ d - j - 1 ])
 
-                    r = rm < 4
-                      ? ( rd || r ) && ( rm == 0 || rm == ( x.s < 0 ? 3 : 2 ) )
-                      : rd > 5 || rd == 5 && ( rm == 4 || r || rm == 6 &&
+              r = rm < 4
+                      ? (rd || r) && (rm == 0 || rm == (x.s < 0 ? 3 : 2))
+                      : rd > 5 || rd == 5 && (rm == 4 || r || rm == 6 &&
 
                         // Check whether the digit to the left of the rounding digit is odd.
-                        ( ( i > 0 ? j > 0 ? n / pows10[ d - j ] : 0 : xc[ni - 1] ) % 10 ) & 1 ||
-                          rm == ( x.s < 0 ? 8 : 7 ) );
+                        ((i > 0 ? j > 0 ? n / pows10[ d - j ] : 0 : xc[ni - 1]) % 10) & 1 ||
+                          rm == (x.s < 0 ? 8 : 7))
 
-                    if ( sd < 1 || !xc[0] ) {
-                        xc.length = 0;
+              if (sd < 1 || !xc[0]) {
+                xc.length = 0
 
-                        if (r) {
-
+                if (r) {
                             // Convert sd to decimal places.
-                            sd -= x.e + 1;
+                sd -= x.e + 1
 
                             // 1, 0.1, 0.01, 0.001, 0.0001 etc.
-                            xc[0] = pows10[ ( LOG_BASE - sd % LOG_BASE ) % LOG_BASE ];
-                            x.e = -sd || 0;
-                        } else {
-
+                xc[0] = pows10[ (LOG_BASE - sd % LOG_BASE) % LOG_BASE ]
+                x.e = -sd || 0
+              } else {
                             // Zero.
-                            xc[0] = x.e = 0;
-                        }
+                xc[0] = x.e = 0
+              }
 
-                        return x;
-                    }
+                return x
+              }
 
                     // Remove excess digits.
-                    if ( i == 0 ) {
-                        xc.length = ni;
-                        k = 1;
-                        ni--;
-                    } else {
-                        xc.length = ni + 1;
-                        k = pows10[ LOG_BASE - i ];
+              if (i == 0) {
+                xc.length = ni
+                k = 1
+                ni--
+              } else {
+                xc.length = ni + 1
+                k = pows10[ LOG_BASE - i ]
 
                         // E.g. 56700 becomes 56000 if 7 is the rounding digit.
                         // j > 0 means i > number of leading zeros of n.
-                        xc[ni] = j > 0 ? mathfloor( n / pows10[ d - j ] % pows10[j] ) * k : 0;
-                    }
+                xc[ni] = j > 0 ? mathfloor(n / pows10[ d - j ] % pows10[j]) * k : 0
+              }
 
                     // Round up?
-                    if (r) {
-
-                        for ( ; ; ) {
-
+              if (r) {
+                for (; ;) {
                             // If the digit to be rounded up is in the first element of xc...
-                            if ( ni == 0 ) {
-
+                if (ni == 0) {
                                 // i will be the length of xc[0] before k is added.
-                                for ( i = 1, j = xc[0]; j >= 10; j /= 10, i++ );
-                                j = xc[0] += k;
-                                for ( k = 1; j >= 10; j /= 10, k++ );
+                  for (i = 1, j = xc[0]; j >= 10; j /= 10, i++);
+                  j = xc[0] += k
+                  for (k = 1; j >= 10; j /= 10, k++);
 
                                 // if i != k the length has increased.
-                                if ( i != k ) {
-                                    x.e++;
-                                    if ( xc[0] == BASE ) xc[0] = 1;
-                                }
+                  if (i != k) {
+                    x.e++
+                    if (xc[0] == BASE) xc[0] = 1
+                  }
 
-                                break;
-                            } else {
-                                xc[ni] += k;
-                                if ( xc[ni] != BASE ) break;
-                                xc[ni--] = 0;
-                                k = 1;
-                            }
-                        }
-                    }
+                  break
+                } else {
+                  xc[ni] += k
+                  if (xc[ni] != BASE) break
+                  xc[ni--] = 0
+                  k = 1
+                }
+              }
+              }
 
                     // Remove trailing zeros.
-                    for ( i = xc.length; xc[--i] === 0; xc.pop() );
-                }
-
-                // Overflow? Infinity.
-                if ( x.e > MAX_EXP ) {
-                    x.c = x.e = null;
-
-                // Underflow? Zero.
-                } else if ( x.e < MIN_EXP ) {
-                    x.c = [ x.e = 0 ];
-                }
+              for (i = xc.length; xc[--i] === 0; xc.pop());
             }
 
-            return x;
+                // Overflow? Infinity.
+            if (x.e > MAX_EXP) {
+              x.c = x.e = null
+
+                // Underflow? Zero.
+            } else if (x.e < MIN_EXP) {
+              x.c = [ x.e = 0 ]
+            }
+          }
+
+          return x
         }
 
-
         // PROTOTYPE/INSTANCE METHODS
-
 
         /*
          * Return a new BigNumber whose value is the absolute value of this BigNumber.
          */
         P.absoluteValue = P.abs = function () {
-            var x = new BigNumber(this);
-            if ( x.s < 0 ) x.s = 1;
-            return x;
-        };
-
+          var x = new BigNumber(this)
+          if (x.s < 0) x.s = 1
+          return x
+        }
 
         /*
          * Return a new BigNumber whose value is the value of this BigNumber rounded to a whole
          * number in the direction of Infinity.
          */
         P.ceil = function () {
-            return round( new BigNumber(this), this.e + 1, 2 );
-        };
-
+          return round(new BigNumber(this), this.e + 1, 2)
+        }
 
         /*
          * Return
@@ -15008,30 +14624,28 @@ module.exports = XMLHttpRequest;
          * 0 if they have the same value,
          * or null if the value of either is NaN.
          */
-        P.comparedTo = P.cmp = function ( y, b ) {
-            id = 1;
-            return compare( this, new BigNumber( y, b ) );
-        };
-
+        P.comparedTo = P.cmp = function (y, b) {
+          id = 1
+          return compare(this, new BigNumber(y, b))
+        }
 
         /*
          * Return the number of decimal places of the value of this BigNumber, or null if the value
          * of this BigNumber is ±Infinity or NaN.
          */
         P.decimalPlaces = P.dp = function () {
-            var n, v,
-                c = this.c;
+          var n, v,
+            c = this.c
 
-            if ( !c ) return null;
-            n = ( ( v = c.length - 1 ) - bitFloor( this.e / LOG_BASE ) ) * LOG_BASE;
+          if (!c) return null
+          n = ((v = c.length - 1) - bitFloor(this.e / LOG_BASE)) * LOG_BASE
 
             // Subtract the number of trailing zeros of the last number.
-            if ( v = c[v] ) for ( ; v % 10 == 0; v /= 10, n-- );
-            if ( n < 0 ) n = 0;
+          if (v = c[v]) for (; v % 10 == 0; v /= 10, n--);
+          if (n < 0) n = 0
 
-            return n;
-        };
-
+          return n
+        }
 
         /*
          *  n / 0 = I
@@ -15053,121 +14667,107 @@ module.exports = XMLHttpRequest;
          * Return a new BigNumber whose value is the value of this BigNumber divided by the value of
          * BigNumber(y, b), rounded according to DECIMAL_PLACES and ROUNDING_MODE.
          */
-        P.dividedBy = P.div = function ( y, b ) {
-            id = 3;
-            return div( this, new BigNumber( y, b ), DECIMAL_PLACES, ROUNDING_MODE );
-        };
-
+        P.dividedBy = P.div = function (y, b) {
+          id = 3
+          return div(this, new BigNumber(y, b), DECIMAL_PLACES, ROUNDING_MODE)
+        }
 
         /*
          * Return a new BigNumber whose value is the integer part of dividing the value of this
          * BigNumber by the value of BigNumber(y, b).
          */
-        P.dividedToIntegerBy = P.divToInt = function ( y, b ) {
-            id = 4;
-            return div( this, new BigNumber( y, b ), 0, 1 );
-        };
-
+        P.dividedToIntegerBy = P.divToInt = function (y, b) {
+          id = 4
+          return div(this, new BigNumber(y, b), 0, 1)
+        }
 
         /*
          * Return true if the value of this BigNumber is equal to the value of BigNumber(y, b),
          * otherwise returns false.
          */
-        P.equals = P.eq = function ( y, b ) {
-            id = 5;
-            return compare( this, new BigNumber( y, b ) ) === 0;
-        };
-
+        P.equals = P.eq = function (y, b) {
+          id = 5
+          return compare(this, new BigNumber(y, b)) === 0
+        }
 
         /*
          * Return a new BigNumber whose value is the value of this BigNumber rounded to a whole
          * number in the direction of -Infinity.
          */
         P.floor = function () {
-            return round( new BigNumber(this), this.e + 1, 3 );
-        };
-
+          return round(new BigNumber(this), this.e + 1, 3)
+        }
 
         /*
          * Return true if the value of this BigNumber is greater than the value of BigNumber(y, b),
          * otherwise returns false.
          */
-        P.greaterThan = P.gt = function ( y, b ) {
-            id = 6;
-            return compare( this, new BigNumber( y, b ) ) > 0;
-        };
-
+        P.greaterThan = P.gt = function (y, b) {
+          id = 6
+          return compare(this, new BigNumber(y, b)) > 0
+        }
 
         /*
          * Return true if the value of this BigNumber is greater than or equal to the value of
          * BigNumber(y, b), otherwise returns false.
          */
-        P.greaterThanOrEqualTo = P.gte = function ( y, b ) {
-            id = 7;
-            return ( b = compare( this, new BigNumber( y, b ) ) ) === 1 || b === 0;
-
-        };
-
+        P.greaterThanOrEqualTo = P.gte = function (y, b) {
+          id = 7
+          return (b = compare(this, new BigNumber(y, b))) === 1 || b === 0
+        }
 
         /*
          * Return true if the value of this BigNumber is a finite number, otherwise returns false.
          */
         P.isFinite = function () {
-            return !!this.c;
-        };
-
+          return !!this.c
+        }
 
         /*
          * Return true if the value of this BigNumber is an integer, otherwise return false.
          */
         P.isInteger = P.isInt = function () {
-            return !!this.c && bitFloor( this.e / LOG_BASE ) > this.c.length - 2;
-        };
-
+          return !!this.c && bitFloor(this.e / LOG_BASE) > this.c.length - 2
+        }
 
         /*
          * Return true if the value of this BigNumber is NaN, otherwise returns false.
          */
         P.isNaN = function () {
-            return !this.s;
-        };
-
+          return !this.s
+        }
 
         /*
          * Return true if the value of this BigNumber is negative, otherwise returns false.
          */
         P.isNegative = P.isNeg = function () {
-            return this.s < 0;
-        };
-
+          return this.s < 0
+        }
 
         /*
          * Return true if the value of this BigNumber is 0 or -0, otherwise returns false.
          */
         P.isZero = function () {
-            return !!this.c && this.c[0] == 0;
-        };
-
+          return !!this.c && this.c[0] == 0
+        }
 
         /*
          * Return true if the value of this BigNumber is less than the value of BigNumber(y, b),
          * otherwise returns false.
          */
-        P.lessThan = P.lt = function ( y, b ) {
-            id = 8;
-            return compare( this, new BigNumber( y, b ) ) < 0;
-        };
-
+        P.lessThan = P.lt = function (y, b) {
+          id = 8
+          return compare(this, new BigNumber(y, b)) < 0
+        }
 
         /*
          * Return true if the value of this BigNumber is less than or equal to the value of
          * BigNumber(y, b), otherwise returns false.
          */
-        P.lessThanOrEqualTo = P.lte = function ( y, b ) {
-            id = 9;
-            return ( b = compare( this, new BigNumber( y, b ) ) ) === -1 || b === 0;
-        };
-
+        P.lessThanOrEqualTo = P.lte = function (y, b) {
+          id = 9
+          return (b = compare(this, new BigNumber(y, b))) === -1 || b === 0
+        }
 
         /*
          *  n - 0 = n
@@ -15189,119 +14789,111 @@ module.exports = XMLHttpRequest;
          * Return a new BigNumber whose value is the value of this BigNumber minus the value of
          * BigNumber(y, b).
          */
-        P.minus = P.sub = function ( y, b ) {
-            var i, j, t, xLTy,
-                x = this,
-                a = x.s;
+        P.minus = P.sub = function (y, b) {
+          var i, j, t, xLTy,
+            x = this,
+            a = x.s
 
-            id = 10;
-            y = new BigNumber( y, b );
-            b = y.s;
+          id = 10
+          y = new BigNumber(y, b)
+          b = y.s
 
             // Either NaN?
-            if ( !a || !b ) return new BigNumber(NaN);
+          if (!a || !b) return new BigNumber(NaN)
 
             // Signs differ?
-            if ( a != b ) {
-                y.s = -b;
-                return x.plus(y);
-            }
+          if (a != b) {
+            y.s = -b
+            return x.plus(y)
+          }
 
-            var xe = x.e / LOG_BASE,
-                ye = y.e / LOG_BASE,
-                xc = x.c,
-                yc = y.c;
+          var xe = x.e / LOG_BASE,
+            ye = y.e / LOG_BASE,
+            xc = x.c,
+            yc = y.c
 
-            if ( !xe || !ye ) {
-
+          if (!xe || !ye) {
                 // Either Infinity?
-                if ( !xc || !yc ) return xc ? ( y.s = -b, y ) : new BigNumber( yc ? x : NaN );
+            if (!xc || !yc) return xc ? (y.s = -b, y) : new BigNumber(yc ? x : NaN)
 
                 // Either zero?
-                if ( !xc[0] || !yc[0] ) {
-
+            if (!xc[0] || !yc[0]) {
                     // Return y if y is non-zero, x if x is non-zero, or zero if both are zero.
-                    return yc[0] ? ( y.s = -b, y ) : new BigNumber( xc[0] ? x :
+              return yc[0] ? (y.s = -b, y) : new BigNumber(xc[0] ? x
 
                       // IEEE 754 (2008) 6.3: n - n = -0 when rounding to -Infinity
-                      ROUNDING_MODE == 3 ? -0 : 0 );
-                }
+                      : ROUNDING_MODE == 3 ? -0 : 0)
             }
+          }
 
-            xe = bitFloor(xe);
-            ye = bitFloor(ye);
-            xc = xc.slice();
+          xe = bitFloor(xe)
+          ye = bitFloor(ye)
+          xc = xc.slice()
 
             // Determine which is the bigger number.
-            if ( a = xe - ye ) {
-
-                if ( xLTy = a < 0 ) {
-                    a = -a;
-                    t = xc;
-                } else {
-                    ye = xe;
-                    t = yc;
-                }
-
-                t.reverse();
-
-                // Prepend zeros to equalise exponents.
-                for ( b = a; b--; t.push(0) );
-                t.reverse();
+          if (a = xe - ye) {
+            if (xLTy = a < 0) {
+              a = -a
+              t = xc
             } else {
-
-                // Exponents equal. Check digit by digit.
-                j = ( xLTy = ( a = xc.length ) < ( b = yc.length ) ) ? a : b;
-
-                for ( a = b = 0; b < j; b++ ) {
-
-                    if ( xc[b] != yc[b] ) {
-                        xLTy = xc[b] < yc[b];
-                        break;
-                    }
-                }
+              ye = xe
+              t = yc
             }
 
-            // x < y? Point xc to the array of the bigger number.
-            if (xLTy) t = xc, xc = yc, yc = t, y.s = -y.s;
+            t.reverse()
 
-            b = ( j = yc.length ) - ( i = xc.length );
+                // Prepend zeros to equalise exponents.
+            for (b = a; b--; t.push(0));
+            t.reverse()
+          } else {
+                // Exponents equal. Check digit by digit.
+            j = (xLTy = (a = xc.length) < (b = yc.length)) ? a : b
+
+            for (a = b = 0; b < j; b++) {
+              if (xc[b] != yc[b]) {
+                xLTy = xc[b] < yc[b]
+                break
+              }
+            }
+          }
+
+            // x < y? Point xc to the array of the bigger number.
+          if (xLTy) t = xc, xc = yc, yc = t, y.s = -y.s
+
+          b = (j = yc.length) - (i = xc.length)
 
             // Append zeros to xc if shorter.
             // No need to add zeros to yc if shorter as subtract only needs to start at yc.length.
-            if ( b > 0 ) for ( ; b--; xc[i++] = 0 );
-            b = BASE - 1;
+          if (b > 0) for (; b--; xc[i++] = 0);
+          b = BASE - 1
 
             // Subtract yc from xc.
-            for ( ; j > a; ) {
-
-                if ( xc[--j] < yc[j] ) {
-                    for ( i = j; i && !xc[--i]; xc[i] = b );
-                    --xc[i];
-                    xc[j] += BASE;
-                }
-
-                xc[j] -= yc[j];
+          for (; j > a;) {
+            if (xc[--j] < yc[j]) {
+              for (i = j; i && !xc[--i]; xc[i] = b);
+              --xc[i]
+              xc[j] += BASE
             }
+
+            xc[j] -= yc[j]
+          }
 
             // Remove leading zeros and adjust exponent accordingly.
-            for ( ; xc[0] == 0; xc.shift(), --ye );
+          for (; xc[0] == 0; xc.shift(), --ye);
 
             // Zero?
-            if ( !xc[0] ) {
-
+          if (!xc[0]) {
                 // Following IEEE 754 (2008) 6.3,
                 // n - n = +0  but  n - n = -0  when rounding towards -Infinity.
-                y.s = ROUNDING_MODE == 3 ? -1 : 1;
-                y.c = [ y.e = 0 ];
-                return y;
-            }
+            y.s = ROUNDING_MODE == 3 ? -1 : 1
+            y.c = [ y.e = 0 ]
+            return y
+          }
 
             // No need to check for Infinity as +x - +y != Infinity && -x - -y != Infinity
             // for finite x and y.
-            return normalise( y, xc, ye );
-        };
-
+          return normalise(y, xc, ye)
+        }
 
         /*
          *   n % 0 =  N
@@ -15324,49 +14916,46 @@ module.exports = XMLHttpRequest;
          * Return a new BigNumber whose value is the value of this BigNumber modulo the value of
          * BigNumber(y, b). The result depends on the value of MODULO_MODE.
          */
-        P.modulo = P.mod = function ( y, b ) {
-            var q, s,
-                x = this;
+        P.modulo = P.mod = function (y, b) {
+          var q, s,
+            x = this
 
-            id = 11;
-            y = new BigNumber( y, b );
+          id = 11
+          y = new BigNumber(y, b)
 
             // Return NaN if x is Infinity or NaN, or y is NaN or zero.
-            if ( !x.c || !y.s || y.c && !y.c[0] ) {
-                return new BigNumber(NaN);
+          if (!x.c || !y.s || y.c && !y.c[0]) {
+            return new BigNumber(NaN)
 
             // Return x if y is Infinity or x is zero.
-            } else if ( !y.c || x.c && !x.c[0] ) {
-                return new BigNumber(x);
-            }
+          } else if (!y.c || x.c && !x.c[0]) {
+            return new BigNumber(x)
+          }
 
-            if ( MODULO_MODE == 9 ) {
-
+          if (MODULO_MODE == 9) {
                 // Euclidian division: q = sign(y) * floor(x / abs(y))
                 // r = x - qy    where  0 <= r < abs(y)
-                s = y.s;
-                y.s = 1;
-                q = div( x, y, 0, 3 );
-                y.s = s;
-                q.s *= s;
-            } else {
-                q = div( x, y, 0, MODULO_MODE );
-            }
+            s = y.s
+            y.s = 1
+            q = div(x, y, 0, 3)
+            y.s = s
+            q.s *= s
+          } else {
+            q = div(x, y, 0, MODULO_MODE)
+          }
 
-            return x.minus( q.times(y) );
-        };
-
+          return x.minus(q.times(y))
+        }
 
         /*
          * Return a new BigNumber whose value is the value of this BigNumber negated,
          * i.e. multiplied by -1.
          */
         P.negated = P.neg = function () {
-            var x = new BigNumber(this);
-            x.s = -x.s || null;
-            return x;
-        };
-
+          var x = new BigNumber(this)
+          x.s = -x.s || null
+          return x
+        }
 
         /*
          *  n + 0 = n
@@ -15388,80 +14977,78 @@ module.exports = XMLHttpRequest;
          * Return a new BigNumber whose value is the value of this BigNumber plus the value of
          * BigNumber(y, b).
          */
-        P.plus = P.add = function ( y, b ) {
-            var t,
-                x = this,
-                a = x.s;
+        P.plus = P.add = function (y, b) {
+          var t,
+            x = this,
+            a = x.s
 
-            id = 12;
-            y = new BigNumber( y, b );
-            b = y.s;
+          id = 12
+          y = new BigNumber(y, b)
+          b = y.s
 
             // Either NaN?
-            if ( !a || !b ) return new BigNumber(NaN);
+          if (!a || !b) return new BigNumber(NaN)
 
             // Signs differ?
-             if ( a != b ) {
-                y.s = -b;
-                return x.minus(y);
-            }
+          if (a != b) {
+            y.s = -b
+            return x.minus(y)
+          }
 
-            var xe = x.e / LOG_BASE,
-                ye = y.e / LOG_BASE,
-                xc = x.c,
-                yc = y.c;
+          var xe = x.e / LOG_BASE,
+            ye = y.e / LOG_BASE,
+            xc = x.c,
+            yc = y.c
 
-            if ( !xe || !ye ) {
-
+          if (!xe || !ye) {
                 // Return ±Infinity if either ±Infinity.
-                if ( !xc || !yc ) return new BigNumber( a / 0 );
+            if (!xc || !yc) return new BigNumber(a / 0)
 
                 // Either zero?
                 // Return y if y is non-zero, x if x is non-zero, or zero if both are zero.
-                if ( !xc[0] || !yc[0] ) return yc[0] ? y : new BigNumber( xc[0] ? x : a * 0 );
-            }
+            if (!xc[0] || !yc[0]) return yc[0] ? y : new BigNumber(xc[0] ? x : a * 0)
+          }
 
-            xe = bitFloor(xe);
-            ye = bitFloor(ye);
-            xc = xc.slice();
+          xe = bitFloor(xe)
+          ye = bitFloor(ye)
+          xc = xc.slice()
 
             // Prepend zeros to equalise exponents. Faster to use reverse then do unshifts.
-            if ( a = xe - ye ) {
-                if ( a > 0 ) {
-                    ye = xe;
-                    t = yc;
-                } else {
-                    a = -a;
-                    t = xc;
-                }
-
-                t.reverse();
-                for ( ; a--; t.push(0) );
-                t.reverse();
+          if (a = xe - ye) {
+            if (a > 0) {
+              ye = xe
+              t = yc
+            } else {
+              a = -a
+              t = xc
             }
 
-            a = xc.length;
-            b = yc.length;
+            t.reverse()
+            for (; a--; t.push(0));
+            t.reverse()
+          }
+
+          a = xc.length
+          b = yc.length
 
             // Point xc to the longer array, and b to the shorter length.
-            if ( a - b < 0 ) t = yc, yc = xc, xc = t, b = a;
+          if (a - b < 0) t = yc, yc = xc, xc = t, b = a
 
             // Only start adding at yc.length - 1 as the further digits of xc can be ignored.
-            for ( a = 0; b; ) {
-                a = ( xc[--b] = xc[b] + yc[b] + a ) / BASE | 0;
-                xc[b] = BASE === xc[b] ? 0 : xc[b] % BASE;
-            }
+          for (a = 0; b;) {
+            a = (xc[--b] = xc[b] + yc[b] + a) / BASE | 0
+            xc[b] = BASE === xc[b] ? 0 : xc[b] % BASE
+          }
 
-            if (a) {
-                xc.unshift(a);
-                ++ye;
-            }
+          if (a) {
+            xc.unshift(a)
+            ++ye
+          }
 
             // No need to check for zero, as +x + +y != 0 && -x + -y != 0
             // ye = MAX_EXP + 1 possible
-            return normalise( y, xc, ye );
-        };
-
+          return normalise(y, xc, ye)
+        }
 
         /*
          * Return the number of significant digits of the value of this BigNumber.
@@ -15469,34 +15056,32 @@ module.exports = XMLHttpRequest;
          * [z] {boolean|number} Whether to count integer-part trailing zeros: true, false, 1 or 0.
          */
         P.precision = P.sd = function (z) {
-            var n, v,
-                x = this,
-                c = x.c;
+          var n, v,
+            x = this,
+            c = x.c
 
             // 'precision() argument not a boolean or binary digit: {z}'
-            if ( z != null && z !== !!z && z !== 1 && z !== 0 ) {
-                if (ERRORS) raise( 13, 'argument' + notBool, z );
-                if ( z != !!z ) z = null;
-            }
+          if (z != null && z !== !!z && z !== 1 && z !== 0) {
+            if (ERRORS) raise(13, 'argument' + notBool, z)
+            if (z != !!z) z = null
+          }
 
-            if ( !c ) return null;
-            v = c.length - 1;
-            n = v * LOG_BASE + 1;
+          if (!c) return null
+          v = c.length - 1
+          n = v * LOG_BASE + 1
 
-            if ( v = c[v] ) {
-
+          if (v = c[v]) {
                 // Subtract the number of trailing zeros of the last element.
-                for ( ; v % 10 == 0; v /= 10, n-- );
+            for (; v % 10 == 0; v /= 10, n--);
 
                 // Add the number of digits of the first element.
-                for ( v = c[0]; v >= 10; v /= 10, n++ );
-            }
+            for (v = c[0]; v >= 10; v /= 10, n++);
+          }
 
-            if ( z && x.e + 1 > n ) n = x.e + 1;
+          if (z && x.e + 1 > n) n = x.e + 1
 
-            return n;
-        };
-
+          return n
+        }
 
         /*
          * Return a new BigNumber whose value is the value of this BigNumber rounded to a maximum of
@@ -15511,17 +15096,16 @@ module.exports = XMLHttpRequest;
          * 'round() rounding mode not an integer: {rm}'
          * 'round() rounding mode out of range: {rm}'
          */
-        P.round = function ( dp, rm ) {
-            var n = new BigNumber(this);
+        P.round = function (dp, rm) {
+          var n = new BigNumber(this)
 
-            if ( dp == null || isValidInt( dp, 0, MAX, 15 ) ) {
-                round( n, ~~dp + this.e + 1, rm == null ||
-                  !isValidInt( rm, 0, 8, 15, roundingMode ) ? ROUNDING_MODE : rm | 0 );
-            }
+          if (dp == null || isValidInt(dp, 0, MAX, 15)) {
+            round(n, ~~dp + this.e + 1, rm == null ||
+                  !isValidInt(rm, 0, 8, 15, roundingMode) ? ROUNDING_MODE : rm | 0)
+          }
 
-            return n;
-        };
-
+          return n
+        }
 
         /*
          * Return a new BigNumber whose value is the value of this BigNumber shifted by k places
@@ -15536,16 +15120,15 @@ module.exports = XMLHttpRequest;
          * 'shift() argument out of range: {k}'
          */
         P.shift = function (k) {
-            var n = this;
-            return isValidInt( k, -MAX_SAFE_INTEGER, MAX_SAFE_INTEGER, 16, 'argument' )
+          var n = this
+          return isValidInt(k, -MAX_SAFE_INTEGER, MAX_SAFE_INTEGER, 16, 'argument')
 
               // k < 1e+21, or truncate(k) will produce exponential notation.
-              ? n.times( '1e' + truncate(k) )
-              : new BigNumber( n.c && n.c[0] && ( k < -MAX_SAFE_INTEGER || k > MAX_SAFE_INTEGER )
-                ? n.s * ( k < 0 ? 0 : 1 / 0 )
-                : n );
-        };
-
+              ? n.times('1e' + truncate(k))
+              : new BigNumber(n.c && n.c[0] && (k < -MAX_SAFE_INTEGER || k > MAX_SAFE_INTEGER)
+                ? n.s * (k < 0 ? 0 : 1 / 0)
+                : n)
+        }
 
         /*
          *  sqrt(-n) =  N
@@ -15559,104 +15142,99 @@ module.exports = XMLHttpRequest;
          * rounded according to DECIMAL_PLACES and ROUNDING_MODE.
          */
         P.squareRoot = P.sqrt = function () {
-            var m, n, r, rep, t,
-                x = this,
-                c = x.c,
-                s = x.s,
-                e = x.e,
-                dp = DECIMAL_PLACES + 4,
-                half = new BigNumber('0.5');
+          var m, n, r, rep, t,
+            x = this,
+            c = x.c,
+            s = x.s,
+            e = x.e,
+            dp = DECIMAL_PLACES + 4,
+            half = new BigNumber('0.5')
 
             // Negative/NaN/Infinity/zero?
-            if ( s !== 1 || !c || !c[0] ) {
-                return new BigNumber( !s || s < 0 && ( !c || c[0] ) ? NaN : c ? x : 1 / 0 );
-            }
+          if (s !== 1 || !c || !c[0]) {
+            return new BigNumber(!s || s < 0 && (!c || c[0]) ? NaN : c ? x : 1 / 0)
+          }
 
             // Initial estimate.
-            s = Math.sqrt( +x );
+          s = Math.sqrt(+x)
 
             // Math.sqrt underflow/overflow?
             // Pass x to Math.sqrt as integer, then adjust the exponent of the result.
-            if ( s == 0 || s == 1 / 0 ) {
-                n = coeffToString(c);
-                if ( ( n.length + e ) % 2 == 0 ) n += '0';
-                s = Math.sqrt(n);
-                e = bitFloor( ( e + 1 ) / 2 ) - ( e < 0 || e % 2 );
+          if (s == 0 || s == 1 / 0) {
+            n = coeffToString(c)
+            if ((n.length + e) % 2 == 0) n += '0'
+            s = Math.sqrt(n)
+            e = bitFloor((e + 1) / 2) - (e < 0 || e % 2)
 
-                if ( s == 1 / 0 ) {
-                    n = '1e' + e;
-                } else {
-                    n = s.toExponential();
-                    n = n.slice( 0, n.indexOf('e') + 1 ) + e;
-                }
-
-                r = new BigNumber(n);
+            if (s == 1 / 0) {
+              n = '1e' + e
             } else {
-                r = new BigNumber( s + '' );
+              n = s.toExponential()
+              n = n.slice(0, n.indexOf('e') + 1) + e
             }
+
+            r = new BigNumber(n)
+          } else {
+            r = new BigNumber(s + '')
+          }
 
             // Check for zero.
             // r could be zero if MIN_EXP is changed after the this value was created.
             // This would cause a division by zero (x/t) and hence Infinity below, which would cause
             // coeffToString to throw.
-            if ( r.c[0] ) {
-                e = r.e;
-                s = e + dp;
-                if ( s < 3 ) s = 0;
+          if (r.c[0]) {
+            e = r.e
+            s = e + dp
+            if (s < 3) s = 0
 
                 // Newton-Raphson iteration.
-                for ( ; ; ) {
-                    t = r;
-                    r = half.times( t.plus( div( x, t, dp, 1 ) ) );
+            for (; ;) {
+              t = r
+              r = half.times(t.plus(div(x, t, dp, 1)))
 
-                    if ( coeffToString( t.c   ).slice( 0, s ) === ( n =
-                         coeffToString( r.c ) ).slice( 0, s ) ) {
-
+              if (coeffToString(t.c).slice(0, s) === (n =
+                         coeffToString(r.c)).slice(0, s)) {
                         // The exponent of r may here be one less than the final result exponent,
                         // e.g 0.0009999 (e-4) --> 0.001 (e-3), so adjust s so the rounding digits
                         // are indexed correctly.
-                        if ( r.e < e ) --s;
-                        n = n.slice( s - 3, s + 1 );
+                if (r.e < e) --s
+                n = n.slice(s - 3, s + 1)
 
                         // The 4th rounding digit may be in error by -1 so if the 4 rounding digits
                         // are 9999 or 4999 (i.e. approaching a rounding boundary) continue the
                         // iteration.
-                        if ( n == '9999' || !rep && n == '4999' ) {
-
+                if (n == '9999' || !rep && n == '4999') {
                             // On the first iteration only, check to see if rounding up gives the
                             // exact result as the nines may infinitely repeat.
-                            if ( !rep ) {
-                                round( t, t.e + DECIMAL_PLACES + 2, 0 );
+                if (!rep) {
+                  round(t, t.e + DECIMAL_PLACES + 2, 0)
 
-                                if ( t.times(t).eq(x) ) {
-                                    r = t;
-                                    break;
-                                }
-                            }
+                  if (t.times(t).eq(x)) {
+                    r = t
+                    break
+                  }
+                }
 
-                            dp += 4;
-                            s += 4;
-                            rep = 1;
-                        } else {
-
+                dp += 4
+                s += 4
+                rep = 1
+              } else {
                             // If rounding digits are null, 0{0,4} or 50{0,3}, check for exact
                             // result. If not, then there are further digits and m will be truthy.
-                            if ( !+n || !+n.slice(1) && n.charAt(0) == '5' ) {
-
+                if (!+n || !+n.slice(1) && n.charAt(0) == '5') {
                                 // Truncate to the first rounding digit.
-                                round( r, r.e + DECIMAL_PLACES + 2, 1 );
-                                m = !r.times(r).eq(x);
-                            }
-
-                            break;
-                        }
-                    }
+                  round(r, r.e + DECIMAL_PLACES + 2, 1)
+                  m = !r.times(r).eq(x)
                 }
+
+                break
+              }
+              }
             }
+          }
 
-            return round( r, r.e + DECIMAL_PLACES + 1, ROUNDING_MODE, m );
-        };
-
+          return round(r, r.e + DECIMAL_PLACES + 1, ROUNDING_MODE, m)
+        }
 
         /*
          *  n * 0 = 0
@@ -15678,76 +15256,74 @@ module.exports = XMLHttpRequest;
          * Return a new BigNumber whose value is the value of this BigNumber times the value of
          * BigNumber(y, b).
          */
-        P.times = P.mul = function ( y, b ) {
-            var c, e, i, j, k, m, xcL, xlo, xhi, ycL, ylo, yhi, zc,
-                base, sqrtBase,
-                x = this,
-                xc = x.c,
-                yc = ( id = 17, y = new BigNumber( y, b ) ).c;
+        P.times = P.mul = function (y, b) {
+          var c, e, i, j, k, m, xcL, xlo, xhi, ycL, ylo, yhi, zc,
+            base, sqrtBase,
+            x = this,
+            xc = x.c,
+            yc = (id = 17, y = new BigNumber(y, b)).c
 
             // Either NaN, ±Infinity or ±0?
-            if ( !xc || !yc || !xc[0] || !yc[0] ) {
-
+          if (!xc || !yc || !xc[0] || !yc[0]) {
                 // Return NaN if either is NaN, or one is 0 and the other is Infinity.
-                if ( !x.s || !y.s || xc && !xc[0] && !yc || yc && !yc[0] && !xc ) {
-                    y.c = y.e = y.s = null;
-                } else {
-                    y.s *= x.s;
+            if (!x.s || !y.s || xc && !xc[0] && !yc || yc && !yc[0] && !xc) {
+              y.c = y.e = y.s = null
+            } else {
+              y.s *= x.s
 
                     // Return ±Infinity if either is ±Infinity.
-                    if ( !xc || !yc ) {
-                        y.c = y.e = null;
+              if (!xc || !yc) {
+                y.c = y.e = null
 
                     // Return ±0 if either is ±0.
-                    } else {
-                        y.c = [0];
-                        y.e = 0;
-                    }
-                }
-
-                return y;
+              } else {
+                y.c = [0]
+                y.e = 0
+              }
             }
 
-            e = bitFloor( x.e / LOG_BASE ) + bitFloor( y.e / LOG_BASE );
-            y.s *= x.s;
-            xcL = xc.length;
-            ycL = yc.length;
+            return y
+          }
+
+          e = bitFloor(x.e / LOG_BASE) + bitFloor(y.e / LOG_BASE)
+          y.s *= x.s
+          xcL = xc.length
+          ycL = yc.length
 
             // Ensure xc points to longer array and xcL to its length.
-            if ( xcL < ycL ) zc = xc, xc = yc, yc = zc, i = xcL, xcL = ycL, ycL = i;
+          if (xcL < ycL) zc = xc, xc = yc, yc = zc, i = xcL, xcL = ycL, ycL = i
 
             // Initialise the result array with zeros.
-            for ( i = xcL + ycL, zc = []; i--; zc.push(0) );
+          for (i = xcL + ycL, zc = []; i--; zc.push(0));
 
-            base = BASE;
-            sqrtBase = SQRT_BASE;
+          base = BASE
+          sqrtBase = SQRT_BASE
 
-            for ( i = ycL; --i >= 0; ) {
-                c = 0;
-                ylo = yc[i] % sqrtBase;
-                yhi = yc[i] / sqrtBase | 0;
+          for (i = ycL; --i >= 0;) {
+            c = 0
+            ylo = yc[i] % sqrtBase
+            yhi = yc[i] / sqrtBase | 0
 
-                for ( k = xcL, j = i + k; j > i; ) {
-                    xlo = xc[--k] % sqrtBase;
-                    xhi = xc[k] / sqrtBase | 0;
-                    m = yhi * xlo + xhi * ylo;
-                    xlo = ylo * xlo + ( ( m % sqrtBase ) * sqrtBase ) + zc[j] + c;
-                    c = ( xlo / base | 0 ) + ( m / sqrtBase | 0 ) + yhi * xhi;
-                    zc[j--] = xlo % base;
-                }
-
-                zc[j] = c;
+            for (k = xcL, j = i + k; j > i;) {
+              xlo = xc[--k] % sqrtBase
+              xhi = xc[k] / sqrtBase | 0
+              m = yhi * xlo + xhi * ylo
+              xlo = ylo * xlo + ((m % sqrtBase) * sqrtBase) + zc[j] + c
+              c = (xlo / base | 0) + (m / sqrtBase | 0) + yhi * xhi
+              zc[j--] = xlo % base
             }
 
-            if (c) {
-                ++e;
-            } else {
-                zc.shift();
-            }
+            zc[j] = c
+          }
 
-            return normalise( y, zc, e );
-        };
+          if (c) {
+            ++e
+          } else {
+            zc.shift()
+          }
 
+          return normalise(y, zc, e)
+        }
 
         /*
          * Return a new BigNumber whose value is the value of this BigNumber rounded to a maximum of
@@ -15761,13 +15337,12 @@ module.exports = XMLHttpRequest;
          * 'toDigits() rounding mode not an integer: {rm}'
          * 'toDigits() rounding mode out of range: {rm}'
          */
-        P.toDigits = function ( sd, rm ) {
-            var n = new BigNumber(this);
-            sd = sd == null || !isValidInt( sd, 1, MAX, 18, 'precision' ) ? null : sd | 0;
-            rm = rm == null || !isValidInt( rm, 0, 8, 18, roundingMode ) ? ROUNDING_MODE : rm | 0;
-            return sd ? round( n, sd, rm ) : n;
-        };
-
+        P.toDigits = function (sd, rm) {
+          var n = new BigNumber(this)
+          sd = sd == null || !isValidInt(sd, 1, MAX, 18, 'precision') ? null : sd | 0
+          rm = rm == null || !isValidInt(rm, 0, 8, 18, roundingMode) ? ROUNDING_MODE : rm | 0
+          return sd ? round(n, sd, rm) : n
+        }
 
         /*
          * Return a string representing the value of this BigNumber in exponential notation and
@@ -15781,11 +15356,10 @@ module.exports = XMLHttpRequest;
          * 'toExponential() rounding mode not an integer: {rm}'
          * 'toExponential() rounding mode out of range: {rm}'
          */
-        P.toExponential = function ( dp, rm ) {
-            return format( this,
-              dp != null && isValidInt( dp, 0, MAX, 19 ) ? ~~dp + 1 : null, rm, 19 );
-        };
-
+        P.toExponential = function (dp, rm) {
+          return format(this,
+              dp != null && isValidInt(dp, 0, MAX, 19) ? ~~dp + 1 : null, rm, 19)
+        }
 
         /*
          * Return a string representing the value of this BigNumber in fixed-point notation rounding
@@ -15802,11 +15376,10 @@ module.exports = XMLHttpRequest;
          * 'toFixed() rounding mode not an integer: {rm}'
          * 'toFixed() rounding mode out of range: {rm}'
          */
-        P.toFixed = function ( dp, rm ) {
-            return format( this, dp != null && isValidInt( dp, 0, MAX, 20 )
-              ? ~~dp + this.e + 1 : null, rm, 20 );
-        };
-
+        P.toFixed = function (dp, rm) {
+          return format(this, dp != null && isValidInt(dp, 0, MAX, 20)
+              ? ~~dp + this.e + 1 : null, rm, 20)
+        }
 
         /*
          * Return a string representing the value of this BigNumber in fixed-point notation rounded
@@ -15830,47 +15403,46 @@ module.exports = XMLHttpRequest;
          * 'toFormat() rounding mode not an integer: {rm}'
          * 'toFormat() rounding mode out of range: {rm}'
          */
-        P.toFormat = function ( dp, rm ) {
-            var str = format( this, dp != null && isValidInt( dp, 0, MAX, 21 )
-              ? ~~dp + this.e + 1 : null, rm, 21 );
+        P.toFormat = function (dp, rm) {
+          var str = format(this, dp != null && isValidInt(dp, 0, MAX, 21)
+              ? ~~dp + this.e + 1 : null, rm, 21)
 
-            if ( this.c ) {
-                var i,
-                    arr = str.split('.'),
-                    g1 = +FORMAT.groupSize,
-                    g2 = +FORMAT.secondaryGroupSize,
-                    groupSeparator = FORMAT.groupSeparator,
-                    intPart = arr[0],
-                    fractionPart = arr[1],
-                    isNeg = this.s < 0,
-                    intDigits = isNeg ? intPart.slice(1) : intPart,
-                    len = intDigits.length;
+          if (this.c) {
+            var i,
+              arr = str.split('.'),
+              g1 = +FORMAT.groupSize,
+              g2 = +FORMAT.secondaryGroupSize,
+              groupSeparator = FORMAT.groupSeparator,
+              intPart = arr[0],
+              fractionPart = arr[1],
+              isNeg = this.s < 0,
+              intDigits = isNeg ? intPart.slice(1) : intPart,
+              len = intDigits.length
 
-                if (g2) i = g1, g1 = g2, g2 = i, len -= i;
+            if (g2) i = g1, g1 = g2, g2 = i, len -= i
 
-                if ( g1 > 0 && len > 0 ) {
-                    i = len % g1 || g1;
-                    intPart = intDigits.substr( 0, i );
+            if (g1 > 0 && len > 0) {
+              i = len % g1 || g1
+              intPart = intDigits.substr(0, i)
 
-                    for ( ; i < len; i += g1 ) {
-                        intPart += groupSeparator + intDigits.substr( i, g1 );
-                    }
+              for (; i < len; i += g1) {
+                intPart += groupSeparator + intDigits.substr(i, g1)
+              }
 
-                    if ( g2 > 0 ) intPart += groupSeparator + intDigits.slice(i);
-                    if (isNeg) intPart = '-' + intPart;
-                }
-
-                str = fractionPart
-                  ? intPart + FORMAT.decimalSeparator + ( ( g2 = +FORMAT.fractionGroupSize )
-                    ? fractionPart.replace( new RegExp( '\\d{' + g2 + '}\\B', 'g' ),
-                      '$&' + FORMAT.fractionGroupSeparator )
-                    : fractionPart )
-                  : intPart;
+              if (g2 > 0) intPart += groupSeparator + intDigits.slice(i)
+              if (isNeg) intPart = '-' + intPart
             }
 
-            return str;
-        };
+            str = fractionPart
+                  ? intPart + FORMAT.decimalSeparator + ((g2 = +FORMAT.fractionGroupSize)
+                    ? fractionPart.replace(new RegExp('\\d{' + g2 + '}\\B', 'g'),
+                      '$&' + FORMAT.fractionGroupSeparator)
+                    : fractionPart)
+                  : intPart
+          }
 
+          return str
+        }
 
         /*
          * Return a string array representing the value of this BigNumber as a simple fraction with
@@ -15885,84 +15457,81 @@ module.exports = XMLHttpRequest;
          * 'toFraction() max denominator out of range: {md}'
          */
         P.toFraction = function (md) {
-            var arr, d0, d2, e, exp, n, n0, q, s,
-                k = ERRORS,
-                x = this,
-                xc = x.c,
-                d = new BigNumber(ONE),
-                n1 = d0 = new BigNumber(ONE),
-                d1 = n0 = new BigNumber(ONE);
+          var arr, d0, d2, e, exp, n, n0, q, s,
+            k = ERRORS,
+            x = this,
+            xc = x.c,
+            d = new BigNumber(ONE),
+            n1 = d0 = new BigNumber(ONE),
+            d1 = n0 = new BigNumber(ONE)
 
-            if ( md != null ) {
-                ERRORS = false;
-                n = new BigNumber(md);
-                ERRORS = k;
+          if (md != null) {
+            ERRORS = false
+            n = new BigNumber(md)
+            ERRORS = k
 
-                if ( !( k = n.isInt() ) || n.lt(ONE) ) {
-
-                    if (ERRORS) {
-                        raise( 22,
-                          'max denominator ' + ( k ? 'out of range' : 'not an integer' ), md );
-                    }
+            if (!(k = n.isInt()) || n.lt(ONE)) {
+              if (ERRORS) {
+                raise(22,
+                          'max denominator ' + (k ? 'out of range' : 'not an integer'), md)
+              }
 
                     // ERRORS is false:
                     // If md is a finite non-integer >= 1, round it to an integer and use it.
-                    md = !k && n.c && round( n, n.e + 1, 1 ).gte(ONE) ? n : null;
-                }
+              md = !k && n.c && round(n, n.e + 1, 1).gte(ONE) ? n : null
             }
+          }
 
-            if ( !xc ) return x.toString();
-            s = coeffToString(xc);
+          if (!xc) return x.toString()
+          s = coeffToString(xc)
 
             // Determine initial denominator.
             // d is a power of 10 and the minimum max denominator that specifies the value exactly.
-            e = d.e = s.length - x.e - 1;
-            d.c[0] = POWS_TEN[ ( exp = e % LOG_BASE ) < 0 ? LOG_BASE + exp : exp ];
-            md = !md || n.cmp(d) > 0 ? ( e > 0 ? d : n1 ) : n;
+          e = d.e = s.length - x.e - 1
+          d.c[0] = POWS_TEN[ (exp = e % LOG_BASE) < 0 ? LOG_BASE + exp : exp ]
+          md = !md || n.cmp(d) > 0 ? (e > 0 ? d : n1) : n
 
-            exp = MAX_EXP;
-            MAX_EXP = 1 / 0;
-            n = new BigNumber(s);
+          exp = MAX_EXP
+          MAX_EXP = 1 / 0
+          n = new BigNumber(s)
 
             // n0 = d1 = 0
-            n0.c[0] = 0;
+          n0.c[0] = 0
 
-            for ( ; ; )  {
-                q = div( n, d, 0, 1 );
-                d2 = d0.plus( q.times(d1) );
-                if ( d2.cmp(md) == 1 ) break;
-                d0 = d1;
-                d1 = d2;
-                n1 = n0.plus( q.times( d2 = n1 ) );
-                n0 = d2;
-                d = n.minus( q.times( d2 = d ) );
-                n = d2;
-            }
+          for (; ;) {
+            q = div(n, d, 0, 1)
+            d2 = d0.plus(q.times(d1))
+            if (d2.cmp(md) == 1) break
+            d0 = d1
+            d1 = d2
+            n1 = n0.plus(q.times(d2 = n1))
+            n0 = d2
+            d = n.minus(q.times(d2 = d))
+            n = d2
+          }
 
-            d2 = div( md.minus(d0), d1, 0, 1 );
-            n0 = n0.plus( d2.times(n1) );
-            d0 = d0.plus( d2.times(d1) );
-            n0.s = n1.s = x.s;
-            e *= 2;
+          d2 = div(md.minus(d0), d1, 0, 1)
+          n0 = n0.plus(d2.times(n1))
+          d0 = d0.plus(d2.times(d1))
+          n0.s = n1.s = x.s
+          e *= 2
 
             // Determine which fraction is closer to x, n0/d0 or n1/d1
-            arr = div( n1, d1, e, ROUNDING_MODE ).minus(x).abs().cmp(
-                  div( n0, d0, e, ROUNDING_MODE ).minus(x).abs() ) < 1
+          arr = div(n1, d1, e, ROUNDING_MODE).minus(x).abs().cmp(
+                  div(n0, d0, e, ROUNDING_MODE).minus(x).abs()) < 1
                     ? [ n1.toString(), d1.toString() ]
-                    : [ n0.toString(), d0.toString() ];
+                    : [ n0.toString(), d0.toString() ]
 
-            MAX_EXP = exp;
-            return arr;
-        };
-
+          MAX_EXP = exp
+          return arr
+        }
 
         /*
          * Return the value of this BigNumber converted to a number primitive.
          */
         P.toNumber = function () {
-            return +this;
-        };
-
+          return +this
+        }
 
         /*
          * Return a BigNumber whose value is the value of this BigNumber raised to the power n.
@@ -15982,71 +15551,69 @@ module.exports = XMLHttpRequest;
          *
          * Performs 54 loop iterations for n of 9007199254740991.
          */
-        P.toPower = P.pow = function ( n, m ) {
-            var k, y, z,
-                i = mathfloor( n < 0 ? -n : +n ),
-                x = this;
+        P.toPower = P.pow = function (n, m) {
+          var k, y, z,
+            i = mathfloor(n < 0 ? -n : +n),
+            x = this
 
-            if ( m != null ) {
-                id = 23;
-                m = new BigNumber(m);
-            }
+          if (m != null) {
+            id = 23
+            m = new BigNumber(m)
+          }
 
             // Pass ±Infinity to Math.pow if exponent is out of range.
-            if ( !isValidInt( n, -MAX_SAFE_INTEGER, MAX_SAFE_INTEGER, 23, 'exponent' ) &&
-              ( !isFinite(n) || i > MAX_SAFE_INTEGER && ( n /= 0 ) ||
-                parseFloat(n) != n && !( n = NaN ) ) || n == 0 ) {
-                k = Math.pow( +x, n );
-                return new BigNumber( m ? k % m : k );
-            }
+          if (!isValidInt(n, -MAX_SAFE_INTEGER, MAX_SAFE_INTEGER, 23, 'exponent') &&
+              (!isFinite(n) || i > MAX_SAFE_INTEGER && (n /= 0) ||
+                parseFloat(n) != n && !(n = NaN)) || n == 0) {
+            k = Math.pow(+x, n)
+            return new BigNumber(m ? k % m : k)
+          }
 
-            if (m) {
-                if ( n > 1 && x.gt(ONE) && x.isInt() && m.gt(ONE) && m.isInt() ) {
-                    x = x.mod(m);
-                } else {
-                    z = m;
+          if (m) {
+            if (n > 1 && x.gt(ONE) && x.isInt() && m.gt(ONE) && m.isInt()) {
+              x = x.mod(m)
+            } else {
+              z = m
 
                     // Nullify m so only a single mod operation is performed at the end.
-                    m = null;
-                }
-            } else if (POW_PRECISION) {
-
+              m = null
+            }
+          } else if (POW_PRECISION) {
                 // Truncating each coefficient array to a length of k after each multiplication
                 // equates to truncating significant digits to POW_PRECISION + [28, 41],
                 // i.e. there will be a minimum of 28 guard digits retained.
                 // (Using + 1.5 would give [9, 21] guard digits.)
-                k = mathceil( POW_PRECISION / LOG_BASE + 2 );
+            k = mathceil(POW_PRECISION / LOG_BASE + 2)
+          }
+
+          y = new BigNumber(ONE)
+
+          for (; ;) {
+            if (i % 2) {
+              y = y.times(x)
+              if (!y.c) break
+              if (k) {
+                if (y.c.length > k) y.c.length = k
+              } else if (m) {
+              y = y.mod(m)
+            }
             }
 
-            y = new BigNumber(ONE);
-
-            for ( ; ; ) {
-                if ( i % 2 ) {
-                    y = y.times(x);
-                    if ( !y.c ) break;
-                    if (k) {
-                        if ( y.c.length > k ) y.c.length = k;
-                    } else if (m) {
-                        y = y.mod(m);
-                    }
-                }
-
-                i = mathfloor( i / 2 );
-                if ( !i ) break;
-                x = x.times(x);
-                if (k) {
-                    if ( x.c && x.c.length > k ) x.c.length = k;
-                } else if (m) {
-                    x = x.mod(m);
-                }
+            i = mathfloor(i / 2)
+            if (!i) break
+            x = x.times(x)
+            if (k) {
+              if (x.c && x.c.length > k) x.c.length = k
+            } else if (m) {
+              x = x.mod(m)
             }
+          }
 
-            if (m) return y;
-            if ( n < 0 ) y = ONE.div(y);
+          if (m) return y
+          if (n < 0) y = ONE.div(y)
 
-            return z ? y.mod(z) : k ? round( y, POW_PRECISION, ROUNDING_MODE ) : y;
-        };
-
+          return z ? y.mod(z) : k ? round(y, POW_PRECISION, ROUNDING_MODE) : y
+        }
 
         /*
          * Return a string representing the value of this BigNumber rounded to sd significant digits
@@ -16062,11 +15629,10 @@ module.exports = XMLHttpRequest;
          * 'toPrecision() rounding mode not an integer: {rm}'
          * 'toPrecision() rounding mode out of range: {rm}'
          */
-        P.toPrecision = function ( sd, rm ) {
-            return format( this, sd != null && isValidInt( sd, 1, MAX, 24, 'precision' )
-              ? sd | 0 : null, rm, 24 );
-        };
-
+        P.toPrecision = function (sd, rm) {
+          return format(this, sd != null && isValidInt(sd, 1, MAX, 24, 'precision')
+              ? sd | 0 : null, rm, 24)
+        }
 
         /*
          * Return a string representing the value of this BigNumber in base b, or base 10 if b is
@@ -16081,261 +15647,241 @@ module.exports = XMLHttpRequest;
          * 'toString() base out of range: {b}'
          */
         P.toString = function (b) {
-            var str,
-                n = this,
-                s = n.s,
-                e = n.e;
+          var str,
+            n = this,
+            s = n.s,
+            e = n.e
 
             // Infinity or NaN?
-            if ( e === null ) {
-
-                if (s) {
-                    str = 'Infinity';
-                    if ( s < 0 ) str = '-' + str;
-                } else {
-                    str = 'NaN';
-                }
+          if (e === null) {
+            if (s) {
+              str = 'Infinity'
+              if (s < 0) str = '-' + str
             } else {
-                str = coeffToString( n.c );
+              str = 'NaN'
+            }
+          } else {
+            str = coeffToString(n.c)
 
-                if ( b == null || !isValidInt( b, 2, 64, 25, 'base' ) ) {
-                    str = e <= TO_EXP_NEG || e >= TO_EXP_POS
-                      ? toExponential( str, e )
-                      : toFixedPoint( str, e );
-                } else {
-                    str = convertBase( toFixedPoint( str, e ), b | 0, 10, s );
-                }
-
-                if ( s < 0 && n.c[0] ) str = '-' + str;
+            if (b == null || !isValidInt(b, 2, 64, 25, 'base')) {
+              str = e <= TO_EXP_NEG || e >= TO_EXP_POS
+                      ? toExponential(str, e)
+                      : toFixedPoint(str, e)
+            } else {
+              str = convertBase(toFixedPoint(str, e), b | 0, 10, s)
             }
 
-            return str;
-        };
+            if (s < 0 && n.c[0]) str = '-' + str
+          }
 
+          return str
+        }
 
         /*
          * Return a new BigNumber whose value is the value of this BigNumber truncated to a whole
          * number.
          */
         P.truncated = P.trunc = function () {
-            return round( new BigNumber(this), this.e + 1, 1 );
-        };
-
+          return round(new BigNumber(this), this.e + 1, 1)
+        }
 
         /*
          * Return as toString, but do not accept a base argument, and include the minus sign for
          * negative zero.
          */
         P.valueOf = P.toJSON = function () {
-            var str,
-                n = this,
-                e = n.e;
+          var str,
+            n = this,
+            e = n.e
 
-            if ( e === null ) return n.toString();
+          if (e === null) return n.toString()
 
-            str = coeffToString( n.c );
+          str = coeffToString(n.c)
 
-            str = e <= TO_EXP_NEG || e >= TO_EXP_POS
-                ? toExponential( str, e )
-                : toFixedPoint( str, e );
+          str = e <= TO_EXP_NEG || e >= TO_EXP_POS
+                ? toExponential(str, e)
+                : toFixedPoint(str, e)
 
-            return n.s < 0 ? '-' + str : str;
-        };
+          return n.s < 0 ? '-' + str : str
+        }
 
+        P.isBigNumber = true
 
-        P.isBigNumber = true;
+        if (config != null) BigNumber.config(config)
 
-        if ( config != null ) BigNumber.config(config);
-
-        return BigNumber;
-    }
-
+        return BigNumber
+      }
 
     // PRIVATE HELPER FUNCTIONS
 
-
-    function bitFloor(n) {
-        var i = n | 0;
-        return n > 0 || n === i ? i : i - 1;
-    }
-
+      function bitFloor (n) {
+        var i = n | 0
+        return n > 0 || n === i ? i : i - 1
+      }
 
     // Return a coefficient array as a string of base 10 digits.
-    function coeffToString(a) {
+      function coeffToString (a) {
         var s, z,
-            i = 1,
-            j = a.length,
-            r = a[0] + '';
+          i = 1,
+          j = a.length,
+          r = a[0] + ''
 
-        for ( ; i < j; ) {
-            s = a[i++] + '';
-            z = LOG_BASE - s.length;
-            for ( ; z--; s = '0' + s );
-            r += s;
+        for (; i < j;) {
+          s = a[i++] + ''
+          z = LOG_BASE - s.length
+          for (; z--; s = '0' + s);
+          r += s
         }
 
         // Determine trailing zeros.
-        for ( j = r.length; r.charCodeAt(--j) === 48; );
-        return r.slice( 0, j + 1 || 1 );
-    }
-
+        for (j = r.length; r.charCodeAt(--j) === 48;);
+        return r.slice(0, j + 1 || 1)
+      }
 
     // Compare the value of BigNumbers x and y.
-    function compare( x, y ) {
+      function compare (x, y) {
         var a, b,
-            xc = x.c,
-            yc = y.c,
-            i = x.s,
-            j = y.s,
-            k = x.e,
-            l = y.e;
+          xc = x.c,
+          yc = y.c,
+          i = x.s,
+          j = y.s,
+          k = x.e,
+          l = y.e
 
         // Either NaN?
-        if ( !i || !j ) return null;
+        if (!i || !j) return null
 
-        a = xc && !xc[0];
-        b = yc && !yc[0];
+        a = xc && !xc[0]
+        b = yc && !yc[0]
 
         // Either zero?
-        if ( a || b ) return a ? b ? 0 : -j : i;
+        if (a || b) return a ? b ? 0 : -j : i
 
         // Signs differ?
-        if ( i != j ) return i;
+        if (i != j) return i
 
-        a = i < 0;
-        b = k == l;
+        a = i < 0
+        b = k == l
 
         // Either Infinity?
-        if ( !xc || !yc ) return b ? 0 : !xc ^ a ? 1 : -1;
+        if (!xc || !yc) return b ? 0 : !xc ^ a ? 1 : -1
 
         // Compare exponents.
-        if ( !b ) return k > l ^ a ? 1 : -1;
+        if (!b) return k > l ^ a ? 1 : -1
 
-        j = ( k = xc.length ) < ( l = yc.length ) ? k : l;
+        j = (k = xc.length) < (l = yc.length) ? k : l
 
         // Compare digit by digit.
-        for ( i = 0; i < j; i++ ) if ( xc[i] != yc[i] ) return xc[i] > yc[i] ^ a ? 1 : -1;
+        for (i = 0; i < j; i++) if (xc[i] != yc[i]) return xc[i] > yc[i] ^ a ? 1 : -1
 
         // Compare lengths.
-        return k == l ? 0 : k > l ^ a ? 1 : -1;
-    }
-
+        return k == l ? 0 : k > l ^ a ? 1 : -1
+      }
 
     /*
      * Return true if n is a valid number in range, otherwise false.
      * Use for argument validation when ERRORS is false.
      * Note: parseInt('1e+1') == 1 but parseFloat('1e+1') == 10.
      */
-    function intValidatorNoErrors( n, min, max ) {
-        return ( n = truncate(n) ) >= min && n <= max;
-    }
+      function intValidatorNoErrors (n, min, max) {
+        return (n = truncate(n)) >= min && n <= max
+      }
 
-
-    function isArray(obj) {
-        return Object.prototype.toString.call(obj) == '[object Array]';
-    }
-
+      function isArray (obj) {
+        return Object.prototype.toString.call(obj) == '[object Array]'
+      }
 
     /*
      * Convert string of baseIn to an array of numbers of baseOut.
      * Eg. convertBase('255', 10, 16) returns [15, 15].
      * Eg. convertBase('ff', 16, 10) returns [2, 5, 5].
      */
-    function toBaseOut( str, baseIn, baseOut ) {
+      function toBaseOut (str, baseIn, baseOut) {
         var j,
-            arr = [0],
-            arrL,
-            i = 0,
-            len = str.length;
+          arr = [0],
+          arrL,
+          i = 0,
+          len = str.length
 
-        for ( ; i < len; ) {
-            for ( arrL = arr.length; arrL--; arr[arrL] *= baseIn );
-            arr[ j = 0 ] += ALPHABET.indexOf( str.charAt( i++ ) );
+        for (; i < len;) {
+          for (arrL = arr.length; arrL--; arr[arrL] *= baseIn);
+          arr[ j = 0 ] += ALPHABET.indexOf(str.charAt(i++))
 
-            for ( ; j < arr.length; j++ ) {
-
-                if ( arr[j] > baseOut - 1 ) {
-                    if ( arr[j + 1] == null ) arr[j + 1] = 0;
-                    arr[j + 1] += arr[j] / baseOut | 0;
-                    arr[j] %= baseOut;
-                }
+          for (; j < arr.length; j++) {
+            if (arr[j] > baseOut - 1) {
+              if (arr[j + 1] == null) arr[j + 1] = 0
+              arr[j + 1] += arr[j] / baseOut | 0
+              arr[j] %= baseOut
             }
+          }
         }
 
-        return arr.reverse();
-    }
+        return arr.reverse()
+      }
 
+      function toExponential (str, e) {
+        return (str.length > 1 ? str.charAt(0) + '.' + str.slice(1) : str) +
+          (e < 0 ? 'e' : 'e+') + e
+      }
 
-    function toExponential( str, e ) {
-        return ( str.length > 1 ? str.charAt(0) + '.' + str.slice(1) : str ) +
-          ( e < 0 ? 'e' : 'e+' ) + e;
-    }
-
-
-    function toFixedPoint( str, e ) {
-        var len, z;
+      function toFixedPoint (str, e) {
+        var len, z
 
         // Negative exponent?
-        if ( e < 0 ) {
-
+        if (e < 0) {
             // Prepend zeros.
-            for ( z = '0.'; ++e; z += '0' );
-            str = z + str;
+          for (z = '0.'; ++e; z += '0');
+          str = z + str
 
         // Positive exponent
         } else {
-            len = str.length;
+          len = str.length
 
             // Append zeros.
-            if ( ++e > len ) {
-                for ( z = '0', e -= len; --e; z += '0' );
-                str += z;
-            } else if ( e < len ) {
-                str = str.slice( 0, e ) + '.' + str.slice(e);
-            }
+          if (++e > len) {
+            for (z = '0', e -= len; --e; z += '0');
+            str += z
+          } else if (e < len) {
+            str = str.slice(0, e) + '.' + str.slice(e)
+          }
         }
 
-        return str;
-    }
+        return str
+      }
 
-
-    function truncate(n) {
-        n = parseFloat(n);
-        return n < 0 ? mathceil(n) : mathfloor(n);
-    }
-
+      function truncate (n) {
+        n = parseFloat(n)
+        return n < 0 ? mathceil(n) : mathfloor(n)
+      }
 
     // EXPORT
 
-
-    BigNumber = constructorFactory();
-    BigNumber.default = BigNumber.BigNumber = BigNumber;
-
+      BigNumber = constructorFactory()
+      BigNumber.default = BigNumber.BigNumber = BigNumber
 
     // AMD.
-    if ( typeof define == 'function' && define.amd ) {
-        define( function () { return BigNumber; } );
+      if (typeof define === 'function' && define.amd) {
+        define(function () { return BigNumber })
 
     // Node.js and other environments that support module.exports.
-    } else if ( typeof module != 'undefined' && module.exports ) {
-        module.exports = BigNumber;
+      } else if (typeof module !== 'undefined' && module.exports) {
+        module.exports = BigNumber
 
     // Browser.
-    } else {
-        if ( !globalObj ) globalObj = typeof self != 'undefined' ? self : Function('return this')();
-        globalObj.BigNumber = BigNumber;
-    }
-})(this);
-
-},{}],"web3":[function(require,module,exports){
-var Web3 = require('./lib/web3');
+      } else {
+        if (!globalObj) globalObj = typeof self !== 'undefined' ? self : Function('return this')()
+        globalObj.BigNumber = BigNumber
+      }
+    })(this)
+  }, {}],
+  'web3':[function (require, module, exports) {
+    var Web3 = require('./lib/web3')
 
 // dont override global variable
-if (typeof window !== 'undefined' && typeof window.Web3 === 'undefined') {
-    window.Web3 = Web3;
-}
+    if (typeof window !== 'undefined' && typeof window.Web3 === 'undefined') {
+      window.Web3 = Web3
+    }
 
-module.exports = Web3;
-
-},{"./lib/web3":22}]},{},["web3"])
-//# sourceMappingURL=web3.js.map
+    module.exports = Web3
+  }, { './lib/web3':22 }] }, {}, ['web3'])
+// # sourceMappingURL=web3.js.map
