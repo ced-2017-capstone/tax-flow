@@ -12,6 +12,7 @@ contract Department {
     
     mapping(address => uint) public approvedSuppliers;
     mapping(address => uint) public approvedInvoices;
+    mapping(address => uint) public outstandingInvoices
     
     //Modifier to check for owner approval
     modifier onlyBy(address _account) {
@@ -42,9 +43,16 @@ contract Department {
         approvedSuppliers[supplier] = 0;
     }
     
-    
-    function payInvoice() onlyBy(owner){
+    function addInvoice(address _invoice ) public returns (bool success){
+        require(approvedInvoices[_invoice] == 0  && 
+        approvedSuppliers[_invoice.sender] > 0);
         
+        approvedInvoices[_invoice] = 1;
+        return true;
+        
+    }
+    function payInvoice(address _invoiceAddr) onlyBy(owner){
+        //send $ to '
     }
     
     // receives payment from tax distribution and pays out 
