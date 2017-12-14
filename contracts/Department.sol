@@ -10,11 +10,17 @@ contract Department {
     address public owner;
     uint public balance;
     
-    mapping(address => uint) approvedSuppliers;
+    mapping(address => uint) public approvedSuppliers;
+    mapping(address => uint) public approvedInvoices;
     
     //Modifier to check for owner approval
     modifier onlyBy(address _account) {
         require(msg.sender == _account);
+        _;
+    }
+    
+    modifier byApprovedSupplier(address _supplier){
+        require(approvedSuppliers[_supplier]>0);
         _;
     }
     
@@ -23,28 +29,34 @@ contract Department {
         owner = _newOwner;
     }
  
-    function addSupplier(address supplier) onlyBy(owner) {
-       if(approvedSuppliers[supplier]==0){
-          approvedSuppliers[supplier] = 1; 
-       }
+    //Only contract owner can approve a new supplier
+    //approved suppliers can invoice this deparment
+    function approvedSupplier(address supplier) onlyBy(owner) {
+       require (approvedSuppliers[supplier] == 0);
+       approvedSuppliers[supplier] = 1; 
+       
+    }
+    //Removes a supplier. Invoices are retained
+    function removeSupplier(address supplier) onlyBy(owner){
+        require(approvedSuppliers[supplier] == 1);
+        approvedSuppliers[supplier] = 0;
     }
     
     
-
-
-    function receivePayment (uint payment) public payable {
-        balance += payment;
-        //TODO: calculate split among outstanding invoices and send
+    function payInvoice() onlyBy(owner){
+        
     }
-
-    //****** FUNCTIONS ******/
-
-    function getBalance() public constant returns(uint _balance){
-        return balance;
-    } 
     
-      function getSuppliers() public constant returns(address[] approvedSuppliers){
-        return approvedSuppliers;
-    } 
-
+    // receives payment from tax distribution and pays out 
+    // between active invoices
+    function deposit () 
+    public 
+    payable 
+    returns (bool success){
+        balance += msg.value; 
+        return true;
+    }
+    
+    //fallback
+    function () payable {}
 }
