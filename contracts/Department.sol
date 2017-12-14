@@ -2,7 +2,7 @@ pragma solidity ^0.4.11;
 
 contract Department { 
     
-      function Department () { 
+    function Department () { 
         owner = msg.sender; 
         balance = 0;
     }
@@ -30,8 +30,11 @@ contract Department {
     }
     
     
+
+
     function receivePayment (uint payment) public payable {
         balance += payment;
+        //TODO: calculate split among outstanding invoices and send
     }
 
     //****** FUNCTIONS ******/
