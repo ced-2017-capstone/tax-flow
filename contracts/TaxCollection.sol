@@ -1,23 +1,46 @@
 pragma solidity ^0.4.11;
 
+//This contract acts as tax collector and distributor.
 contract TaxCollection{
 
-    address public dept1 = 0xE0f5206BBD039e7b0592d8918820024e2a7437b9;
-    uint deptSplit = 30;
-    uint departmentSplit;
-    address sender;
-    uint amount;
-    event sendSplit (address dept1, uint Split);
+    uint balance;
+    
+    mapping(address => uint) public departmentBalance;
+    address[2] public departmentlist;
+    
+    event LogReceived(address sender,uint amount);
+    event Logsent(address beneficiary,uint amount);
+    
+    //needs to set the initial balance
+    function TaxCollection(address dept1,address dept2) public {
+        departmentlist[0]=dept1;
+        departmentlist[0]=dept2;
+        balance=0;
+    }
+    
+    //create a function to receive payment from outside world and increase balanc
+        function getPayment() public payable {
+        balance += msg.value ;
+    }
+    
+    //payDepartment accept a payment  */
+    function payDepartment () public payable returns (bool success) {
+    if(balance==0) revert();
 
-    mapping(address => uint) public departmentAmount;
-
-    function TaxCollection() {
-        sender = msg.sender;
+    uint split = balance/2;
+    departmentBalance[departmentlist[0]] += split;
+    departmentBalance[departmentlist[1]] += split;
+    LogReceived(msg.sender,msg.value);
+    return true;
+    }
+  
+    //Withdraw allows department to request payment
+    function withdraw(uint amount) public returns(bool success){
+    if(departmentBalance[msg.sender] < amount) revert(); 
+    departmentBalance[msg.sender] -= amount;         
+    if(!msg.sender.send(amount)) revert();              
+    Logsent(msg.sender, amount);
+    return true;
     }
 
-    function payDepartment() return (uint) {
-        amount=msg.value;
-        departmentSplit= (amount*deptSplit)/100;
-        return (departmentSplit)
-    }
 }
