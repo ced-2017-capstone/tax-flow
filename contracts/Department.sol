@@ -2,17 +2,22 @@ pragma solidity ^0.4.11;
 
 contract Department { 
     
-    function Department () { 
-        owner = msg.sender; 
-        balance = 0;
+    function Department () payable { 
+        owner = msg.sender;
     }
     
     address public owner;
     uint public balance;
+    address public invoice;
     
-    mapping(address => uint) public approvedSuppliers;
-    mapping(address => uint) public approvedInvoices;
-    mapping(address => uint) public outstandingInvoices
+    struct Supplier {
+        address addr;
+        mapping(address => uint) invoices;
+    }
+    
+    mapping(address => uint) public registeredSuppliers;
+    mapping(address => uint) public registeredInvoices;
+    
     
     //Modifier to check for owner approval
     modifier onlyBy(address _account) {
@@ -21,7 +26,7 @@ contract Department {
     }
     
     modifier byApprovedSupplier(address _supplier){
-        require(approvedSuppliers[_supplier]>0);
+        require(registeredSuppliers[_supplier]>0);
         _;
     }
     
@@ -32,27 +37,38 @@ contract Department {
  
     //Only contract owner can approve a new supplier
     //approved suppliers can invoice this deparment
-    function approvedSupplier(address supplier) onlyBy(owner) {
-       require (approvedSuppliers[supplier] == 0);
-       approvedSuppliers[supplier] = 1; 
+    function registerSupplier(address _supplier) onlyBy(owner) {
+       require (registeredSuppliers[_supplier] == 0);
+       registeredSuppliers[_supplier] = 1; 
        
     }
     //Removes a supplier. Invoices are retained
-    function removeSupplier(address supplier) onlyBy(owner){
-        require(approvedSuppliers[supplier] == 1);
-        approvedSuppliers[supplier] = 0;
+    function deregisterSupplier(address _supplier) onlyBy(owner){
+        require(registeredSuppliers[_supplier] == 1);
+        registeredSuppliers[_supplier] = 0;
     }
     
-    function addInvoice(address _invoice ) public returns (bool success){
-        require(approvedInvoices[_invoice] == 0  && 
-        approvedSuppliers[_invoice.sender] > 0);
+    //sets and invoice address
+    function registerInvoice(address _addr, uint256 _amt) public  onlyBy(owner) returns (bool success){
         
-        approvedInvoices[_invoice] = 1;
+        require(registeredInvoices[_addr] == 0);
+        registeredInvoices[_addr] = 1;
         return true;
-        
     }
+    
+    function removeInvoice(address _invoice) public onlyBy(owner) returns (bool success) {
+        require(registeredInvoices[_invoice] == 1);
+        registeredInvoices[_invoice] = 0;
+        return true;
+    }
+    
     function payInvoice(address _invoiceAddr) onlyBy(owner){
         //send $ to '
+        //check invoice 
+        //_invoiceAddr.transfer(msg.value);
+        require(registeredInvoices[_invoiceAddr]==1);
+        _invoiceAddr.transfer(msg.value);
+
     }
     
     // receives payment from tax distribution and pays out 
