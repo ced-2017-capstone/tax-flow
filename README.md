@@ -37,6 +37,8 @@ With this contract group, the intention is to create a transparent Tax allocatio
 
 There are 3 key contracts:
 * Taxcollection.sol: This contract recieves the payment. Based on defined splits, the contract allocates payment to the department then creates a function to withdraw payment for the department. In the future, this contract can be modified to allow sender to define the departments they would like their payment applied to. Each department will have payment allocated by either percentage or predefined amounts.
+
 * Department.sol: This contract can be used by multiple departments. This contract receives payment allocated to the department. It then checks for approved suppliers & their associated invoices. This contract also allows new suppliers to be added and removed by owner. eventually, this contracts pays out to approved invoices. In the future, this contract can be modified to apply to specific projects and split payments by project, supplier & invoices. Multiple departments can send payments to each other for collaborative projects.
+
 * invoice.sol: This contract manages the invoicing function. This contract can send an invoice to a department and receive a payment. In the future, this contract can be updated to generate POs and apply POs to departments & projects. These POs can be converted into invoices which will be sent to the departments for payment.
 
