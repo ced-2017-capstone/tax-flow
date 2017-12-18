@@ -1,6 +1,10 @@
 # tax-flow
 
 New Updates at: https://github.com/ced-2017-capstone/tax-flow
+Authors:
+* Benjamin Brown - benjaminbb@gmail.com
+* Mohamed Hasan
+* Shaan Ray
 
 This project is presented as a capstone project for the Certified Ethereum Developer program at Blockchain Hub.
 
@@ -36,6 +40,17 @@ This demonstration ethereum blockchain application taxpayer in a hypothetical mu
 The goal of this project is to create a proof of concept for a tax distribution system. An indivudual sends their tax payment to their city office. Once the payment is recieved, the city office splits the tax payment received for each department and sends the payment to each department. The Department in turn splits the payment recieved by supplier & invoice and sends payment.
 
 With this contract group, the intention is to create a transparent Tax allocation system that allows an indivdual to see where their tax money is being spent. Additionally, this has the potential to create a publicly approved project system that allows the public to drive the direction of city and government spending.
+
+The first phase of the project is contract creation and testing.
+### TODO: 
+
+* Thoroughly test and review iron out contract bugs and architecture
+* Implement basic front end to control contract actions from the application itself
+* Implement functions in front end to add new Department and Invoice scontracts to the ecosystem
+* Further build out invoice submission, requests, and approvale
+* Add real-time data visualization linked to contract Events
+
+
 
 There are 3 key contracts:
 * Taxcollection.sol: This contract recieves the payment. Based on defined splits, the contract allocates payment to the department then creates a function to withdraw payment for the department. In the future, this contract can be modified to allow sender to define the departments they would like their payment applied to. Each department will have payment allocated by either percentage or predefined amounts.
