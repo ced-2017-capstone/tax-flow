@@ -1,3 +1,4 @@
+//Author: Mohamed Hasan
 pragma solidity ^0.4.11;
 
 contract TaxCollection {
