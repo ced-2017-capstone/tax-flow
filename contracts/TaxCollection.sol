@@ -35,9 +35,9 @@ contract TaxCollection {
   
     //Withdraw allows department to request payment
     function withdraw(uint amount) public returns(bool success){
-    if(departmentBalance[msg.sender] < amount) revert(); 
+    if (departmentBalance[msg.sender] < amount) revert(); 
     departmentBalance[msg.sender] -= amount;         
-    if(!msg.sender.send(amount)) revert();              
+    if (!msg.sender.send(amount)) revert();              
     Logsent(msg.sender, amount);
     return true;
     }
