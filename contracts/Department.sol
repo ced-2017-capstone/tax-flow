@@ -1,7 +1,12 @@
+/*
+Author: Benjamin M. Brown
+Email: benjaminbb@gmail.com
+Git: benjaminmbrown
+*/
 pragma solidity ^0.4.11;
 
 contract Department { 
-    
+
     function Department () payable { 
         owner = msg.sender;
     }
@@ -20,16 +25,15 @@ contract Department {
     
     mapping(address => uint) public registeredSuppliers;
     mapping(address => uint) public registeredInvoices;
-    
 
     //*** Modifiers ***/
-    //Modifier to check for owner approval
 
+    //Modifier to check for owner approval
     modifier onlyBy(address _account) {
         require(msg.sender == _account);
         _;
     }
-    
+    //Modifier checks that the supplier is in approved supplier list
     modifier byApprovedSupplier(address _supplier){
         require(registeredSuppliers[_supplier]>0);
         _;
@@ -60,8 +64,8 @@ contract Department {
     }
     
     //sets and invoice address
-    function registerInvoice(address _addr, uint256 _amt) public  onlyBy(owner) returns (bool success){
-        require(registeredInvoices[_addr] == 0 && registeredSuppliers[]);
+    function registerInvoice(address _addr) public onlyBy(owner) returns (bool success){
+        require(registeredInvoices[_addr] == 0);
         registeredInvoices[_addr] = 1;
         return true;
     }
@@ -75,6 +79,7 @@ contract Department {
     //The owner can pay a registered invoice
     function payInvoice(address _invoiceAddr) onlyBy(owner){
         require(registeredInvoices[_invoiceAddr]==1);
+        balance -= msg.value;
         _invoiceAddr.transfer(msg.value);
 	}
 
