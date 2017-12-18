@@ -1,8 +1,6 @@
 pragma solidity ^0.4.11;
 
-//This contract acts as tax collector and distributor.
-contract TaxCollection{
-
+contract TaxCollection {
     uint balance;
     
     mapping(address => uint) public departmentBalance;

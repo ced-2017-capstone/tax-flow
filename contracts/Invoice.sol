@@ -18,7 +18,7 @@ contract Invoice {
     // supplier sends invoice to the Department
     function sendInvoice(address _department) onlyBy(sender){
         sender = msg.sender;
-        //send to Department
+        
     }
 
     // accepts payment of invoice

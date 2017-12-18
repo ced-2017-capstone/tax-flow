@@ -6,7 +6,7 @@
 
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
 
-  
+
 
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
     crossorigin="anonymous"></script>
@@ -44,11 +44,6 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <!-- <li class="active">
-            <a href="#">Link
-              <span class="sr-only">(current)</span>
-            </a>
-          </li> -->
 
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tax
@@ -67,7 +62,7 @@
             </ul>
           </li>
 
-          <li class="dropdown">
+          <!-- <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Depts
               <span class="caret"></span>
             </a>
@@ -99,7 +94,7 @@
                 <a href="#">Something else here</a>
               </li>
             </ul>
-          </li>
+          </li> -->
         </ul>
       </div>
       <!-- /.navbar-collapse -->
@@ -107,47 +102,29 @@
     <!-- /.container-fluid -->
   </nav>
 
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <h3>Collections</h3>
+        <span id="department-status"></span>
+        <div>Address:
+          <span class="collections-address"></span>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <h3>Departments</h3>
+        <span id="department-status"></span>
+        Accounts:
+        <ul class="accounts-list"></ul>
+      </div>
+      <div class="col-sm-4">
+        <h3>Suppliers & Invoices</h3>
+        <span id="invoice-status"></span>
+      </div>
 
-  <div class="row">
+    </div>
 
 
-  </div>
-
-  <!-- <section>
-    <article>
-          <button class="btn btn-primary" onclick="App.getAccounts()">Get Accounts</button>
-          <h3>You have
-            <span class="black">
-              <span id="balance"></span> Tax Flow</span>
-          </h3>
-
-          <br>
-          <h1>Send Payment</h1>
-          <br>
-          <label for="amount">Amount:</label>
-          <input type="text" id="amount" placeholder="e.g., 95"></input>
-          <br>
-          <label for="receiver">To Address:</label>
-          <input type="text" id="receiver" placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"></input>
-          <br>
-          <br>
-          <button id="send" onclick="App.sendCoin()">Send MetaCoin</button>
-          <br>
-          <br>
-          <span id="status"></span>
-          <br>
-          <span class="hint">
-            <strong>Hint:</strong> open the browser developer console to view any errors and warnings.
-          </span>
-
-    </article>
-  </section> -->
-
-  <section>
-    <article>
-
-    </article>
-  </section>
 </body>
 
 </html>

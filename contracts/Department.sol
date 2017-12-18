@@ -8,18 +8,23 @@ contract Department {
     
     address public owner;
     uint public balance;
-    address public invoice;
     
     struct Supplier {
         address addr;
         mapping(address => uint) invoices;
     }
+
+    struct Invoice {
+        address invoiceAddress;
+    }
     
     mapping(address => uint) public registeredSuppliers;
     mapping(address => uint) public registeredInvoices;
     
-    
+
+    //*** Modifiers ***/
     //Modifier to check for owner approval
+
     modifier onlyBy(address _account) {
         require(msg.sender == _account);
         _;
@@ -29,9 +34,15 @@ contract Department {
         require(registeredSuppliers[_supplier]>0);
         _;
     }
+
+    //*** Events ***/
+    event OwnerChanged(address indexed _owner, address indexed _newOwner);
     
+
+    //*** Contract Functions ***/
     //Allows changing of ownership
     function changeOwner(address _newOwner) onlyBy(owner){
+        OwnerChanged(owner, _newOwner);
         owner = _newOwner;
     }
  
@@ -50,8 +61,7 @@ contract Department {
     
     //sets and invoice address
     function registerInvoice(address _addr, uint256 _amt) public  onlyBy(owner) returns (bool success){
-        
-        require(registeredInvoices[_addr] == 0);
+        require(registeredInvoices[_addr] == 0 && registeredSuppliers[]);
         registeredInvoices[_addr] = 1;
         return true;
     }
@@ -62,18 +72,16 @@ contract Department {
         return true;
     }
     
+    //The owner can pay a registered invoice
     function payInvoice(address _invoiceAddr) onlyBy(owner){
-        //send $ to '
-        //check invoice 
-        //_invoiceAddr.transfer(msg.value);
         require(registeredInvoices[_invoiceAddr]==1);
         _invoiceAddr.transfer(msg.value);
+	}
 
-    }
     
     // receives payment from tax distribution and pays out 
     // between active invoices
-    function deposit () 
+    function receiveDeposit () 
     public 
     payable 
     returns (bool success){
