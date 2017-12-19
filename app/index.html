@@ -6,125 +6,114 @@
 
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
 
-
-
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
     crossorigin="anonymous">
 
-  <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
-    crossorigin="anonymous">
-
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-    crossorigin="anonymous"></script>
   <script src="https://d3js.org/d3.v4.min.js"></script>
   <script src="./app.js"></script>
 </head>
 
 <body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Tax Flow</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+   
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle disabled" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Collector
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
 
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-          aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">Tax Flow</a>
-      </div>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle disabled" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Department
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tax
-              <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <a href="#">Action</a>
-              </li>
-              <li>
-                <a href="#">Another action</a>
-              </li>
-              <li>
-                <a href="#">Something else here</a>
-              </li>
-            </ul>
-          </li>
-
-          <!-- <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Depts
-              <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <a href="#">Action</a>
-              </li>
-              <li>
-                <a href="#">Another action</a>
-              </li>
-              <li>
-                <a href="#">Something else here</a>
-              </li>
-            </ul>
-          </li>
-
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Invoices
-              <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <a href="#">Action</a>
-              </li>
-              <li>
-                <a href="#">Another action</a>
-              </li>
-              <li>
-                <a href="#">Something else here</a>
-              </li>
-            </ul>
-          </li> -->
-        </ul>
-      </div>
-      <!-- /.navbar-collapse -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle disabled" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Invoice
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+      </ul>
     </div>
-    <!-- /.container-fluid -->
   </nav>
-
+  
   <div class="container">
     <div class="row">
-      <div class="col-sm-4">
+      <div class="col-md-4">
         <h3>Collections</h3>
-        <span id="department-status"></span>
-        <div>Address:
-          <span class="collections-address"></span>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert" id="department-status">
+          <strong>Collections</strong> Issue.
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
+        <!--Collector functions -->
+        <button class="button btn-primary" onlick="Collector.payDepartment()">Pay Department</button>
       </div>
-      <div class="col-sm-4">
+      <div class="col-md-4">
         <h3>Departments</h3>
-        <span id="department-status"></span>
-        Accounts:
-        <ul class="accounts-list"></ul>
-      </div>
-      <div class="col-sm-4">
-        <h3>Suppliers & Invoices</h3>
-        <span id="invoice-status"></span>
-      </div>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert" id="department-status">
+          <strong>Departments</strong> Issue.
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
 
+        <!--Departments functions -->
+        <button class="button btn-primary mt-1" onlick="Department.createNew()">Create New Department</button>
+        <button class="button btn-primary mt-1" onlick="Department.showInvoices()">Show Invoices</button>
+        <button class="button btn-primary mt-1" onlick="Department.showBalances()">Show Balances</button>
+        <button class="button btn-primary mt-1" onlick="Department.registerSupplier()">Register Supplier</button>
+        <button class="button btn-primary mt-1" onlick="Department.deregisterSupplier()">Deregister Supplier</button>
+        <button class="button btn-primary mt-1" onlick="Department.registerInvoice()">Register Invoice</button>
+        <button class="button btn-primary mt-1" onlick="Department.deregisterInvoice()">Deregister Invoice</button>
+      </div>
+      <div class="col-md-4">
+        <h3> Invoices</h3>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert" id="invoice-status">
+          <strong>Invoices</strong> Issue.
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <!--Invoices functions -->
+        <button class="button btn-primary mt-1" onlick="Department.createNew()">Create New Invoice</button>
+        <button class="button btn-primary mt-1" onlick="Invoice.sendInvoice()">Send Invoice</button>
+        <button class="button btn-primary mt-1" onlick="Department.createInvoice()">Create Invoice</button>
+      </div>
     </div>
-
-
 </body>
 
 </html>

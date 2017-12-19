@@ -11,7 +11,7 @@ import {
 } from 'truffle-contract'
 
 // Import our contract artifacts and turn them into usable abstractions.
-import taxCollectionArtifacts from '../../build/contracts/TaxCollector.json'
+import taxCollectionArtifacts from '../../build/contracts/TaxCollection.json'
 import departmentArtifacts from '../../build/contracts/Department.json'
 import invoiceArtifacts from '../../build/contracts/Invoice.json'
 
@@ -68,7 +68,7 @@ window.Collector = {
       balanceElement.innerHTML = value.valueOf()
     }).catch(function (e) {
       console.log(e)
-      self.setStatus('Error getting department balance; see log.')
+      self.setStatus('Error getting collections balance; see log.')
     })
   }
 }
@@ -80,12 +80,12 @@ window.Department = {
 
     web3.eth.getAccounts(function (err, accs) {
       if (err != null) {
-        alert('There was an error fetching Department accounts.')
+        self.setStatus('There was an error fetching Department accounts.')
         return
       }
 
       if (accs.length == 0) {
-        alert('There are no Department accounts')
+        self.setStatus('There are no Department accounts')
         return
       }
       console.log('got dept accounts:', accs)
@@ -181,7 +181,7 @@ window.addEventListener('load', function () {
     window.web3 = new Web3(new Web3.providers.HttpProvider('http://127.0.0.1:7545'))
   }
 
-  TaxCollector.start()
+  Collector.start()
   Department.start()
   Invoice.start()
 })
