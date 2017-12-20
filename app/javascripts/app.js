@@ -16,8 +16,8 @@ import departmentArtifacts from '../../build/contracts/Department.json'
 import invoiceArtifacts from '../../build/contracts/Invoice.json'
 
 var TaxCollector = contract(taxCollectionArtifacts)
-var Department = contract(departmentArtifacts)
-var Invoice = contract(invoiceArtifacts)
+var DepartmentContract = contract(departmentArtifacts)
+var InvoiceContract= contract(invoiceArtifacts)
 
 var collectorAccounts, departmentAccounts, invoiceAccounts
 var collectorAccount, departmentAccount, invoiceAccount
@@ -76,7 +76,7 @@ window.Collector = {
 window.Department = {
   start: function () {
     var self = this
-    Department.setProvider(web3.currentProvider);
+    DepartmentContract.setProvider(web3.currentProvider);
 
     web3.eth.getAccounts(function (err, accs) {
       if (err != null) {
@@ -104,7 +104,7 @@ window.Department = {
     var self = this
 
     var dept
-    Department.deployed().then(function (instance) {
+    DepartmentContract.deployed().then(function (instance) {
       dept = instance
       return dept.getBalance.call(departmentAccount, {
         from: departmentAccount
@@ -126,7 +126,7 @@ window.Department = {
 window.Invoice = {
   start: function () {
     var self = this
-    Invoice.setProvider(web3.currentProvider)
+    InvoiceContract.setProvider(web3.currentProvider)
 
     web3.eth.getAccounts(function (err, accs) {
       if (err != null) {
@@ -152,7 +152,7 @@ window.Invoice = {
     var self = this
 
     var inv
-    Invoice.deployed().then(function (instance) {
+    InvoiceContract.deployed().then(function (instance) {
       inv = instance
       return inv.getBalance.call(invoiceAccount, {
         from: invoiceAccount

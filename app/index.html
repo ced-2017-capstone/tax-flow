@@ -3,7 +3,7 @@
 
 <head>
   <title>Tax Flow Demo</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -20,17 +20,19 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="container-fluid navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">Tax Flow</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+      aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-  
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-   
+
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle disabled" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle disabled" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
             Collector
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -42,7 +44,8 @@
         </li>
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle disabled" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle disabled" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
             Department
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -54,7 +57,8 @@
         </li>
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle disabled" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle disabled" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
             Invoice
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -67,8 +71,8 @@
       </ul>
     </div>
   </nav>
-  
-  <div class="container">
+
+  <div class="container-fluid">
     <div class="row">
       <div class="col-md-4">
         <h3>Collections</h3>
@@ -109,9 +113,9 @@
         </div>
 
         <!--Invoices functions -->
-        <button class="button btn-primary mt-1" onlick="Department.createNew()">Create New Invoice</button>
+        <button class="button btn-primary mt-1" onlick="Invoice.createNew()">Create New Invoice</button>
         <button class="button btn-primary mt-1" onlick="Invoice.sendInvoice()">Send Invoice</button>
-        <button class="button btn-primary mt-1" onlick="Department.createInvoice()">Create Invoice</button>
+        <button class="button btn-primary mt-1" onlick="Invoice.createInvoice()">Create Invoice</button>
       </div>
     </div>
 </body>
