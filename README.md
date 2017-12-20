@@ -1,5 +1,7 @@
 # tax-flow
 
+**FOR CED Program**: Our 3 contracts are in the /contracts folder. The truffle app is WIP / ongoing project.
+
 New Updates at: https://github.com/ced-2017-capstone/tax-flow
 Authors:
 * Benjamin Brown - benjaminbb@gmail.com
