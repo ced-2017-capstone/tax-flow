@@ -4,9 +4,9 @@
 
 New Updates at: https://github.com/ced-2017-capstone/tax-flow
 Authors:
-* Benjamin Brown - [Linkedin](https://www.linkedin.com/in/benjaminmichaelbrown/) - [Twitter @benjaminmbrown](http://twitter.com/benjaminmbrown)
-* Shaan Ray - [medium.com/@shaanray](http://medium.com/@shaanray)
-* Mohamed Hasan [LinkedIn] (https://www.linkedin.com/in/mohammedqhasan/)
+* Benjamin Brown - [LinkedIn](https://www.linkedin.com/in/benjaminmichaelbrown/) - [Twitter @benjaminmbrown](http://twitter.com/benjaminmbrown)
+* Shaan Ray - [medium.com/@shaanray](http://medium.com/@shaanray) - [LinkedIn](https://www.linkedin.com/in/shaanray/)
+* Mohamed Hasan [LinkedIn](https://www.linkedin.com/in/mohammedqhasan/)
 
 This project is presented as a capstone project for the Certified Ethereum Developer program at Blockchain Hub.
 
