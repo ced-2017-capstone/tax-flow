@@ -4,7 +4,7 @@
 
 New Updates at: https://github.com/ced-2017-capstone/tax-flow
 Authors:
-* Benjamin Brown - [Linkedin](https://www.linkedin.com/in/benjaminmichaelbrown/) - [Twitter](http://twitter.com/benjaminmbrown)
+* Benjamin Brown - [Linkedin](https://www.linkedin.com/in/benjaminmichaelbrown/) - [Twitter @benjaminmbrown](http://twitter.com/benjaminmbrown)
 * Shaan Ray - [medium.com/@shaanray](http://medium.com/@shaanray)
 * Mohamed Hasan [LinkedIn] (https://www.linkedin.com/in/mohammedqhasan/)
 
